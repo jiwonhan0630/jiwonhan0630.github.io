@@ -167,9 +167,12 @@ input, select, textarea {
 	}
 
 	h1 {
+		background: #585858;
+		color: #ffffff;
 		font-size: 2.75em;
 		font-weight: 700;
 		line-height: 1.3;
+		padding-left: 0.2em;
 		margin: 0 0 1em 0;
 		letter-spacing: -0.035em;
 	}
