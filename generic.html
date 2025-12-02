@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE HTML>
 <!--
 	Phantom by HTML5 UP
