@@ -49,7 +49,7 @@ layout: null
 								비밀이다.</h1>
 								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
 							</header>
-							<section class="tiles">
+							<!-- <section class="tiles">
 								<article class="style0">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
@@ -182,7 +182,22 @@ layout: null
 										</div>
 									</a>
 								</article>
-							</section>
+							</section> -->
+							<section class="tiles">
+								{% for post in site.posts %}
+									<article class="style1">
+										<span class="image">
+											<img src="{{ project.image }}" alt="" />
+										</span>
+										<a href="{{ project.url }}">
+											<h2>{{ project.title }}</h2>
+											<div class="content">
+												<p>{{ project.description }}</p>
+											</div>
+										</a>
+									</article>
+								{% endfor %}
+								</section>
 						</div>
 					</div>
 

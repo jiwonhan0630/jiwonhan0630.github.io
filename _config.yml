@@ -1,0 +1,4 @@
+# _config.yml
+collections:
+  posts:
+    output: true
