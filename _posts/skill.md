@@ -2,6 +2,7 @@
 layout: basic
 title: "보유 기술"
 description: "2021-2025"
+image: /assets/images/pic01.jpg
 ---
 
 ## 프로젝트 개요
