@@ -3327,3 +3327,12 @@ input, select, textarea {
 			}
 
 		}
+
+/* Custom */
+	.image-inline {		
+		display: inline-block;
+		vertical-align: middle;
+		width: 2em;
+		height: 2em;
+		color: inherit;
+	}
