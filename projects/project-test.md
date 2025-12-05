@@ -1,6 +1,6 @@
 ---
 layout: project
-title: "테스트용 페이지"
+title: "보유 기술"
 ---
 
 ## 프로젝트 개요
@@ -10,11 +10,12 @@ title: "테스트용 페이지"
 
 이거는 아예 문단이 나눠지고?
 
-<i class="icon fa-brands fa-unity"></i>유니티 로고
-
 ## <i class="icon fa-brands fa-unity"></i>유니티 로고
 
-<span><img class="image-inline" src="/images/cpp_logo.webp" alt="" /></span>
-<span class="middle"> C# 로고.</span>
+## <span><img class="image-inline" src="/images/csharp_logo.webp" alt="" /></span>
+<span class="middle"> C#</span>
+
+## <span><img class="image-inline" src="/images/cpp_logo.webp" alt="" /></span>
+<span class="middle"> C++</span>
 
 아아
