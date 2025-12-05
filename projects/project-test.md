@@ -14,6 +14,7 @@ title: "테스트용 페이지"
 
 ## <i class="icon fa-brands fa-unity"></i>유니티 로고
 
-## ![img](/images/csharp_logo.webp){:width="1em"} C# 로고.
+<span><img class="image-inline" src="images/cpp_logo.webp" alt="" /></span>
+<span class="middle"> C# 로고.</span>
 
 아아
