@@ -184,15 +184,15 @@ layout: null
 								</article>
 							</section> -->
 							<section class="tiles">
-								{% for post in site.posts | sort: "order" %}
+								{% for work in site.works | sort: "order" %}
 									<article class="style1">
 										<span class="image">
-											<img src="{{ post.image }}" alt="" />
+											<img src="{{ work.image }}" alt="" />
 										</span>
-										<a href="{{ post.url }}">
-											<h2>{{ post.title }}</h2>
+										<a href="{{ work.url }}">
+											<h2>{{ work.title }}</h2>
 											<div class="content">
-												<p>{{ post.description }}</p>
+												<p>{{ work.description }}</p>
 											</div>
 										</a>
 									</article>
