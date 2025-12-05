@@ -184,7 +184,7 @@ layout: null
 								</article>
 							</section> -->
 							<section class="tiles">
-								{% for post in site.posts %}
+								{% for post in site.posts | sort: "order" %}
 									<article class="style1">
 										<span class="image">
 											<img src="{{ post.image }}" alt="" />
