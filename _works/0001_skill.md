@@ -34,7 +34,8 @@ tilestyle: style3
 
 ## <i class="fa-solid fa-database"></i><span class="middle"> SQL</span>
 - **MariaDB**를 통해 기초적인 정의, 조작, 제어 등의 문법을 이해하고 사용할 수 있습니다.
-- **MongoDB**를 사용한 유니티 프로젝트 경험이 있습니다. [프로젝트 보러가기](/_works/0301_플래피버드모작.html)
+- **MongoDB**를 사용한 유니티 프로젝트 경험이 있습니다. [(보러가기)]({% link _works/0301_플래피버드모작.md %})
+
 ***
 
 ## <i class="fa-solid fa-triangle-exclamation"></i> <span class="middle"> Blender</span>
