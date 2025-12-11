@@ -1881,6 +1881,9 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 		padding-left: 1em;
 	}
+		ul ul {
+			list-style-type: circle;
+		}
 
 		ul li {
 			padding-left: 0.5em;
