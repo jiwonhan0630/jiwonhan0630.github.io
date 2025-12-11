@@ -2692,6 +2692,7 @@ input, select, textarea {
 
 				.tiles article > a h2 {
 					margin: 0;
+					background: none;
 				}
 
 				.tiles article > a .content {
