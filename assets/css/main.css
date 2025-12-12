@@ -2741,10 +2741,10 @@ input, select, textarea {
 			}
 
 			body:not(.is-touch) .tiles article:hover > .image {
-				-moz-transform: scale(1.1);
-				-webkit-transform: scale(1.1);
-				-ms-transform: scale(1.1);
-				transform: scale(1.1);
+				-moz-transform: scale(1.01);
+				-webkit-transform: scale(1.01);
+				-ms-transform: scale(1.01);
+				transform: scale(1.01);
 			}
 
 				body:not(.is-touch) .tiles article:hover > .image:before {
