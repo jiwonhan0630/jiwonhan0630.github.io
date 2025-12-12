@@ -7,13 +7,13 @@ image: /images/pic01.jpg
 
 ## 프로젝트 개요
 
-### 플랫폼
+#### 플랫폼
 PC (Windows), 모바일 (Android, iOS)
 
-### 장르
+#### 장르
 작업 연동 게이미피케이션
 
-### 개발 환경
+#### 개발 환경
 - Unity Engine
 - Java Script (서버)
 - MariaDB/ TMaxTiberoDB
