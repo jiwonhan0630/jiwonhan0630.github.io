@@ -1,4 +1,7 @@
 # _config.yml
+permalink: pretty
 collections:
   works:
+    output: true
+  about:
     output: true
