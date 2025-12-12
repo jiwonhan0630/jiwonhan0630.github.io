@@ -8,16 +8,17 @@ image: /images/pic01.jpg
 ## 프로젝트 개요
 
 #### 프로젝트명
-Hamel's Flute
+- Hamel's Flute
 
 #### 플랫폼
-PC (Windows)
+- PC (Windows)
 
 #### 장르
-2D 퍼즐 플랫포머
+- 2D 퍼즐 플랫포머
 
 #### 개발 환경
-Unity Engine
+- Unity Engine
+
 
 ## 담당 업무
 - GitHub를 사용한 게임 버전 관리
@@ -26,5 +27,6 @@ Unity Engine
 - 카메라 영역 제한 기능 구현
 - 배경 및 오브젝트 모델링
 - 캐릭터 스프라이트 및 애니메이션
+
 
 ## 작업 문서

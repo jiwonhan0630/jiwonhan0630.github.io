@@ -8,15 +8,17 @@ image: /images/pic01.jpg
 ## 프로젝트 개요
 
 #### 플랫폼
-PC (Windows), 모바일 (Android, iOS)
+- PC (Windows)
+- 모바일 (Android, iOS)
 
 #### 장르
-작업 연동 게이미피케이션
+- 작업 연동 게이미피케이션
 
 #### 개발 환경
 - Unity Engine
 - Java Script (서버)
 - MariaDB/ TMaxTiberoDB
+
 
 ## 담당 업무
 - 레벨 제작을 위한 커스텀 에디터 기능 구현
@@ -28,5 +30,6 @@ PC (Windows), 모바일 (Android, iOS)
 - Field Section 시스템 구현
 - Field Object 시스템 구현
 - 3D 사운드 지원을 위한 사운드 기능 구현
+
 
 ## 작업 문서
