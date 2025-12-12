@@ -2761,9 +2761,11 @@ input, select, textarea {
 				opacity: 1;
 			}
 
-		* + .tiles {
+		/* tiles가 안에 들어있을 때 margin-top 을 추가하면 이쁘게 딱 떨어지는건 알겠는데 
+		그럼 왜 다른 해상도에는 이거 안해놓은걸까...*/
+		/* * + .tiles {
 			margin-top: 2em;
-		}
+		} */
 
 		body.is-preload .tiles article {
 			-moz-transform: scale(0.9);
