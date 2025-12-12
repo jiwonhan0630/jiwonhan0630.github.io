@@ -15,9 +15,8 @@ image: /images/pic01.jpg
 - 작업 연동 게이미피케이션
 
 #### 개발 환경
-- Unity Engine
-- Java Script (서버)
-- MariaDB/ TMaxTiberoDB
+- Unity Engine / MariaDB
+- Java Script / TMaxTiberoDB
 
 ## 담당 업무
 - 레벨 제작을 위한 커스텀 에디터 기능 구현
