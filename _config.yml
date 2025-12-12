@@ -1,8 +1,9 @@
 # _config.yml
 permalink: pretty
 collections:
-  permalink: /:collection/:slug
   works:
     output: true
+    permalink: /works/:slug
   about:
     output: true
+    permalink: /about/:slug
