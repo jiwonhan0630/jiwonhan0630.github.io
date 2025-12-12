@@ -19,8 +19,6 @@ image: /images/pic01.jpg
 - Java Script (서버)
 - MariaDB/ TMaxTiberoDB
 
-  
-
 ## 담당 업무
 - 레벨 제작을 위한 커스텀 에디터 기능 구현
 - 자동차 AI (FSM) 구현

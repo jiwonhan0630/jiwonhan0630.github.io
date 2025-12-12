@@ -19,7 +19,6 @@ image: /images/pic01.jpg
 #### 개발 환경
 - Unity Engine
 
-
 ## 담당 업무
 - GitHub를 사용한 게임 버전 관리
 - 피리 스킬 구현
