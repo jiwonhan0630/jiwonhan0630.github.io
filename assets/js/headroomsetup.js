@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
     var myHeader = document.querySelector("#headroom");
     if(myHeader) {
         var headroom = new Headroom(myHeader, {
-            "offset": 100,      // 100px 스크롤하면 반응
+            "offset": 0,
             "tolerance": 5,     // 민감도
             "classes": {
-                "initial": "animated",
+                "initial": "headroom",
+                "notTop": "headroom--not-top",
                 "pinned": "headroom--pinned",
                 "unpinned": "headroom--unpinned"
             }
