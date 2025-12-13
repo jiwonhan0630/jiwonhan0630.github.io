@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    var myHeader = document.querySelector("#header");
+    var myHeader = document.querySelector("#headroom");
     if(myHeader) {
         var headroom = new Headroom(myHeader, {
             "offset": 100,      // 100px 스크롤하면 반응
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headroom.init();
         console.log("Headroom.js finish");
     } else {
-        console.error("#header not found");
+        console.error("#headroom not found");
     }
 
 });
