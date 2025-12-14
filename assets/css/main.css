@@ -2847,6 +2847,7 @@ input, select, textarea {
 
 	#header {
 		top: 0;
+		background-color: #f6f6f680;
 		position: sticky;
 		padding: 0.25em 0;
 		z-index: 9999;
