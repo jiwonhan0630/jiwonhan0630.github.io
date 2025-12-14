@@ -1,0 +1,28 @@
+#headroom {
+    position: fixed; 
+	padding-top: 0.25em !important;
+	padding-bottom: 0.25em !important;
+	top: 0; 
+	left: 0;
+	right: 0;
+    width: 100%;
+    z-index: 9999;
+
+    /* 애니메이션 설정 */
+    transition: transform 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
+    will-change: transform, padding;
+}
+
+#headroom.headroom--not-top {
+	background-color: #eeeeee;
+}
+
+/* 스크롤 올릴 때 (보임) */
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+/* 스크롤 내릴 때 (숨김) */
+.headroom--unpinned {
+    transform: translateY(-100%); /* 위로 100%만큼 들어올려서 숨김 */
+}
