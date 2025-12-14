@@ -3348,7 +3348,8 @@ input, select, textarea {
 
 /* Wrapper */
 
-	#wrapper > * > .inner {
+	#wrapper > * > .inner,
+	#header > .inner {
 		width: 100%;
 		max-width: 68em;
 		margin: 0 auto;
@@ -3357,7 +3358,8 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
-			#wrapper > * > .inner {
+			#wrapper > * > .inner,
+			#header > .inner {
 				padding: 0 1.25em;
 			}
 
