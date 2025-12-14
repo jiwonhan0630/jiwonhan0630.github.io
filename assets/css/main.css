@@ -3363,11 +3363,11 @@ input, select, textarea {
 
 #headroom {
     position: fixed; 
-
 	padding-top: 0.25em !important;
 	padding-bottom: 0.25em !important;
-
 	top: 0; 
+	left: 0;
+	right: 0;
     width: 100%;
     z-index: 9999;
 
