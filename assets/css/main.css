@@ -3363,7 +3363,10 @@ input, select, textarea {
 
 #headroom {
     position: fixed; 
-	padding: 0.25em 0;
+
+	padding-top: 0.25em !important;
+	padding-bottom: 0.25em !important;
+	
 	top: 0; 
     width: 100%;
     z-index: 9999;
