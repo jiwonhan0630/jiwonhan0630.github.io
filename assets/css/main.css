@@ -2939,7 +2939,6 @@ input, select, textarea {
 						font-weight: 900;
 						letter-spacing: 0.35em;
 						text-transform: uppercase;
-						transition: transform 0.2s ease;
 					}
 
 					#header nav ul li a[href="#menu"] {
@@ -3190,22 +3189,12 @@ input, select, textarea {
 			opacity: 1;
 		}
 
-		/* 1. 메뉴가 열리면 버튼을 180도 회전 */
-		body.is-menu-visible #header nav ul li a[href="#menu"] {
-			transform: rotate(180deg);
-		}
-
-		/* 2. 메뉴가 열리면 아이콘을 'X'로 교체 (0.2초 딜레이) */
 		body.is-menu-visible #header nav ul li a[href="#menu"]:before, 
 		body.is-menu-visible #header nav ul li a[href="#menu"]:after {
-			/* X 아이콘 SVG */
 			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
-			
-			/* 0.2초 뒤에 이미지가 팟! 하고 바뀌도록 설정 */
 			transition: opacity 0.2s ease, background-image 0s linear 0.2s; 
 		}
 
-		/* 3. :after는 평소(회색) 상태 담당이므로 색상을 회색으로 덮어씀 */
 		body.is-menu-visible #header nav ul li a[href="#menu"]:after {
 			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
 		}
