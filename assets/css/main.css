@@ -2865,7 +2865,7 @@ input, select, textarea {
 		background-color: var(--color-header-light);
 		position: sticky;
 		padding: 0.25em 0;
-		z-index: 9999;
+		z-index: 10000;
 	}
 		#header .logo {
 			display: block;
@@ -2898,7 +2898,7 @@ input, select, textarea {
 			position: relative;
 			/* right: 2em;
 			top: 2em; */
-			z-index: 10000;
+			z-index: 9999;
 		}
 
 			#header nav ul {
@@ -3017,17 +3017,17 @@ input, select, textarea {
 		-ms-transition: -ms-transform 0.45s ease, visibility 0.45s;
 		transition: transform 0.45s ease, visibility 0.45s;
 		position: fixed;
-		top: 0;
+		top: 3.5em;
 		right: 0;
 		width: 22em;
 		max-width: 80%;
-		height: 100%;
+		height: calc(100% - 3.5em);
 		-webkit-overflow-scrolling: touch;
 		background: var(--color-main-gray);
 		color: #ffffff;
 		cursor: default;
 		visibility: hidden;
-		z-index: 10002;
+		z-index: 9999;
 	}
 
 		#menu > .inner {
