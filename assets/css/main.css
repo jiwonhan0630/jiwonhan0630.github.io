@@ -2846,8 +2846,7 @@ input, select, textarea {
 /* Header */
 
 	#header {
-
-		padding: 4em 0 0.1em 0 ;
+		padding: 1.25em 0 0 0 ;
 	}
 
 		#header .logo {
@@ -2965,9 +2964,9 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
-			#header {
+			/* #header {
 				padding: 4em 0 0.1em 0 ;
-			}
+			} */
 
 				#header nav {
 					right: 0.5em;
@@ -3364,12 +3363,10 @@ input, select, textarea {
 
 #headroom {
     position: fixed; 
-
+	padding: 0.25em 0 0 0;
 	top: 0; 
     width: 100%;
     z-index: 9999;
-    /* #header의 padding이랑 맞춤 */
-    /* padding: 4em 0 0.1em 0;  */
 
     /* 애니메이션 설정 */
     transition: transform 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
@@ -3377,13 +3374,12 @@ input, select, textarea {
 }
 
 #headroom.headroom--not-top {
-	padding: 0em 0 0.1em 0;
+
 	background-color: #eeeeee;
 }
 
 /* 스크롤 올릴 때 (보임) */
 .headroom--pinned {
-	position: fixed; 
     transform: translateY(0%);
 }
 
