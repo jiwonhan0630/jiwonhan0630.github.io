@@ -2866,7 +2866,13 @@ input, select, textarea {
 		position: sticky;
 		padding: 0.25em 0;
 		z-index: 10000;
-	}
+	}	
+		#header > .inner{
+			display:flex;
+			justify-content:space-between;
+			align-items:center;
+		}
+		
 		#header .logo {
 			display: block;
 			border-bottom: 0;
@@ -3377,9 +3383,3 @@ input, select, textarea {
 	.middle {
 		vertical-align: middle;
 	}
-	
-#header > .inner{
-	display:flex;
-	justify-content:space-between;
-	align-items:center;
-}
