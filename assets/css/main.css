@@ -3418,7 +3418,7 @@ input, select, textarea {
 	}
 
 	ul.auto-toc a {
-		padding: 0.3em 0em !important;
+		padding: 0.3em 0.8em !important;
 		display: block;
 		font-size: 0.85em;         /* 본 메뉴보다 작게 */
 		text-decoration: none;
