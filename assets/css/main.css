@@ -3438,4 +3438,11 @@ input, select, textarea {
     font-weight: bold;         /* 글씨 굵게 */
     padding-left: 10px;        /* 오른쪽으로 쑥 들어가는 효과 */
     border-left: 2px solid #f2849e !important; /* 왼쪽에 핑크색 바 */
-}
+	}
+
+	/* 현재 보고 있는 페이지의 메뉴 링크 강조 */
+	#menu .menu-link.active {
+		color: #f2849e !important; /* 핑크색 */
+		font-weight: 900;          /* 글씨 두껍게 (선택사항) */
+		border-bottom: 0;          /* 밑줄 제거 */
+	}

@@ -5,7 +5,7 @@
         <!-- <li><a href="/projects/skill">보유 기술</a></li> -->
         {% for work in site.works %}
         <li>
-            <a href="{{ work.url }}" class="menu-link" {% if work.target %}target="{{ work.target }}"{% endif %}>
+            <a href="{{ work.url }}" class="menu-link {% if work.url == page.url %}active{% endif %}" {% if work.target %}target="{{ work.target }}"{% endif %}>
                 {{ work.title }}
             </a>
         </li>

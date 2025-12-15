@@ -181,81 +181,67 @@
 						$menu._hide();
 
 			});
+			
+		/* --- Sidebar Auto TOC (Optimized with CSS Class) --- */
+		$(function() {
+			var $tocTarget = $('#menu .menu-link.active'); // [핵심] 그냥 active 붙은 놈을 바로 가져옴!
+			var $content = $('#main .inner');
 
-	/* --- TOC --- */
-    $(function() {
-        var $content = $('#main .inner');
-        var $menuLinks = $('#menu .menu-link');
-        var currentPath = window.location.pathname;
+			// active된 메뉴가 있고, 본문에 제목(h2,h3)이 있을 때만 실행
+			if ($tocTarget.length > 0) {
+				var $headers = $content.find('h2, h3');
+				
+				if ($headers.length > 0) {
+					// 1. 목차 리스트 생성
+					var $tocUl = $('<ul class="auto-toc"></ul>');
+					
+					$headers.each(function(index) {
+						var $this = $(this);
+						var tagName = $this.prop('tagName').toLowerCase();
+						
+						var id = $this.attr('id');
+						if (!id) {
+							id = 'section-' + index;
+							$this.attr('id', id);
+						}
 
-        // 헤더 수집
-        var $headers = $content.find('h2, h3');
+						var $li = $('<li></li>');
+						var $a = $('<a></a>')
+							.attr('href', '#' + id)
+							.text($this.text())
+							.addClass(tagName)
+							.on('click', function(e) {
+								e.preventDefault();
+								$menu._hide();
+								$('html, body').animate({ scrollTop: $('#' + id).offset().top - 100 }, 500);
+							});
 
-        if ($headers.length > 0) {
-            // 현재 페이지 메뉴 찾기
-            var $activeLink = null;
-            $menuLinks.each(function() {
-                if ($(this).attr('href') === currentPath) {
-                    $activeLink = $(this);
-                    return false;
-                }
-            });
+						$li.append($a);
+						$tocUl.append($li);
+					});
 
-            // 목차 생성 및 삽입
-            if ($activeLink) {
-                $activeLink.css('color', '#f2849e'); // 상위 메뉴 강조
-                var $tocUl = $('<ul class="auto-toc"></ul>');
-                
-                $headers.each(function(index) {
-                    var $this = $(this);
-                    var tagName = $this.prop('tagName').toLowerCase();
-                    var id = $this.attr('id');
-                    if (!id) {
-                        id = 'section-' + index;
-                        $this.attr('id', id);
-                    }
+					// 2. JS로 색깔 바꾸던 코드는 삭제됨! ($activeLink.css... 삭제)
+					// 3. 바로 목차 삽입
+					$tocTarget.after($tocUl);
 
-                    var $li = $('<li></li>');
-                    var $a = $('<a></a>')
-                        .attr('href', '#' + id)
-                        .text('- ' + $this.text())
-                        .addClass(tagName)
-                        .on('click', function(e) {
-                            e.preventDefault();
-                            $menu._hide();
-                            $('html, body').animate({ scrollTop: $('#' + id).offset().top - 100 }, 500);
-                        });
+					// 4. 스크롤 스파이 (Scroll Spy) 기능
+					$(window).on('scroll', function() {
+						var scrollPos = $(window).scrollTop() + 150;
+						var currentId = '';
 
-                    $li.append($a);
-                    $tocUl.append($li);
-                });
+						$headers.each(function() {
+							if ($(this).offset().top < scrollPos) {
+								currentId = $(this).attr('id');
+							}
+						});
 
-                $activeLink.after($tocUl);
+						if (currentId) {
+							$tocUl.find('a').removeClass('active');
+							$tocUl.find('a[href="#' + currentId + '"]').addClass('active');
+						}
+					});
+				}
+			}
+		});
 
-                // ==========================================
-                // 스크롤 감지 (Scroll Spy)
-                // ==========================================
-                $(window).on('scroll', function() {
-                    var scrollPos = $(window).scrollTop() + 150; // 감지 위치 보정 (헤더 높이 고려)
-                    var currentId = '';
-
-                    // 모든 헤더를 돌면서 "지금 내가 보고 있는 구역이 어디인가" 확인
-                    $headers.each(function() {
-                        var $this = $(this);
-                        if ($this.offset().top < scrollPos) {
-                            currentId = $this.attr('id');
-                        }
-                    });
-
-                    // 찾은 구역의 목차 아이템만 'active' 클래스 부여
-                    if (currentId) {
-                        var $currentLink = $tocUl.find('a[href="#' + currentId + '"]');
-                        // 기존 active 다 지우고, 현재 것만 active 추가
-                        $tocUl.find('a').removeClass('active');
-                        $currentLink.addClass('active');
-                    }
-                });
-            }
-        }
-    });
 })(jQuery);
