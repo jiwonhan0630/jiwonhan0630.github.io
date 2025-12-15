@@ -182,4 +182,70 @@
 
 			});
 
+		/* --- Sidebar TOC --- */
+    	$(function() {
+        var $content = $('#main .inner');           // 본문 영역
+        var $menuLinks = $('#menu .menu-link');     // 메뉴의 링크들
+        var currentPath = window.location.pathname; // 현재 주소
+
+        // 본문에서 h2, h3 태그 수집
+        var $headers = $content.find('h2, h3');
+
+        // 헤더가 하나라도 있을 때만 실행
+        if ($headers.length > 0) {
+            
+            // 메뉴에서 '현재 페이지'에 해당하는 링크 찾기
+            var $activeLink = null;
+            $menuLinks.each(function() {
+                // 링크 주소가 현재 주소와 일치하는지 확인
+                if ($(this).attr('href') === currentPath) {
+                    $activeLink = $(this);
+                    return false; // 찾았으면 반복 종료
+                }
+            });
+
+            // 활성 링크를 찾았으면 그 밑에 목차 생성
+            if ($activeLink) {
+                // 현재 페이지 메뉴 색상 강조
+                $activeLink.css('color', '#f2849e'); 
+
+                // 목차를 담을 ul 생성
+                var $tocUl = $('<ul class="auto-toc"></ul>');
+                
+                $headers.each(function(index) {
+                    var $this = $(this);
+                    var tagName = $this.prop('tagName').toLowerCase(); // h2 or h3
+                    
+                    // ID가 없으면 자동 생성 (이동을 위해 필수)
+                    var id = $this.attr('id');
+                    if (!id) {
+                        id = 'section-' + index;
+                        $this.attr('id', id);
+                    }
+
+                    // 리스트 아이템 생성
+                    var $li = $('<li></li>');
+                    var $a = $('<a></a>')
+                        .attr('href', '#' + id)
+                        .text('- ' + $this.text()) // 앞에 하이픈(-) 장식
+                        .addClass(tagName)         // 클래스(h2/h3) 추가
+                        .on('click', function(e) {
+                            e.preventDefault();
+                            $menu._hide(); // 클릭 시 메뉴 닫기
+                            
+                            // 부드러운 스크롤 이동
+                            var targetTop = $('#' + id).offset().top - 100; // 헤더 높이만큼 뺌
+                            $('html, body').animate({ scrollTop: targetTop }, 500);
+                        });
+
+                    $li.append($a);
+                    $tocUl.append($li);
+                });
+
+                // 찾은 메뉴 링크 바로 뒤에 목차 삽입
+                $activeLink.after($tocUl);
+            }
+        }
+    });
+
 })(jQuery);

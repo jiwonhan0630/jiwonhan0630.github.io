@@ -1,0 +1,12 @@
+<ul class="toc">
+    {% assign headers = page.content | split: '<h2' %}
+    {% for header in headers offset:1 %}
+        {% assign _header = header | split: '</h2>' | first %}
+        {% assign _id = _header | split: 'id="' %}
+        {% assign _id = _id[1] | split: '"' | first %}
+        {% assign _title = _header | split: '>' | last %}
+        <li>
+            <a href="#{{ _id }}">- {{ _title | strip_html }}</a>
+        </li>
+    {% endfor %}
+</ul>

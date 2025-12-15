@@ -3396,3 +3396,39 @@ input, select, textarea {
 	.middle {
 		vertical-align: middle;
 	}
+
+	/* --- TOC --- */
+	ul.auto-toc {
+		list-style: none;
+		margin: 0.5em 0 1.5em 0 !important; /* 위아래 여백 */
+		padding-left: 1em !important;       /* 전체 들여쓰기 */
+		border-left: 2px solid rgba(255,255,255,0.1); /* 왼쪽에 얇은 줄 */
+		display: block;
+	}
+
+	ul.auto-toc li {
+		padding: 0;
+		border: 0;
+		margin: 0;
+	}
+
+	ul.auto-toc a {
+		display: block;
+		padding: 0.3em 0;
+		font-size: 0.85em;         /* 본 메뉴보다 작게 */
+		color: var(--color-code) !important; /* 연한 회색 */
+		border: 0 !important;
+		text-decoration: none;
+		transition: color 0.2s, padding-left 0.2s;
+	}
+
+	/* 마우스 올렸을 때 */
+	ul.auto-toc a:hover {
+		color: var(--color-highlight-pink) !important;
+		padding-left: 5px;         /* 살짝 오른쪽 이동 */
+	}
+
+	/* 소제목(h3)은 더 안쪽으로 들여쓰기 */
+	ul.auto-toc a.h3 {
+		padding-left: 1em;
+	}

@@ -5,11 +5,11 @@
         <!-- <li><a href="/projects/skill">보유 기술</a></li> -->
         {% for work in site.works %}
         <li>
-            <a href="{{ work.url }}" {% if work.target %}target="{{ work.target }}"{% endif %}>
+            <a href="{{ work.url }}" class="menu-link" {% if work.target %}target="{{ work.target }}"{% endif %}>
                 {{ work.title }}
             </a>
         </li>
         {% endfor %}
-        <li><a href="/elements.html">Elements</a></li>
+        <li><a href="/elements">Elements</a></li>
     </ul>
 </nav>
