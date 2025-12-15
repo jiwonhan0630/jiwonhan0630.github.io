@@ -2866,6 +2866,8 @@ input, select, textarea {
 		position: sticky;
 		padding: 0.25em 0;
 		z-index: 10000;
+		box-shadow: 0 1px 1px #0000000b
+
 	}	
 		#header > .inner{
 			display:flex;
