@@ -20,6 +20,8 @@
 	--color-button-primary-active: #ee5f81; 
 	--color-blockquote: #c9c9c9;
 	--color-code: #c9c9c9;
+
+	--menu-width: 22em;
 }
 
 html, body, div, span, applet, object,
@@ -3016,10 +3018,10 @@ input, select, textarea {
 	}
 
 	#menu {
-		-moz-transform: translateX(22em);
-		-webkit-transform: translateX(22em);
-		-ms-transform: translateX(22em);
-		transform: translateX(22em);
+		-moz-transform: translateX(var(--menu-width));
+		-webkit-transform: translateX(var(--menu-width));
+		-ms-transform: translateX(var(--menu-width));
+		transform: translateX(var(--menu-width));
 		-moz-transition: -moz-transform 0.45s ease, visibility 0.45s;
 		-webkit-transition: -webkit-transform 0.45s ease, visibility 0.45s;
 		-ms-transition: -ms-transform 0.45s ease, visibility 0.45s;
@@ -3027,7 +3029,7 @@ input, select, textarea {
 		position: fixed;
 		top: 3.5em;
 		right: 0;
-		width: 22em;
+		width: var(--menu-width);
 		max-width: 80%;
 		height: calc(100% - 3.5em);
 		-webkit-overflow-scrolling: touch;
