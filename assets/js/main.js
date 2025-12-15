@@ -226,7 +226,7 @@
                 // ==========================================
                 function updateTocActive() {
                     // 감지 기준선 (헤더 높이 + 여유분)
-                    var scrollPos = $(window).scrollTop() + 150; 
+					var scrollPos = $(window).scrollTop() + 160;
                     
                     // 기본값: null (아직 아무것도 못 만났음)
                     var currentId = null; 
