@@ -17,7 +17,7 @@
 	--color-main-lightgray: #7b7b7b;
 	--color-heading-level1: #585858;
 	--color-heading-level2: #d3d3d3;
-	--color-highlight-pink: #f2849e;
+	--color-highlight: #61e18e;
 	--color-button-primary-active: #ee5f81; 
 	--color-blockquote: #c9c9c9;
 	--color-code: #c9c9c9;
@@ -169,7 +169,7 @@ input, select, textarea {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: var(--color-highlight-pink) !important;
+			color: var(--color-highlight) !important;
 		}
 
 	strong, b {
@@ -1881,8 +1881,8 @@ input, select, textarea {
 			}
 
 			.icon.style2:hover {
-				color: var(--color-highlight-pink);
-				border-color: var(--color-highlight-pink);
+				color: var(--color-highlight);
+				border-color: var(--color-highlight);
 			}
 
 			.icon.style2:active {
@@ -2199,8 +2199,8 @@ input, select, textarea {
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-bottom-color: var(--color-highlight-pink);
-			box-shadow: inset 0 -1px 0 0 var(--color-highlight-pink);
+			border-bottom-color: var(--color-highlight);
+			box-shadow: inset 0 -1px 0 0 var(--color-highlight);
 		}
 
 	select {
@@ -2304,8 +2304,8 @@ input, select, textarea {
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: var(--color-highlight-pink);
-			box-shadow: 0 0 0 1px var(--color-highlight-pink);;
+			border-color: var(--color-highlight);
+			box-shadow: 0 0 0 1px var(--color-highlight);;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -2523,8 +2523,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			color: var(--color-highlight-pink) !important;
-			box-shadow: inset 0 0 0 2px var(--color-highlight-pink);
+			color: var(--color-highlight) !important;
+			box-shadow: inset 0 0 0 2px var(--color-highlight);
 		}
 
 		input[type="submit"]:active,
@@ -2566,7 +2566,7 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: var(--color-highlight-pink);
+				background-color: var(--color-highlight);
 			}
 
 			input[type="submit"].primary:active,
@@ -2739,7 +2739,7 @@ input, select, textarea {
 				background-color: var(--color-main-dark);
 			}
 			.tiles article.style1 > .image:before {
-				background-color: var(--color-highlight-pink);
+				background-color: var(--color-highlight);
 			}
 
 			.tiles article.style2 > .image:before {
