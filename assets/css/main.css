@@ -238,6 +238,8 @@ input, select, textarea {
 
 	h3 {
 		font-size: 1.4em;
+		/* width: fit-content;
+		background-image: linear-gradient(to top, #dadada 30%, transparent 30%); */
 		/* letter-spacing: 0.35em; */
 	}
 
