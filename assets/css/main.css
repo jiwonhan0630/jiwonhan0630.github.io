@@ -12,7 +12,7 @@
 	--color-background-light: #f6f6f6;
 	--color-footer-light: #eeeeee;
 	--color-header-light: #f6f6f6E6;
-	--color-main-dark: #333333;
+	--color-main-dark: #3e3e3e;
 	--color-main-gray: #585858;
 	--color-main-lightgray: #7b7b7b;
 	--color-heading-level1: #585858;
@@ -2493,8 +2493,8 @@ input, select, textarea {
 		font-size: 0.8em;
 		font-weight: 900;
 		height: 3.5em;
-		letter-spacing: 0.35em;
-		line-height: 3.45em;
+		/* letter-spacing: 0.35em;
+		line-height: 3.45em; */
 		overflow: hidden;
 		padding: 0 1.25em 0 1.6em;
 		text-align: center;
@@ -2591,6 +2591,7 @@ input, select, textarea {
 			pointer-events: none;
 			opacity: 0.25;
 		}
+
 
 /* Tiles */
 
@@ -3399,6 +3400,65 @@ input, select, textarea {
 	.middle {
 		vertical-align: middle;
 	}
+
+
+
+	.button.overview {
+		flex-direction: column;
+		display: flex;
+		align-items: flex-start;
+		position: relative;
+		/* box-shadow: none; */
+		/* width: 100%; */
+		height: auto;
+		/* line-height: inherit;
+		letter-spacing: inherit; */
+		padding: 1.8em 1em 1.8em 2em;
+		margin: 0.4em 0 0.4em 0;
+		font-weight: 400;
+		text-transform: inherit;
+		/* padding: 0 1.25em 0 1.6em;
+		text-align: center;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		white-space: nowrap; */
+		
+		background-color: var(--color-main-dark);
+	}
+
+	.button.overview::before {
+		content: "→";
+		position: absolute;
+		right: 1.5em;
+		top: 50%;
+		transform: translateY(-50%);
+		
+		font-size: 2em;
+		color: var(--color-main-lightgray);
+		transition: transform 0.2s ease;
+	}
+	
+	.button.overview:hover::before {
+		color: var(--color-background-light);
+		transform: translate(5px, -50%);
+	}
+
+	.button.overview:hover {
+		background-color:var(--color-main-gray)
+	}
+		.button.overview > span:first-child { 
+				display: block;
+				font-size: 1.2em;
+				font-weight: 700;
+				color: var(--color-main-lightgray);
+			}
+			
+		.button.overview > span:last-child { 
+				display: block;
+				font-size: 1.4em;
+
+				color: var(--color-background-light);
+			}
 
 	/* --- TOC --- */
 	/* 현재 보고 있는 페이지의 메뉴 링크 강조 */
