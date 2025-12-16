@@ -1,7 +1,7 @@
 ---
 layout: basic
 title: "Project CARS"
-description: "2021-2025"
+description: "작업 연동 게이미피케이션"
 image: /images/pic01.jpg
 ---
 

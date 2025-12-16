@@ -1,7 +1,7 @@
 ---
 layout: basic
-title: "수원박물관 Docent System"
-description: "2021-2025"
+title: "수원시 박물관 도슨트 시스템"
+description: "소장 유물을 활용한 게임 콘텐츠 제작"
 image: /images/pic_test_suwon.png
 ---
 

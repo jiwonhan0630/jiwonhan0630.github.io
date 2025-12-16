@@ -1,7 +1,7 @@
 ---
 layout: basic
 title: "Tevah: 생명의 숲"
-description: "2021-2025"
+description: "2D 퍼즐 플랫포머"
 image: /images/pic01.jpg
 ---
 

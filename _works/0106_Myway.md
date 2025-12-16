@@ -1,7 +1,7 @@
 ---
 layout: basic
 title: "마이웨이"
-description: "2021-2025"
+description: "인생 첫 게임 프로젝트"
 image: /images/pic01.jpg
 ---
 
