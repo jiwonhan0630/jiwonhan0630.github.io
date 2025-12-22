@@ -17,6 +17,7 @@
 	--color-main-lightgray: #7b7b7b;
 	--color-heading-level1: #585858;
 	--color-heading-level2: #d3d3d3;
+	--color-heading-level3: #dcdcdc;
 	--color-highlight: #61e18e;
 	--color-button-primary-active: #ee5f81; 
 	--color-blockquote: #c9c9c9;
@@ -238,13 +239,16 @@ input, select, textarea {
 
 	h3 {
 		font-size: 1.4em;
-		/* width: fit-content;
-		background-image: linear-gradient(to top, #dadada 30%, transparent 30%); */
-		/* letter-spacing: 0.35em; */
+
 	}
 
 	h4 {
 		font-size: 1.2em;
+		border-left: 4px solid var(--color-heading-level2);
+		background-color: var(--color-heading-level3);
+		width: fit-content;
+		font-weight: 700;
+		padding: 0 0.2em;
 	}
 
 	h5 {
