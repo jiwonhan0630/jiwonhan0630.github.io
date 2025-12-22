@@ -3401,58 +3401,66 @@ input, select, textarea {
 		vertical-align: middle;
 	}
 
-	.btn-pagework {
-		display: flex;
+	.button.overview {
 		flex-direction: column;
+		display: flex;
+		align-items: flex-start;
 		position: relative;
-		padding: 1.5em 4em 1.5em 2em; /* 오른쪽 화살표 공간 확보 */
-		margin: 0.5em 0;
-		background-color: var(--color-main-dark);
-		border-radius: 4px;
+		/* box-shadow: none; */
+		/* width: 100%; */
+		height: auto;
+		/* line-height: inherit;
+		letter-spacing: inherit; */
+		padding: 1.8em 1em 1.8em 2em;
+		margin: 0.4em 0 0.4em 0;
+		font-weight: 400;
+		text-transform: inherit;
+		/* padding: 0 1.25em 0 1.6em;
+		text-align: center;
 		text-decoration: none;
-		transition: all 0.2s ease;
+		text-overflow: ellipsis;
+		white-space: nowrap; */
+		
+		background-color: var(--color-main-dark);
 	}
 
-	/* 제목 부분 */
-	.btn-pagework::before {
-		content: attr(subject); /* html 태그 값 가져옴 */
-		display: block;
-		font-size: 1.1em;
-		font-weight: 700;
-		color: var(--color-main-lightgray);
-		margin-bottom: 0.2em;
-	}
-
-	/* 설명 부분 (태그 안의 텍스트) */
-	.btn-pagework {
-		font-size: 1.3em;
-		color: var(--color-background-light);
-	}
-
-	/* 화살표 (가상 요소 하나 더 추가) */
-	.btn-pagework::after {
+	.button.overview::before {
 		content: "→";
 		position: absolute;
-		right: 1.2em;
+		right: 1.5em;
 		top: 50%;
 		transform: translateY(-50%);
-		font-size: 1.8em;
+		
+		font-size: 2em;
 		color: var(--color-main-lightgray);
 		transition: transform 0.2s ease;
 	}
-
-	/* 호버 효과 */
-	.btn-pagework:hover {
-		background-color: var(--color-main-gray);
-	}
-	.btn-pagework:hover::before {
-		color: var(--color-highlight);
-	}
-	.btn-pagework:hover::after {
+	
+	.button.overview:hover::before {
 		color: var(--color-highlight);
 		transform: translate(5px, -50%);
 	}
 
+	.button.overview:hover {
+		background-color:var(--color-main-gray)
+	}
+		.button.overview > span:first-child { 
+				display: block;
+				font-size: 1.2em;
+				font-weight: 700;
+				color: var(--color-main-lightgray);
+			}
+
+		.button.overview:hover > span:first-child { 
+				color : var(--color-highlight);
+			}
+			
+		.button.overview > span:last-child { 
+				display: block;
+				font-size: 1.4em;
+
+				color: var(--color-background-light);
+			}
 
 	/* --- TOC --- */
 	/* 현재 보고 있는 페이지의 메뉴 링크 강조 */
