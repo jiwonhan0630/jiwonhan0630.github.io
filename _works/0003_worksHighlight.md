@@ -9,6 +9,9 @@ image: /images/pic01.jpg
 이곳은 아마도 자기소개서 같은 페이지가 될 것 같습니다.
 
 ## 하이라이트
+[절차적 메쉬 생성과 렌더링 최적화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="성능 최적화"}
+
+
 <p>
 <a href="{% link _works/0101_ProjectPZ.md %}" class="btn-pagework" subject="성능 최적화">5분을 5초로 단축, 맵 생성 스크립트 리팩토링</a>
 </p>

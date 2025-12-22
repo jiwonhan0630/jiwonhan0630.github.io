@@ -3401,6 +3401,57 @@ input, select, textarea {
 		vertical-align: middle;
 	}
 
+	.btn-sub {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		padding: 1.5em 4em 1.5em 2em;
+		margin: 0.5em 0;
+		background-color: var(--color-main-dark);
+		border-radius: 4px;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	
+	.btn-sub::before {
+		content: attr(sub);
+		display: block;
+		font-size: 1.1em;
+		font-weight: 700;
+		color: var(--color-main-lightgray);
+		margin-bottom: 0.2em;
+	}
+
+	/* 설명 부분 (태그 안의 텍스트) */
+	.btn-sub {
+		font-size: 1.3em;
+		color: var(--color-background-light);
+	}
+
+	/* 화살표 (가상 요소 하나 더 추가) */
+	.btn-sub::after {
+		content: "→";
+		position: absolute;
+		right: 1.2em;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 1.8em;
+		color: var(--color-main-lightgray);
+		transition: transform 0.2s ease;
+	}
+
+	/* 호버 효과 */
+	.btn-sub:hover {
+		background-color: var(--color-main-gray);
+	}
+	.btn-sub:hover::before {
+		color: var(--color-highlight);
+	}
+	.btn-sub:hover::after {
+		color: var(--color-highlight);
+		transform: translate(5px, -50%);
+	}
+
 	.button.overview {
 		flex-direction: column;
 		display: flex;
