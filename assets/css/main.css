@@ -1919,7 +1919,6 @@ input, select, textarea {
 			}
 
 		}
-
 /* Custom */
 	.image-inline {		
 		display: inline-block;
@@ -1933,6 +1932,9 @@ input, select, textarea {
 		vertical-align: middle;
 	}
 
+
+
+/* #region btn-sub */
 	.btn-sub {
 		display: flex;
 		flex-direction: column;
@@ -1986,6 +1988,13 @@ input, select, textarea {
 		color: var(--color-highlight);
 		transform: translate(5px, -50%);
 	}
+
+	.btn-sub.center{
+		align-items:center;
+	}
+
+/* #endregion */
+
 
 	/* --- TOC --- */
 	/* 현재 보고 있는 페이지의 메뉴 링크 강조 */
