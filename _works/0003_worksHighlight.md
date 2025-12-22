@@ -10,6 +10,9 @@ image: /images/pic01.jpg
 
 ## 하이라이트
 <p>
+<a href="{% link _works/0101_ProjectPZ.md %}" class="btn-pagework" subject="성능 최적화">5분을 5초로 단축, 맵 생성 스크립트 리팩토링</a>
+</p>
+<p>
     <a href="{% link _works/0101_ProjectPZ.md %}" class="button overview">
         <span>성능 최적화</span>
         <span>5분을 5초로 단축, 맵 생성 스크립트 리팩토링</span>
