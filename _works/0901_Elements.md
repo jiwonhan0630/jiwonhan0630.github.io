@@ -20,21 +20,17 @@ image: /images/pic01.jpg
 <a href="#" class="btn-sub" sub="위쪽에 뜨는 글자">이거는 일반적인거</a>
 
 <div class="ss-title stuck">
-
-# ss-title stuck
-
+    <h1>ss-title stuck</h1>
 </div>
 
 ## 제목 2단계입니다.
 ### 제목 3단계입니다. 
 #### 제목 4단계입니다.
 
+<div class="ss-title strike">
+    <h1>ss-title strike</h1>
+</div>
 
-<div class="ss-title strike" markdown="1">
-
-# ss-title strike
 ## 제목 2단계입니다.
 ### 제목 3단계입니다. 
 #### 제목 4단계입니다.
-
-</div>
