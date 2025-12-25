@@ -222,17 +222,17 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 1.4em;
-		font-weight: 700;
-	}
-
-	h4 {
 		font-size: 1.2em;
 		font-weight: 700;
 		padding: 0 0.2em 0 0;
 		width: fit-content;
 		border-left: 4px solid var(--color-heading-level2);
 		background-color: var(--color-heading-level3);
+	}
+
+	h4 {
+		font-size: 1.2em;
+		font-weight: 700;
 	}
 
 	h5 {
@@ -242,29 +242,6 @@ input, select, textarea {
 	h6 {
 		font-size: 1em;
 	}
-
-	@media screen and (max-width: 980px) {
-
-		h1 br, h2 br, h3 br, h4 br, h5 br, h6 br {
-			display: none;
-		}
-
-	}
-
-	/* @media screen and (max-width: 736px) {
-
-		h2 {
-			font-size: 1.2em;
-		}
-
-		h3 {
-			font-size: 1.2em;
-		}
-
-		h4 {
-			font-size: 1em;
-		}
-	} */
 
 	sub {
 		font-size: 0.8em;
