@@ -23,7 +23,7 @@
 	--color-button-primary-active: #ee5f81; 
 	--color-blockquote: #c9c9c9;
 	--color-code: #c9c9c9;
-	--color-stuck: #d7c868;
+	--color-stuck: #f6dd8a;
 
 	--menu-width: 22em;
 }
@@ -2040,7 +2040,7 @@ input, select, textarea {
 		position: relative;
 	}
 
-	.title-stuck::after {
+	.title-strike::after {
 		content: '';
 		position: absolute;
 		
