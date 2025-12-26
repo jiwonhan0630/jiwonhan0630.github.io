@@ -112,7 +112,7 @@ input, select, textarea {
 	}
 
 	html {
-		box-sizing: initial;
+		box-sizing: border-box;
 	}
 
 	*, *:before, *:after {
