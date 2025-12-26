@@ -2018,19 +2018,21 @@ input, select, textarea {
 	.title-stuck::after {
 		content: '';
 		position: absolute;
-		width: 100%;
 		
-		left: 0;
-		top: 0px;
-		height: 4px;
+		top:0;
+		left:0;
+		
+		width: 7px;
+		height: 100%;
 		
 		background-image: repeating-linear-gradient(
 			45deg,
 			var(--color-main-dark),
-			var(--color-main-dark) 3px,
-			var(--color-stuck) 3px,
-			var(--color-stuck) 6px
+			var(--color-main-dark) 4px,
+			var(--color-stuck) 4px,
+			var(--color-stuck) 8px
     	);
+		
 		z-index: 1;
 	}
 
@@ -2038,28 +2040,26 @@ input, select, textarea {
 		position: relative;
 	}
 
-	.title-strike::after {
+	.title-stuck::after {
 		content: '';
 		position: absolute;
-		width: 100%;
 		
-		left: 0;
-		top: 0px;
-		height: 4px;
+		top:0;
+		left:0;
+		
+		width: 7px;
+		height: 100%;
 		
 		background-image: repeating-linear-gradient(
 			45deg,
 			var(--color-highlight-dark),
-			var(--color-highlight-dark) 3px,
-			var(--color-highlight) 3px,
-			var(--color-highlight) 6px
+			var(--color-highlight-dark) 4px,
+			var(--color-highlight) 4px,
+			var(--color-highlight) 8px
     	);
+		
 		z-index: 1;
 	}
-
-
-
-
 	  /* #endregion */
 
 
