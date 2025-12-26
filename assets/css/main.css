@@ -2011,28 +2011,56 @@ input, select, textarea {
 
 	/* #region Title */
 
-	.ss-title.stuck {
-		padding: 0.2em 0 0 0;
-	    background-image: repeating-linear-gradient(
-	      45deg,
-	      var(--color-stuck),
-	      var(--color-stuck) 3px,
-	      var(--color-heading-level1) 3px,
-	      var(--color-heading-level1) 6px
-	    );
-	  }
+	.title-stuck {
+		position: relative;
+	}
 
-	.ss-title.strike {
-		padding: 0.2em 0 0 0;
-	    background-image: repeating-linear-gradient(
-	      45deg,
-	      var(--color-highlight),
-	      var(--color-highlight) 3px,
-	      var(--color-highlight-dark) 3px,
-	      var(--color-highlight-dark) 6px
-	    );
-	  }
+	.title-stuck::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		
+		left: 0;
+		top: 0px;
+		height: 4px;
+		
+		background-image: repeating-linear-gradient(
+			45deg,
+			var(--color-main-dark),
+			var(--color-main-dark) 3px,
+			var(--color-stuck) 3px,
+			var(--color-stuck) 6px
+    	);
+		z-index: 1;
+	}
+
+	.title-strike {
+		position: relative;
+	}
+
+	.title-strike::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		
+		left: 0;
+		top: 0px;
+		height: 4px;
+		
+		background-image: repeating-linear-gradient(
+			45deg,
+			var(--color-highlight-dark),
+			var(--color-highlight-dark) 3px,
+			var(--color-highlight) 3px,
+			var(--color-highlight) 6px
+    	);
+		z-index: 1;
+	}
+
+
+
 
 	  /* #endregion */
 
-	  
+
+
