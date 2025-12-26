@@ -17,16 +17,29 @@ image: /images/pic01.jpg
     - 이것도 하위 리스트임
 - 다시 돌아갑시다.
 
-
-
-
 # title-stuck
 {: .title-stuck}
 
+## title-stuck
+{: .title-stuck}
+
+### title-stuck
+{: .title-stuck}
+
+#### title-stuck
+{: .title-stuck}
 
 # title-strike
 {: .title-strike}
 
+## title-strike
+{: .title-strike}
+
+### title-strike
+{: .title-strike}
+
+#### title-strike
+{: .title-strike}
 
 # Buttons
 
