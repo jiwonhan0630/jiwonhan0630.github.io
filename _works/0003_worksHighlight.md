@@ -23,7 +23,7 @@ image: /images/pic01.jpg
 ### Project T
 [대화 이벤트 기반 퀘스트 시스템](#){: .btn-sub sub="게임 플레이"}
 [감정 기반 동적 보이스 출력](#){: .btn-sub sub="게임 플레이"};
-[시네머신을 통한 카메라 워킹](#){: .btn-sub sub="게임 플레이"};
+[시네머신을 사용한 카메라 기능](#){: .btn-sub sub="게임 플레이"};
 [키보드로 컨트롤 가능한 UI 시스템](#){: .btn-sub sub="UI"};
 
 ### Project I
