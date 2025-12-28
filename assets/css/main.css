@@ -1906,7 +1906,8 @@ input, select, textarea {
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		padding: 1em 4em 1em 1.4em;
+		/* padding: 1em 4em 1em 1.4em; */
+		padding: 0.8em 4em 0.8em 1em;
 		margin: 0.2em 0;
 		background-color: var(--color-main-dark);
 		border-radius: 4px;
