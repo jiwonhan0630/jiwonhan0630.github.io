@@ -26,10 +26,11 @@ image: /images/pic01.jpg
 [시네머신을 사용한 카메라 기능](#){: .btn-sub sub="게임 플레이"}
 [키보드로 컨트롤 가능한 UI 시스템](#){: .btn-sub sub="UI"}
 
-### Project I
+### Project i
 [보스 패턴 및 페이즈 시스템](#){: .btn-sub sub="게임 플레이"}
 [Gizmos를 사용한 스테이지 규격화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="개발용 기능"}
 [계층형 UI 시스템](#){: .btn-sub sub="UI"}
 
 ### 기타
 [MongoDB를 사용한 유저 점수 랭킹](#){: .btn-sub sub="DB 활용"}
+[하이어라키 네이밍 툴](#){: .btn-sub sub="개발용 기능"}
