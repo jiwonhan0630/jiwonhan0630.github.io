@@ -1986,7 +1986,7 @@ input, select, textarea {
 	/* 설명 부분 (태그 안의 텍스트) */
 	.btn-basic {
 		font-weight: 700;
-		color: var(--color-main-lightgray);
+		color: var(--color-main-gray);
 	}
 
 	/* 화살표 (가상 요소 하나 더 추가) */
@@ -2005,7 +2005,7 @@ input, select, textarea {
 	/* 호버 효과 */
 	.btn-basic:hover {
 		box-shadow: inset 0 0 0 2px var(--color-highlight);
-		color: var(--color-main-lightgray) !important;
+		color: var(--color-main-gray) !important;
 	}
 	.btn-basic:hover::before {
 		color: var(--color-highlight);
