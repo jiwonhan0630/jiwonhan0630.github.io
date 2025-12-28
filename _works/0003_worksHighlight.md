@@ -4,12 +4,6 @@ title: "제 자랑거리를 소개합니다"
 description: "하이라이트 모음"
 image: /images/pic01.jpg
 ---
-
-## 페이지 안내
-이곳은 아마도 자기소개서 같은 페이지가 될 것 같습니다.
-
-
-## 자랑거리 나열
 [Project PZ]({% link _works/0101_ProjectPZ.md %}){: .btn-basic}
 [절차적 메쉬 생성과 청크 기반 최적화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="성능 최적화"}
 [맵 데이터 에디터·프리뷰 기능]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="개발용 기능"}
