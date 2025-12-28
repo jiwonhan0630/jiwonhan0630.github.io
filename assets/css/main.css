@@ -1961,6 +1961,11 @@ input, select, textarea {
 		align-items:center;
 	}
 
+	.btn-sub.inner{
+		margin-left: 0.5em;
+	}
+
+
 /* #endregion */
 
 /* #region btn-basic */
@@ -1980,12 +1985,13 @@ input, select, textarea {
 
 	/* 설명 부분 (태그 안의 텍스트) */
 	.btn-basic {
-		font-weight: 400;
+		font-weight: 700;
 		color: var(--color-main-lightgray);
 	}
 
 	/* 화살표 (가상 요소 하나 더 추가) */
 	.btn-basic::after {
+		font-weight: 400;
 		content: "→";
 		position: absolute;
 		right: 0.6em;
