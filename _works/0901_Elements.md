@@ -43,9 +43,10 @@ image: /images/pic01.jpg
 
 # Buttons
 
-[가운데 정렬 버튼](#){: .btn-sub .center sub="위쪽에 뜨는 글자"}
-[일반 버튼](#){: .btn-sub sub="위쪽에 뜨는 글자"}
-
+[주제 버튼](#){: .btn-sub sub="위쪽에 뜨는 글자"}
+[가운데 정렬 주제 버튼](#){: .btn-sub .center sub="위쪽에 뜨는 글자"}
+[일반 버튼](#){: .btn-basic}
+[가운데 정렬 일반 버튼](#){: .btn-basic .center}
 
 # Table
 
