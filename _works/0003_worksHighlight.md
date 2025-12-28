@@ -10,23 +10,23 @@ image: /images/pic01.jpg
 
 
 ## 자랑거리 나열
-### Project PZ 
+[Project PZ]({% link _works/0101_ProjectPZ.md %}){: .btn-basic .center}
 [절차적 메쉬 생성과 청크 기반 최적화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="성능 최적화"}
 [맵 데이터 에디터·프리뷰 기능]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="개발용 기능"}
 [CSV 자동 직렬화 기능]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="개발용 기능"}
 
-### Project C
+[Project C]({% link _works/0101_ProjectPZ.md %}){: .btn-basic .center}
 [차량 자율 주행 AI](#){: .btn-sub sub="게임 플레이"}
 [자율 주행 경로 베이킹](#){: .btn-sub sub="개발용 기능"}
 [계층형 로컬 로그 시스템](#){: .btn-sub sub="개발용 기능"}
 
-### Project T
+[Project T]({% link _works/0101_ProjectPZ.md %}){: .btn-basic .center}
 [대화 이벤트 기반 퀘스트 시스템](#){: .btn-sub sub="게임 플레이"}
 [감정 기반 동적 보이스 출력](#){: .btn-sub sub="게임 플레이"}
 [시네머신을 사용한 카메라 기능](#){: .btn-sub sub="게임 플레이"}
 [키보드로 컨트롤 가능한 UI 시스템](#){: .btn-sub sub="UI"}
 
-### Project i
+[Project i]({% link _works/0101_ProjectPZ.md %}){: .btn-basic .center}
 [보스 패턴 및 페이즈 시스템](#){: .btn-sub sub="게임 플레이"}
 [Gizmos를 사용한 스테이지 규격화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub sub="개발용 기능"}
 [계층형 UI 시스템](#){: .btn-sub sub="UI"}
