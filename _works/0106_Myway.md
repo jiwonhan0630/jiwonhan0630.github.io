@@ -51,6 +51,7 @@ image: /images/pic01.jpg
 플레이어, 동료, 시민, 점장이 사용하는 스킬의 쿨타임 등을 제어하기 위한 SkillManager를 구현하였습니다.  
 스킬을 사용하는 모든 캐릭터들은 SkillManager를 거치고 있습니다.  
 
+
 ## 대화 시스템
 ![대화시스템](../images/myway/myway_talk.png)  
 미리 작성된 CSV파일을 읽어와 해당하는 대사 스크립트, 선택지 버튼과 캐릭터 일러스트를 출력합니다.  
