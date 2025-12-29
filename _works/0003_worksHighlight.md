@@ -6,7 +6,7 @@ image: /images/pic01.jpg
 ---
 [Project PZ]({% link _works/0101_ProjectPZ.md %}){: .btn-basic}
 [절차적 메쉬 생성과 청크 기반 최적화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="성능 최적화"}
-[Zero allocation과 Copy propagation를 통한 코드 개선]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="성능 최적화"}
+[Zero allocation과 Copy propagation를 통한 성능 개선]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="성능 최적화"}
 [맵 데이터 에디터·프리뷰 기능]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="개발용 기능·에디터 확장"}
 [CSV 자동 직렬화 기능]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="개발용 기능"}
 
