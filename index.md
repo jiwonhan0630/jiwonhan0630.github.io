@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: home
 title: Jiwon Han's Page
 description: "한지원, 유니티 클라이언트 프로그래머"
 ---
