@@ -1,7 +1,7 @@
 ---
 layout: basic
-title: "자랑거리를 소개하겠습니다"
-description: "각 프로젝트별 자신있는 부분을 정리"
+title: "자랑거리 소개"
+description: "각 프로젝트별 담당 업무 중 자랑스러운 부분들"
 image: /images/pic01.jpg
 ---
 [Project PZ]({% link _works/0101_ProjectPZ.md %}){: .btn-basic}
