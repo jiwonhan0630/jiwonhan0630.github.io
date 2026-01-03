@@ -62,7 +62,7 @@ List와 Dictionary 두가지 방식을 사용할 수 있고...Dictionary의 경�
 
 
 
-# Stuck & Strike (Troubleshooting)
+# Troubleshooting
 [Zero allocation과 propagation를 통한 성능 개선](#){: .btn-sub sub="절차적 레벨 생성 과정에서의 문제 발생과 해결"}
 
 ### 문제 발생
