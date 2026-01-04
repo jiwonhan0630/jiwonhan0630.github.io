@@ -6,10 +6,10 @@ image: /images/pic01.jpg
 ---
 
 ### 프로젝트 개요
-- Android
+- Mobile (Android)
 - Unity Engine
 
-## 담당 업무
+### 담당 업무
 - 절차적 레벨·메쉬 생성
 - 청크 시스템
 - 몬스터 패턴 시스템
@@ -18,7 +18,7 @@ image: /images/pic01.jpg
     - 맵 데이터 에디터
     - 맵 데이터 프리뷰
 
-
+## 세부 내용
 ### 절차적 레벨·메쉬 생성
 - 절차적 레벨 생성: [Wang Tile](https://en.wikipedia.org/wiki/Wang_tile) 알고리즘을 응용하여 절차적인 지형 생성 구현
 - 절차적 메쉬 생성: 생성된 레벨 데이터를 기반으로 필요한 부분의 지형 메쉬를 생성·텍스처 적용
