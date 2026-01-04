@@ -48,18 +48,15 @@
 
 	p {
 		margin-left: _size(element-margin-h);
+		margin-top: _size(element-margin-v);
 	}
-
-		p + p {
-			margin-top: _size(element-margin-v);
-		}
 
 	h1 {
 		font-size: 2.5em;
 		font-weight: _font(weight-bold-alt);
 		line-height: 1.3;
 		padding-left: _size(element-margin-h);
-		margin: 0 0 (_size(element-margin-v) * 0.5) 0;
+		//margin: 0 0 (_size(element-margin-v) * 0.5) 0;
 		letter-spacing: _font(letter-spacing-alt);
 		background: _palette(heading-level1);
 		color: _palette(background-light);
@@ -72,6 +69,7 @@
 
 	h2, h3, h4, h5, h6 {
 		line-height: 1.5;
+		margin-top: _size(element-margin-v);
 		a {
 			color: inherit;
 		}
@@ -80,9 +78,8 @@
 	h2 {
 		font-size: 1.4em;
 		font-weight: 600;
-		padding-left: 0.4em;
+		padding-left: _size(element-margin-h);
 		box-shadow: inset 0.2em 0 0 0 _palette(main-dark);
-		margin: 0 0 0.2em 0;
 		background: _palette(heading-level1);
 		color: _palette(background-light);
 	}
