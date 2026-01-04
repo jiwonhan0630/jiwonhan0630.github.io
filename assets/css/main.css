@@ -184,9 +184,13 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 0.4em 0.2em;
+		margin-left : 0.2em;
 	}
 
+	p + p
+	{
+		margin-top: 0.4em;
+	}
 	h1 {
 		font-size: 2.5em;
 		font-weight: 700;
