@@ -65,7 +65,12 @@
 			color: inherit;
 			border-bottom: dotted 2px transparentize(_palette(main-white), 0.5);
 		}
+		
+		p + & {
+			margin-top: _size(element-margin-v);
+		}
 	}
+
 
 	h2, h3, h4, h5, h6 {
 		line-height: 1.5;
