@@ -102,11 +102,11 @@
 		font-weight: 400;
 		color: _palette(background-light);
 
-		.center{
+		&.center{
 			align-items: center;
 		}
 
-		.inner {
+		&.inner {
 			margin-left: 0.5em;
 		}
 
@@ -158,7 +158,7 @@
 		font-weight: 700;
 		color: _palette(main-gray);
 
-		.center {
+		&.center {
 			align-items:center;
 		}
 
