@@ -7,3 +7,6 @@ collections:
   about:
     output: true
     permalink: /about/:slug
+sass:
+  sass_dir: _sass
+  style: compressed # 빌드 시 CSS 파일 용량을 최소화(Minify)해줍니다.
