@@ -5,16 +5,10 @@ description: "실시간 산업 데이터 기반 게이미피케이션"
 image: /images/pic01.jpg
 ---
 
-### 플랫폼
+### 프로젝트 개요
 - PC (Windows)
-- 모바일 (Android, iOS)
-
-### 장르
-- 실시간 산업 데이터 기반 게이미피케이션
-
-### 개발 환경
-- Unity Engine / MariaDB
-- Java Script / TMaxTiberoDB
+- Unity Engine
+- MariaDB
 
 ## 담당 업무
 
