@@ -10,6 +10,14 @@ image: /images/pic01.jpg
 - Unity Engine
 
 ## 담당 업무
+- 절차적 레벨·메쉬 생성
+- 청크 시스템
+- 몬스터 패턴 시스템
+- CSV 유틸리티
+- 커스텀 에디터
+    - 맵 데이터 에디터
+    - 맵 데이터 프리뷰
+
 
 ### 절차적 레벨·메쉬 생성
 - 절차적 레벨 생성: [Wang Tile](https://en.wikipedia.org/wiki/Wang_tile) 알고리즘을 응용하여 절차적인 지형 생성 구현
