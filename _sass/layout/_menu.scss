@@ -19,7 +19,7 @@
 		right: 0;
 		width: _size(menu);
 		max-width: 80%;
-		height: calc(100% - (_size(header)));
+		height: 100%;
 		-webkit-overflow-scrolling: touch;
 		background: _palette(main-gray);
 		color: _palette(main-white);
