@@ -84,7 +84,7 @@
 
 	h2 {
 		font-size: 1.4em;
-		font-weight: 600;
+		font-weight: _font(weight-bold);
 		padding-left: _size(element-margin-v);
 		box-shadow: inset 0.2em 0 0 0 _palette(main-dark);
 		background: _palette(heading-level1);
