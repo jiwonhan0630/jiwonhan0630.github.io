@@ -1,7 +1,7 @@
 ---
 layout: basic
 title: "Project PZ"
-description: "2021-2025"
+description: "실시간 턴제 전략 액션"
 image: /images/pic01.jpg
 ---
 
