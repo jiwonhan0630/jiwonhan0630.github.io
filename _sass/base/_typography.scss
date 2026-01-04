@@ -48,7 +48,11 @@
 
 	p {
 		margin-left: _size(element-margin-h);
-		margin-top: _size(element-margin-v);
+		margin-top: _size(element-margin-h);
+
+		p + & {
+				margin-top: _size(element-margin-v);
+		}
 	}
 
 	h1 {
@@ -60,17 +64,16 @@
 		letter-spacing: _font(letter-spacing-alt);
 		background: _palette(heading-level1);
 		color: _palette(background-light);
+		
+		p + & {
+			margin-top: _size(element-margin-v);
+		}
 
 		a {
 			color: inherit;
 			border-bottom: dotted 2px transparentize(_palette(main-white), 0.5);
 		}
-		
-		p + & {
-			margin-top: _size(element-margin-v);
-		}
 	}
-
 
 	h2, h3, h4, h5, h6 {
 		line-height: 1.5;
