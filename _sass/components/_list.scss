@@ -8,8 +8,12 @@
 
 	ol {
 		list-style: decimal;
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 (_size(element-margin) * 0.5) 0;
 		padding-left: 1.25em;
+
+		ul {
+			margin-bottom: 0;
+		}
 
 		li {
 			padding-left: 0.25em;
@@ -18,8 +22,13 @@
 
 	ul {
 		list-style: disc;
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 (_size(element-margin) * 0.5) 0;
 		padding-left: 1em;
+
+		ul {
+			list-style-type: circle;
+			margin: 0;
+		}
 
 		li {
 			padding-left: 0.5em;
@@ -30,7 +39,7 @@
 			padding-left: 0;
 
 			li {
-				border-top: solid _size(border-width) _palette(border);
+				border-top: solid _size(border-width) _palette(hr-border);
 				padding: 0.5em 0;
 
 				&:first-child {

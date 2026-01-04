@@ -7,6 +7,28 @@
 // Reset.
 // Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
 
+	:root
+	{
+		--color-white: #ffffff;
+		--color-background-light: #f6f6f6;
+		--color-footer-light: #eeeeee;
+		--color-header-light: #f6f6f6E6;
+		--color-main-dark: #3e3e3e;
+		--color-main-gray: #585858;
+		--color-main-lightgray: #7b7b7b;
+		--color-heading-level1: #585858;
+		--color-heading-level2: #d3d3d3;
+		--color-heading-level3: #dcdcdc;
+		--color-highlight: #61e18e;
+		--color-highlight-dark: #38b764;
+		--color-button-primary-active: #ee5f81; 
+		--color-blockquote: #c9c9c9;
+		--color-code: #c9c9c9;
+		--color-stuck: #f6dd8a;
+
+		--menu-width: 22em;
+	}
+
 	html, body, div, span, applet, object,
 	iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 	pre, a, abbr, acronym, address, big, cite,

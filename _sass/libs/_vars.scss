@@ -15,6 +15,8 @@
 		border-width:		1px,
 		element-height:		3em,
 		element-margin:		2em,
+		element-margin-h: 0.2em,
+		element-margin-v: 0.4em,
 		gutter:				2.5em,
 		field-gutter:		2em,
 		inner:				68em,
@@ -23,7 +25,7 @@
 
 // Font.
 	$font: (
-		family:				('Source Sans Pro', Helvetica, sans-serif),
+		family:				('Pretendard','Source Sans Pro', Helvetica, sans-serif),
 		family-fixed:		('Courier New', monospace),
 		weight:				300,
 		weight-bold:		900,
@@ -39,7 +41,6 @@
 		bg-alt:				#f6f6f6,
 		fg:					#585858,
 		fg-accent:			#ffffff,
-		border:				#c9c9c9,
 		border-bg:			rgba(144,144,144,0.075),
 		accent1:			#f2849e,
 		accent2:			#7ecaf6,
@@ -47,4 +48,29 @@
 		accent4:			#c75b9b,
 		accent5:			#ae85ca,
 		accent6:			#8499e7,
+		
+		main-white: #ffffff,
+		background-light: #f6f6f6,
+		footer-light: #eeeeee,
+		header-light: #f6f6f6E6,
+		main-dark: #3e3e3e,
+		main-gray: #585858,
+		main-lightgray: #7b7b7b,
+		heading-level1: #585858,
+		heading-level2: #d3d3d3,
+		heading-level3: #dcdcdc,
+		main-highlight: #61e18e,
+		main-highlight-dark: #38b764,
+		button-primary-active: #ee5f81,
+		border: #c9c9c9,
+		code-background: rgba(144,144,144,0.075),
+		code-border: #c9c9c9,
+		hr-border: #c9c9c9,
+		blockquote-border: #c9c9c9,
+		stuck: #f6dd8a,
+
+		menu-width: 22em,
 	);
+
+
+	
