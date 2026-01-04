@@ -15,11 +15,11 @@
 		@include vendor('transform', 'translateX(#{_size(menu)})');
 		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
 		position: fixed;
-		top: 0;
+		top: _size(header);
 		right: 0;
 		width: _size(menu);
 		max-width: 80%;
-		height: 100%;
+		height: calc(100% - (_size(header)));
 		-webkit-overflow-scrolling: touch;
 		background: _palette(main-gray);
 		color: _palette(main-white);
