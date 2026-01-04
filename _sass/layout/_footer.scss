@@ -10,7 +10,7 @@
 		$gutter: _size(gutter);
 
 		@include padding(5em, 0, (0, 0, 3em, 0));
-		background-color: _palette(bg-alt);
+		background-color: _palette(footer-light);
 
 		> .inner {
 			@include vendor('display', 'flex');
@@ -37,7 +37,7 @@
 				margin-top: 5em;
 				list-style: none;
 				font-size: 0.8em;
-				color: transparentize(_palette(fg), 0.5);
+				color: transparentize(_palette(main-gray), 0.5);
 
 				a {
 					color: inherit;
@@ -45,7 +45,7 @@
 
 				li {
 					display: inline-block;
-					border-left: solid 1px transparentize(_palette(fg), 0.85);
+					border-left: solid 1px transparentize(_palette(main-gray), 0.85);
 					line-height: 1;
 					padding: 0 0 0 1em;
 					margin: 0 0 0 1em;
