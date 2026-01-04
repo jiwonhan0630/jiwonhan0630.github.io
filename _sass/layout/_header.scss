@@ -12,7 +12,7 @@
 		// @include padding(5em, 0, (3em, 0, -5em, 0));
 		position: sticky;
 		padding: 0.25em 0;
-		z-index: _misc(z-index-base) + 1;
+		z-index: _misc(z-index-base);
 		box-shadow: 0 _size(border-width) _size(border-width) #0000000b;
 
 		> .inner {
