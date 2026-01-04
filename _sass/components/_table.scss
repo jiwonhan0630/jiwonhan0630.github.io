@@ -17,10 +17,6 @@
 
 		tbody {
 			tr {
-				border: solid _size(border-width) _palette(border);
-				border-left: 0;
-				border-right: 0;
-
 				&:nth-child(2n + 1) {
 					background-color: _palette(table-child-2);
 				}
@@ -29,14 +25,14 @@
 
 		td {
 			padding: 0.75em 0.75em;
+			border: solid _size(border-width) _palette(border);
 		}
 
 		th {
 			color: _palette(main-gray);
 			font-size: 0.9em;
 			font-weight: _font(weight-bold);
-			padding: 0 0.75em 0.75em 0.75em;
-			text-align: left;
+			padding: _size(element-margin-v) _size(element-margin-h);
 		}
 
 		thead {
