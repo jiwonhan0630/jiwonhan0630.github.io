@@ -8,7 +8,7 @@
 
 	ol {
 		list-style: decimal;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		margin: 0 0 0.5em 0;
 		padding-left: 1.25em;
 
 		ul {
@@ -22,16 +22,12 @@
 
 	ul {
 		list-style: disc;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		margin: 0 0 0.5em 0;
 		padding-left: 1em;
 
 		ul {
 			list-style-type: circle;
 			margin: 0;
-		}
-
-		li {
-			padding-left: 0.5em;
 		}
 
 		&.alt {
