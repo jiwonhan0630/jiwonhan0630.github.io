@@ -61,8 +61,8 @@
 		padding-left: _size(element-margin-h);
 		margin: 0 0 (_size(element-margin-v) * 0.5) 0;
 		letter-spacing: _font(letter-spacing-alt);
-		background: palette(heading-level1);
-		color: palette(background-light);
+		background: _palette(heading-level1);
+		color: _palette(background-light);
 
 		a {
 			color: inherit;
