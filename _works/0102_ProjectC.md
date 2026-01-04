@@ -1,6 +1,6 @@
 ---
 layout: basic
-title: "Project CARS"
+title: "Project C"
 description: "실시간 산업 데이터 기반 게이미피케이션"
 image: /images/pic01.jpg
 ---

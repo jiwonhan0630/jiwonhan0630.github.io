@@ -1,7 +1,7 @@
 ---
 layout: basic
-title: "IPIA: Heal The Forest"
-description: "청강문화산업대학 졸업작품"
+title: "Project P"
+description: "3D 횡스크롤 슈팅 플랫포머"
 image: /images/pic01.jpg
 ---
 
