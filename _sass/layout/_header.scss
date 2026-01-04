@@ -16,9 +16,14 @@
 		box-shadow: 0 _size(border-width) _size(border-width) #0000000b;
 
 		> .inner {
+			$gutter: _size(gutter);
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+
+			width: 100%;
+			margin: 0 auto;
+			padding: 0 $gutter;
 		}
 
 		.logo {

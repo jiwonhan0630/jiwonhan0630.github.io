@@ -6,8 +6,7 @@
 
 /* Wrapper */
 
-	#wrapper > * > .inner,
-	#header > .inner {
+	#wrapper > * > .inner {
 		$gutter: _size(gutter);
 
 		width: 100%;
