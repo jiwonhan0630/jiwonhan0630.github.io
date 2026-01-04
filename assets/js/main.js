@@ -182,78 +182,87 @@
 
 			});
 
-	/* --- Sidebar Auto TOC (Natural Highlight Logic) --- */
-    $(function() {
-        var $tocTarget = $('#menu .menu-link.active');
-        var $content = $('#main .inner');
 
-        if ($tocTarget.length > 0) {
-            var $headers = $content.find('h2, h3');
-            
-            if ($headers.length > 0) {
-                // 1. 목차 리스트 생성 (이 부분은 기존과 동일)
-                var $tocUl = $('<ul class="auto-toc"></ul>');
-                
-                $headers.each(function(index) {
-                    var $this = $(this);
-                    var tagName = $this.prop('tagName').toLowerCase();
-                    
-                    var id = $this.attr('id');
-                    if (!id) {
-                        id = 'section-' + index;
-                        $this.attr('id', id);
-                    }
+// #region  Sidebar Auto TOC (Nested List Logic)
+	$(function() {
+		var $tocTarget = $('#menu .menu-link.active');
+		var $content = $('#main .inner');
 
-                    var $li = $('<li></li>');
-                    var $a = $('<a></a>')
-                        .attr('href', '#' + id)
-                        .text($this.text())
-                        .addClass(tagName)
-                        .on('click', function(e) {
-                            e.preventDefault();
-                            $menu._hide();
-                            $('html, body').animate({ scrollTop: $('#' + id).offset().top - 100 }, 500);
-                        });
+		if ($tocTarget.length > 0) {
+			var $headers = $content.find('h2, h3');
+			
+			if ($headers.length > 0) {
+				var $tocUl = $('<ul class="auto-toc"></ul>');
+				var hasH2 = $headers.filter('h2').length > 0;
+				
+				var $lastH2Li = null;   // 최신 h2 li를 저장
+				var $currentSubUl = null; // 현재 생성된 하위 ul 저장
 
-                    $li.append($a);
-                    $tocUl.append($li);
-                });
+				$headers.each(function(index) {
+					var $this = $(this);
+					var tagName = $this.prop('tagName').toLowerCase();
+					
+					var id = $this.attr('id') || 'section-' + index;
+					if (!$this.attr('id')) $this.attr('id', id);
 
-                $tocTarget.after($tocUl);
+					var $li = $('<li></li>');
+					var $a = $('<a></a>')
+						.attr('href', '#' + id)
+						.text($this.text())
+						.addClass(tagName)
+						.on('click', function(e) {
+							e.preventDefault();
+							if (typeof $menu !== 'undefined') $menu._hide();
+							$('html, body').animate({ scrollTop: $('#' + id).offset().top - 100 }, 500);
+						});
 
-                // ==========================================
-                // [수정됨] 스크롤 감지 로직 (자연스러운 버전)
-                // ==========================================
-                function updateTocActive() {
-                    // 감지 기준선 (헤더 높이 + 여유분)
+					$li.append($a);
+
+					if (tagName === 'h2') {
+						// h2는 항상 최상위 ul에 추가
+						$tocUl.append($li);
+						$lastH2Li = $li;
+						$currentSubUl = null; // 새로운 h2가 나왔으므로 하위 ul 초기화
+					} 
+					else if (tagName === 'h3') {
+						if (hasH2 && $lastH2Li) {
+							// 1. h2가 존재하고, 이전에 나온 h2가 있다면 중첩 리스트 생성
+							if (!$currentSubUl) {
+								$currentSubUl = $('<ul></ul>');
+								$lastH2Li.append($currentSubUl);
+							}
+							$currentSubUl.append($li);
+						} else {
+							// 2. h2가 아예 없거나, h2보다 h3이 먼저 나온 경우 최상위에 추가
+							$tocUl.append($li);
+						}
+					}
+				});
+
+				$tocTarget.after($tocUl);
+
+				// 스크롤 감지 (중첩 구조에서도 'a' 태그를 모두 찾아 정상 작동)
+				function updateTocActive() {
 					var scrollPos = $(window).scrollTop() + 160;
-                    
-                    // 기본값: null (아직 아무것도 못 만났음)
-                    var currentId = null; 
+					var currentId = null; 
 
-                    // 순서대로 검사하면서 "내 스크롤이 지나친 마지막 제목"을 찾음
-                    $headers.each(function() {
-                        var $this = $(this);
-                        if ($this.offset().top < scrollPos) {
-                            currentId = $this.attr('id');
-                        }
-                    });
+					$headers.each(function() {
+						var $this = $(this);
+						if ($this.offset().top < scrollPos) {
+							currentId = $this.attr('id');
+						}
+					});
 
-                    // 1. 일단 모든 강조 표시를 끕니다 (Reset)
-                    $tocUl.find('a').removeClass('active');
+					$tocUl.find('a').removeClass('active');
+					if (currentId) {
+						$tocUl.find('a[href="#' + currentId + '"]').addClass('active');
+					}
+				}
 
-                    // 2. 만약 감지된 구역이 있다면 그때만 켭니다
-                    // (맨 위라서 currentId가 null이면, 아무것도 안 켜진 상태가 유지됨)
-                    if (currentId) {
-                        $tocUl.find('a[href="#' + currentId + '"]').addClass('active');
-                    }
-                }
-
-                // 이벤트 연결 및 초기 실행
-                $(window).on('scroll', updateTocActive);
-                updateTocActive();
-            }
-        }
-    });
-
+				$(window).on('scroll', updateTocActive);
+				updateTocActive();
+			}
+		}
+	});
+//#endregion
 })(jQuery);

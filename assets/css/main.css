@@ -2034,6 +2034,11 @@ input, select, textarea {
 		padding: 0;
 	}
 
+		ul.auto-toc ul {
+			list-style-type: none;
+			padding-left: 1.4em;
+		}
+
 	ul.auto-toc li {
 		padding: 0;
 		margin: 0;
@@ -2053,11 +2058,6 @@ input, select, textarea {
 		text-decoration:underline;
 	}
 
-	/* 소제목(h3)은 더 안쪽으로 들여쓰기 */
-	ul.auto-toc a.h3 {
-		padding-left: 0.8em;
-	}
-
 	ul.auto-toc a.active {
 		font-weight: bold;
 		padding-left: 0.4em !important;
@@ -2065,6 +2065,8 @@ input, select, textarea {
 		border-left: 2px solid var(--color-blockquote) !important;
 		background-color: var(--color-main-lightgray)
 	}
+
+
 
 	/* #region Title */
 
