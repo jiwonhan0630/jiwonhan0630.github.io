@@ -20,15 +20,15 @@
 		background-color: transparent;
 		border-radius: _size(border-radius);
 		border: 0;
-		box-shadow: inset 0 0 0 (_size(border-width) * 2) _palette(fg);
-		color: _palette(fg) !important;
+		box-shadow: inset 0 0 0 (_size(border-width) * 2) _palette(main-gray);
+		color: _palette(main-gray) !important;
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.8em;
 		font-weight: _font(weight-bold);
 		height: 3.5em;
-		letter-spacing: _font(letter-spacing);
-		line-height: 3.45em;
+		// letter-spacing: _font(letter-spacing);
+		// line-height: 3.45em;
 		overflow: hidden;
 		padding: 0 1.25em 0 #{1.25em + _font(letter-spacing)};
 		text-align: center;
@@ -48,12 +48,12 @@
 		}
 
 		&:hover {
-			color: _palette(accent1) !important;
-			box-shadow: inset 0 0 0 (_size(border-width) * 2) _palette(accent1);
+			color: _palette(main-highlight) !important;
+			box-shadow: inset 0 0 0 (_size(border-width) * 2) _palette(main-highlight);
 		}
 
 		&:active {
-			background-color: transparentize(_palette(accent1), 0.9);
+			background-color: transparentize(_palette(main-highlight-dark), 0.9);
 		}
 
 		&.small {
@@ -66,15 +66,15 @@
 
 		&.primary {
 			box-shadow: none;
-			background-color: _palette(fg);
-			color: _palette(bg) !important;
+			background-color: _palette(main-gray);
+			color: _palette(main-white) !important;
 
 			&:hover {
-				background-color: _palette(accent1);
+				background-color: _palette(main-highlight-dark);
 			}
 
 			&:active {
-				background-color: darken(_palette(accent1), 8);
+				background-color: darken(_palette(main-highlight), 8);
 			}
 		}
 

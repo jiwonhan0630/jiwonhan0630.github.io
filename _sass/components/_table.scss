@@ -22,7 +22,7 @@
 				border-right: 0;
 
 				&:nth-child(2n + 1) {
-					background-color: _palette(border-bg);
+					background-color: _palette(table-child-2);
 				}
 			}
 		}
@@ -32,7 +32,7 @@
 		}
 
 		th {
-			color: _palette(fg-bold);
+			color: _palette(main-gray);
 			font-size: 0.9em;
 			font-weight: _font(weight-bold);
 			padding: 0 0.75em 0.75em 0.75em;

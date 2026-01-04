@@ -21,11 +21,11 @@
 		max-width: 80%;
 		height: 100%;
 		-webkit-overflow-scrolling: touch;
-		background: _palette(fg);
-		color: _palette(bg);
+		background: _palette(main-gray);
+		color: _palette(main-white);
 		cursor: default;
 		visibility: hidden;
-		z-index: _misc(z-index-base) + 2;
+		z-index: _misc(z-index-base);
 
 		> .inner {
 			@include vendor('transition', 'opacity #{_duration(menu)} ease');
@@ -35,18 +35,18 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			padding: 2.75em;
+			padding: 1.75em 2.75em;
 			opacity: 0;
 			overflow-y: auto;
 
 			> ul {
 				list-style: none;
-				margin: 0 0 (_size(element-margin) * 0.5) 0;
+				margin: 0 0 (_size(element-margin) * 0.5) 0.4em;
 				padding: 0;
 
 				> li {
 					padding: 0;
-					border-top: solid 1px transparentize(_palette(bg), 0.85);
+					border-top: solid 1px transparentize(_palette(main-white), 0.85);
 
 					a {
 						display: block;
@@ -160,5 +160,27 @@
 				@include vendor('transform', 'scale(1.0) rotate(0deg)');
 				opacity: 1;
 			}
+		}
+
+		#header {
+			nav ul li a[href="#menu"]
+			{
+				&:before {
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
+					@include vendor('transition', (
+						'opacity #{_duration(menu)} ease',
+						'background-image #{_duration(menu)} ease'
+					));
+				}
+
+				&:after {
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
+					@include vendor('transition', (
+						'opacity #{_duration(menu)} ease',
+						'background-image #{_duration(menu)} ease'
+					));
+				}
+			}
+
 		}
 	}

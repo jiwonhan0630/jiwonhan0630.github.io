@@ -7,7 +7,19 @@
 /* Header */
 
 	#header {
-		@include padding(5em, 0, (3em, 0, -5em, 0));
+		top: 0;
+		background-color: _palette(header-light);
+		// @include padding(5em, 0, (3em, 0, -5em, 0));
+		position: sticky;
+		padding: 0.25em 0;
+		z-index: _misc(z-index-base) + 1;
+		box-shadow: 0 _size(border-width) _size(border-width) #0000000b;
+
+		> .inner {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 
 		.logo {
 			display: block;
@@ -15,7 +27,7 @@
 			color: inherit;
 			font-weight: _font(weight-bold);
 			letter-spacing: _font(letter-spacing);
-			margin: 0 0 (_size(element-margin) * 1.25) 0;
+			margin: 0 0 0 0;
 			text-decoration: none;
 			text-transform: uppercase;
 			display: inline-block;
@@ -26,7 +38,7 @@
 			}
 
 			.symbol {
-				margin-right: 0.65em;
+				// margin-right: 0.65em;
 
 				img {
 					display: block;
@@ -38,9 +50,9 @@
 
 		nav {
 			position: fixed;
-			right: 2em;
-			top: 2em;
-			z-index: _misc(z-index-base);
+			// right: 2em;
+			// top: 2em;
+			z-index: _misc(z-index-base) - 1;
 
 			ul {
 				@include vendor('display', 'flex');
@@ -59,7 +71,7 @@
 						height: 3em;
 						line-height: 3em;
 						padding: 0 1.5em;
-						background-color: transparentize(_palette(bg), 0.5);
+						background-color: _palette(nav);
 						border-radius: _size(border-radius);
 						border: 0;
 						font-size: 0.8em;
