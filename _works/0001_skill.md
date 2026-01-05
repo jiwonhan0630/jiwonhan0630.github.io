@@ -6,7 +6,7 @@ image: /images/pic01.jpg
 tilestyle: style3
 ---
 
-#### <i class="icon fa-brands fa-unity"></i> Unity Engine
+#### <i class="fa-brands fa-unity"></i> Unity Engine
 - 가장 자신있게 사용할 수 있는 엔진입니다.
 - 에디터 확장, UIToolkit을 사용하여 작업에 필요한 툴을 제작할 수 있습니다.
 
@@ -54,6 +54,6 @@ tilestyle: style3
 
 ***
 
-#### <i class="icon fa-brands fa-unreal"></i> Unreal Engine
+#### Unreal Engine
 - Unity Engine을 다양한 방식으로 활용하고 확장하고자 공부를 시작하였습니다.
 - 공식 문서를 읽으며 사용 가능한 기능을 익히고 있습니다.
