@@ -1,6 +1,6 @@
 ---
 layout: basic
-title: "Project P"
+title: "Project I"
 description: "3D 횡스크롤 슈팅 플랫포머"
 image: /images/pic01.jpg
 ---

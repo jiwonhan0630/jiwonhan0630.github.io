@@ -21,7 +21,7 @@ image: /images/pic01.jpg
 [시네머신을 사용한 카메라 기능](#){: .btn-sub .inner sub="게임 플레이"}
 [키보드로 컨트롤 가능한 UI 시스템](#){: .btn-sub .inner sub="UI"}
 
-[Project i]({% link _works/0101_ProjectPZ.md %}){: .btn-basic}
+[Project I]({% link _works/0101_ProjectPZ.md %}){: .btn-basic}
 [보스 패턴 및 페이즈 시스템](#){: .btn-sub .inner sub="게임 플레이"}
 [Gizmos를 사용한 스테이지 규격화]({% link _works/0101_ProjectPZ.md %}){: .btn-sub .inner sub="개발용 기능"}
 [계층형 UI 시스템](#){: .btn-sub .inner sub="UI"}
