@@ -33,7 +33,12 @@
 			box-sizing: inherit;
 		}
 
+	html, body {
+		height: 100%;
+	}
 	body {
+		display: flex;
+		flex-direction: column;
 		background: _palette(background-light);
 
 		// Stops initial animations until page loads.
