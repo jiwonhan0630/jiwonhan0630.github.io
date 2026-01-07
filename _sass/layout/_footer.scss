@@ -45,7 +45,7 @@
 			}
 		}
 
-		@include breakpoint('<=large') {
+		@include breakpoint('<=small') {
 
 			> .inner {
 				@include vendor('flex-direction', 'column');
