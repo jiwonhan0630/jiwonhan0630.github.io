@@ -7,14 +7,18 @@
 /* Wrapper */
 
 	#wrapper {
-			> * {
-				> .inner {
-					$gutter: _size(gutter);
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		
+		> * {
+			> .inner {
+				$gutter: _size(gutter);
 
-					width: 100%;
-					max-width: _size(inner);
-					margin: 0 auto;
-					padding: 0 $gutter;
+				width: 100%;
+				max-width: _size(inner);
+				margin: 0 auto;
+				padding: 0 $gutter;
 			}
 		}
 	}
