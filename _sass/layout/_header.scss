@@ -92,10 +92,23 @@
 						font-size: 1em;
 						padding: 0;
 						white-space: nowrap;
-						
+
+						.open {
+							display: inline-block;
+						}
 						.close {
 							display: none;
 						}
+
+						body.is-menu-visible & {
+							.open {
+								display: none;
+							}
+							.close {
+								display: inline-block;
+							}
+						}
+
 					}
 				}
 			}
