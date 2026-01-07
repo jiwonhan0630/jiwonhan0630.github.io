@@ -12,7 +12,7 @@
 	}
 
 	#menu {
-		@include vendor('transform', 'translateX(#{-_size(menu)})');
+		@include vendor('transform', 'translateX(-#{_size(menu)})');
 		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
 		position: fixed;
 		top: _size(header);
@@ -65,7 +65,7 @@
 		}
 
 		@include breakpoint('<=small') {
-			@include vendor('transform', 'translateX(#{-_size(menu) * 0.75})');
+			@include vendor('transform', 'translateX(-#{_size(menu) * 0.75})');
 			width: (_size(menu) * 0.75);
 
 			> .inner {
