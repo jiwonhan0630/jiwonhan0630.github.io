@@ -56,17 +56,23 @@
 
 	h1 {
 		font-size: 2.5em;
-		font-weight: _font(weight-bold);
+		font-weight: 600;
 		line-height: 1.3;
-		padding-left: _size(element-margin-h);
-		//margin: 0 0 (_size(element-margin-v) * 0.5) 0;
-		letter-spacing: _font(letter-spacing-alt);
-		background: _palette(heading-level1);
-		color: _palette(background-light);
+		letter-spacing: -.035em;
+		margin-top: 1.4em;
+
+		// font-size: 2.5em;
+		// font-weight: _font(weight-bold);
+		// line-height: 1.3;
+		// padding-left: _size(element-margin-h);
+		// //margin: 0 0 (_size(element-margin-v) * 0.5) 0;
+		// letter-spacing: _font(letter-spacing-alt);
+		// background: _palette(heading-level1);
+		// color: _palette(background-light);
 		
-		p + & {
-			margin-top: _size(element-margin-v);
-		}
+		// p + & {
+		// 	margin-top: _size(element-margin-v);
+		// }
 
 		a {
 			color: inherit;
