@@ -9,7 +9,7 @@
 	#footer {
 		$gutter: _size(gutter);
 
-		@include padding(5em, 0, (0, 0, 3em, 0));
+		padding-top: $gutter;
 		background-color: _palette(footer-light);
 
 		> .inner {
@@ -20,7 +20,7 @@
 			.copyright {
 				width: 100%;
 				padding: 0;
-				margin-top: 5em;
+				margin-top: $gutter;
 				list-style: none;
 				font-size: 0.8em;
 				color: transparentize(_palette(main-gray), 0.5);
@@ -37,6 +37,7 @@
 					margin: 0 0 0 1em;
 
 					&:first-child {
+						margin-top: 0;
 						border-left: 0;
 						padding-left: 0;
 						margin-left: 0;
@@ -46,23 +47,16 @@
 		}
 
 		@include breakpoint('<=large') {
-			@include padding(3em, 0);
-
 			> .inner {
 				@include vendor('flex-direction', 'column');
 
 				.copyright {
-					margin-top: 3em;
 					li {
 						display: block;
 						line-height: inherit;
 						border-left: 0;
 						padding-left: 0;
 						margin: 0.75em 0 0 0;
-
-						&:first-child {
-							margin-top: 0;
-						}
 					}
 				}
 			}
