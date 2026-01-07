@@ -105,6 +105,9 @@
 							background-repeat: no-repeat;
 							background-size: 2em 2em;
 						}
+						.close {
+							display: none;
+						}
 
 						&:before {
 							opacity: 0;
