@@ -15,7 +15,7 @@
 		@include vendor('transform', 'translateX(-#{_size(menu)})');
 		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
 		position: fixed;
-		top: _size(header);
+		top: (_size(header) + 0.5em);
 		left: 0;
 		width: _size(menu);
 		max-width: 80%;
