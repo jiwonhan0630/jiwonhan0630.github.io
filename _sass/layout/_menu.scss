@@ -64,28 +64,6 @@
 			}
 		}
 
-		> .close {
-			@include vendor('transition', (
-				'opacity #{_duration(menu)} ease',
-				'transform #{_duration(menu)} ease'
-			));
-			@include vendor('transform', 'scale(0.25) rotate(180deg)');
-			-webkit-tap-highlight-color: transparent;
-			display: block;
-			position: absolute;
-			top: 2em;
-			left: -6em;
-			width: 6em;
-			text-indent: 6em;
-			height: 3em;
-			border: 0;
-			font-size: 1em;
-			opacity: 0;
-			overflow: hidden;
-			padding: 0;
-			white-space: nowrap;
-		}
-
 		@include breakpoint('<=small') {
 			@include vendor('transform', 'translateX(#{_size(menu) * 0.75})');
 			width: (_size(menu) * 0.75);
@@ -121,30 +99,5 @@
 			> * {
 				opacity: 1;
 			}
-
-			.close {
-				@include vendor('transform', 'scale(1.0) rotate(0deg)');
-				opacity: 1;
-			}
-		}
-
-		#header {
-			nav ul li a[href="#menu"]
-			{
-				&:before {
-					@include vendor('transition', (
-						'opacity #{_duration(menu)} ease',
-						'background-image #{_duration(menu)} ease'
-					));
-				}
-
-				&:after {
-					@include vendor('transition', (
-						'opacity #{_duration(menu)} ease',
-						'background-image #{_duration(menu)} ease'
-					));
-				}
-			}
-
 		}
 	}
