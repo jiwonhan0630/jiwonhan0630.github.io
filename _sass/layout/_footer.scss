@@ -8,7 +8,7 @@
 	#footer {
 		$gutter: _size(gutter);
 		flex-shrink: 0;
-		@include padding(5em, 0, (0, 0, 3em, 0));
+		@include padding(3em, 0);
 		background-color: _palette(footer-light);
 
 		> .inner {
@@ -46,11 +46,9 @@
 		}
 
 		@include breakpoint('<=large') {
-			@include padding(3em, 0);
 
 			> .inner {
 				@include vendor('flex-direction', 'column');
-
 				.copyright {
 					li {
 						display: block;
