@@ -16,11 +16,10 @@
 					margin: 0 auto;
 					padding: 0 $gutter;
 
-					// @include breakpoint('<=small') {
-					// 	$gutter: _size(gutter) * 0.5;
+					@include breakpoint('<=large') {
 
-					// 	padding: 0 $gutter;
-					// }
+						padding: 0 _size(gutter-mobile); 
+					}
 			}
 		}
 	}
