@@ -8,7 +8,7 @@
 	#footer {
 		$gutter: _size(gutter);
 		flex-grow: 1;
-		@include padding(3em, 0);
+		padding: 0 0 1em 0;
 		background-color: _palette(footer-light);
 
 		> .inner {
