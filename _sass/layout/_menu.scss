@@ -12,11 +12,11 @@
 	}
 
 	#menu {
-		@include vendor('transform', 'translateX(#{_size(menu)})');
+		@include vendor('transform', 'translateX(#{-_size(menu)})');
 		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
 		position: fixed;
 		top: _size(header);
-		right: 0;
+		left: 0;
 		width: _size(menu);
 		max-width: 80%;
 		height: 100%;
@@ -65,22 +65,11 @@
 		}
 
 		@include breakpoint('<=small') {
-			@include vendor('transform', 'translateX(#{_size(menu) * 0.75})');
+			@include vendor('transform', 'translateX(#{-_size(menu) * 0.75})');
 			width: (_size(menu) * 0.75);
 
 			> .inner {
 				padding: 2.75em 1.5em;
-			}
-
-			> .close {
-				top: 0.5em;
-				left: -4.25em;
-				width: 4.25em;
-				text-indent: 4.25em;
-
-				&:before, &:after {
-					background-size: 1.5em 1.5em;
-				}
 			}
 		}
 	}
