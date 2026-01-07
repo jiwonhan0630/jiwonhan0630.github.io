@@ -5,10 +5,9 @@
 ///
 
 /* Footer */
-
 	#footer {
 		$gutter: _size(gutter);
-		@include padding(3em, 0);
+		@include padding(5em, 0, (0, 0, 3em, 0));
 		background-color: _palette(footer-light);
 
 		> .inner {
