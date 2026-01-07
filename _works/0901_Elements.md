@@ -48,6 +48,11 @@ image: /images/pic01.jpg
 [일반 버튼](#){: .btn-basic}
 [가운데 정렬 일반 버튼](#){: .btn-basic .center}
 
+
+<button>button</button>
+<input type="submit">submit</input>
+<input type="reset">reset</input>
+<input type="button">inputtypebutton</input>
 # Table
 
 
