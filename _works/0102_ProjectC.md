@@ -24,6 +24,20 @@ image: /images/pic01.jpg
 ### 차량 AI 및 자율 주행 시스템
 Unity AI Navigation의 NavMesh 기능을 응용하여 지정된 경로를 따라 행동하는 자율 주행 AI를 구현하였습니다.  
 
+자율 주행 시스템은 아래와 같이 구현하였습니다.  
+
+Brain: 다음 목적지를 결정하는 로직과, 주행 시 발생하는 상황에 대한 대응 방식이 구현되어있으며, 목적지와 행동()
+Controller: Brain 클래스의 따라 WheelCollider의 값을 변경하여 차량을 이동시킵니다.
+
+부품에 할당된 성격에 따라 목적지를 결정하는 기준과 주행 시 발생하는 상황에 대한 대응 방식이 구현되어있는 Brain 클래스,  
+Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하여 차량을 이동시키는 Controller를 구현하였습니다.  
+
+|타입|이름|상세|
+|---|---|---|
+|class|CarController| DriveAction에 따라 WheelCollider를 조작하여 차량을 이동시킴|
+|class|CarBrain|CarController와 BrainAction의 중계 역할|
+|class|BrainAction|DriveInfo을 통해 DriveAction을 반환함|
+
 
 ### 실시간 파츠 교체 시스템
 주행 도중 정지 없이 차량의 부품을 변경하고, 주행 성능에 반영되는 시스템을 구현하였습니다.  
