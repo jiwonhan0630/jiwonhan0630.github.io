@@ -45,7 +45,7 @@ image: /images/pic01.jpg
 
 [주제 버튼](#){: .button .sub sub="위쪽에 뜨는 글자"}
 [가운데 정렬 주제 버튼](#){: .button .sub .center sub="위쪽에 뜨는 글자"}
-[주제거꾸로버튼](#){: .button .sub .reverse sub="주제거꾸로버튼은 아래쪽에 설명이 뜨도록 되어있습니다."}
+[주제거꾸로버튼](#){: .button .sub .reverse sub="주제거꾸로버튼은 아래쪽에 설명이 뜨도록 되어있습니다.&#10;이렇게하면 더 내용을 많이 쓰는 경우에 사용하면 좋겠죠"}
 [일반 버튼](#){: .button .normal}
 [가운데 정렬 일반 버튼](#){: .button .normal .center}
 
