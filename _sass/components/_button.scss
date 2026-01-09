@@ -157,6 +157,12 @@
 				font-size: 0.8em;
 				font-weight: _font(weight-bold);
 				color: _palette(main-lightgray);
+				
+				&.reverse
+				{
+					white-space: pre-wrap;
+					order: 2;
+				}
 			}
 
 			&::after {
@@ -167,6 +173,7 @@
 				transform: translateY(-50%);
 				font-size: 1.8em;
 				color: _palette(main-lightgray);
+				font-weight: _font(weight-regular);
 			}
 
 			&:hover {
