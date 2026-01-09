@@ -33,11 +33,10 @@ Controller: Brain 클래스의 따라 WheelCollider의 값을 변경하여 차�
 Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하여 차량을 이동시키는 Controller를 구현하였습니다.  
 
 |타입|이름|상세|
-|---|---|---|
-|class|CarController| DriveAction에 따라 WheelCollider를 조작하여 차량을 이동시킴|
-|class|CarBrain|CarController와 BrainAction의 중계 역할|
-|class|BrainAction|DriveInfo을 통해 DriveAction을 반환함|
-
+|:---|:---|:---|
+|class|CarBrain|특정 상황을 감지하고 정해진 BrainAction을 호출하여, 반환된 DriveAction을 CarController에게 넘겨줍니다.|
+|class|CarController|들어온 DriveAction의 값에 따라 WheelCollider를 조작하여 차량을 이동시킵니다.|
+|class|BrainAction|장애물을 감지하였을 때, 보상을 획득하였을 때 등, 특정 상황에 대한 대응 방식이 구현되어있습니다. DriveInfo을 받고 DriveAction을 반환합니다.|
 
 ### 실시간 파츠 교체 시스템
 주행 도중 정지 없이 차량의 부품을 변경하고, 주행 성능에 반영되는 시스템을 구현하였습니다.  
