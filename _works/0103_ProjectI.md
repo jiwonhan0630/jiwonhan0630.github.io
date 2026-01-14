@@ -10,9 +10,11 @@ image: /images/pic01.jpg
 - Unity Engine
 - 3D 횡스크롤 슈팅 플랫포머
 
-### 담당 업무
-- 보스 몬스터 패턴 시스템
-- Gizmos 기반 스테이지 규격화
+## 담당 업무
+
+[보스 몬스터](#보스-몬스터){: .button .subject .arrow sub="StateMachineBehaviour를 사용한 FSM, Inspector를 통한 보스 패턴 시스템"}
+[스테이지 규격화](#){: .button .subject .arrow sub="Gizmos를 통한 스테이지 규격화"}
+
 - 스테이지 입장 연출
 - 캐릭터 대사 출력
 - Reflection 기반 키 바인딩
