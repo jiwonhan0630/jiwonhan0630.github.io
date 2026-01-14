@@ -10,10 +10,10 @@ image: /images/pic01.jpg
 - Unity Engine
 
 ## 담당 업무
-- 플레이어 컨트롤
 [기상 상호작용 시스템](#기상-상호작용-시스템){: .button .subject .arrow sub="날씨 변화에 따른 오브젝트 변화"}
 [동적 NPC 보이스 출력](#동적-npc-보이스-출력){: .button .subject .arrow}
 [대화 이벤트 기반 퀘스트 시스템](#대화-이벤트-기반-퀘스트-시스템){: .button .subject .arrow}
+- 플레이어 컨트롤
 - 스킬 시스템
 - 퍼즐
 - UI 시스템
