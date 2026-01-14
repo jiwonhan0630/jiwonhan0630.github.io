@@ -15,9 +15,7 @@ image: /images/pic01.jpg
 [차량 AI 및 자율 주행 시스템](#car-ai){: .button .subject arrow sub="NavMesh Baking을 활용한 자율 주행 AI"}
 [실시간 파츠 교체 시스템](#parts-system){: .button .subject arrow sub="주행 중 정차 없이 차량의 부품을 교체"}
 [커스텀 에디터](#custom-editor){: .button .subject arrow sub="주행 경로 편집, 액세서리 장착 위치 수정"}
-
-<span class="subject" sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현">전용 런처 개발</span>
-
+[전용 런처 개발]{: .subject sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative arrow sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
 
 # 세부 내용
