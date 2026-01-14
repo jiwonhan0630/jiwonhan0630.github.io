@@ -115,28 +115,12 @@
 				align-items:center;
 			}
 
-			&::after {
-					font-weight: _font(weight-regular);
-					content: "→";
-					position: absolute;
-					right: 0.6em;
-					top: 50%;
-					transform: translateY(-50%);
-					font-size: 1.8em;
-					color: _palette(main-lightgray);
-				}
-
 			&:hover {
 				box-shadow: inset 0 0 0 2px _palette(main-highlight);
 				color: _palette(main-gray) !important;
 			
 				&::before {
 					color: _palette(main-highlight);
-				}
-
-				&::after {
-					color: _palette(main-highlight);
-					transform: translate(5px, -50%);
 				}
 			}
 		}
