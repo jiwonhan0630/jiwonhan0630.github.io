@@ -8,7 +8,7 @@ tilestyle: style3
 
 #### <i class="fa-brands fa-unity"></i> Unity Engine
 - 가장 자신있게 사용할 수 있는 엔진입니다.
-- 에디터 확장, UIToolkit을 사용하여 작업에 필요한 툴을 제작할 수 있습니다.
+- UIToolkit과 에디터 확장 기능을 사용하여 작업에 필요한 툴을 제작할 수 있습니다.
 
 ***
 
@@ -18,7 +18,7 @@ tilestyle: style3
 
 ***
 
-#### <i class="fa-solid fa-database"></i><span class="middle"> SQL</span>
+#### <i class="fa-solid fa-database"></i><span class="middle"> DB</span>
 - 기초적인 정의, 조작, 제어 등의 문법을 이해하고 UnityWebRequest를 통한 데이터의 송수신을 구현할 수 있습니다.
 - MongoDB, MariaDB, TMaxTiberoDB를 사용한 프로젝트 경험이 있습니다.
 
@@ -32,7 +32,10 @@ tilestyle: style3
 
 #### <i class="fa-solid fa-triangle-exclamation"></i> <span class="middle"> Notion</span>
 - 수식구문과 함수를 사용하여 필요한 값을 시각화할 수 있습니다.
-- 관계형 데이터베이스, 자동화 기능을 통해 업무 보조용 페이지를 제작할 수 있습니다.
+- 관계형 데이터베이스, 자동화 기능을 통해 업무 보조용 페이지를 제작한 경험이 있습니다.
+
+
+***
 
 
 ## 솔직히 자신 없는 부분
@@ -48,7 +51,7 @@ tilestyle: style3
 
 ***
 
-#### HTML·CSS
+#### JS·HTML·CSS
 - 지금 딱 이 페이지를 구현하는 만큼의 지식을 가지고 있습니다. 
 - 간단한 레이아웃을 디자인하고 제작할 수 있습니다.
 
@@ -56,4 +59,4 @@ tilestyle: style3
 
 #### Unreal Engine
 - Unity Engine을 다양한 방식으로 활용하고 확장하고자 공부를 시작하였습니다.
-- 공식 문서를 읽으며 사용 가능한 기능을 익히고 있습니다.
+- 공식 문서를 읽으며 사용 가능한 기능을 넓히고 있습니다.
