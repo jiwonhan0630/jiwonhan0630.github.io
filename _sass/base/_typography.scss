@@ -168,63 +168,6 @@
 		}
 	}
 
-
-	.subject
-	{
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		margin: 0.2em 0;
-
-		border-radius: _size(border-radius);
-		border-bottom: 0;
-
-		padding: 0.8em 4em 0.8em 1em;
-		background-color: _palette(button-light);
-		text-decoration: none;
-		font-weight: _font(weight-bold);
-		color: _palette(main-gray);
-
-		&::before {
-			content: attr(sub);
-			display: block;
-			font-size: 0.8em;
-			font-weight: _font(weight-regular);
-			color: _palette(main-gray);
-			order: 2;
-			white-space: pre-wrap;
-		}
-	}
-
-	.subject-negative
-	{
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		margin: 0.2em 0;
-
-		border-radius: _size(border-radius);
-		border-bottom: 0;
-
-		padding: 0.8em 4em 0.8em 1em;
-		background-color: _palette(main-dark);
-		text-decoration: none;
-		font-weight: _font(weight-bold);
-		color: _palette(background-light);
-
-		&::before {
-			content: attr(sub);
-			display: block;
-			font-size: 0.8em;
-			font-weight: _font(weight-regular);
-			color: _palette(button-light);
-			order: 2;
-			white-space: pre-wrap;
-		}
-	}
-
-
-
 	.align-left {
 		text-align: left;
 	}
