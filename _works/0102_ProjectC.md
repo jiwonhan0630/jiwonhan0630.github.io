@@ -11,22 +11,27 @@ image: /images/pic01.jpg
 - MariaDB
 
 ## 담당 업무
-[산업 데이터 기반 게이미피케이션 로직](#){: .button .sub2 sub="UnityWebRequest를 통해 실제 작업자의 산업 데이터를 사용한 플레이 로직"}
-[차량 AI 및 자율 주행 시스템](#){: .button .sub2 sub="NavMesh Baking을 활용한 자율 주행 AI"}
-[실시간 파츠 교체 시스템](#){: .button .sub2 sub="주행 중 정차 없이 차량의 부품을 교체"}
+[산업 데이터 기반 게이미피케이션 로직](#gamification){: .button .sub2 sub="UnityWebRequest를 통해 실제 작업자의 산업 데이터를 사용한 플레이 로직"}
+[차량 AI 및 자율 주행 시스템](#car-ai){: .button .sub2 sub="NavMesh Baking을 활용한 자율 주행 AI"}
+[실시간 파츠 교체 시스템](#parts-system){: .button .sub2 sub="주행 중 정차 없이 차량의 부품을 교체"}
+[커스텀 에디터](#custom-editor){: .button .sub2 sub="주행 경로 편집, 액세서리 장착 위치 수정"}
 - 커스텀 에디터
 - 전용 런처 개발
-
+[Troubleshooting](#troubleshooting){: .button .sub .reverse sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
 ***
 
 # 세부 내용
 ## 실시간 산업 데이터 기반 게이미피케이션 로직
-<!-- 실제 공장 작업자의 조립 데이터를 수신하여 플레이 자동화, 게임 내 스테이지 및 보상 체계와 연동하는 시스템을 구현하였습니다.   -->
+{: #gamification}
+
 UnityWebRequest와 UniTask를 사용, 백엔드에서 제공한 API를 호출하여 실제 공장 작업자의 조립 데이터를 송수신하였습니다.  
 데이터 송수신 로직을 독립적으로 분리하고 Behaviour Tree의 구조를 차용하여, 수신된 데이터를 통해  
 피버타임 진입, 게임 내 스테이지나 씬 변경 등의 필요를 판단하여 각 상황에 맞는 API를 호출하거나 게임을 진행시키는 자동화된 플레이를 구현하였습니다.
+<!-- 실제 공장 작업자의 조립 데이터를 수신하여 플레이 자동화, 게임 내 스테이지 및 보상 체계와 연동하는 시스템을 구현하였습니다.   -->
 
 ## 차량 AI 및 자율 주행 시스템
+{: #car-ai}
+
 Unity AI Navigation의 NavMesh Baking을 통해 생성되는 폴리곤의 좌표를 사용하여 NavMeshAgent없이 WheelCollider를 통해 이동하는 자율 주행 시스템을 구현하였습니다.  
 
 자율 주행 시스템은 아래와 같이 구현하였습니다.  
@@ -44,11 +49,15 @@ Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하�
 |class|BrainAction|장애물을 감지하였을 때, 보상을 획득하였을 때 등, 특정 상황에 대한 대응 방식이 구현되어있습니다. DriveInfo을 받고 DriveAction을 반환합니다.|
 
 ### 실시간 파츠 교체 시스템
+{: #parts-system}
+
 주행 도중 정지 없이 차량의 부품을 변경하고, 주행 성능에 반영되는 시스템을 구현하였습니다.  
 바퀴가 변경되었을 때, MeshRenderer의 Bound 크기를 통해 WheelCollider의 반지름을 조절합니다.  
 또한 차량의 무게와 길이가 변경되었을 때, 예상 회전 반경을 계산하여[(관련자료)](https://www.mdpi.com/1424-8220/23/12/5751), 주행 경로를 수정합니다.
 
 ### 커스텀 에디터
+{: #custom-editor}
+
 **경로 에디터**: 사전에 정의된 경로를 제작하는 에디터 확장 기능 구현  
 **파츠 비주얼 에디터**: UIToolkit을 사용하여 부품의 장착 위치와 외형을 에디터에서 즉시 설정하고 미리 볼 수 있는 툴 구현  
 **레벨 베이킹 툴**: 레벨 디자인 후 필요한 데이터를 자동 추출하여 정적 데이터화하는 베이킹 툴 구현  
