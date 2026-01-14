@@ -141,54 +141,6 @@
 			}
 		}
 
-		&.sub
-		{
-			/* padding: 1em 4em 1em 1.4em; */
-			padding: 0.8em 4em 0.8em 1em;
-			background-color: _palette(main-dark);
-			box-shadow: inset 0 0 0 2px _palette(main-gray);
-			text-decoration: none;
-			font-weight: _font(weight-regular);
-			color: _palette(background-light);
-
-			&::before {
-				content: attr(sub);
-				display: block;
-				font-size: 0.8em;
-				font-weight: _font(weight-bold);
-				color: _palette(main-lightgray);
-			}
-
-			&.reverse::before{
-				order: 2;
-				white-space: pre-wrap;
-			}
-
-			&::after {
-				content: "→";
-				position: absolute;
-				right: 1.2em;
-				top: 50%;
-				transform: translateY(-50%);
-				font-size: 1.8em;
-				color: _palette(main-lightgray);
-				font-weight: _font(weight-regular);
-			}
-
-			&:hover {
-				box-shadow: inset 0 0 0 2px _palette(main-highlight);
-				background-color: _palette(-main-gray);
-				&::before {
-					color: _palette(main-highlight);
-				}
-
-				&::after {
-					color: _palette(main-highlight);
-					transform: translate(5px, -50%);
-				}
-			}
-		}
-
 		&.primary {
 			box-shadow: none;
 			background-color: _palette(main-gray);
@@ -203,48 +155,7 @@
 			}
 		}
 		
-		&.sub2
-		{
-			padding: 0.8em 4em 0.8em 1em;
-			background-color: _palette(button-light);
-			// box-shadow: inset 0 0 0 0px _palette(main-gray);
-			text-decoration: none;
-			font-weight: _font(weight-bold);
-			color: _palette(main-gray) !important;
-
-			&::before {
-				content: attr(sub);
-				display: block;
-				font-size: 0.8em;
-				font-weight: _font(weight-regular);
-				order: 2;
-				white-space: pre-wrap;
-			}
-
-			&::after {
-				content: "→";
-				position: absolute;
-				right: 1.2em;
-				top: 50%;
-				transform: translateY(-50%);
-				font-size: 1.8em;
-				color: _palette(main-lightgray);
-			}
-
-			&:hover {
-				box-shadow: inset 0 0 0 2px _palette(main-highlight);
-				// background-color: _palette(-main-gray);
-				// &::before {
-				// 	color: _palette(main-highlight);
-				// }
-
-				&::after {
-					color: _palette(main-highlight);
-					transform: translate(5px, -50%);
-				}
-			}
-		}
-
+		// 밝은 배경의 버튼
 		&.subject
 		{
 			padding: 0.8em 4em 0.8em 1em;
@@ -271,21 +182,22 @@
 			}
 		}
 
+		// 어두운 배경의 버튼
 		&.subject-negative
 		{
 			padding: 0.8em 4em 0.8em 1em;
 			background-color: _palette(main-dark);
-			box-shadow: inset 0 0 0 2px _palette(main-gray);
+			// box-shadow: inset 0 0 0 2px _palette(main-gray);
 			text-decoration: none;
-			font-weight: _font(weight-regular);
+			font-weight: _font(weight-bold);
 			color: _palette(background-light);
 
 			&::before {
 				content: attr(sub);
 				display: block;
 				font-size: 0.8em;
-				font-weight: _font(weight-bold);
-				color: _palette(main-lightgray);
+				font-weight: _font(weight-regular);
+				color: _palette(button-light);
 				order: 2;
 				white-space: pre-wrap;
 			}
@@ -299,6 +211,7 @@
 			}
 		}
 
+		// 오른쪽에 화살표를 추가함
 		&.arrow{
 			&::after {
 				content: "→";
@@ -307,7 +220,7 @@
 				top: 50%;
 				transform: translateY(-50%);
 				font-size: 1.8em;
-				font-weight: _font(weight-regular);
+				font-weight: _font(weight-light);
 				color: inherit;
 			}
 
@@ -331,7 +244,6 @@
 			width: fit-content;
 		}
 
-
 		&.disabled,
 		&:disabled {
 			@include vendor('pointer-events', 'none');
@@ -341,6 +253,54 @@
 
 
 	//#region legacy custom buttons
+
+	// &.sub
+	// {
+	// 	/* padding: 1em 4em 1em 1.4em; */
+	// 	padding: 0.8em 4em 0.8em 1em;
+	// 	background-color: _palette(main-dark);
+	// 	box-shadow: inset 0 0 0 2px _palette(main-gray);
+	// 	text-decoration: none;
+	// 	font-weight: _font(weight-regular);
+	// 	color: _palette(background-light);
+
+	// 	&::before {
+	// 		content: attr(sub);
+	// 		display: block;
+	// 		font-size: 0.8em;
+	// 		font-weight: _font(weight-bold);
+	// 		color: _palette(main-lightgray);
+	// 	}
+
+	// 	&.reverse::before{
+	// 		order: 2;
+	// 		white-space: pre-wrap;
+	// 	}
+
+	// 	&::after {
+	// 		content: "→";
+	// 		position: absolute;
+	// 		right: 1.2em;
+	// 		top: 50%;
+	// 		transform: translateY(-50%);
+	// 		font-size: 1.8em;
+	// 		color: _palette(main-lightgray);
+	// 		font-weight: _font(weight-regular);
+	// 	}
+
+	// 	&:hover {
+	// 		box-shadow: inset 0 0 0 2px _palette(main-highlight);
+	// 		background-color: _palette(-main-gray);
+	// 		&::before {
+	// 			color: _palette(main-highlight);
+	// 		}
+
+	// 		&::after {
+	// 			color: _palette(main-highlight);
+	// 			transform: translate(5px, -50%);
+	// 		}
+	// 	}
+	// }
 	// 	.btn-sub {
 	// 	display: flex;
 	// 	flex-direction: column;
