@@ -11,15 +11,14 @@ image: /images/pic01.jpg
 - MariaDB
 
 ## 담당 업무
-[산업 데이터 기반 게이미피케이션 로직](#gamification){: .button .sub2 sub="UnityWebRequest를 통해 실제 작업자의 산업 데이터를 사용한 플레이 로직"}
-[차량 AI 및 자율 주행 시스템](#car-ai){: .button .sub2 sub="NavMesh Baking을 활용한 자율 주행 AI"}
-[실시간 파츠 교체 시스템](#parts-system){: .button .sub2 sub="주행 중 정차 없이 차량의 부품을 교체"}
-[커스텀 에디터](#custom-editor){: .button .sub2 sub="주행 경로 편집, 액세서리 장착 위치 수정"}
+[산업 데이터 기반 게이미피케이션 로직](#gamification){: .button .subject sub="UnityWebRequest를 통해 실제 작업자의 산업 데이터를 사용한 플레이 로직"}
+[차량 AI 및 자율 주행 시스템](#car-ai){: .button .subject sub="NavMesh Baking을 활용한 자율 주행 AI"}
+[실시간 파츠 교체 시스템](#parts-system){: .button .subject sub="주행 중 정차 없이 차량의 부품을 교체"}
+[커스텀 에디터](#custom-editor){: .button .subject sub="주행 경로 편집, 액세서리 장착 위치 수정"}
+
 - 전용 런처 개발
 
-[Troubleshooting](#troubleshooting){: .button .sub .reverse sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
-
-***
+[Troubleshooting](#troubleshooting){: .button .subject-negative sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
 
 # 세부 내용
 ## 실시간 산업 데이터 기반 게이미피케이션 로직
