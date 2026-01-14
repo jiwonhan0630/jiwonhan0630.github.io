@@ -9,17 +9,17 @@ image: /images/pic01.jpg
 - Mobile (Android)
 - Unity Engine
 
-### 담당 업무
-- 절차적 레벨·메쉬 생성
-- 청크 시스템
-- 몬스터 패턴 시스템
-- CSV 유틸리티
-- 커스텀 에디터
-    - 맵 데이터 에디터
-    - 맵 데이터 프리뷰
+## 담당 업무
+[절차적 레벨 생성](#절차적-레벨메쉬-생성){: .button .subject sub="Wang Tile 알고리즘을 응용한 절차적 지형 생성"}
+[청크 시스템](#청크-시스템){: .button .subject sub="Quadtree를 사용한 청크 시스템"}
+[CSV 유틸리티](#csv-유틸리티){: .button .subject sub="CSV 텍스트를 간편하게 직렬화하는 유틸리티"}
+[커스텀 에디터](#커스텀-에디터){: .button .subject sub="맵 데이터 에디터와 프리뷰 기능"}
 
-## 세부 내용
-### 절차적 레벨·메쉬 생성
+- 몬스터 패턴 시스템
+
+
+# 세부 내용
+## 절차적 레벨·메쉬 생성
 **절차적 레벨 생성**: [Wang Tile](https://en.wikipedia.org/wiki/Wang_tile) 알고리즘을 응용하여 절차적인 지형 생성 구현  
 **절차적 메쉬 생성**: 생성된 레벨 데이터를 기반으로 필요한 부분의 지형 메쉬를 생성·텍스처 적용  
 **월드맵**: 생성된 레벨 데이터를 Unity Tilemap을 통해 인게임 월드맵 구현
