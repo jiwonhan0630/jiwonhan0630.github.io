@@ -33,7 +33,7 @@
 
 		&:hover {
 			border-bottom-color: _palette(main-highlight);
-			color: _palette(main-highlight) !important;
+			color: _palette(main-highlight);
 		}
 	}
 
@@ -183,7 +183,7 @@
 		background-color: _palette(button-light);
 		text-decoration: none;
 		font-weight: _font(weight-bold);
-		color: _palette(main-gray) !important;
+		color: _palette(main-gray);
 
 		&::before {
 			content: attr(sub);
