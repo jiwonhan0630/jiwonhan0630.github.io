@@ -32,20 +32,8 @@ UnityWebRequest와 UniTask를 사용, 백엔드에서 제공한 API를 호출하
 {: #car-ai}
 
 Unity AI Navigation의 NavMesh Baking을 통해 생성되는 폴리곤의 좌표를 사용하여 NavMeshAgent없이 WheelCollider를 통해 이동하는 자율 주행 시스템을 구현하였습니다.  
-
-자율 주행 시스템은 아래와 같이 구현하였습니다.  
-
-Brain: 다음 목적지를 결정하는 로직과, 주행 시 발생하는 상황에 대한 대응 방식이 구현되어있으며, 목적지와 행동()
-Controller: Brain 클래스의 따라 WheelCollider의 값을 변경하여 차량을 이동시킵니다.
-
-부품에 할당된 성격에 따라 목적지를 결정하는 기준과 주행 시 발생하는 상황에 대한 대응 방식이 구현되어있는 Brain 클래스,  
-Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하여 차량을 이동시키는 Controller를 구현하였습니다.  
-
-|타입|이름|상세|
-|:---|:---|:---|
-|class|CarBrain|특정 상황을 감지하고 정해진 BrainAction을 호출하여, 반환된 DriveAction을 CarController에게 넘겨줍니다.|
-|class|CarController|들어온 DriveAction의 값에 따라 WheelCollider를 조작하여 차량을 이동시킵니다.|
-|class|BrainAction|장애물을 감지하였을 때, 보상을 획득하였을 때 등, 특정 상황에 대한 대응 방식이 구현되어있습니다. DriveInfo을 받고 DriveAction을 반환합니다.|
+별도의 베이킹 프로세스를 구현하여, NavMesh와 관련된 애셋을 생성-사용하지 않고, 노드 정보가 저장된 ScriptableObject를 생성하여 사용하였습니다.  
+자율 주행 시스템은 전략 패턴과 커맨드 패턴을 응용하여 주행 시 발생하는 각종 사건(충돌, 우회 등)과 환경의 변화에 따라 다른 주행 방식을 적용할 수 있도록 구현하였습니다.  
 
 ## 실시간 파츠 교체 시스템
 {: #parts-system}
