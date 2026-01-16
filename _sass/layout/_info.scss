@@ -1,7 +1,12 @@
 	#info {
 		background-color: _palette(main-gray);
 		color: _palette(background-light);
-		font-weight: _font(weight-bold);
-		font-size: 2.5em;
-		line-height: 1.3;
+		padding-bottom: _size(element-margin-v);
+
+		.info-title
+		{
+			font-weight: _font(weight-bold);
+			font-size: 2.5em;
+			line-height: 1.3;
+		}
 	}
