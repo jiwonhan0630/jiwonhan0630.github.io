@@ -1,0 +1,19 @@
+<div class="skills">
+    {% for skill in include.data %}
+    <section class="skill-box">
+        <h4>
+        {% if skill.icon-type == "icon" %}
+            <i class="{{ skill.icon }}"></i>
+        {% elsif skill.icon-type == "image" %}
+            <img src="{{ skill.icon | relative_url }}" class="image-inline" alt="">
+        {% endif %}
+        <span class="skill-title">{{ skill.title }}</span>
+        </h4>
+        <ul>
+        {% for line in skill.description %}
+        <li>{{ line }}</li>
+        {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</div>
