@@ -24,8 +24,19 @@
 				{% include menu.html %}
 				<!-- Info -->
 				<div id="info">
+					<div class="info-head">
+						<div class="inner">
+							<div class="info-title">{{ page.title }}</div>
+						</div>
+					</div>
 					<div class="inner">
-						<div class="info-title">{{ page.title }}</div>
+						{% if page.tags and page.tags.size > 0 %}
+						<ul class="info-tags">
+							{% for tag in page.tags %}
+							<li>{{ tag }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
 					</div>
 				</div>
 				<!-- Main -->
