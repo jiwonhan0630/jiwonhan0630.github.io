@@ -14,6 +14,7 @@ image: /images/pic01.jpg
 [산업 데이터 기반 게이미피케이션 로직](#gamification){: .button .subject .arrow sub="UnityWebRequest를 통해 실제 작업자의 산업 데이터를 사용한 플레이 로직"}
 [차량 AI 및 자율 주행 시스템](#car-ai){: .button .subject .arrow sub="NavMesh Baking을 활용한 자율 주행 AI"}
 [실시간 파츠 교체 시스템](#parts-system){: .button .subject .arrow sub="주행 중 정차 없이 차량의 부품을 교체"}
+[Hat Socket 자동 설정 기능](#hat-socket-자동-설정-기능){: .button .subject .arrow sub="모자 착용 위치 자동 설정"}
 [커스텀 에디터](#custom-editor){: .button .subject .arrow sub="주행 경로 편집, 액세서리 장착 위치 수정"}
 [전용 런처 개발](#){: .button .subject .pointer-none sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
@@ -46,17 +47,28 @@ Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하�
 |class|CarController|들어온 DriveAction의 값에 따라 WheelCollider를 조작하여 차량을 이동시킵니다.|
 |class|BrainAction|장애물을 감지하였을 때, 보상을 획득하였을 때 등, 특정 상황에 대한 대응 방식이 구현되어있습니다. DriveInfo을 받고 DriveAction을 반환합니다.|
 
-### 실시간 파츠 교체 시스템
+## 실시간 파츠 교체 시스템
 {: #parts-system}
 
 주행 도중 정지 없이 차량의 부품을 변경하고, 주행 성능에 반영되는 시스템을 구현하였습니다.  
 바퀴가 변경되었을 때, MeshRenderer의 Bound 크기를 통해 WheelCollider의 반지름을 조절합니다.  
 또한 차량의 무게와 길이가 변경되었을 때, 예상 회전 반경을 계산하여[(관련자료)](https://www.mdpi.com/1424-8220/23/12/5751), 주행 경로를 수정합니다.
 
-### 커스텀 에디터
+## Hat Socket 자동 설정 기능
+차량의 모자 액세서리 장착 위치를 자동으로 설정해주는 기능을 구현하였습니다.  
+바디 쉘에 해당하는 메쉬에서 가장 높은 위치의 폴리곤을 탐색하여 기울기를 적용하여 오브젝트의 Hat Socket으로 설정합니다.  
+Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여 간단한 미리보기 기능을 구현하였습니다.  
+
+## 커스텀 에디터
 {: #custom-editor}
 
-**경로 에디터**: 사전에 정의된 경로를 제작하는 에디터 확장 기능 구현  
+### 경로 에디터
+
+원하는 경로로 차량이 이동할 수 있도록 직접 경로를 제작할 수 있는 경로 제작 기능을 구현하였습니다.  
+경로 에디터 윈도우에 UIToolkit을 사용하여 노드의 추가 및 삭제 버튼, 선택된 노드의 정보를 표시하였으며,  
+씬 뷰에서 Gizmos와 Handles를 사용하여 각 노드의 위치와 각도를 수정할 수 있도록 하였습니다.  
+제작한 경로는 베이킹된 경로와 함께 ScriptableObject로 저장하였습니다.
+
 **파츠 비주얼 에디터**: UIToolkit을 사용하여 부품의 장착 위치와 외형을 에디터에서 즉시 설정하고 미리 볼 수 있는 툴 구현  
 **레벨 베이킹 툴**: 레벨 디자인 후 필요한 데이터를 자동 추출하여 정적 데이터화하는 베이킹 툴 구현  
 
@@ -64,13 +76,13 @@ Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하�
 클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현
 
 # Troubleshooting
-### 이슈 발생
+## 이슈 발생
 NavMeshAgent를 사용하여 이동하는 방식이었으나, 개발 도중 WheelCollider를 통해 이동하도록 스펙이 변경되었습니다.  
 각 스테이지는 이미 NavMesh를 사용하는 규격으로 구현되어있었기 때문에, 스테이지를 수정하는 것은 불가능했습니다.  
 Unity AI Navgation을 통해 이동하는 차량에 물리적인 상호작용과 각 부품의 변경에 따른 성능 차이를 추가해야함.  
 기존 스테이지는 특별한 규격 없이 씬 하나에 NavMesh를 사용함.
 
-### 이슈 해결
+## 이슈 해결
 Unity AI Navigation의 Baking에 사용되는 함수를 역추적하여, 베이킹 시 생성된 NavMesh 폴리곤의 좌표를 별도의 ScriptableObject로 저장하였습니다.
 하지만 해당 좌표를 통한 최단경로 이동 시(NavMesh의 경로 따라가기 함수 사용) 폴리곤의 꼭짓점 부분을 이용하여 가장자리(코너)를 이동하기 때문에 시각적으로 부자연스러움.  
 
