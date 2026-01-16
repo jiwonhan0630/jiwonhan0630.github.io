@@ -26,20 +26,25 @@
 
 	.panelbox {
 		width: 100%;
+		border-radius: 8px;
 		border: 1px solid _palette(border);
-		border-radius: 4px;
+    	margin-top: 1em;
 
 		.panelbox-title {
 			background-color: _palette(main-gray);
 			color: _palette(background-light);
+			font-size: 1.4em;
+			font-weight: _font(weight-bold);
+			padding-left: _size(element-margin-v);
 		}
 
 		.panelbox-item {
+			background-color: _palette(button-light);
 			border-bottom: 1px solid _palette(border);
+    		padding: 1.4em 1em 2em 1em;
 
 			&:last-child {
             	border-bottom: none;
         	}
 		}
-
 	}
