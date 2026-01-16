@@ -1,4 +1,4 @@
-<div class="skills">
+<!-- <div class="skills">
     {% for skill in include.data %}
     <section class="box">
         <h4>
@@ -15,5 +15,26 @@
         {% endfor %}
         </ul>
     </section>
+    {% endfor %}
+</div> -->
+
+<div class="panelbox">
+    <div class="panelbox-title">{{ include.title }}</div>
+    {% for skill in include.data %}
+    <div class="panelbox-item">
+        <h4>
+        {% if skill.icon-type == "icon" %}
+            <i class="{{ skill.icon }}"></i>
+        {% elsif skill.icon-type == "image" %}
+            <img src="{{ skill.icon | relative_url }}" class="image-inline" alt="">
+        {% endif %}
+        <span class="skill-title">{{ skill.title }}</span>
+        </h4>
+        <ul>
+        {% for line in skill.description %}
+        <li>{{ line }}</li>
+        {% endfor %}
+        </ul>
+    </div>
     {% endfor %}
 </div>
