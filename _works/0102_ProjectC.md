@@ -31,7 +31,7 @@ UnityWebRequest와 UniTask를 사용, 백엔드에서 제공한 API를 호출하
 ## 차량 AI 및 자율 주행 시스템
 {: #car-ai}
 
-Unity AI Navigation의 NavMesh Baking을 통해 생성되는 폴리곤의 좌표를 사용하여 NavMeshAgent없이 WheelCollider를 통해 이동하는 자율 주행 시스템을 구현하였습니다.  
+Unity AI Navigation의 NavMesh Baking을 통해 생성되는 폴리곤의 좌표를 활용하여, NavMeshAgent없이 WheelCollider를 통해 이동하는 자율 주행 시스템을 구현하였습니다.  
 별도의 베이킹 프로세스를 구현하여, NavMesh와 관련된 애셋을 생성-사용하지 않고, 노드 정보가 저장된 ScriptableObject를 생성하여 사용하였습니다.  
 자율 주행 시스템은 전략 패턴과 커맨드 패턴을 응용하여 주행 시 발생하는 각종 사건(충돌, 우회 등)과 환경의 변화에 따라 다른 주행 방식을 적용할 수 있도록 구현하였습니다.  
 
