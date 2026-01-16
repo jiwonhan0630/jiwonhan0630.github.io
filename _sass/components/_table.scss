@@ -15,32 +15,32 @@
 		margin: 0 0 _size(element-margin) 0;
 		width: 100%;
 
-		tbody {
-			tr {
-				&:nth-child(2n + 1) {
-					background-color: _palette(table-child-2);
-				}
-			}
-		}
+		// tbody {
+		// 	tr {
+		// 		&:nth-child(2n + 1) {
+		// 			background-color: _palette(table-child-2);
+		// 		}
+		// 	}
+		// }
 
 		td {
 			padding: 0.75em 0.75em;
-			border: solid _size(border-width) _palette(border);
+			border: solid _size(border-width) var(--color-border);
 		}
 
 		th {
-			color: _palette(main-gray);
+			color: var(--color-text-default);
 			font-size: 0.9em;
 			font-weight: _font(weight-bold);
 			padding: _size(element-margin-v) _size(element-margin-h);
 		}
 
 		thead {
-			border: solid _size(border-width) _palette(border);
+			border: solid _size(border-width) var(--color-border);
 		}
 
 		tfoot {
-			border-top: solid (_size(border-width) * 2) _palette(border);
+			border-top: solid (_size(border-width) * 2) var(--color-border);
 		}
 
 		&.alt {
@@ -49,7 +49,7 @@
 			tbody {
 				tr {
 					td {
-						border: solid _size(border-width) _palette(border);
+						border: solid _size(border-width) var(--color-border);
 						border-left-width: 0;
 						border-top-width: 0;
 

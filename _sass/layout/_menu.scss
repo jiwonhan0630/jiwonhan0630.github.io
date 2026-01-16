@@ -21,8 +21,8 @@
 		max-width: 80%;
 		height: 100%;
 		-webkit-overflow-scrolling: touch;
-		background: _palette(main-gray);
-		color: _palette(main-white);
+		background: var(--color-main-level2);
+		color: var(--color-text-negative);
 		cursor: default;
 		visibility: hidden;
 		z-index: (_misc(z-index-base) -1);
@@ -46,7 +46,7 @@
 
 				> li {
 					padding: 0;
-					border-top: solid 1px transparentize(_palette(main-white), 0.85);
+					border-top: solid 1px var(--color-border);
 
 					a {
 						display: block;

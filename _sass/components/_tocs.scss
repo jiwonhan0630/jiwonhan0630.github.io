@@ -1,7 +1,7 @@
 /* 현재 보고 있는 페이지의 메뉴 링크 강조 */
 #menu .menu-link.active {
 		font-weight: bold;
-		color: _palette(main-highlight);
+		color: var(--color-neon);
 		padding: 0.5em 0 0.2em 0;
 	}
 
@@ -35,8 +35,8 @@ ul.auto-toc {
             font-weight: bold;
             padding-left: 0.4em !important;
             color: var(--color-white) !important; /* 연한 회색 */
-            border-left: 2px solid _palette(blockquote-border) !important;
-            background-color: _palette(main-lightgray)
+            border-left: 2px solid var(--color-border) !important;
+            background-color: var(--color-level3);
         }
     }
 }

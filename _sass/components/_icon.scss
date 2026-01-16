@@ -21,7 +21,7 @@
 
 		&.solid {
 			&:before {
-				font-weight: 900;
+				font-weight: _font(weight-black);
 			}
 		}
 
@@ -41,7 +41,7 @@
 				'border-color #{_duration(transition)} ease-in-out'
 			));
 			background-color: transparent;
-			border: solid 1px _palette(hr-border);
+			border: solid 1px var(--color-border);
 			border-radius: _size(border-radius);
 			width: 2.65em;
 			height: 2.65em;
@@ -55,12 +55,12 @@
 			}
 
 			&:hover {
-				color: _palette(main-highlight);
-				border-color: _palette(main-highlight-dark);
+				color: var(--color-neon);
+				border-color: var(--color-neon-dark);
 			}
 
 			&:active {
-				background-color: transparentize(_palette(main-highlight), 0.9);
+				background-color: var(--color-neon);
 			}
 		}
 	}

@@ -7,7 +7,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: _palette(main-gray);
+		color: var(--color-text-default);
 		font-family: _font(family);
 		font-size: 16pt;
 		font-weight: _font(weight_light);
@@ -28,12 +28,12 @@
 			'color #{_duration(transition)} ease'
 		));
 		text-decoration: none;
-		color: _palette(main-gray);
-		border-bottom: dotted 1px transparentize(_palette(main-gray), 0.5);
+		color: var(--color-text-default);
+		border-bottom: dotted 1px var(--color-text-default);
 
 		&:hover {
-			border-bottom-color: _palette(main-highlight);
-			color: _palette(main-highlight);
+			color: var(--color-neon);
+			border-bottom-color: var(--color-neon);
 		}
 	}
 
@@ -57,22 +57,24 @@
 	h1, h2, h3, h4, h5, h6{
 		scroll-margin-top: _size(header);
 	}
+
 	h1 {
 		font-size: 2.5em;
-		font-weight: 600;
+		font-weight: _font(weight-bold);
+		letter-spacing: _font(letter-spacing-alt);
 		line-height: 1.3;
-		letter-spacing: -.035em;
 		margin-top: 1.4em;
 
+		color: var(--color-h1-text);
 		a {
 			color: inherit;
-			border-bottom: dotted 2px transparentize(_palette(main-white), 0.5);
+			border-bottom: dotted 2px var(--color-h1-text);
 		}
 	}
 
 	h2, h3, h4, h5, h6 {
 		line-height: 1.5;
-		border-radius: 4px;
+		border-radius: _size(border-radius);
 		margin-top: _size(element-margin-v);
 		a {
 			color: inherit;
@@ -84,8 +86,8 @@
 		font-size: 1.4em;
 		font-weight: _font(weight-bold);
 		padding-left: _size(element-margin-v);
-		background: _palette(heading-level1);
-		color: _palette(background-light);
+		background-color: var(--color-h2-bg);
+		color: var(--color-h2-text);
 		// box-shadow: inset 0.2em 0 0 0 _palette(main-dark);
 
 		h1 + &
@@ -99,7 +101,7 @@
 		font-weight: _font(weight-bold);
 		padding: 0 0.4em 0 0.4em;
 		width: fit-content;
-		background-color: _palette(heading-level3);
+		background-color: var(--color-h3-bg);
 		// box-shadow: inset 0.2em 0 0 0 _palette(heading-level2);
 		p + &
 		{
@@ -130,16 +132,16 @@
 	}
 
 	blockquote {
-		border-left: solid (_size(border-width) * 4) _palette(blockquote-border);
+		border-left: solid (_size(border-width) * 4) var(--color-border);
 		font-style: italic;
 		margin: 0 0 _size(element-margin) 0;
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
 	}
 
 	code {
-		background: _palette(code-background);
+		background: var(--color-code-bg);
 		border-radius: _size(border-radius);
-		border: solid _size(border-width) _palette(code-border);
+		border: solid _size(border-width) var(--color-border);
 		font-family: _font(family-fixed);
 		font-size: 0.9em;
 		margin: 0 0.25em;
@@ -162,7 +164,7 @@
 
 	hr {
 		border: 0;
-		border-bottom: solid _size(border-width) _palette(hr-border);
+		border-bottom: solid _size(border-width) var(--color-border);
 		margin: _size(element-margin) 0;
 
 		&.major {

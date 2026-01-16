@@ -22,7 +22,7 @@
 				margin-top: $gutter;
 				list-style: none;
 				font-size: 0.8em;
-				color: transparentize(_palette(main-gray), 0.5);
+				color: var(--color-footer-content);
 
 				a {
 					color: inherit;
@@ -30,7 +30,7 @@
 
 				li {
 					display: inline-block;
-					border-left: solid 1px transparentize(_palette(main-gray), 0.85);
+					border-left: solid 1px var(--color-footer-content);
 					line-height: 1;
 					padding: 0 0 0 1em;
 					margin: 0 0 0 1em;

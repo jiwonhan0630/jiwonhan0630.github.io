@@ -23,10 +23,10 @@
 		position: relative;
 		margin: 0.2em 0;
 
-		background-color: _palette(button-light);
+		background-color: var(--color-button-bg);
 		border-radius: _size(border-radius);
 		border: 0;
-		color: _palette(main-gray) !important;
+		color: var(--color-text-default) !important;
 		font-weight: _font(weight-bold);
 
 		&.fit {
@@ -34,12 +34,12 @@
 		}
 
 		&:hover {
-			color: _palette(main-highlight) !important;
-			box-shadow: inset 0 0 0 (_size(border-width) * 2) _palette(main-highlight);
+			color: var(--color-neon) !important;
+			box-shadow: inset 0 0 0 (_size(border-width) * 2) var(--color-neon);
 		}
 
 		&:active {
-			background-color: transparentize(_palette(main-highlight-dark), 0.9);
+			background-color: var(--color-neon-dark);
 		}
 
 		&.small {
@@ -52,15 +52,15 @@
 
 		&.primary {
 			box-shadow: none;
-			background-color: _palette(main-gray);
-			color: _palette(main-white) !important;
+			background-color: var(--color-button-bg-negative);
+			color: var(--color-text-negative) !important;
 
 			&:hover {
-				background-color: _palette(main-highlight-dark);
+				background-color: var(--color-neon);
 			}
 
 			&:active {
-				background-color: darken(_palette(main-highlight), 8);
+				background-color: var(--color-neon-dark);
 			}
 		}
 
@@ -83,50 +83,48 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		margin: 0.2em 0;
+		margin: _size(element-margin-h) 0;
 
 		border-radius: _size(border-radius);
 		border-bottom: 0;
 
-
 		&.normal {
 			padding: 0.5em 4em 0.5em 0.7em;
-			background-color: _palette(heading-level3);
-			// box-shadow: inset 0 0 0 2px _palette(heading-level2);
+			background-color: var(--color-button-bg);
+			color: var(--color-text-default);
 			text-decoration: none;
 			font-weight: _font(weight-bold);
-			color: _palette(main-gray);
 
 			&:hover {
-				box-shadow: inset 0 0 0 2px _palette(main-highlight);
+				box-shadow: inset 0 0 0 2px var(--color-neon);
 			
 				&::before {
-					color: _palette(main-highlight);
+					color: var(--color-neon);
 				}
 			}
 		}
 
 		&.primary {
 			box-shadow: none;
-			background-color: _palette(main-gray);
-			color: _palette(main-white);
+			background-color: var(--color-button-bg-negative);
+			color: var(--color-text-negative);
 
 			&:hover {
-				background-color: _palette(main-highlight-dark);
+				background-color: var(--color-neon);
 			}
 
 			&:active {
-				background-color: darken(_palette(main-highlight), 8);
+				background-color: var(--color-neon-dark);
 			}
 		}
 		
 		// 밝은 배경의 버튼
 		&.subject {
 			padding: 0.8em 4em 0.8em 1em;
-			background-color: _palette(button-light);
+			background-color: _var(--color-button-bg);
+			color: _var(--color-text-default);
 			text-decoration: none;
 			font-weight: _font(weight-bold);
-			color: _palette(main-gray);
 
 			&::before {
 				content: attr(sub);
@@ -138,37 +136,33 @@
 			}
 
 			&:hover {
-				box-shadow: inset 0 0 0 2px _palette(main-highlight);
+				box-shadow: inset 0 0 0 2px var(--color-neon);
 				color: inherit;
-				// background-color: _palette(-main-gray);
-				// &::before {
-				// 	color: _palette(main-highlight);
-				// }
 			}
 		}
 
 		// 어두운 배경의 버튼
 		&.subject-negative {
 			padding: 0.8em 4em 0.8em 1em;
-			background-color: _palette(main-dark);
+			background-color: _var(--color-button-bg-negative);
+			color: _var(--color-text-negative);
 			text-decoration: none;
 			font-weight: _font(weight-bold);
-			color: _palette(background-light);
 
 			&::before {
 				content: attr(sub);
 				display: block;
 				font-size: 0.8em;
 				font-weight: _font(weight-regular);
-				color: _palette(button-light);
+				color: var(--color-main-level5);
 				order: 2;
 				white-space: pre-wrap;
 			}
 
 			&:hover {
-				box-shadow: inset 0 0 0 2px _palette(main-highlight);
+				box-shadow: inset 0 0 0 2px var(--color-neon);
 				&::before {
-					color: _palette(main-highlight);
+					color: var(--color-neon);
 				}
 			}
 		}
@@ -188,7 +182,7 @@
 
 			&:hover {
 				&::after {
-					color: _palette(main-highlight);
+					color: var(--color-neon);
 					transform: translate(5px, -50%);
 				}
 			}
@@ -218,160 +212,3 @@
 			opacity: 0.25;
 		}
 	}
-
-
-
-	//#region legacy custom buttons
-
-	// &.sub
-	// {
-	// 	/* padding: 1em 4em 1em 1.4em; */
-	// 	padding: 0.8em 4em 0.8em 1em;
-	// 	background-color: _palette(main-dark);
-	// 	box-shadow: inset 0 0 0 2px _palette(main-gray);
-	// 	text-decoration: none;
-	// 	font-weight: _font(weight-regular);
-	// 	color: _palette(background-light);
-
-	// 	&::before {
-	// 		content: attr(sub);
-	// 		display: block;
-	// 		font-size: 0.8em;
-	// 		font-weight: _font(weight-bold);
-	// 		color: _palette(main-lightgray);
-	// 	}
-
-	// 	&.reverse::before{
-	// 		order: 2;
-	// 		white-space: pre-wrap;
-	// 	}
-
-	// 	&::after {
-	// 		content: "→";
-	// 		position: absolute;
-	// 		right: 1.2em;
-	// 		top: 50%;
-	// 		transform: translateY(-50%);
-	// 		font-size: 1.8em;
-	// 		color: _palette(main-lightgray);
-	// 		font-weight: _font(weight-regular);
-	// 	}
-
-	// 	&:hover {
-	// 		box-shadow: inset 0 0 0 2px _palette(main-highlight);
-	// 		background-color: _palette(-main-gray);
-	// 		&::before {
-	// 			color: _palette(main-highlight);
-	// 		}
-
-	// 		&::after {
-	// 			color: _palette(main-highlight);
-	// 			transform: translate(5px, -50%);
-	// 		}
-	// 	}
-	// }
-	// 	.btn-sub {
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	position: relative;
-	// 	/* padding: 1em 4em 1em 1.4em; */
-	// 	padding: 0.8em 4em 0.8em 1em;
-	// 	margin: 0.2em 0;
-	// 	background-color: _palette(main-dark);
-	// 	border-radius: 4px;
-	// 	border-bottom: 0;
-	// 	box-shadow: inset 0 0 0 2px _palette(main-gray);
-	// 	text-decoration: none;
-	// 	transition: all 0.2s ease;
-
-	// 	font-weight: _font(weight-regular);
-	// 	color: _palette(background-light);
-
-	// 	&.center{
-	// 		align-items: center;
-	// 	}
-
-	// 	&.inner {
-	// 		margin-left: 0.5em;
-	// 	}
-
-	// 	&::before {
-	// 		content: attr(sub);
-	// 		display: block;
-	// 		font-size: 0.8em;
-	// 		font-weight: _font(weight-bold);
-	// 		color: _palette(main-lightgray);
-	// 	}
-
-	// 	&::after {
-	// 		content: "→";
-	// 		position: absolute;
-	// 		right: 1.2em;
-	// 		top: 50%;
-	// 		transform: translateY(-50%);
-	// 		font-size: 1.8em;
-	// 		color: _palette(main-lightgray);
-	// 		transition: transform 0.2s ease;
-	// 	}
-
-	// 	&:hover {
-	// 		box-shadow: inset 0 0 0 2px _palette(main-highlight);
-	// 		background-color: _palette(-main-gray);
-	// 		&::before {
-	// 			color: _palette(main-highlight);
-	// 		}
-
-	// 		&::after {
-	// 			color: _palette(main-highlight);
-	// 			transform: translate(5px, -50%);
-	// 		}
-	// 	}
-	// }
-
-	// .btn-basic {
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	position: relative;
-	// 	padding: 0.5em 4em 0.5em 0.7em;
-	// 	margin: 0.2em 0;
-	// 	background-color: _palette(heading-level3);
-	// 	border-radius: 4px;
-	// 	border-bottom: 0;
-	// 	box-shadow: inset 0 0 0 2px _palette(heading-level2);
-	// 	text-decoration: none;
-	// 	transition: all 0.2s ease;
-	// 	font-weight: _font(weight-bold);
-	// 	color: _palette(main-gray);
-
-	// 	&.center {
-	// 		align-items:center;
-	// 	}
-
-	// 	&::after {
-	// 			font-weight: _font(weight-regular);
-	// 			content: "→";
-	// 			position: absolute;
-	// 			right: 0.6em;
-	// 			top: 50%;
-	// 			transform: translateY(-50%);
-	// 			font-size: 1.8em;
-	// 			color: _palette(main-lightgray);
-	// 			transition: transform 0.2s ease;
-	// 		}
-
-	// 	&:hover {
-	// 		box-shadow: inset 0 0 0 2px _palette(main-highlight);
-	// 		color: _palette(main-gray) !important;
-		
-	// 		&::before {
-	// 			color: _palette(main-highlight);
-	// 		}
-
-	// 		&::after {
-	// 			color: _palette(main-highlight);
-	// 			transform: translate(5px, -50%);
-	// 		}
-	// 	}
-
-	// }
-	//#endregion

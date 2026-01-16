@@ -80,36 +80,36 @@
 
 	:root {
 
-		--z-index-base: 10000;
-		--z-index-header: 10001;
-		// #region Size
+		// --z-index-base: 10000;
+		// --z-index-header: 10001;
+		// // #region Size
 
-		--header-height: 3em;
-		--inner-width: 80rem;
-		--menu-width: 22em;
+		// --header-height: 3em;
+		// --inner-width: 80rem;
+		// --menu-width: 22em;
 
-		--border-radius: 4px;
-		--border-width: 1px;
+		// --border-radius: 4px;
+		// --border-width: 1px;
 
-		--padding-h: 0.2em;
-		--padding-v: 0.4em;
+		// --padding-h: 0.2em;
+		// --padding-v: 0.4em;
 
-		// #endregion
+		// // #endregion
 
-		// #region Font
+		// // #region Font
 
-		--font-family: 'Pretendard GOV', 'Source Sans Pro', Helvetica, sans-serif;
-		--font-family-fixed: 'Courier New', monospace;
+		// --font-family: 'Pretendard GOV', 'Source Sans Pro', Helvetica, sans-serif;
+		// --font-family-fixed: 'Courier New', monospace;
 
-		--font-weight-light: 300;
-		--font-weight-regular: 400;
-		--font-weight-bold: 600;
-		--font-weight-strong: 700;
+		// --font-weight-light: 300;
+		// --font-weight-regular: 400;
+		// --font-weight-bold: 600;
+		// --font-weight-strong: 700;
 
-		--font-letter-spacing: 0.35em;
-		--font-letter-spacing-alt: -0.035em;
+		// --font-letter-spacing: 0.35em;
+		// --font-letter-spacing-alt: -0.035em;
 
-		// #endregion
+		// // #endregion
 
 		// #region Color
 
@@ -136,14 +136,12 @@
 		--color-text-negative: var(--color-main-level6);
 
 		// Heading
-		--color-h1-bg: none;
 		--color-h1-text: var(--color-text-default);
 
 		--color-h2-bg: var(--color-main-level2);
 		--color-h2-text: var(--color-text-negative);
 
 		--color-h3-bg: var(--color-main-level4);
-		--color-h3-text: var(--color-main-level2);
 
 		// Border
 		--color-border: var(--color-main-level4);
@@ -155,6 +153,7 @@
 		// ETC
 		--color-code-bg: var(--color-main-level1);
 		--color-box-bg: var(--color-main-level6);
+		--color-box-title-bg: var(--color-main-level2);
 		--color-box-title-text: var(--color-text-negative);
 
 		// #endregion
