@@ -9,7 +9,7 @@
 		$gutter: _size(gutter);
 		flex-grow: 1;
 		padding: 0 0 1em 0;
-		background-color: _palette(footer-light);
+		background-color: var(--color-footer-bg);
 
 		> .inner {
 			@include vendor('display', 'flex');

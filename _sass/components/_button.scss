@@ -121,8 +121,8 @@
 		// 밝은 배경의 버튼
 		&.subject {
 			padding: 0.8em 4em 0.8em 1em;
-			background-color: _var(--color-button-bg);
-			color: _var(--color-text-default);
+			background-color: var(--color-button-bg);
+			color: var(--color-text-default);
 			text-decoration: none;
 			font-weight: _font(weight-bold);
 
@@ -144,8 +144,8 @@
 		// 어두운 배경의 버튼
 		&.subject-negative {
 			padding: 0.8em 4em 0.8em 1em;
-			background-color: _var(--color-button-bg-negative);
-			color: _var(--color-text-negative);
+			background-color: var(--color-button-bg-negative);
+			color: var(--color-text-negative);
 			text-decoration: none;
 			font-weight: _font(weight-bold);
 

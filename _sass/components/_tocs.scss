@@ -34,9 +34,9 @@ ul.auto-toc {
         &.active {
             font-weight: bold;
             padding-left: 0.4em !important;
-            color: var(--color-white) !important; /* 연한 회색 */
+            color: var(--color-text-negative) !important;
             border-left: 2px solid var(--color-border) !important;
-            background-color: var(--color-level3);
+            background-color: var(--color-main-level3);
         }
     }
 }
