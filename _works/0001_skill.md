@@ -6,6 +6,9 @@ image: /images/pic01.jpg
 tilestyle: style3
 ---
 
+
+### Main
+
 <div class="box">
 
 #### <i class="fa-brands fa-unity"></i> Unity Engine
@@ -46,7 +49,7 @@ tilestyle: style3
 
 </div>
 
-## 솔직히 자신 없는 부분
+### Sub(자신 없음)
 
 <div class="box">
 
