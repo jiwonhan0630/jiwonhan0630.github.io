@@ -207,8 +207,9 @@
 		}
 
 		&.pointer-none {
-			cursor: default;
 			pointer-events: none;
+			padding-top: 0.3em;
+			padding-bottom: 0.3em;
 		}
 
 		&.disabled,
