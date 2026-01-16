@@ -15,7 +15,7 @@ image: /images/pic01.jpg
 [차량 AI 및 자율 주행 시스템](#car-ai){: .button .subject .arrow sub="NavMesh Baking을 활용한 자율 주행 AI"}
 [실시간 파츠 교체 시스템](#parts-system){: .button .subject .arrow sub="주행 중 정차 없이 차량의 부품을 교체"}
 [Hat Socket 자동 설정 기능](#hat-socket-자동-설정-기능){: .button .subject .arrow sub="모자 착용 위치 자동 설정"}
-[커스텀 에디터](#custom-editor){: .button .subject .arrow sub="주행 경로 편집, 액세서리 장착 위치 수정"}
+[커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="주행 경로 편집, 액세서리 장착 위치 수정"}
 [전용 런처 개발](#){: .button .subject .pointer-none sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
 
@@ -55,12 +55,11 @@ Brain 클래스의 처리 결과에 따라 WheelController의 값을 변경하�
 또한 차량의 무게와 길이가 변경되었을 때, 예상 회전 반경을 계산하여[(관련자료)](https://www.mdpi.com/1424-8220/23/12/5751), 주행 경로를 수정합니다.
 
 ## Hat Socket 자동 설정 기능
-차량의 모자 액세서리 장착 위치를 자동으로 설정해주는 기능을 구현하였습니다.  
+차량의 모자 액세서리 착용 위치를 자동으로 설정해주는 기능을 구현하였습니다.  
 바디 쉘에 해당하는 메쉬에서 가장 높은 위치의 폴리곤을 탐색하여 기울기를 적용하여 오브젝트의 Hat Socket으로 설정합니다.  
 Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여 간단한 미리보기 기능을 구현하였습니다.  
 
 ## 커스텀 에디터
-{: #custom-editor}
 
 ### 경로 에디터
 
