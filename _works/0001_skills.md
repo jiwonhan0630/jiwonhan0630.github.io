@@ -6,8 +6,8 @@ image: /images/pic01.jpg
 tilestyle: style3
 ---
 
-### Main Skills
-{% include skill-list.html data=site.data.skills_main %}
+### Main
+{% include skills.html data=site.data.skills_main %}
 
-### Sub Skills
-{% include skill-list.html data=site.data.skills_sub %}
+### Sub
+{% include skills.html data=site.data.skills_sub %}
