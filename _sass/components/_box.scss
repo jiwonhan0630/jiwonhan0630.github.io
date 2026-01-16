@@ -29,6 +29,7 @@
 		border-radius: 8px;
 		border: 1px solid _palette(border);
     	margin-top: 1em;
+		overflow: hidden;
 
 		.panelbox-title {
 			background-color: _palette(main-gray);
