@@ -23,4 +23,23 @@
 		// 	padding: 0;
 		// }
 	}
-	
+
+	.panelbox {
+		width: 100%;
+		border: 1px solid _palette(border);
+		border-radius: 4px;
+
+		.panelbox-title {
+			background-color: _palette(main-gray);
+			color: _palette(background-light);
+		}
+
+		.panelbox-item {
+			border-bottom: 1px solid _palette(border);
+
+			&:last-child {
+            	border-bottom: none;
+        	}
+		}
+
+	}
