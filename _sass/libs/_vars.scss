@@ -81,6 +81,7 @@
 	:root {
 
 		--z-index-base: 10000;
+		--z-index-header: 10001;
 		// #region Size
 
 		--header-height: 3em;
@@ -97,8 +98,8 @@
 
 		// #region Font
 
-		--font-family: ('Pretendard GOV', 'Source Sans Pro', Helvetica, sans-serif);
-		--font-family-fixed: ('Courier New', monospace);
+		--font-family: 'Pretendard GOV', 'Source Sans Pro', Helvetica, sans-serif;
+		--font-family-fixed: 'Courier New', monospace;
 
 		--font-weight-light: 300;
 		--font-weight-regular: 400;
