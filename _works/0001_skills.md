@@ -6,8 +6,8 @@ image: /images/pic01.jpg
 tilestyle: style3
 ---
 
-### Main
+### First
 {% include skills.html data=site.data.skills_main %}
 
-### Sub
+### Second
 {% include skills.html data=site.data.skills_sub %}
