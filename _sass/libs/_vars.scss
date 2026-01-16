@@ -36,48 +36,7 @@
 		letter-spacing:		0.35em,
 		letter-spacing-alt:	-0.035em
 	);
-
-// Palette.
-	$palette: (
-		bg:					#ffffff,
-		bg-accent:			#333333,
-		bg-alt:				#f6f6f6,
-		fg:					#585858,
-		fg-accent:			#ffffff,
-		border-bg:			rgba(144,144,144,0.075),
-		accent1:			#f2849e,
-		accent2:			#7ecaf6,
-		accent3:			#7bd0c1,
-		accent4:			#c75b9b,
-		accent5:			#ae85ca,
-		accent6:			#8499e7,
-		
-		main-white: #ffffff,
-		background-light: #f6f6f6,
-		footer-light: #eeeeee,
-		header-light: #f6f6f6E6,
-		main-dark: #3e3e3e,
-		main-gray: #585858,
-		main-lightgray: #7b7b7b,
-		heading-level1: #585858,
-		heading-level2: #d3d3d3,
-		heading-level3: #dcdcdc,
-		main-highlight: #61e18e,
-		main-highlight-dark: #38b764,
-		button-primary-active: #ee5f81,
-		button-light: #e7e7e7,
-		border: #c9c9c9,
-		code-background: rgba(144,144,144,0.075),
-		code-border: #c9c9c9,
-		hr-border: #c9c9c9,
-		blockquote-border: #c9c9c9,
-		table-child-1: none,
-		table-child-2: #dcdcdc80,
-		stuck: #f6dd8a,
-
-		menu-width: 22em,
-	);
-
+	
 	:root {
 
 		// --z-index-base: 10000;
@@ -119,8 +78,8 @@
 		--color-main-level3: #7b7b7b;
 		--color-main-level4: #dcdcdc; //#c9c9c9;
 		--color-main-level5: #e7e7e7;
-		--color-main-level6: #eeeeee;
-		--color-main-level6-80: #eeeeeeE6;
+		--color-main-level6: #f6f6f6;
+		--color-main-level6-80: #f6f6f6E6;
 		
 		--color-neon: #61e18e;
 		--color-neon-darken: #38b764;
@@ -141,7 +100,7 @@
 		--color-h2-bg: var(--color-main-level2);
 		--color-h2-text: var(--color-text-negative);
 
-		--color-h3-bg: var(--color-main-level4);
+		--color-h3-bg: var(--color-main-level5);
 
 		// Border
 		--color-border: var(--color-main-level4);
