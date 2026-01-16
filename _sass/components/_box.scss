@@ -36,11 +36,11 @@
 			color: _palette(background-light);
 			font-size: 1.4em;
 			font-weight: _font(weight-bold);
-			padding-left: _size(element-margin-v);
+    		padding: _size(element-margin-v) 1em;
 		}
 
 		.panelbox-item {
-			background-color: _palette(button-light);
+			background-color: _palette(footer-light);
 			border-bottom: 1px solid _palette(border);
     		padding: 1.4em 1em 2em 1em;
 
