@@ -17,7 +17,7 @@ image: /images/pic01.jpg
 [Hat Socket 자동 설정 기능](#hat-socket-자동-설정-기능){: .button .subject .arrow sub="모자 착용 위치 자동 설정"}
 [커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="주행 경로 에디터"}
 [전용 런처 개발](#){: .button .subject .pointer-none sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현"}
-[Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="NavMesh를 사용하는 맵에서 WheelCollider를 굴리기"}
+[Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="NavMesh 기반 환경에서 WheelCollider를 사용하는 차량 구현"}
 
 # 세부 내용
 ## 실시간 산업 데이터 기반 게이미피케이션 로직
