@@ -15,8 +15,8 @@ image: /images/pic01.jpg
 [보스 몬스터](#보스-몬스터){: .button .subject .arrow sub="StateMachineBehaviour를 이용한 보스 패턴 시스템"}
 [스테이지 설계 기능](#스테이지-설계-기능){: .button .subject .arrow sub="Gizmos를 이용한 스테이지 지형 설계"}
 [이벤트 기반 입력 시스템](#이벤트-기반-입력-시스템){: .button .subject .arrow sub="LegacyInputManager 환경에서의 입력 시스템"}
-[Cinemachine을 사용한 스테이지별 입장 연출](#){: .button .subject .pointer-none}
 [UI 시스템](#){: .button .subject .pointer-none sub="계층형 UI 구조, UGUI Navigation 적용"}
+[Cinemachine을 사용한 스테이지별 입장 연출](#){: .button .subject .pointer-none}
 
 # 세부 내용
 ## 보스 몬스터
