@@ -25,7 +25,7 @@ image: /images/pic01.jpg
 퀘스트 진행도나 아이템 보유 여부 등 디자이너가 설정한 외부 데이터에 따라 각 파츠 Edge의 인접 조건과 오브젝트 생성 규칙이 동적으로 변경되는 구조를 설계하였습니다.  
 
 ### 절차적 메쉬 생성
-[Greedy 알고리즘](https://en.wikipedia.org/wiki/Greedy_algorithm)을 통해 절차적 메쉬 생성을 구현하였습니다.  
+[Greedy 알고리즘](https://en.wikipedia.org/wiki/Greedy_algorithm)을 통한 절차적 메쉬 생성을 구현하였습니다.  
 <!-- 레벨 데이터를 통해 파츠의 점유 영역을 스캔하여 최적화된 Quad 단위로 메쉬를 생성합니다. 이는 불필요한 정점 생성을 원천 차단하여 메모리 할당을 최소화합니다.   -->
 
 ## 청크 시스템
@@ -42,7 +42,8 @@ Spatial Hash Grid를 통해 월드 공간을 영역으로 나누고 활성 상�
 
 ## CSV 유틸리티
 Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
-
+<!-- int, string 등의 기본 자료형을 넘어 Enum, List, Dictionary 등 복합 자료형으로의 변환이 가능하도록 구현하였습니다.
+또한 변수명과 CSV 헤더명이 다르더라도 Attribute를 통해 이름을 수정하거나 특정 열을 지정하여 매핑할 수 있도록 설계하였습니다 -->
 ```csharp
 [CSVReadable(typeof(Item))]
 class Item()
