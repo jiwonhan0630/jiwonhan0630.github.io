@@ -265,4 +265,38 @@
 		}
 	});
 //#endregion
+
+// #region csharp highlighter
+	$(function() {
+			// 강조할 C# 타입 리스트 (필요에 따라 추가)
+			const csharpTypes = [
+				'Dictionary', 'List'
+			];
+
+			function highlightCustomTypes() {
+				$('.highlight .n').each(function() {
+					const $this = $(this);
+					const text = $this.text().trim();
+
+					// 1. 일단 강조 리스트에 포함된 단어인지 확인
+					if (csharpTypes.indexOf(text) !== -1) {
+
+						// 2. 바로 다음 형제 요소(next sibling)를 확인
+						const $next = $this.next();
+
+						// 3. 다음 요소가 존재하고, 클래스가 .p(Punctuation)이며, 텍스트가 '<'로 시작하는지 체크
+						if ($next.length > 0 && $next.hasClass('p') && $next.text().indexOf('<') !== -1) {
+
+							// 제네릭 타입으로 확신할 수 있으므로 강조 클래스 부여
+							$this.addClass('nc'); 
+							// 뒤에 오는 '<' 기호도 같은 색으로 맞추고 싶다면
+							// $next.addClass('nc'); 
+						}
+					}
+				});
+        	}
+
+			highlightCustomTypes();
+		});
+//#endregion
 })(jQuery);
