@@ -42,14 +42,29 @@ Spatial Hash Grid를 통해 월드 공간을 영역으로 나누어 관리하는
 - 파츠의 ObjectPreview 기능과 스냅샷 출력 기능을 통해 툴을 사용하지 않더라도 파츠의 모습을 확인할 수 있도록 하였습니다.  
 
 ## CSV 유틸리티
-JSONUtility를 참고하여 CSV 데이터를 직렬화하는 유틸리티 구현  
-이거는 Attribute를 통해서...헤더의 이름과 동일한 변수에 값을 넣어주는 친구이다...  
-List와 Dictionary 두가지 방식을 사용할 수 있고...Dictionary의 경우 키를 무슨 값으로 할건지 이름 정해줄 수 있음...  
+Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
 
-<!-- ## 성능 최적화
-**절차적 레벨 생성 프로세스 개선**: 각종 최적화 기법을 적용하여 레벨 생성 시간을 대폭 감소  
-**UniTask 적용**: 비동기 로직(로딩, 에셋 로드 등)에 UniTask를 적용하여 메모리 할당을 최소화 -->
+```csharp
+[CSVReadable(typeof(Item))]
+class Item()
+{
+    public string Code;
 
+    // CSV 헤더명이 변수명과 다를 경우, 이름이나 인덱스로 매핑 가능
+    // 리플렉션을 통해 enum, 컬렉션 등 다양한 타입 변환 지원
+
+    [CSVName("Item_Tag_Code_List")]
+    public List<string> TagList;
+
+    [CSVIndex(4)] 
+    public int MaxLevel;
+}
+
+// List, Dictionary<key, List<>>등 다양한 컬렉션으로 변환 가능
+Dictionary<string, Item> resultDictionary = new();
+CSVUtility.TryFromText("text", nameof(Item.Code), out resultDictionary);
+
+```
 
 # Troubleshooting
 <!-- [Zero allocation과 propagation를 통한 성능 개선](#){: .btn-sub sub="절차적 레벨 생성 과정에서의 문제 발생과 해결"} -->
