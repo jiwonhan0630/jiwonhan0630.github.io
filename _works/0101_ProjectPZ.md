@@ -44,7 +44,7 @@ Spatial Hash Grid를 통해 월드 공간을 영역으로 나누어 관리하는
 ## CSV 유틸리티
 Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
 
-```cs
+```csharp
 [CSVReadable(typeof(Item))]
 class Item()
 {
