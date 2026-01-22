@@ -51,10 +51,9 @@ class Item()
     public string Code;
 
     // CSV 헤더명이 변수명과 다를 경우, 이름이나 인덱스로 매핑 가능
-    // 리플렉션을 통해 enum, 컬렉션 등 다양한 타입 변환 지원
 
     [CSVName("Item_Tag_Code_List")]
-    public List<string> TagList;
+    public List<string> TagList; // 리플렉션을 통해 enum, 컬렉션 등 다양한 타입으로의 변환 지원
 
     [CSVIndex(4)] 
     public int MaxLevel;
