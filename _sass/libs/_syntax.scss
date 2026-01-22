@@ -1,6 +1,6 @@
 // https://github.com/jwarby/jekyll-pygments-themes
 
-.highlight pre { background-color: #272822; }
+// .highlight pre { background-color: #272822; }
 .highlight .hll { background-color: #272822; }
 .highlight .c { color: #57A64A } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
@@ -9,10 +9,10 @@
 .highlight .n { color: #f8f8f2 } /* Name */
 .highlight .o { color: #f92672 } /* Operator */
 .highlight .p { color: #f8f8f2 } /* Punctuation */
-.highlight .cm { color: #75715e } /* Comment.Multiline */
-.highlight .cp { color: #75715e } /* Comment.Preproc */
-.highlight .c1 { color: #75715e } /* Comment.Single */
-.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .cm { color: #57A64A } /* Comment.Multiline */
+.highlight .cp { color: #57A64A } /* Comment.Preproc */
+.highlight .c1 { color: #57A64A } /* Comment.Single */
+.highlight .cs { color: #57A64A } /* Comment.Special */
 .highlight .ge { font-style: italic } /* Generic.Emph */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .kc { color: #66d9ef } /* Keyword.Constant */
@@ -23,7 +23,7 @@
 .highlight .kt { color: #66d9ef } /* Keyword.Type */
 .highlight .ld { color: #e6db74 } /* Literal.Date */
 .highlight .m { color: #ae81ff } /* Literal.Number */
-.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .s { color: #D69D85 } /* Literal.String */
 .highlight .na { color: #a6e22e } /* Name.Attribute */
 .highlight .nb { color: #f8f8f2 } /* Name.Builtin */
 .highlight .nc { color: #4DC9B0 } /* Name.Class */
@@ -65,3 +65,8 @@
 .highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
 .highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
+
+// ( name
+.highlight .p + .nf {
+    color: #4DC9B0; 
+}
