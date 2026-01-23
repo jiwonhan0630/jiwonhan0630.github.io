@@ -12,7 +12,7 @@ image: /images/pic01.jpg
 
 ## 담당 업무
 
-[보스 몬스터](#보스-몬스터){: .button .subject .arrow sub="StateMachineBehaviour를 이용한 보스 패턴 시스템"}
+[보스 몬스터](#보스-몬스터){: .button .subject .arrow sub="StateMachineBehaviour를 이용한 보스 몬스터"}
 [스테이지 설계 기능](#스테이지-설계-기능){: .button .subject .arrow sub="Gizmos를 이용한 스테이지 지형 설계"}
 [이벤트 기반 입력 시스템](#이벤트-기반-입력-시스템){: .button .subject .arrow sub="LegacyInputManager 환경에서의 입력 시스템"}
 [UI 시스템](#){: .button .subject .pointer-none sub="계층형 UI 구조, UGUI Navigation 적용"}
@@ -20,17 +20,22 @@ image: /images/pic01.jpg
 
 # 세부 내용
 ## 보스 몬스터
-- **보스 몬스터 FSM**: StateMachineBehaviour을 통해 애니메이션과 실제 상태를 연동한 FSM을 구현하였습니다.  
-- **인스펙터를 통한 패턴 설정**: 인스펙터를 통해 보스의 공격 패턴, 타이밍, 페이즈 전환 조건 등의 Json 데이터를 편집하는 기능을 구현하였습니다.
+
+### 보스 몬스터 FSM
+StateMachineBehaviour를 사용하여 보스 몬스터의 애니메이션과 실제 상태 로직을 연동한 FSM을 구현하였습니다.  
+BaseLayer에 공통 로직을 정의하고 OverlayLayer를 통해 페이즈 변화에 따른 추가 공격 패턴을 구현하였습니다.  
+
+### 커스텀 인스펙터
+StateMachineBehaviour에 보스 몬스터의 공격 패턴, 전이 조건 등의 데이터를 수정할 수 있는 커스텀 인스펙터를 구현하였습니다.  
+또한, AnimationClip 애셋의 수정 없이 Behaviour 단위에서 지정한 프레임에 UnityEvent를 호출시킬 수 있는 애니메이션 이벤트 기능을 구현하였습니다.
 
 ## 스테이지 설계 기능
-- Gizmos를 통해 스테이지의 지형(플랫폼)을 정의하고 시각화하는 기능을 구현하였습니다.  
-- 배치된 MeshRenderer의 Bound에 따라 해당 지형 정보를 수정하는 기능을 구현하였습니다.  
+Gizmos·Handles를 이용하여 스테이지의 지형(플랫폼)을 정의하고 시각화하는 기능을 구현하였습니다.  
+또한, 배치된 MeshRenderer의 Bound에 따라 해당 지형 정보를 수정할 수 있는 기능을 구현하였습니다.  
 
 ## 이벤트 기반 입력 시스템
 LegacyInputManager 환경에서 이벤트 기반의 입력 시스템을 구현하였습니다.  
 발행·구독 패턴을 사용하여 KeyCode 참조 없이 string key와 상태를 통해 입력 이벤트를 구독하고, 런타임에 조작키를 변경할 수 있는 구조를 설계하였습니다.
-
 
 
 <!-- ### 기타
