@@ -78,6 +78,7 @@
 		--color-main-level3: #7b7b7b;
 		--color-main-level4: #dcdcdc; //#c9c9c9;
 		--color-main-level5: #e7e7e7;
+		--color-main-level5-50: #e7e7e77D;
 		--color-main-level6: #f9f9f9;
 		--color-main-level6-80: #f9f9f9E6;
 		
@@ -111,7 +112,7 @@
 
 		// ETC
 		--color-code-bg: var(--color-main-level1);
-		--color-box-bg: var(--color-main-level5);
+		--color-box-bg: var(--color-main-level5-50);
 		--color-box-title-bg: var(--color-main-level2);
 		--color-box-title-text: var(--color-text-negative);
 
