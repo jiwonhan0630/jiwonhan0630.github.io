@@ -1,25 +1,15 @@
-{% comment %}
-매개변수:
-- url: 이동할 링크 (기본값: #)
-- text: 버튼 메인 텍스트
-- sub: 하단 부가 설명 (기본값: null)
-- icon: 구글 아이콘 이름 (없으면 미표시)
-- class: 추가 스타일 클래스 (primary, subject, center 등)
-{% endcomment %}
-
-{% capture button_content %}
 <a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
-    <div class="text-container">
-        <span class="main-text">{{ include.main-text }}</span>
-        {% if include.sub-text %}
-        <span class="sub-text">{{ include.sub-text }}</span>
-        {% endif %}
-    </div>
-    {% if include.icon %}
-    <div class="icon-container">
-        <span class="material-symbols-outlined">{{ include.icon }}</span>
-    </div>
-    {% endif %}
+<div class="text-container">
+<span class="main-text">{{ include.main-text }}</span>
+{% if include.sub-text %}
+<span class="sub-text">
+{{ include.sub-text }}
+</span>
+{% endif %}
+</div>
+{% if include.icon %}
+<div class="icon-container">
+<span class="material-symbols-outlined">{{ include.icon }}</span>
+</div>
+{% endif %}
 </a>
-{% endcapture %}
-{{ button_content | strip_newlines }}
