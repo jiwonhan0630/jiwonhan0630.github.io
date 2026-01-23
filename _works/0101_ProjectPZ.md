@@ -12,9 +12,9 @@ image: /images/pic01.jpg
 ## 담당 업무
 [절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}
 [청크 시스템](#청크-시스템){: .button .subject .arrow sub="Spatial Hash Grid 기반의 청크 시스템"}
-[CSV 유틸리티](#csv-유틸리티){: .button .subject .arrow sub="CSV 텍스트를 간편하게 직렬화하는 유틸리티"}
+[CSV 유틸리티](#csv-utility){: .button .subject .arrow sub="CSV 데이터 변환 유틸리티"}
 [커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
-[몬스터 패턴 시스템](#){: .button .subject .pointer-none}
+[몬스터 패턴 시스템](#몬스터-패턴-시스템){: .button .subject .pointer-none sub="데이터 기반 몬스터 패턴"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="절차적 레벨 생성 스크립트 리팩토링"}
 
 # 세부 내용
@@ -43,7 +43,7 @@ Spatial Hash Grid를 통해 월드 공간을 영역으로 나누고 활성 상�
 - 모듈화된 절차적 레벨 생성 기능을 호출하여 인게임과 동일한 절차로 생성되는 모습을 확인하며 작업할 수 있는 구조를 설계하였습니다.
 - 파츠의 ObjectPreview 기능과 스냅샷 출력 기능을 통해 툴을 사용하지 않더라도 파츠의 모습을 확인할 수 있도록 하였습니다.  
 
-## CSV 유틸리티
+## CSV Utility
 Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
 <!-- int, string 등의 기본 자료형을 넘어 Enum, List, Dictionary 등 복합 자료형으로의 변환이 가능하도록 구현하였습니다.
 또한 변수명과 CSV 헤더명이 다르더라도 Attribute를 통해 이름을 수정하거나 특정 열을 지정하여 매핑할 수 있도록 설계하였습니다 -->
@@ -66,6 +66,15 @@ class Item()
 Dictionary<string, Item> resultDictionary = new();
 CSVUtility.TryFromText("text", nameof(Item.Code), out resultDictionary);
 ```
+## 몬스터 패턴 시스템
+
+### CSV 기반 몬스터 FSM
+몬스터의 행동 패턴을 CSV 텍스트로 작성하여 FSM으로 동작시키는 시스템을 구현하였습니다.  
+각 행에 부여된 속성 키에 따라 내용을 다르게 파싱하는 방식으로, 새로운 상태를 생성하거나 상태별 전이 조건, 사용 스킬 등을 정의하여 사용할 수 있도록 하였습니다.  
+
+### 몬스터 패턴 뷰어
+UIToolkit을 통해 몬스터의 패턴을 시각화하는 뷰어를 구현하였습니다.  
+스테이지에 생성된 몬스터의 이전 동작이나 다음 틱에 실행할 동작을 확인할 수 있도록 하였습니다.  
 
 # Troubleshooting
 ## 문제 상황
