@@ -2,7 +2,6 @@
 layout: basic
 title: "Elements"
 description: "CSS 미리보기용 페이지"
-image: /images/pic01.jpg
 ---
 
 ## 제목 2단계입니다.

@@ -2,7 +2,6 @@
 layout: basic
 title: "마이웨이"
 description: "인생 첫 게임 프로젝트"
-image: /images/pic01.jpg
 ---
 
 ## 프로젝트 개요

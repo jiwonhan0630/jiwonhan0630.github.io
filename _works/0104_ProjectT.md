@@ -2,7 +2,6 @@
 layout: basic
 title: "Project T"
 description: "2D 퍼즐 플랫포머"
-image: /images/pic01.jpg
 ---
 
 ### 프로젝트 개요

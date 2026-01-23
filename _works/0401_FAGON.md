@@ -2,7 +2,6 @@
 layout: basic
 title: "FAGON"
 description: "하이어라키 네이밍을 통일해요"
-image: /images/pic01.jpg
 ---
 
 ### 프로젝트 개요

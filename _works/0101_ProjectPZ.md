@@ -2,7 +2,6 @@
 layout: basic
 title: "Project PZ"
 description: "실시간 턴제 전략 액션"
-image: /images/pic01.jpg
 ---
 
 ### 프로젝트 개요
