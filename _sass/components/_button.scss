@@ -71,8 +71,7 @@
 		}
 	}
 
-	.button
-	{
+	.button {
 		@include vendor('appearance', 'none');
 		@include vendor('transition', (
 			'background-color #{_duration(transition)} ease-in-out',
@@ -80,140 +79,210 @@
 			'box-shadow #{_duration(transition)} ease-in-out',
 			'transform #{_duration(transition)} ease-in-out'
 		));
-
 		display: flex;
-		flex-direction: column;
+		align-items: center; // 세로 중앙 정렬
+		justify-content: space-between; // 텍스트와 아이콘을 양 끝으로
 		position: relative;
-		margin: _size(element-margin-h) 0;
-		padding: 0.5em 1em;
-		border-radius: _size(border-radius);
-		border-bottom: 0;
-
-		&:focus, &:hover {
-			box-shadow: inset 0 0 0 2px var(--color-neon);
-		}
-
-		&.normal {
-			// padding: 0.5em 4em 0.5em 0.7em;
-			background-color: var(--color-button-bg);
-			color: var(--color-text-default);
-			text-decoration: none;
-			font-weight: _font(weight-bold);
-
-			// &:hover {
-			// 	box-shadow: inset 0 0 0 2px var(--color-neon);
-			
-			// 	&::before {
-			// 		color: var(--color-neon);
-			// 	}
-			// }
-		}
-
-		&.primary {
-			box-shadow: none;
-			background-color: var(--color-button-bg-negative);
-			color: var(--color-text-negative);
-
-			&:active {
-				background-color: var(--color-neon-dark);
-			}
-		}
+		padding: 0.8em 1.2em;
+		// min-height: 3.5em; // 버튼 최소 높이 확보
 		
-		// 밝은 배경의 버튼
-		&.subject {
-			// padding: 0.8em 4em 0.8em 1em;
-			background-color: var(--color-button-bg);
-			color: var(--color-text-default);
-			text-decoration: none;
-			font-weight: _font(weight-bold);
-
-			&::before {
-				content: attr(sub);
-				display: block;
-				font-size: 0.8em;
-				font-weight: _font(weight-regular);
-				order: 2;
-				white-space: pre-wrap;
+		// 텍스트들을 감싸는 컨테이너
+		.text-container {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			.main-text {
+				font-size: 1.1em;
+				font-weight: _font(weight-bold);
 			}
 
-			&:hover {
-				color: inherit;
-				// box-shadow: inset 0 0 0 2px var(--color-neon);
-				// background-color: var(--color-neon-dark);
-			}
-		}
-
-		// 어두운 배경의 버튼
-		&.subject-negative {
-			// padding: 0.8em 4em 0.8em 1em;
-			background-color: var(--color-button-bg-negative);
-			color: var(--color-text-negative);
-			text-decoration: none;
-			font-weight: _font(weight-bold);
-			padding: 0.6em 1em;
-			&::before {
-				content: attr(sub);
-				display: block;
+			.sub-text {
 				font-size: 0.8em;
 				font-weight: _font(weight-regular);
+				margin-top: 0.2em;
 				color: var(--color-main-level5);
-				order: 2;
 				white-space: pre-wrap;
 			}
-
-			&:hover {
-				color: var(--color-neon);
-				// // box-shadow: inset 0 0 0 2px var(--color-neon);
-				&::before {
-					color: var(--color-neon);
-				}
-			}
 		}
 
-		// 오른쪽에 화살표를 추가함
-		&.arrow {
-			padding-right: 4em;
-			
-			&::after {
-				content: "→";
-				position: absolute;
-				right: 1em;
-				top: 50%;
-				transform: translateY(-50%);
-				font-size: 1.8em;
-				font-weight: _font(weight-light);
+		// 아이콘을 감싸는 컨테이너
+		.icon-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-left: 1em;
+			transition: transform 0.2s ease;
+
+			.material-icons {
+				font-size: 1.5em;
 				color: inherit;
 			}
+		}
 
-			&:hover {
-				&::after {
-					color: var(--color-neon);
-					transform: translate(5px, -50%);
-				}
+		// 호버 시 아이콘 애니메이션
+		&:hover {
+			.icon-container {
+				transform: translateX(5px); // 화살표만 슥 밀리는 효과
+				color: var(--color-neon);
+			}
+			
+			// subject-negative 같은 특정 타입에서 서브텍스트 색상 변경
+			&.subject-negative .sub-text {
+				color: var(--color-neon);
 			}
 		}
 
-		&.center{
-			align-items: center;
-		}
-
-		&.inner {
-			margin-left: 0.5em;
-		}
-
-		&.fit-content {
-			width: fit-content;
-		}
-
-		&.pointer-none {
-			pointer-events: none;
-			padding-top: 0.3em;
-			padding-bottom: 0.3em;
-		}
-
-		&.disabled,
-		&:disabled {
-			@include vendor('pointer-events', 'none');
-			opacity: 0.25;
+		// 유틸리티 클래스
+		&.fit-content { width: fit-content; }
+		&.center { 
+			justify-content: center; 
+			.text-container { flex-grow: 0; text-align: center; }
 		}
 	}
+
+	// .button
+	// {
+	// 	@include vendor('appearance', 'none');
+	// 	@include vendor('transition', (
+	// 		'background-color #{_duration(transition)} ease-in-out',
+	// 		'color #{_duration(transition)} ease-in-out',
+	// 		'box-shadow #{_duration(transition)} ease-in-out',
+	// 		'transform #{_duration(transition)} ease-in-out'
+	// 	));
+
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	position: relative;
+	// 	margin: _size(element-margin-h) 0;
+	// 	padding: 0.5em 1em;
+	// 	border-radius: _size(border-radius);
+	// 	border-bottom: 0;
+
+	// 	&:focus, &:hover {
+	// 		box-shadow: inset 0 0 0 2px var(--color-neon);
+	// 	}
+
+	// 	&.normal {
+	// 		// padding: 0.5em 4em 0.5em 0.7em;
+	// 		background-color: var(--color-button-bg);
+	// 		color: var(--color-text-default);
+	// 		text-decoration: none;
+	// 		font-weight: _font(weight-bold);
+
+	// 		// &:hover {
+	// 		// 	box-shadow: inset 0 0 0 2px var(--color-neon);
+			
+	// 		// 	&::before {
+	// 		// 		color: var(--color-neon);
+	// 		// 	}
+	// 		// }
+	// 	}
+
+	// 	&.primary {
+	// 		box-shadow: none;
+	// 		background-color: var(--color-button-bg-negative);
+	// 		color: var(--color-text-negative);
+
+	// 		&:active {
+	// 			background-color: var(--color-neon-dark);
+	// 		}
+	// 	}
+		
+	// 	// 밝은 배경의 버튼
+	// 	&.subject {
+	// 		// padding: 0.8em 4em 0.8em 1em;
+	// 		background-color: var(--color-button-bg);
+	// 		color: var(--color-text-default);
+	// 		text-decoration: none;
+	// 		font-weight: _font(weight-bold);
+
+	// 		&::before {
+	// 			content: attr(sub);
+	// 			display: block;
+	// 			font-size: 0.8em;
+	// 			font-weight: _font(weight-regular);
+	// 			order: 2;
+	// 			white-space: pre-wrap;
+	// 		}
+
+	// 		&:hover {
+	// 			color: inherit;
+	// 			// box-shadow: inset 0 0 0 2px var(--color-neon);
+	// 			// background-color: var(--color-neon-dark);
+	// 		}
+	// 	}
+
+	// 	// 어두운 배경의 버튼
+	// 	&.subject-negative {
+	// 		// padding: 0.8em 4em 0.8em 1em;
+	// 		background-color: var(--color-button-bg-negative);
+	// 		color: var(--color-text-negative);
+	// 		text-decoration: none;
+	// 		font-weight: _font(weight-bold);
+	// 		padding: 0.6em 1em;
+	// 		&::before {
+	// 			content: attr(sub);
+	// 			display: block;
+	// 			font-size: 0.8em;
+	// 			font-weight: _font(weight-regular);
+	// 			color: var(--color-main-level5);
+	// 			order: 2;
+	// 			white-space: pre-wrap;
+	// 		}
+
+	// 		&:hover {
+	// 			color: var(--color-neon);
+	// 			// // box-shadow: inset 0 0 0 2px var(--color-neon);
+	// 			&::before {
+	// 				color: var(--color-neon);
+	// 			}
+	// 		}
+	// 	}
+
+	// 	// 오른쪽에 화살표를 추가함
+	// 	&.arrow {
+	// 		padding-right: 4em;
+			
+	// 		&::after {
+	// 			content: "→";
+	// 			position: absolute;
+	// 			right: 1em;
+	// 			top: 50%;
+	// 			transform: translateY(-50%);
+	// 			font-size: 1.8em;
+	// 			font-weight: _font(weight-light);
+	// 			color: inherit;
+	// 		}
+
+	// 		&:hover {
+	// 			&::after {
+	// 				color: var(--color-neon);
+	// 				transform: translate(5px, -50%);
+	// 			}
+	// 		}
+	// 	}
+
+	// 	&.center{
+	// 		align-items: center;
+	// 	}
+
+	// 	&.inner {
+	// 		margin-left: 0.5em;
+	// 	}
+
+	// 	&.fit-content {
+	// 		width: fit-content;
+	// 	}
+
+	// 	&.pointer-none {
+	// 		pointer-events: none;
+	// 		padding-top: 0.3em;
+	// 		padding-bottom: 0.3em;
+	// 	}
+
+	// 	&.disabled,
+	// 	&:disabled {
+	// 		@include vendor('pointer-events', 'none');
+	// 		opacity: 0.25;
+	// 	}
+	// }
