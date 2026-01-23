@@ -7,12 +7,12 @@
   - class: 추가 스타일 클래스 (primary, subject, center 등)
 {% endcomment %}
 
-<a href="{{ include.url | default: '#' }}" class="button {{ include.class }}">
+<a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
     <div class="text-container">
-        <div class="label">{{ include.text }}</div>
+        <div class="main-text">{{ include.main-text }}</div>
         
         {% if include.sub %}
-            <div class="sub-text">{{ include.sub }}</div>
+            <div class="sub-text">{{ include.sub-text }}</div>
         {% endif %}
     </div>
 
