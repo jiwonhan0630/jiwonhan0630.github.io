@@ -58,13 +58,13 @@ NavMeshAsset을 생성하는 대신 별도의 ScriptableObject를 통해 NavMesh
 기존의 Navigation 윈도우를 사용하는 대신 각 씬마다 설정이 필요한 정보만 노출하는 전용 에디터 윈도우를 구현하였습니다.  
 
 # Troubleshooting
-## 이슈 발생
+## 문제 상황
 NavMeshAgent를 사용하여 이동하는 방식이었으나, 개발 도중 WheelCollider를 통해 이동하도록 스펙이 변경되었습니다.  
 각 스테이지는 이미 NavMesh를 사용하는 규격으로 구현되어있었기 때문에, 스테이지를 수정하는 것은 불가능했습니다.  
 Unity AI Navgation을 통해 이동하는 차량에 물리적인 상호작용과 각 부품의 변경에 따른 성능 차이를 추가해야함.  
 기존 스테이지는 특별한 규격 없이 씬 하나에 NavMesh를 사용함.
 
-## 이슈 해결
+## 해결 과정
 Unity AI Navigation의 Baking에 사용되는 함수를 역추적하여, 베이킹 시 생성된 NavMesh 폴리곤의 좌표를 별도의 ScriptableObject로 저장하였습니다.
 하지만 해당 좌표를 통한 최단경로 이동 시(NavMesh의 경로 따라가기 함수 사용) 폴리곤의 꼭짓점 부분을 이용하여 가장자리(코너)를 이동하기 때문에 시각적으로 부자연스러움.  
 
