@@ -9,14 +9,35 @@ description: "실시간 턴제 전략 액션"
 - Unity Engine
 
 ## 담당 업무
+[에디터 확장 기능](#커스텀-에디터){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
 [절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}
 [청크 시스템](#청크-시스템){: .button .subject .arrow sub="Spatial Hash Grid 기반의 청크 시스템"}
 [CSV Utility](#csv-utility){: .button .subject .arrow sub="CSV 데이터 변환 유틸리티"}
-[커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
 [몬스터 패턴 시스템](#몬스터-패턴-시스템){: .button .subject .arrow sub="데이터 기반 몬스터 패턴"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="절차적 레벨 생성 스크립트 리팩토링"}
 
 # 세부 내용
+## 에디터 확장 기능
+**UIToolkit**를 사용하여 에디터 확장 기능을 구현하였습니다.  
+
+### Attribute 기반의 자동 이벤트 바인딩 시스템
+UIBuilder나 UXML에서 class를 통해 함수를 바인딩하는 기능을 구현하였습니다.  
+
+1. 별도의 바인딩 로직 없이 UI 요소와 로직을 연결할 수 있도록 설계하였습니다.
+    - 새로운 버튼 기능을 추가할 때 메서드에 Attribute를 선언하고 합의된 class 이름을 작성하면 됩니다. UI 디자인을 변경할 때에는 UXML이나 UIBuilder를 통해 UI 요소에 class를 추가하면 됩니다.
+    ```csharp
+    [ElementCommand("cmd--select--brush-tool")]
+    private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");
+    ```
+2. UQuery를 통해 가져온 VisualElement에 메서드를 등록하기 위해 Reflection을 사용하였으나, 초기화 시 딱 한번 동작하여 성능 영향이 적도록 설계하였습니다.
+3. 불필요한 메모리 할당을 방지할 수 있도록 외부 변수 캡처 없이 static 메서드를 호출하는 static 람다 함수를 사용하여 구현하였습니다.
+
+### 레벨 디자인 툴
+절차적 레벨 생성에 사용되는 파츠 데이터를 작업할 수 있는 레벨 에디터를 구현하였습니다.  
+- UIToolkit을 통해 기능과 UI 요소를 분리하여 디자인 수정에 유연하게 대응할 수 있는 구조를 설계하였습니다.  
+- 모듈화된 절차적 레벨 생성 기능을 호출하여 인게임과 동일한 절차로 생성되는 모습을 확인하며 작업할 수 있는 구조를 설계하였습니다.
+- 파츠의 ObjectPreview 기능과 스냅샷 출력 기능을 통해 툴을 사용하지 않더라도 파츠의 모습을 확인할 수 있도록 하였습니다.  
+
 ## 절차적 레벨 생성
 ### 절차적 레벨 생성
 [Wang Tile 알고리즘](https://en.wikipedia.org/wiki/Wang_tile)을 응용하여 절차적 지형을 생성하는 로직을 구현하였습니다.  
@@ -35,13 +56,6 @@ TilemapRenderer를 통해 생성된 지형의 모습과 오브젝트의 위치 �
 Spatial Hash Grid를 통해 월드 공간을 영역으로 나누고 활성 상태를 관리하는 청크 시스템을 구현하였습니다.  
 플레이어의 이동에 따라 각 청크의 활성 상태가 전환되는 시점에 월드 타임스탬프를 기록하여,  
 재활성화 시 공백 시간 동안의 오브젝트 상태 변화를 수식 기반으로 즉시 보정할 수 있는 구조를 설계하였습니다.
-
-## 커스텀 에디터
-### 레벨 디자인 툴
-절차적 레벨 생성에 사용되는 파츠 데이터를 작업할 수 있는 레벨 에디터를 구현하였습니다.  
-- UIToolkit을 통해 기능과 UI 요소를 분리하여 디자인 수정에 유연하게 대응할 수 있는 구조를 설계하였습니다.  
-- 모듈화된 절차적 레벨 생성 기능을 호출하여 인게임과 동일한 절차로 생성되는 모습을 확인하며 작업할 수 있는 구조를 설계하였습니다.
-- 파츠의 ObjectPreview 기능과 스냅샷 출력 기능을 통해 툴을 사용하지 않더라도 파츠의 모습을 확인할 수 있도록 하였습니다.  
 
 ## CSV Utility
 Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
