@@ -7,7 +7,7 @@
 - class: 추가 스타일 클래스 (primary, subject, center 등)
 {% endcomment %}
 
-<a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
+<a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}" markdown="1">
     <div class="text-container">
         <div class="main-text">
             {{ include.main-text }}
