@@ -9,20 +9,16 @@
 
 {% capture button_content %}
 <a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
-<div class="text-container">
-    <div class="main-text">
-        {{ include.main-text }}
+    <div class="text-container">
+        <span class="main-text">{{ include.main-text }}</span>
+        {% if include.sub-text %}
+        <span class="sub-text">{{ include.sub-text }}</span>
+        {% endif %}
     </div>
-    {% if include.sub-text %}
-    <div class="sub-text">
-        {{ include.sub-text }}
+    {% if include.icon %}
+    <div class="icon-container">
+        <span class="material-symbols-outlined">{{ include.icon }}</span>
     </div>
-    {% endif %}
-</div>
-{% if include.icon %}
-<div class="icon-container">
-    <span class="material-symbols-outlined">{{ include.icon }}</span>
-</div>
     {% endif %}
 </a>
 {% endcapture %}
