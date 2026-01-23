@@ -1,13 +1,6 @@
 <a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
-    <span class="text-container">
-        <span class="main-text">{{ include.main-text }}</span>
-        {% if include.sub-text %}
-        <span class="sub-text">{{ include.sub-text }}</span>
-        {% endif %}
-    </span>
+    <span class="text-container"><span class="main-text">{{ include.main-text }}</span>{% if include.sub-text %}<span class="sub-text">{{ include.sub-text }}</span>{% endif %}</span>
     {% if include.icon %}
-    <span class="icon-container">
-        <span class="material-symbols-outlined">{{ include.icon }}</span>
-    </span>
+    <span class="icon-container"><span class="material-symbols-outlined">{{ include.icon }}</span></span>
     {% endif %}
 </a>
