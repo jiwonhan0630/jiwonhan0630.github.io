@@ -8,16 +8,19 @@
 {% endcomment %}
 
 <a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
-<div class="text-container">
-<div class="main-text">{{ include.main-text }}</div>
-{% if include.sub-text %}
-<div class="sub-text">{{ include.sub-text }}</div>
-{% endif %}
-</div>
-
-{% if include.icon %}
-<div class="icon-container">
-<span class="material-symbols-outlined">{{ include.icon }}</span>
-</div>
-{% endif %}
+    <div class="text-container">
+        <div class="main-text">
+            {{ include.main-text }}
+        </div>
+        {% if include.sub-text %}
+        <div class="sub-text">
+            {{ include.sub-text }}
+        </div>
+        {% endif %}
+    </div>
+    {% if include.icon %}
+    <div class="icon-container">
+        <span class="material-symbols-outlined">{{ include.icon }}</span>
+    </div>
+    {% endif %}
 </a>
