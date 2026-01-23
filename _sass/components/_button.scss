@@ -144,12 +144,14 @@
 				flex-grow: 1;
 
 				.main-text {
+					display: block;
 					font-size: 1.1em;
 					font-weight: _font(weight-bold);
 					color: inherit;
 				}
 
 				.sub-text {
+					display: block;
 					font-size: 0.8em;
 					font-weight: _font(weight-regular);
 					margin-top: 0.2em;
@@ -178,7 +180,6 @@
 			}
 		}
 	}
-
 	// .button
 	// {
 	// 	@include vendor('appearance', 'none');
