@@ -85,7 +85,7 @@
 		flex-direction: column;
 		position: relative;
 		margin: _size(element-margin-h) 0;
-
+		padding: 0.5em 1em;
 		border-radius: _size(border-radius);
 		border-bottom: 0;
 
@@ -94,7 +94,7 @@
 		}
 
 		&.normal {
-			padding: 0.5em 4em 0.5em 0.7em;
+			// padding: 0.5em 4em 0.5em 0.7em;
 			background-color: var(--color-button-bg);
 			color: var(--color-text-default);
 			text-decoration: none;
@@ -121,7 +121,7 @@
 		
 		// 밝은 배경의 버튼
 		&.subject {
-			padding: 0.8em 4em 0.8em 1em;
+			// padding: 0.8em 4em 0.8em 1em;
 			background-color: var(--color-button-bg);
 			color: var(--color-text-default);
 			text-decoration: none;
@@ -145,7 +145,7 @@
 
 		// 어두운 배경의 버튼
 		&.subject-negative {
-			padding: 0.8em 4em 0.8em 1em;
+			// padding: 0.8em 4em 0.8em 1em;
 			background-color: var(--color-button-bg-negative);
 			color: var(--color-text-negative);
 			text-decoration: none;
