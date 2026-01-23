@@ -9,7 +9,8 @@ description: "실시간 턴제 전략 액션"
 - Unity Engine
 
 ## 담당 업무
-[에디터 확장 기능](#에디터-확장-기능){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
+[UIToolkit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템){: .button .subject-negative .arrow sub="Attribute 기반의 자동 이벤트 바인딩 시스템"}
+[에디터 확장 기능](#레벨-디자인-툴){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
 [절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}
 [청크 시스템](#청크-시스템){: .button .subject .arrow sub="Spatial Hash Grid 기반의 청크 시스템"}
 [CSV Utility](#csv-utility){: .button .subject .arrow sub="CSV 데이터 변환 유틸리티"}
@@ -17,10 +18,10 @@ description: "실시간 턴제 전략 액션"
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="절차적 레벨 생성 스크립트 리팩토링"}
 
 # 세부 내용
-## 에디터 확장 기능
+## Attribute 기반의 자동 이벤트 바인딩 시스템
 {% include highlights/projectpz-editor-ui.md %}
 
-### 레벨 디자인 툴
+## 레벨 디자인 툴
 절차적 레벨 생성에 사용되는 파츠 데이터를 작업할 수 있는 레벨 에디터를 구현하였습니다.  
 1. **[Attribute 기반의 자동 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템)**을 사용하여 디자인 작업과 유연하게 연동할 수 있는 구조를 설계하였습니다.
 2. **인게임과 동일한 프리뷰 환경**: 인게임의 레벨 생성 로직을 모듈화하고 에디터 환경에 통합하여, 별도의 빌드 과정 없이 절차적 생성 결과를 빠르게 확인하며 작업할 수 있는 환경을 구축하였습니다.

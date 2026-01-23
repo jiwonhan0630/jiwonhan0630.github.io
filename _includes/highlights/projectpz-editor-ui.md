@@ -1,4 +1,3 @@
-### Attribute 기반의 자동 이벤트 바인딩 시스템
 UIToolkit 환경에서, element class를 통해 함수를 자동으로 바인딩하는 기능을 구현하였습니다.  
 - **UI 디자인과 로직의 기능적 분리**: 디자이너가 명시한 element class에 따라 프로그래머는 메서드에 Attribute를 선언하는 것 외에는 별도의 바인딩 작업이 필요하지 않도록 설계하였습니다.
     ```csharp
