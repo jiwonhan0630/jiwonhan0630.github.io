@@ -15,17 +15,6 @@ description: "하이어라키 네이밍을 통일해요"
     - 예를 들어, MeshRenderer의 경우 MeshFilter가 참조하는 메쉬의 이름을 반영하거나, Material의 이름을 접미로 사용하는 등
 - 유니티 엔진의 넘버링 규칙을 수정 및 적용
 
-
-## Stuck
-{: .title-stuck }
-
-
-
-
-
-## Strike
-{: .title-strike }
-
 기본 구조는 Component 제한의 템플릿을 통해 컴포넌트별로 클래스를 만들어 하나씩 구현하는 방식으로 진행...  
 이를 통해 각 컴포넌트별로 다른 조건의 네이밍을 설정할 수 있게 되었음.  
 
