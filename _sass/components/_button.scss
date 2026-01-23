@@ -172,6 +172,8 @@
 
 		// 오른쪽에 화살표를 추가함
 		&.arrow {
+			padding-right: 4em;
+			
 			&::after {
 				content: "→";
 				position: absolute;
