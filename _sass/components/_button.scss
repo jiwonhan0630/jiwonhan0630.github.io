@@ -162,10 +162,11 @@
 			}
 
 			&:hover {
-				// box-shadow: inset 0 0 0 2px var(--color-neon);
-				&::before {
-					color: var(--color-neon);
-				}
+				color: var(--color-neon);
+				// // box-shadow: inset 0 0 0 2px var(--color-neon);
+				// &::before {
+				// 	color: var(--color-neon);
+				// }
 			}
 		}
 
