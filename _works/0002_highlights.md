@@ -5,10 +5,10 @@ description: "2021-2025"
 ---
 
 # Unity 에디터 확장 기능
-{% include highlights/projectpz-edior-ui.md %}
+{% include highlights/projectpz-editor-ui.md %}
 
 # Unity 에디터 확장 기능
-{% include highlights/projectc-edior-ui.md %}
+{% include highlights/projectc-editor-ui.md %}
 
 # Troubleshooting
 {% include highlights/projectpz-plg-refactoring.md %}
