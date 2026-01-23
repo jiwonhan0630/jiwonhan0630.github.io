@@ -9,7 +9,7 @@ description: "실시간 턴제 전략 액션"
 - Unity Engine
 
 ## 담당 업무
-[에디터 확장 기능](#커스텀-에디터){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
+[에디터 확장 기능](#에디터-확장-기능){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
 [절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}
 [청크 시스템](#청크-시스템){: .button .subject .arrow sub="Spatial Hash Grid 기반의 청크 시스템"}
 [CSV Utility](#csv-utility){: .button .subject .arrow sub="CSV 데이터 변환 유틸리티"}
@@ -18,10 +18,8 @@ description: "실시간 턴제 전략 액션"
 
 # 세부 내용
 ## 에디터 확장 기능
-**UIToolkit**를 사용하여 에디터 확장 기능을 구현하였습니다.  
-
 ### Attribute 기반의 자동 이벤트 바인딩 시스템
-UIBuilder나 UXML에서 class를 통해 함수를 바인딩하는 기능을 구현하였습니다.  
+UIToolkit 환경에서, UIElement의 class를 통해 함수를 바인딩하는 기능을 구현하였습니다.  
 
 1. 별도의 바인딩 로직 없이 UI 요소와 로직을 연결할 수 있도록 설계하였습니다.
     - 새로운 버튼 기능을 추가할 때 메서드에 Attribute를 선언하고 합의된 class 이름을 작성하면 됩니다. UI 디자인을 변경할 때에는 UXML이나 UIBuilder를 통해 UI 요소에 class를 추가하면 됩니다.
