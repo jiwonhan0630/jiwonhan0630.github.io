@@ -15,7 +15,7 @@ image: /images/pic01.jpg
 [차량 AI 및 자율 주행 시스템](#car-ai){: .button .subject .arrow sub="NavMesh Baking을 활용한 자율 주행 AI"}
 [실시간 파츠 교체 시스템](#parts-system){: .button .subject .arrow sub="주행 중 정차 없이 차량의 부품을 교체"}
 [Hat Socket 자동 설정 기능](#hat-socket-자동-설정-기능){: .button .subject .arrow sub="모자 착용 위치 자동 설정"}
-[커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="주행 경로 에디터"}
+[커스텀 에디터](#커스텀-에디터){: .button .subject .arrow sub="주행 경로 에디터·베이커"}
 [전용 런처 개발](#){: .button .subject .pointer-none sub="클라이언트의 자동 업데이트와 재실행, 버전 관리 기능이 포함된 전용 런처 구현"}
 [Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="NavMesh 기반 환경에서 WheelCollider를 사용하는 차량 구현"}
 
@@ -50,10 +50,13 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 ## 커스텀 에디터
 
 ### 주행 경로 에디터
-
 원하는 경로로 차량이 이동할 수 있도록 자율 주행 경로를 제작할 수 있는 경로 제작 기능을 구현하였습니다.  
 경로 에디터 윈도우에 UIToolkit을 사용하여 노드의 추가 및 삭제 버튼, 선택된 노드의 정보를 표시하였으며,  
 씬 뷰에서 Gizmos와 Handles를 사용하여 각 노드의 위치와 각도를 수정할 수 있도록 하였습니다.  
+
+### 주행 경로 베이커
+NavMeshAsset을 생성하는 대신 별도의 ScriptableObject를 통해 NavMesh 폴리곤 좌표와 커스텀한 주행 경로를 저장하는 베이킹 기능을 구현하였습니다.  
+기존의 Navigation 윈도우를 사용하는 대신 각 씬마다 설정이 필요한 정보만 노출하는 전용 에디터 윈도우를 구현하였습니다.  
 
 # Troubleshooting
 ## 이슈 발생
