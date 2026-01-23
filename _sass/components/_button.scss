@@ -77,7 +77,7 @@
 		@include vendor('transition', (
 			'background-color #{_duration(transition)} ease-in-out',
 			'color #{_duration(transition)} ease-in-out',
-			'box-shadow #{_duration(transition)} ease-in-out'
+			'box-shadow #{_duration(transition)} ease-in-out',
 			'transform #{_duration(transition)} ease-in-out'
 		));
 
