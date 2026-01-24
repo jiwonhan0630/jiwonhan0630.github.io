@@ -4,9 +4,10 @@ title: Jiwon Han's Page
 description: "안녕하세요, Full Stuck Engineer 한지원입니다"
 ---
 
-<!-- ### 안녕하세요, Full Stuck Engineer 한지원입니다. -->
-자신의 부족함을 외면하지 않고 더 나은 성능과 구조를 고민하며,  
-꽉 막힌(Stuck) 문제를 돌파(Strike)해내는 과정을 즐기는 개발자입니다.  
+# 불편함을 만드는 개발자
+
+동료들이 비효율을 참지 않아도 되는 심리적·기술적 안전망을 구축하여 동료들이 마음껏 불편해할 수 있는 작업 환경을 만들고 싶습니다.
+
 [<i class="fa-solid fa-phone"></i> 010-5681-0419](tel:01056810419)  
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
 

@@ -1,4 +1,4 @@
-### 커스텀 AssetReference class
+### AssetReference 커스텀
 프로젝트의 에셋 사용 방식에 따라, Address·Label을 사용하는 커스텀 AssetReference class를 구현하였습니다.  
 <!-- Address·Label을 복사 붙여넣기 하지 않고 에셋을 드래그 앤 드랍하여ㅓ -->
 인스펙터에서 에셋을 할당하면 직접 참조하는 대신, 해당 에셋에 지정된 Address·Label을 참조하여  
