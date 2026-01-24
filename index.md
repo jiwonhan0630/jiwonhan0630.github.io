@@ -1,10 +1,10 @@
 ---
 layout: home
 title: Jiwon Han's Page
-description: "목표는 '불편함을 만드는 개발자'"
+description: 불편함을 만드는 개발자
 ---
 
-동료들이 비효율을 참지 않아도 되는 심리적·기술적 안전망을 구축하여 동료들이 마음껏 불편해할 수 있는 작업 환경을 만들고 싶습니다.
+저는 '당연하게 여겼던 번거로움'을 과거의 '불편했던 점'으로 만드는 개발자를 목표로 하고 있습니다.
 
 [<i class="fa-solid fa-phone"></i> 010-5681-0419](tel:01056810419)  
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
