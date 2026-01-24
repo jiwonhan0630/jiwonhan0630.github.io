@@ -1,10 +1,9 @@
 ---
 layout: home
 title: Jiwon Han's Page
-description: "안녕하세요, Full Stuck Engineer 한지원입니다"
+description: "불편함을 만드는 개발자"
 ---
 
-# 불편함을 만드는 개발자
 
 동료들이 비효율을 참지 않아도 되는 심리적·기술적 안전망을 구축하여 동료들이 마음껏 불편해할 수 있는 작업 환경을 만들고 싶습니다.
 
