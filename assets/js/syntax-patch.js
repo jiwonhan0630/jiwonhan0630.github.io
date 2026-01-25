@@ -29,7 +29,7 @@
          * 2. Dictionary<T> 같은 제네릭 타입
          */
         function patchGenericClass() {
-            var csharpTypes = ['Dictionary', 'List', 'Task', 'Action', 'Func'];
+            var csharpTypes = ['Dictionary', 'List', 'Task', 'Action', 'Func', 'HashSet'];
             
             $('.highlight .n').each(function() {
                 var $this = $(this);
@@ -43,8 +43,32 @@
             });
         }
 
+        /**
+         * 3. enum
+         */
+        function patchEnumByComment() {
+            $('.highlight .c1').each(function() { // .c1은 한 줄 주석
+                var $comment = $(this);
+
+                // 주석 내용에 'enum'이 포함되어 있는지 확인
+                if ($comment.text().toLowerCase().indexOf('enum') !== -1) {
+                    // 해당 주석 이전 요소들 중 가장 가까운 식별자(.n)들을 찾음
+                    var $prevNames = $comment.prevAll('.n');
+
+                    if ($prevNames.length >= 2) {
+                        // public EquipSlotType SlotType; // enum 구조에서 
+                        // index 0은 SlotType, index 1은 EquipSlotType임
+                        $($prevNames[1]).addClass('no'); 
+                    } else if ($prevNames.length === 1) {
+                        // EquipSlotType; // enum 같은 구조일 경우
+                        $prevNames.addClass('no');
+                    }
+                }
+            });
+        }
 
         patchGenericClass();
         patchAttribute();
+        patchEnumByComment();
     });
 })(jQuery);
