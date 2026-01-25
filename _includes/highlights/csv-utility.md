@@ -9,7 +9,8 @@ public HashSet<string> WeaponTag;
 public List<string> EnchantList;
 public EquipSlotType SlotType; // enum
 ```
-
+  
+  
 이름 지정 방식과 열 인덱스 지정 방식을 지원하여 데이터 테이블의 헤더 수정에 유연하게 대응할 수 있도록 하였습니다.
 ```csharp
 [CSVIndex(0)]
