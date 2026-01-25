@@ -67,8 +67,29 @@
             });
         }
 
+        /**
+         * 4. Punctuation(.p)으로 오분류된 연산자(=, =>) 보정
+         */
+        function patchOperators() {
+            $('.highlight .p').each(function() {
+                var $this = $(this);
+                var text = $this.text().trim();
+
+                // 텍스트가 '=' 이거나 '=>' 인 경우만 타겟팅
+                if (text === '=' || text === '=>') {
+                    $this.removeClass('p').addClass('o'); // Punctuation 제거, Operator 추가
+                    
+                    // 만약 람다(=>)만 키워드 색상으로 더 튀게 하고 싶다면 추가 클래스 부여
+                    if (text === '=>') {
+                        $this.addClass('ow'); // Operator.Word와 같은 급으로 취급
+                    }
+                }
+            });
+        }
+
         patchGenericClass();
         patchAttribute();
         patchEnumByComment();
+        patchOperators();
     });
 })(jQuery);
