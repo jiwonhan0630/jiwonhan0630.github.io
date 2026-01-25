@@ -1,23 +1,33 @@
 Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데이터를 변환할 수 있는 유틸리티를 구현하였습니다.
-<!-- int, string 등의 기본 자료형을 넘어 Enum, List, Dictionary 등 복합 자료형으로의 변환이 가능하도록 구현하였습니다.
-또한 변수명과 CSV 헤더명이 다르더라도 Attribute를 통해 이름을 수정하거나 특정 열을 지정하여 매핑할 수 있도록 설계하였습니다 -->
+
+다양한 자료형의 변수를 자동으로 변환합니다.  
+추후 다른 자료형의 지원을 고려하여 변환 함수를 개별적으로 정의하도록 설계하였습니다.
 ```csharp
-[CSVFormat(typeof(Item))]
-class Item()
-{
-    public string Code;
+public string WeaponCode;
 
-    // CSV 헤더명이 변수명과 다를 경우, 이름이나 인덱스로 매핑 가능
-    [CSVName("Item_Tag_Code_List")]
-    public List<string> TagList; // 리플렉션을 통해 enum, 컬렉션 등 다양한 타입으로의 변환 지원
+public HashSet<string> WeaponTag;
+public List<string> EnchantList;
+public EquipSlotType SlotType; // enum
+```
 
-    [CSVIndex(4)] 
-    public int MaxLevel;
-}
+이름 지정 방식과 열 인덱스 지정 방식을 지원하여 데이터 테이블의 헤더 수정에 유연하게 대응할 수 있도록 하였습니다.
+```csharp
+[CSVIndex(0)]
+public string ItemCode;
 
-// List, Dictionary<key, List<>>등 다양한 컬렉션 사용 가능
+[CSVIndex(1)]
+public int MinimumLevel;
+
+[CSVHeader("wpn_author")]
+public string AuthorName;
+```
+
+다양한 콜렉션으로의 변환을 지원하여 원하는 구조로 데이터를 관리할 수 있도록 하였습니다.  
+추후 확장성을 고려하여 partial class로 구현하였습니다.  
+```csharp
 Dictionary<string, Item> resultDictionary = new();
+CSVUtility.TryFromText("text...", nameof(Weapon.ItemCode), out resultDictionary);
 
-CSVUtility.TryFromText("text", nameof(Item.Code), out resultDictionary);
-CSVUtility.TryToText("address", resultDictionary);
+string resultText = string.Empty;
+CSVUtility.TryToText(resultDictionary, out resultText);
 ```
