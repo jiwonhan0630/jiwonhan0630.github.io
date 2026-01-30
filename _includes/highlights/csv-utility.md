@@ -7,6 +7,9 @@ public string WeaponCode;
 
 public HashSet<string> WeaponTag;
 public List<string> EnchantList;
+
+[CSVConverter(typeof(MonsterCommandConverter))]
+public MonsterCommand Command; 
 public EquipSlotType SlotType; // enum
 ```
   
