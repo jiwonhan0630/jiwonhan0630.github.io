@@ -26,8 +26,9 @@
 
 // Font.
 	$font: (
-		family:				('Pretendard GOV','Source Sans Pro', Helvetica, sans-serif),
-		family-fixed:		('Courier New', monospace),
+		family: ('Pretendard GOV', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', Helvetica, Arial, sans-serif),
+		// Cascadia Mono 웹폰트로 쓰거나 하지 않으면 없을테니 걍 Consolas로 보일것
+		family-code: ('Cascadia Mono', Consolas, Menlo, 'Liberation Mono', monospace),
 		weight-light: 300,
 		weight-regular: 400,
 		weight-bold: 600,
@@ -58,7 +59,7 @@
 		// // #region Font
 
 		// --font-family: 'Pretendard GOV', 'Source Sans Pro', Helvetica, sans-serif;
-		// --font-family-fixed: 'Courier New', monospace;
+		// --font-family-code: 'Courier New', monospace;
 
 		// --font-weight-light: 300;
 		// --font-weight-regular: 400;

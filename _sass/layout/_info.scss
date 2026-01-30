@@ -1,7 +1,7 @@
 	#info {
 		background-color: var(--color-main-level2);
 		color: var(--color-text-negative);
-
+		padding: 2rem 0;
 
 		.info-head {
 			padding-bottom: _size(element-margin-v);
@@ -10,6 +10,7 @@
 		.info-title {
 			font-weight: _font(weight-bold);
 			font-size: 5rem;
+			line-height: 1.4em;
 		}
 
 		.info-content {

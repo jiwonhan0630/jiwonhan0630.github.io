@@ -135,7 +135,7 @@
 		background: var(--color-code-bg);
 		border-radius: _size(border-radius);
 		border: solid _size(border-width) var(--color-border);
-		font-family: _font(family-fixed);
+		font-family: _font(family-code);
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
@@ -143,7 +143,7 @@
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: _font(family-fixed);
+		font-family: _font(family-code);
 		font-size: 0.9em;
 		// margin: 0 0 _size(element-margin) 0;
 
