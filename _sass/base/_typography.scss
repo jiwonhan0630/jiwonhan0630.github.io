@@ -9,17 +9,10 @@
 	body, input, select, textarea {
 		color: var(--color-text-default);
 		font-family: _font(family);
-		font-size: 16pt;
-		font-weight: _font(weight_light);
-		line-height: 1.5;
+		font-size: 1rem;
+		font-weight: _font(weight-regular);
+		line-height: 1.65;
 
-		@include breakpoint('<=xlarge') {
-			font-size: 14pt;
-		}
-
-		@include breakpoint('<=large') {
-			font-size: 12pt;
-		}
 	}
 
 	a {
@@ -29,7 +22,7 @@
 		));
 		text-decoration: none;
 		color: var(--color-text-default);
-		border-bottom: dotted 1px var(--color-text-default);
+		border-bottom: solid 1px var(--color-text-default);
 
 		&:hover {
 			color: var(--color-neon);
