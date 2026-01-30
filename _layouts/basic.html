@@ -29,15 +29,17 @@
 							<div class="info-title">{{ page.title }}</div>
 						</div>
 					</div>
-					<div class="inner">
-						{% if page.tags and page.tags.size > 0 %}
-						<ul class="info-tags">
-							{% for tag in page.tags %}
-							<li>{{ tag }}</li>
-							{% endfor %}
-						</ul>
-						{% endif %}
-						{{ page.description }}
+					<div class="info-content">
+						<div class="inner">
+							{% if page.tags and page.tags.size > 0 %}
+							<ul class="info-tags">
+								{% for tag in page.tags %}
+								<li>{{ tag }}</li>
+								{% endfor %}
+							</ul>
+							{% endif %}
+							{{ page.description }}
+						</div>
 					</div>
 				</div>
 				<!-- Main -->
