@@ -18,6 +18,7 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 ## 레벨 에디팅 툴 및 베이킹 툴
 {% include highlights/projectc-editor-ui.md %}
 
+***
 
 <div class="heading-container">
 <h1>Utility Scripting?</h1>
@@ -32,6 +33,8 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 
 ## CSV Utility
 {% include highlights/csv-utility.md %}
+
+***
 
 <div class="heading-container">
 <h1>Troubleshooting</h1>
