@@ -1,7 +1,7 @@
 ---
 layout: basic
 title: "Highlights"
-description: "2021-2025"
+description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담겨있습니다. 강조가 되었으면 좋겠는데 그게 잘 드러나지 않을 것 같아서 상당히 슬픕니다."
 ---
 
 # Unity 에디터 확장 기능

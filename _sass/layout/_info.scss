@@ -1,15 +1,15 @@
 	#info {
-		.info-head
-		{
-			background-color: var(--color-main-level2);
-			color: var(--color-text-negative);
+		background-color: var(--color-main-level2);
+		color: var(--color-text-negative);
+		padding-bottom: 1rem;
+
+		.info-head {
 			padding-bottom: _size(element-margin-v);
 		}
 
-		.info-title
-		{
+		.info-title {
 			font-weight: _font(weight-bold);
-			font-size: 2.5em;
+			font-size: 5em;
 			line-height: 1.3;
 		}
 
