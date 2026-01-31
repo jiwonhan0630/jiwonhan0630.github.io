@@ -90,6 +90,7 @@
 	}
 
 	h3 {
+
 		font-size: 1.2em;
 		font-weight: _font(weight-bold);
 		line-height: 1em;
@@ -100,7 +101,12 @@
 		// p + &
 		// {
 			margin-top: 0.8em;
-		// }
+			// }
+			
+		width: fit-content;
+		padding: 0 0.2em;
+    	border-radius:0;
+  		background: linear-gradient(to top, var(--color-main-level5) 40%, transparent 40%);
 	}
 
 	h4 {
