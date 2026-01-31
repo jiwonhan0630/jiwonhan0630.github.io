@@ -3,14 +3,17 @@ Reflection과 Attribute를 통해, 별도의 파싱 로직 작성 없이 CSV 데
 다양한 자료형의 변수를 자동으로 변환합니다.  
 추후 다른 자료형의 지원을 고려하여 변환 함수를 개별적으로 정의하도록 설계하였습니다.
 ```csharp
-public string WeaponCode;
+public class DevilWeapon
+{    
+    public string WeaponCode;
 
-public HashSet<string> WeaponTag;
-public List<string> EnchantList;
+    public HashSet<string> WeaponTag;
+    public List<string> EnchantList;
 
-[CSVConverter(typeof(MonsterCommandConverter))]
-public MonsterCommand Command; 
-public EquipSlotType SlotType; // enum
+    [CSVConverter(typeof(MonsterCommandConverter))]
+    public MonsterCommand Command; 
+    public EquipSlotType SlotType; // enum
+}
 ```
   
   
