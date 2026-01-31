@@ -28,7 +28,7 @@
 	$font: (
 		family: ('Pretendard GOV', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', Helvetica, Arial, sans-serif),
 		// Cascadia Mono 웹폰트로 쓰거나 하지 않으면 없을테니 걍 Consolas로 보일것
-		family-code: ('Cascadia Mono', Consolas, Menlo, 'Liberation Mono', monospace),
+		family-code: (Consolas, Menlo, 'Liberation Mono', monospace),//('Cascadia Mono', Consolas, Menlo, 'Liberation Mono', monospace),
 		weight-light: 300,
 		weight-regular: 400,
 		weight-bold: 600,
