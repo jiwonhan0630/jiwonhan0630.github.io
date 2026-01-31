@@ -17,6 +17,7 @@ description: 불편함을 만드는 개발자
    icon="arrow_forward" 
    class="negative" 
 %}
+
 {% include components/button-subject.html 
    main-text="보유기술" 
    sub-text="사용 가능한 언어와 소프트웨어 등" 
@@ -24,6 +25,7 @@ description: 불편함을 만드는 개발자
    icon="arrow_forward" 
    class="negative" 
 %}
+
 <!-- 
 [Highlights]({% link _works/0002_highlights.md %}){: .button .subject-negative .arrow .center sub="주요 업무 정리"}
 [보유기술 소개]({% link _works/0001_skills.md %}){: .button .subject-negative .arrow .center sub="사용 가능한 언어와 툴, 소프트웨어 등"} -->
