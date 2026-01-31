@@ -13,7 +13,7 @@ description: 불편함을 만드는 개발자
 {% include components/button-subject.html 
    main-text="Highlights" 
    sub-text="핵심 역량 정리" 
-   url="_works/0002_highlights.md" 
+   url="works/0002_highlights.md" 
    icon="arrow_forward" 
    class="negative" 
 %}
@@ -21,7 +21,7 @@ description: 불편함을 만드는 개발자
 {% include components/button-subject.html 
    main-text="보유기술" 
    sub-text="사용 가능한 언어와 소프트웨어 등" 
-   url="_works/0001_skills.md" 
+   url="works/0001_skills.md" 
    icon="arrow_forward" 
    class="negative" 
 %}
