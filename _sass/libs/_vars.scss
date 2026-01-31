@@ -99,10 +99,10 @@
 		// Heading
 		--color-h1-text: var(--color-text-default);
 
-		--color-h2-bg: var(--color-main-level2);
-		--color-h2-text: var(--color-text-negative);
+		--color-h2-bg: var(--color-main-level5);
+		--color-h2-text: inherit;
 
-		--color-h3-bg: var(--color-main-level5);
+		--color-h3-bg: none;
 
 		// Border
 		--color-border: var(--color-main-level4);
