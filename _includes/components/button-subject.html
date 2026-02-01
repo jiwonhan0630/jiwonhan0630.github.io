@@ -3,23 +3,23 @@
 {% assign main_text = include.main-text %}
 {% assign sub_text = include.sub-text %}
 
-{% if include.doc %}
-  {% comment %} 1. 내부 문서 검색 (site.documents + site.pages) {% endcomment %}
-  {% assign all_content = site.documents | concat: site.pages %}
-  {% assign target_doc = all_content | where: "relative_path", include.doc | first %}
+{% if include.slug %}
+  {% comment %} 1. 내부 문서 검색 (folder 지정 또는 기본값 works) {% endcomment %}
+  {% assign dir = include.dir | default: "works" %}
+  {% assign target = site[dir] | where: "slug", include.slug | first %}
 
-  {% comment %} 2. 파일이 없으면 빌드 중단 (Fail-fast) {% endcomment %}
-  {% if target_doc == nil %}
-    {% include ERROR_LINK_NOT_FOUND:_{{ include.doc }}_CHECK_PATH.html %}
+  {% comment %} 2. 파일 부재 시 빌드 중단 {% endcomment %}
+  {% if target == nil %}
+    {% include ERROR_SLUG_NOT_FOUND:_[{{ include.slug }}]_IN_[{{ folder }}].html %}
   {% endif %}
 
-  {% comment %} 3. 문서 정보 할당 (Front Matter 우선) {% endcomment %}
-  {% assign final_url = target_doc.url | relative_url %}
-  {% assign main_text = target_doc.title | default: include.main-text %}
-  {% assign sub_text = target_doc.description | default: include.sub-text %}
+  {% comment %} 3. 문서 메타데이터 할당 {% endcomment %}
+  {% assign final_url = target.url | relative_url %}
+  {% assign main_text = target.title | default: include.main-text %}
+  {% assign sub_text = target.description | default: include.sub-text %}
 
 {% elsif include.url %}
-  {% comment %} 외부 링크 또는 직접 입력된 URL 처리 {% endcomment %}
+  {% comment %} 4. 일반 URL 처리 (외부 링크 등) {% endcomment %}
   {% assign final_url = include.url %}
 {% endif %}
 
