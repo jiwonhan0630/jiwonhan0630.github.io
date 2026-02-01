@@ -11,13 +11,13 @@ description: 불편함을 만드는 개발자
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
 
 {% capture target %}{% link _works/0002-highlights.md %}{% endcapture %}
-{% include components/button-subject.html url=target class="negative" icon="arrow_forward" 
+{% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
     main-text="Highlights" 
     sub-text="핵심 역량 정리" 
 %}
 
 {% capture target %}{% link _works/0001-skills.md %}{% endcapture %}
-{% include components/button-subject.html url=target class="negative" icon="arrow_forward" 
+{% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
     main-text="보유기술" 
     sub-text="사용 가능 언어/툴" 
 %}
