@@ -1,21 +1,34 @@
-{% comment %} slug가 들어오면 해당 문서를 찾아서 정보를 자동으로 채움 {% endcomment %}
-{% if include.slug %}
-  {% assign target = site.works | where: "slug", include.slug | first %}
-  {% assign url = target.url | relative_url %}
-  {% assign main_text = target.title | default: include.main-text %}
-  {% assign sub_text = target.description | default: include.sub-text %}
-{% else %}
-  {% assign url = include.url %}
-  {% assign main_text = include.main-text %}
-  {% assign sub_text = include.sub-text %}
+{% comment %} 초기화 {% endcomment %}
+{% assign final_url = "#" %}
+{% assign main_text = include.main-text %}
+{% assign sub_text = include.sub-text %}
+
+{% if include.doc %}
+  {% comment %} 1. 내부 문서 검색 (site.documents + site.pages) {% endcomment %}
+  {% assign all_content = site.documents | concat: site.pages %}
+  {% assign target_doc = all_content | where: "relative_path", include.doc | first %}
+
+  {% comment %} 2. 파일이 없으면 빌드 중단 (Fail-fast) {% endcomment %}
+  {% if target_doc == nil %}
+    {% include ERROR_LINK_NOT_FOUND:_{{ include.doc }}_CHECK_PATH.html %}
+  {% endif %}
+
+  {% comment %} 3. 문서 정보 할당 (Front Matter 우선) {% endcomment %}
+  {% assign final_url = target_doc.url | relative_url %}
+  {% assign main_text = target_doc.title | default: include.main-text %}
+  {% assign sub_text = target_doc.description | default: include.sub-text %}
+
+{% elsif include.url %}
+  {% comment %} 외부 링크 또는 직접 입력된 URL 처리 {% endcomment %}
+  {% assign final_url = include.url %}
 {% endif %}
 
 {::nomarkdown}
-<a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
+<a href="{{ final_url }}" class="button-subject {{ include.class }}">
     <span class="text-container">
-        <span class="main-text">{{ include.main_text }}</span>
-        {% if include.sub-text %}
-        <span class="sub-text">{{ include.sub_text }}</span>
+        <span class="main-text">{{ main_text }}</span>
+        {% if sub_text %}
+        <span class="sub-text">{{ sub_text }}</span>
         {% endif %}
     </span>
     {% if include.icon %}
