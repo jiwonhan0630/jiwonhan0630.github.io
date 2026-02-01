@@ -1,9 +1,21 @@
+{% comment %} slug가 들어오면 해당 문서를 찾아서 정보를 자동으로 채움 {% endcomment %}
+{% if include.slug %}
+  {% assign target = site.works | where: "slug", include.slug | first %}
+  {% assign url = target.url | relative_url %}
+  {% assign main_text = target.title | default: include.main-text %}
+  {% assign sub_text = target.description | default: include.sub-text %}
+{% else %}
+  {% assign url = include.url %}
+  {% assign main_text = include.main-text %}
+  {% assign sub_text = include.sub-text %}
+{% endif %}
+
 {::nomarkdown}
 <a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
     <span class="text-container">
-        <span class="main-text">{{ include.main-text }}</span>
+        <span class="main-text">{{ include.main_text }}</span>
         {% if include.sub-text %}
-        <span class="sub-text">{{ include.sub-text }}</span>
+        <span class="sub-text">{{ include.sub_text }}</span>
         {% endif %}
     </span>
     {% if include.icon %}
