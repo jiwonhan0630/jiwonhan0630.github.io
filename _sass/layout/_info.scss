@@ -2,6 +2,7 @@
 		background-color: var(--color-main-level5);
 		color: var(--color-main-level2);
 		padding: 2rem 0;
+    	border-bottom: solid 1px var(--color-main-level4);
 
 		.info-head {
 			padding-bottom: _size(element-margin-v);
@@ -15,7 +16,7 @@
 
 		.info-content {
 			font-size: 1.1rem;
-			padding-bottom: 1rem;
+			// padding-bottom: 1rem;
 		}
 
 		ul {
