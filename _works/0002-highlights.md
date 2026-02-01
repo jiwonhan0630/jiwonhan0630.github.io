@@ -5,22 +5,6 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 ---
 
 <div class="heading-container">
-<h1>Unity 에디터 확장 기능</h1>
-<p>
-저는 Unity Editor의 기능을 수정하거나 Plugin을 제작하여 팀 내에 보다 편안한 작업 환경을 제공하는 것에 보람을 느끼고,<br>
-앞으로도 그런 일을 하고 싶다는 내용입니다.
-</p>
-</div>
-
-## Attribute 기반의 자동 이벤트 바인딩 시스템
-{% include highlights/projectpz-editor-ui.md %}
-
-## 레벨 에디팅 툴 및 베이킹 툴
-{% include highlights/projectc-editor-ui.md %}
-
-***
-
-<div class="heading-container">
 <h1>개발 편의 기능</h1>
 <p>
 이 부분은 C#에 대한 콩알만한 이해도를 보여주면서도 팀에게 도움이 되는 행위를 하였다는 내용이 주제이고,<br>
@@ -28,13 +12,40 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 </p>
 </div>
 
-## Addressables Extend
-{% include highlights/addressablesystem.md %}
+## Attribute 기반의 자동 이벤트 바인딩 시스템
+{% include highlights/projectpz-editor-ui.md %}
 
 ## CSV Utility
 {% include highlights/csv-utility.md %}
 
 ***
+
+<div class="heading-container">
+<h1>Unity 에디터 확장 기능</h1>
+<p>
+저는 Unity Editor의 기능을 수정하거나 Plugin을 제작하여 팀 내에 보다 편안한 작업 환경을 제공하는 것에 보람을 느끼고,<br>
+앞으로도 그런 일을 하고 싶다는 내용입니다.
+</p>
+</div>
+
+## 레벨 에디팅 툴 및 베이킹 툴
+{% include highlights/projectc-editor-ui.md %}
+
+***
+
+<div class="heading-container">
+<h1>게임 로직 및 시스템</h1>
+<p>
+게임의 콘텐츠가 의도대로 동작할 수 있는 알고리즘도 물론 구현할 수 있고, 리소스를 안정적으로 처리하는 시스템도 구현을 했었다는 내용
+</p>
+</div>
+
+## Addressables 시스템 확장
+{% include highlights/addressablesystem.md %}
+
+## 절차적 레벨 생성
+내용내용~
+
 
 <div class="heading-container">
 <h1>Troubleshooting</h1>
