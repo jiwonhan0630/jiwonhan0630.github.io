@@ -10,22 +10,14 @@ description: 불편함을 만드는 개발자
 [<i class="fa-solid fa-phone"></i> 010-5681-0419](tel:01056810419)  
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
 
-{% include components/button-subject.html 
-   main-text="Highlights" 
-   sub-text="핵심 역량 정리" 
-   slug="0002-highlights" 
-   icon="arrow_forward" 
-   class="negative" 
+{% capture target %}{% link _works/0002-highlights.md %}{% endcapture %}
+{% include components/button-subject.html url=target class="negative" icon="arrow_forward" 
+    main-text="Highlights" 
+    sub-text="핵심 역량 정리" 
 %}
 
-{% include components/button-subject.html 
-   main-text="보유기술" 
-   sub-text="사용 가능한 언어와 소프트웨어 등" 
-   slug="0001-skills" 
-   icon="arrow_forward" 
-   class="negative" 
+{% capture target %}{% link _works/0001-skills.md %}{% endcapture %}
+{% include components/button-subject.html url=target class="negative" icon="arrow_forward" 
+    main-text="보유기술" 
+    sub-text="사용 가능 언어/툴" 
 %}
-
-<!-- 
-[Highlights]({% link _works/0002_highlights.md %}){: .button .subject-negative .arrow .center sub="주요 업무 정리"}
-[보유기술 소개]({% link _works/0001_skills.md %}){: .button .subject-negative .arrow .center sub="사용 가능한 언어와 툴, 소프트웨어 등"} -->

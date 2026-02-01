@@ -1,34 +1,9 @@
-{% comment %} 초기화 {% endcomment %}
-{% assign final_url = "#" %}
-{% assign main_text = include.main-text %}
-{% assign sub_text = include.sub-text %}
-
-{% if include.slug %}
-  {% comment %} 1. 내부 문서 검색 (folder 지정 또는 기본값 works) {% endcomment %}
-  {% assign dir = include.dir | default: "works" %}
-  {% assign target = site[dir] | where: "slug", include.slug | first %}
-
-  {% comment %} 2. 파일 부재 시 빌드 중단 {% endcomment %}
-  {% if target == nil %}
-    {% include ERROR_SLUG_NOT_FOUND:_[{{ include.slug }}]_IN_[{{ folder }}].html %}
-  {% endif %}
-
-  {% comment %} 3. 문서 메타데이터 할당 {% endcomment %}
-  {% assign final_url = target.url | relative_url %}
-  {% assign main_text = target.title | default: include.main-text %}
-  {% assign sub_text = target.description | default: include.sub-text %}
-
-{% elsif include.url %}
-  {% comment %} 4. 일반 URL 처리 (외부 링크 등) {% endcomment %}
-  {% assign final_url = include.url %}
-{% endif %}
-
 {::nomarkdown}
-<a href="{{ final_url }}" class="button-subject {{ include.class }}">
+<a href="{{ include.url | default: '#' }}" class="button-subject {{ include.class }}">
     <span class="text-container">
-        <span class="main-text">{{ main_text }}</span>
-        {% if sub_text %}
-        <span class="sub-text">{{ sub_text }}</span>
+        <span class="main-text">{{ include.main-text }}</span>
+        {% if include.sub-text %}
+        <span class="sub-text">{{ include.sub-text }}</span>
         {% endif %}
     </span>
     {% if include.icon %}
