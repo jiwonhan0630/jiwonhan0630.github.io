@@ -267,60 +267,53 @@
 //#endregion
 
 // #region Modal Dialog
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. 필요한 요소들을 한 번만 선택합니다. (ID는 HTML과 일치시켜주세요)
-    const modal = document.getElementById('modal'); 
-    const modalContent = document.getElementById('modal-content');
+	document.addEventListener('DOMContentLoaded', () => {
+		// 1. ID가 정확한지 HTML과 꼭 대조해 보세요! (여기서는 'modal'로 통일)
+		const modal = document.getElementById('modal'); 
+		const modalContent = document.getElementById('modal-content');
 
-    if (!modal || !modalContent) return; // 요소가 없으면 실행 중단
+		// [중요] 모달이 없으면 아래 리스너들을 등록하지 않고 탈출합니다.
+		if (!modal) {
+			console.warn("Modal element not found on this page.");
+			return; 
+		}
 
-    // 2. 모달 바깥(배경) 클릭 시 닫기 (한 번만 등록)
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.close();
-    });
+		// 2. 모달 닫기 이벤트 (이제 안전합니다)
+		modal.addEventListener('close', () => {
+			document.body.style.overflow = ''; 
+			if (modalContent) modalContent.innerHTML = ''; 
+		});
 
-    // 3. 모달이 닫힐 때 상태 복구 (한 번만 등록)
-    modal.addEventListener('close', () => {
-        document.body.style.overflow = ''; 
-        modalContent.innerHTML = ''; // 메모리 관리 및 이전 내용 삭제
-    });
+		// 3. 배경 클릭 시 닫기
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) modal.close();
+		});
 
-    // 4. 모든 모달 링크에 이벤트 리스너 등록
-    document.querySelectorAll('.modal-link').forEach(link => {
-        link.addEventListener('click', async (e) => {
-            e.preventDefault();
+		// 4. 링크 클릭 이벤트
+		document.querySelectorAll('.modal-link').forEach(link => {
+			link.addEventListener('click', async (e) => {
+				e.preventDefault();
+				if (!modalContent) return;
 
-            // 로딩 표시 및 모달 열기
-            modalContent.innerHTML = '<div class="loading">읽어오는 중...</div>';
-            modal.showModal();
-            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+				modalContent.innerHTML = "읽어오는 중...";
+				modal.showModal();
+				document.body.style.overflow = 'hidden';
 
-            try {
-                const response = await fetch(link.href);
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const text = await response.text();
-                
-                // HTML 파싱
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(text, 'text/html');
-                
-                // 본문 영역 추출 (Jekyll 테마에 따라 main, article 등 조정 가능)
-                const mainContent = doc.querySelector('main') || 
-                                    // doc.querySelector('article') || 
-                                    // doc.querySelector('.post-content') || 
-                                    doc.body;
-
-                modalContent.innerHTML = mainContent.innerHTML;
-
-            } catch (err) {
-                console.error('Fetch error:', err);
-                modalContent.innerHTML = '<div class="error">내용을 불러올 수 없습니다.</div>';
-            }
-        });
-    });
-});
-
+				try {
+					const response = await fetch(link.href);
+					const text = await response.text();
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(text, 'text/html');
+					
+					// 테마의 본문 영역만 추출
+					const mainContent = doc.querySelector('main') || doc.querySelector('article') || doc.body;
+					modalContent.innerHTML = mainContent.innerHTML;
+				} catch (err) {
+					modalContent.innerHTML = "내용을 불러올 수 없습니다.";
+				}
+			});
+		});
+	});
 // const modal = document.getElementById('myModal');
 // const openBtn = document.getElementById('openModal');
 // const closeBtn = document.getElementById('closeModal');

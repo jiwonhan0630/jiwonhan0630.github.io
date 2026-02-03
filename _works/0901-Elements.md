@@ -62,7 +62,7 @@ description: "CSS 미리보기용 페이지"
 %}
 
 
-이 핵심 역량은 <a href="{% link _works/0002-highlights.md %}" class="modal-link">여기서</a> 확인하세요.
+이 핵심 역량은 <a href="{% link _includes/highlights/projectc-editor-ui.md %}" class="modal-link">여기서</a> 확인하세요.
 
 
 
