@@ -50,11 +50,11 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 <div class="heading-container">
 <h1>Troubleshooting</h1>
 <p>
-이 부분은 저의  문제 해결 능력을 서술하면서도 나는 클라이언트 엔지니어스러운 일을 해낼 수 있다는걸 보여주는 부분입니다.
+개발 중 발생하는 예상치 못한 스펙 변경이나 성능 이슈를 최선의 방법으로 해결하기 위해 노력합니다.
 </p>
 </div>
 
-
+<!-- 엔진 내부 동작 원리를 파악하고 -->
 # Troubleshooting
 {% include highlights/projectpz-plg-refactoring.md %}
 
