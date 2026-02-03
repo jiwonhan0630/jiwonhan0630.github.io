@@ -267,50 +267,78 @@
 //#endregion
 
 // #region Modal Dialog
-	document.addEventListener('DOMContentLoaded', () => {
-		const modal = document.getElementById('universal-modal');
-		const modalBody = document.getElementById('modal-body');
-		const modalTitle = document.getElementById('modal-title');
+	document.querySelectorAll('.modal-link').forEach(link => {
+		link.addEventListener('click', async (e) => {
+			e.preventDefault();
+			const contentArea = document.getElementById('modal-content');
+			const modal = document.getElementById('modal');
 
-		document.querySelectorAll('.modal-link').forEach(link => {
-			link.addEventListener('click', async (e) => {
-				e.preventDefault(); // 페이지 이동 방지
-				const url = link.href;
+			contentArea.innerHTML = "읽어오는 중...";
+			modal.showModal();
 
-				// 1. 모달 열기 및 로딩 표시
-				modalTitle.innerText = "Loading...";
-				modalBody.innerHTML = '<div class="spinner">잠시만 기다려주세요...</div>';
-				modal.showModal();
-				document.body.style.overflow = 'hidden';
-
-				try {
-					// 2. 해당 페이지 HTML 가져오기
-					const response = await fetch(url);
-					const html = await response.text();
-
-					// 3. 임시 파서로 필요한 내용(보통 main이나 article 태그 내 내용)만 추출
-					const parser = new DOMParser();
-					const doc = parser.parseFromString(html, 'text/html');
-
-					// Jekyll 테마의 본문 영역 클래스에 맞게 수정하세요 (예: .post-content)
-					const content = doc.querySelector('main') || doc.querySelector('article') || doc.body;
-					const title = doc.querySelector('h1')?.innerText || "Detail";
-
-					// 4. 모달에 내용 주입
-					modalTitle.innerText = title;
-					modalBody.innerHTML = content.innerHTML;
-				} catch (error) {
-					modalBody.innerHTML = "내용을 불러오는 데 실패했습니다.";
-					console.error(error);
-				}
-			});
-		});
-
-		modal.addEventListener('close', () => {
-			document.body.style.overflow = ''; // 스크롤 복구
-			modalBody.innerHTML = ''; // 이전 내용 삭제 (메모리 관리)
+			try {
+				const response = await fetch(link.href);
+				const text = await response.text();
+				
+				// 가져온 전체 HTML에서 본문 영역만 추출
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(text, 'text/html');
+				
+				// 테마에 따라 'main' 또는 '.post-content' 등으로 본문만 선택
+				const mainContent = doc.querySelector('main') || doc.body;
+				contentArea.innerHTML = mainContent.innerHTML;
+			} catch (err) {
+				contentArea.innerHTML = "내용을 불러올 수 없습니다.";
+			}
 		});
 	});
+
+
+
+	// document.addEventListener('DOMContentLoaded', () => {
+	// 	const modal = document.getElementById('universal-modal');
+	// 	const modalBody = document.getElementById('modal-body');
+	// 	const modalTitle = document.getElementById('modal-title');
+
+	// 	document.querySelectorAll('.modal-link').forEach(link => {
+	// 		link.addEventListener('click', async (e) => {
+	// 			e.preventDefault(); // 페이지 이동 방지
+	// 			const url = link.href;
+
+	// 			// 1. 모달 열기 및 로딩 표시
+	// 			modalTitle.innerText = "Loading...";
+	// 			modalBody.innerHTML = '<div class="spinner">잠시만 기다려주세요...</div>';
+	// 			modal.showModal();
+	// 			document.body.style.overflow = 'hidden';
+
+	// 			try {
+	// 				// 2. 해당 페이지 HTML 가져오기
+	// 				const response = await fetch(url);
+	// 				const html = await response.text();
+
+	// 				// 3. 임시 파서로 필요한 내용(보통 main이나 article 태그 내 내용)만 추출
+	// 				const parser = new DOMParser();
+	// 				const doc = parser.parseFromString(html, 'text/html');
+
+	// 				// Jekyll 테마의 본문 영역 클래스에 맞게 수정하세요 (예: .post-content)
+	// 				const content = doc.querySelector('main') || doc.querySelector('article') || doc.body;
+	// 				const title = doc.querySelector('h1')?.innerText || "Detail";
+
+	// 				// 4. 모달에 내용 주입
+	// 				modalTitle.innerText = title;
+	// 				modalBody.innerHTML = content.innerHTML;
+	// 			} catch (error) {
+	// 				modalBody.innerHTML = "내용을 불러오는 데 실패했습니다.";
+	// 				console.error(error);
+	// 			}
+	// 		});
+	// 	});
+
+	// 	modal.addEventListener('close', () => {
+	// 		document.body.style.overflow = ''; // 스크롤 복구
+	// 		modalBody.innerHTML = ''; // 이전 내용 삭제 (메모리 관리)
+	// 	});
+	// });
 
 // const modal = document.getElementById('myModal');
 // const openBtn = document.getElementById('openModal');
