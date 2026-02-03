@@ -266,4 +266,27 @@
 	});
 //#endregion
 
+// #region Modal Dialog
+const modal = document.getElementById('myModal');
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
+
+// 모달 열기
+openBtn.addEventListener('click', () => {
+    modal.showModal(); 
+});
+
+// 모달 닫기
+closeBtn.addEventListener('click', () => {
+    modal.close();
+});
+
+// 배경 클릭 시 닫기 (선택 사항)
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+});
+
+//#endregion
+
+
 })(jQuery);

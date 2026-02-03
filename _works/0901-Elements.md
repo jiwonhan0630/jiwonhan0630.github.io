@@ -62,6 +62,22 @@ description: "CSS 미리보기용 페이지"
 %}
 
 
+<button id="openModal" class="button-subject">프로젝트 상세보기</button>
+
+<dialog id="myModal">
+    <div class="modal-header">
+        <h3>프로젝트 상세 정보</h3>
+        <button id="closeModal" class="close-btn">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    <div class="modal-content">
+        <p>여기에 상세 내용을 넣으세요. Jekyll의 <code>{{ content }}</code>를 활용할 수도 있습니다.</p>
+    </div>
+</dialog>
+
+
+
 # Tables
 |제목|
 |---|
