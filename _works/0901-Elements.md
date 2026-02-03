@@ -62,11 +62,15 @@ description: "CSS 미리보기용 페이지"
 %}
 
 {% capture target_url %}{% link _works/0002-highlights.md %}{% endcapture %}
-이 프로젝트의 핵심은 {% include components/modal-link.html 
+
+{% capture modal_link %}
+{% include components/modal-link.html 
    url=target_url 
    text="핵심 하이라이트 보기" 
    class="highlight-link" 
-%} 에서 확인하라구
+%}{% endcapture %}
+
+이 프로젝트의 핵심은 {{ modal_link }}에서 확인하라구
 
 
 # Tables
