@@ -55,14 +55,17 @@
 					<footer id="footer">
 						{% include footer.html %}
 					</footer>
-					
 
-					<dialog id="modal" class="custom-modal">
+					<dialog id="shared-modal" class="custom-modal">
 						<div class="modal-wrapper">
-							<button onclick="this.closest('dialog').close()" class="close-btn">
-								<span class="material-symbols-outlined">close</span>
-							</button>
-							<div id="modal-content" class="modal-body"></div>
+							<header class="modal-header">
+								<h3 id="modal-title">상세 정보</h3>
+								<button onclick="this.closest('dialog').close()" class="close-btn">
+									<span class="material-symbols-outlined">close</span>
+								</button>
+							</header>
+							<div id="modal-content" class="modal-scroll-area markdown-body">
+							</div>
 						</div>
 					</dialog>
 			</div>

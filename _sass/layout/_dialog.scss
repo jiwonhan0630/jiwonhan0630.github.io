@@ -47,40 +47,65 @@
 // }
 
 /* 모달 본체 */
+// .custom-modal {
+//     border: none;
+//     border-radius: 12px;
+//     width: 90%;
+//     max-width: 650px;
+//     max-height: 80vh; /* 화면 높이의 80%로 제한 */
+//     padding: 0;
+// }
+
+// .modal-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     max-height: 80vh;
+// }
+
+// .modal-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 15px 20px;
+//     border-bottom: 1px solid #eee;
+// }
+
+// /* 3. 내용 스크롤 영역 */
+// .modal-scroll-area {
+//     padding: 20px;
+//     overflow-y: auto; /* 내용 길면 스크롤 생성 */
+//     flex: 1;
+//     line-height: 1.6;
+//     word-break: keep-all; /* 아까 설정한 단어 단위 줄바꿈 적용 */
+// }
+
+// /* 배경 딤 처리 */
+// .custom-modal::backdrop {
+//     background: rgba(0, 0, 0, 0.5);
+//     backdrop-filter: blur(2px);
+// }
+
 .custom-modal {
-    border: none;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 650px;
-    max-height: 80vh; /* 화면 높이의 80%로 제한 */
-    padding: 0;
+    border: none; border-radius: 12px; width: 90%; max-width: 650px;
+    max-height: 80vh; padding: 0; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 
-.modal-wrapper {
-    display: flex;
-    flex-direction: column;
-    max-height: 80vh;
-}
+.modal-wrapper { display: flex; flex-direction: column; max-height: 80vh; }
 
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid #eee;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 25px; border-bottom: 1px solid #eee; background: #fff;
 }
 
-/* 3. 내용 스크롤 영역 */
+/* 스크롤 가두기 및 줄바꿈 처리 */
 .modal-scroll-area {
-    padding: 20px;
-    overflow-y: auto; /* 내용 길면 스크롤 생성 */
-    flex: 1;
-    line-height: 1.6;
-    word-break: keep-all; /* 아까 설정한 단어 단위 줄바꿈 적용 */
+    padding: 25px; overflow-y: auto; flex: 1;
+    line-height: 1.7; 
+    word-break: keep-all;     /* 한글 단어 단위 줄바꿈 */
+    overflow-wrap: anywhere;  /* 너무 길면 강제 줄바꿈 */
 }
 
-/* 배경 딤 처리 */
-.custom-modal::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-}
+/* 모달 안의 이미지 반응형 처리 */
+.modal-scroll-area img { max-width: 100%; height: auto; border-radius: 4px; }
+
+.custom-modal::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px); }
