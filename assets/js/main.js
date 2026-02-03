@@ -276,6 +276,7 @@ document.querySelectorAll('.modal-link').forEach(link => {
         const contentArea = document.getElementById('modal-content');
         const modal = document.getElementById('shared-modal');
 
+
         contentArea.innerHTML = "로딩 중...";
         modal.showModal();
 
@@ -304,6 +305,17 @@ document.querySelectorAll('.modal-link').forEach(link => {
             contentArea.innerHTML = "파일을 읽어오는 중 에러가 발생했습니다.";
             console.error(err);
         }
+		
+		modal.addEventListener('close', () => {
+			document.body.style.overflow = '';
+			contentArea.innerHTML = '';
+		});
+
+		// 배경 클릭 시 닫기
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) modal.close();
+		});
+
     });
 });
 
