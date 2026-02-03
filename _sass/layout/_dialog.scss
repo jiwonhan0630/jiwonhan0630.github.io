@@ -26,3 +26,15 @@ dialog::backdrop {
     border: none;
     cursor: pointer;
 }
+
+.modal-body {
+    padding: 24px;
+    overflow-y: auto; /* 핵심: 내부 스크롤 활성화 */
+    max-height: 80%; /* 모달 전체 높이에 맞춰 적절히 조절 */
+}
+
+/* 텍스트 줄바꿈 설정 (아까 했던 것 적용) */
+.modal-body p {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}

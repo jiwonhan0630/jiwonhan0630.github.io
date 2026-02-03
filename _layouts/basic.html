@@ -55,7 +55,19 @@
 					<footer id="footer">
 						{% include footer.html %}
 					</footer>
-
+					
+					<dialog id="universal-modal" class="modal-window">
+						<div class="modal-container">
+							<header class="modal-header">
+								<h2 id="modal-title">Loading...</h2>
+								<button onclick="this.closest('dialog').close()" class="close-icon">
+									<span class="material-symbols-outlined">close</span>
+								</button>
+							</header>
+							<div id="modal-body" class="modal-body">
+							</div>
+						</div>
+					</dialog>
 			</div>
 		<!-- Scripts -->
 			{% include scripts.html %}

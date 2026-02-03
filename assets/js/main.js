@@ -267,24 +267,69 @@
 //#endregion
 
 // #region Modal Dialog
-const modal = document.getElementById('myModal');
-const openBtn = document.getElementById('openModal');
-const closeBtn = document.getElementById('closeModal');
+	document.addEventListener('DOMContentLoaded', () => {
+		const modal = document.getElementById('universal-modal');
+		const modalBody = document.getElementById('modal-body');
+		const modalTitle = document.getElementById('modal-title');
 
-// 모달 열기
-openBtn.addEventListener('click', () => {
-    modal.showModal(); 
-});
+		document.querySelectorAll('.modal-link').forEach(link => {
+			link.addEventListener('click', async (e) => {
+				e.preventDefault(); // 페이지 이동 방지
+				const url = link.href;
 
-// 모달 닫기
-closeBtn.addEventListener('click', () => {
-    modal.close();
-});
+				// 1. 모달 열기 및 로딩 표시
+				modalTitle.innerText = "Loading...";
+				modalBody.innerHTML = '<div class="spinner">잠시만 기다려주세요...</div>';
+				modal.showModal();
+				document.body.style.overflow = 'hidden';
 
-// 배경 클릭 시 닫기 (선택 사항)
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.close();
-});
+				try {
+					// 2. 해당 페이지 HTML 가져오기
+					const response = await fetch(url);
+					const html = await response.text();
+
+					// 3. 임시 파서로 필요한 내용(보통 main이나 article 태그 내 내용)만 추출
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(html, 'text/html');
+
+					// Jekyll 테마의 본문 영역 클래스에 맞게 수정하세요 (예: .post-content)
+					const content = doc.querySelector('main') || doc.querySelector('article') || doc.body;
+					const title = doc.querySelector('h1')?.innerText || "Detail";
+
+					// 4. 모달에 내용 주입
+					modalTitle.innerText = title;
+					modalBody.innerHTML = content.innerHTML;
+				} catch (error) {
+					modalBody.innerHTML = "내용을 불러오는 데 실패했습니다.";
+					console.error(error);
+				}
+			});
+		});
+
+		modal.addEventListener('close', () => {
+			document.body.style.overflow = ''; // 스크롤 복구
+			modalBody.innerHTML = ''; // 이전 내용 삭제 (메모리 관리)
+		});
+	});
+
+// const modal = document.getElementById('myModal');
+// const openBtn = document.getElementById('openModal');
+// const closeBtn = document.getElementById('closeModal');
+
+// // 모달 열기
+// openBtn.addEventListener('click', () => {
+//     modal.showModal(); 
+// });
+
+// // 모달 닫기
+// closeBtn.addEventListener('click', () => {
+//     modal.close();
+// });
+
+// // 배경 클릭 시 닫기 (선택 사항)
+// modal.addEventListener('click', (e) => {
+//     if (e.target === modal) modal.close();
+// });
 
 //#endregion
 
