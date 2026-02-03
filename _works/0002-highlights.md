@@ -55,8 +55,11 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 </div>
 
 <!-- 엔진 내부 동작 원리를 파악하고 -->
-# 수정 불가능한 씬 환경에서 NavMesh 데이터를 통한 물리 주행 구현
+
+# 프로토타입 지형 생성 로직을 상용 수준으로 리팩토링
+재미 검증용으로 작성된 프로토타입 코드의 구조적 한계를 파악하고 병목 원인을 분석하여 상용 수준의 퍼포먼스를 확보하였습니다.
 {% include highlights/projectpz-plg-refactoring.md %}
 
-# Troubleshooting
+# 수정 불가능한 씬 환경에서 NavMesh 데이터를 통한 물리 주행 구현
+NavMesh를 사용하는 월드에서 작동하는 WheelCollider를 이용한 주행 기능을 구현하였습니다.
 {% include highlights/projectc-wheel-on-navmesh.md %}
