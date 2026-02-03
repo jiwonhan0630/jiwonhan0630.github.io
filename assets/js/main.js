@@ -270,54 +270,64 @@
 
 
 // #region Modal Dialog
-document.querySelectorAll('.modal-link').forEach(link => {
-    link.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const contentArea = document.getElementById('modal-content');
-        const modal = document.getElementById('shared-modal');
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('shared-modal');
+    const contentArea = document.getElementById('modal-content');
+    const titleArea = document.getElementById('modal-title');
 
-		contentArea.innerHTML = "로딩 중...";
-        modal.showModal();
-		document.body.style.overflow = 'hidden';
-        try {
-            const response = await fetch(link.href);
-            const html = await response.text();
-            
-            // 1. HTML을 파싱합니다.
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            // 2. [핵심] 조각 파일이므로 body 안의 모든 내용을 가져옵니다.
-            // 만약 레이아웃이 없는 파일이라면 body 자체가 알맹이입니다.
-            const fragmentContent = doc.body.innerHTML;
+    if (!modal || !contentArea) return;
 
-            if (fragmentContent.trim() === "") {
-                contentArea.innerHTML = "가져온 내용이 비어 있습니다.";
-            } else {
-                contentArea.innerHTML = fragmentContent;
+    // [1] 모달 공통 리스너 (한 번만 등록)
+    modal.addEventListener('close', () => {
+        document.body.style.overflow = '';
+        contentArea.innerHTML = '';
+        // 사용자가 ESC나 버튼으로 닫았을 때 히스토리 정리
+        if (history.state?.modal) history.back();
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.close();
+    });
+
+    window.onpopstate = () => {
+        if (modal.open) modal.close();
+    };
+
+    // [2] 링크 클릭 이벤트 (각 링크에 등록)
+    document.querySelectorAll('.modal-link').forEach(link => {
+        link.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            contentArea.innerHTML = "불러오는 중...";
+            modal.showModal();
+            document.body.style.overflow = 'hidden';
+            
+            // 주소창 변경 및 히스토리 기록
+            history.pushState({modal: true}, '', link.href);
+
+            try {
+                const response = await fetch(link.href);
+                const html = await response.text();
+                
+                // HTML 파싱 (layout: null 조각 파일 전용)
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const fragmentContent = doc.body.innerHTML;
+
+                contentArea.innerHTML = fragmentContent.trim() === "" 
+                    ? "내용이 비어 있습니다." 
+                    : fragmentContent;
+
+                // 제목 업데이트
+                if (titleArea) titleArea.innerText = link.innerText;
+
+            } catch (err) {
+                contentArea.innerHTML = "파일을 읽어오는 중 에러가 발생했습니다.";
+                console.error(err);
             }
-
-            // 3. 제목은 링크 텍스트를 그대로 사용 (가장 담백함)
-            document.getElementById('modal-title').innerText = link.innerText;
-
-        } catch (err) {
-            contentArea.innerHTML = "파일을 읽어오는 중 에러가 발생했습니다.";
-            console.error(err);
-        }
-		
-		modal.addEventListener('close', () => {
-			document.body.style.overflow = '';
-			contentArea.innerHTML = '';
-		});
-
-		// 배경 클릭 시 닫기
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) modal.close();
-		});
-
+        });
     });
 });
-
 // document.addEventListener('DOMContentLoaded', () => {
 //     const modal = document.getElementById('shared-modal');
 //     const contentArea = document.getElementById('modal-content');
