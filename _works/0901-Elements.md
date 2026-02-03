@@ -61,9 +61,12 @@ description: "CSS 미리보기용 페이지"
    class="center" 
 %}
 
-
-이 핵심 역량은 <a href="{% link _includes/highlights/projectc-editor-ui.md %}" class="modal-link">여기서</a> 확인하세요.
-
+{% capture target_url %}{% link _works/0002-highlights.md %}{% endcapture %}
+이 프로젝트의 핵심은 {% include components/modal-link.html 
+   url=target_url 
+   text="핵심 하이라이트 보기" 
+   class="highlight-link" 
+%} 에서 확인하라구
 
 
 # Tables

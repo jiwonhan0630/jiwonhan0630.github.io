@@ -266,72 +266,34 @@
 	});
 //#endregion
 
+
+
+
 // #region Modal Dialog
-	document.addEventListener('DOMContentLoaded', () => {
-		// 1. ID가 정확한지 HTML과 꼭 대조해 보세요! (여기서는 'modal'로 통일)
-		const modal = document.getElementById('modal'); 
-		const modalContent = document.getElementById('modal-content');
 
-		// [중요] 모달이 없으면 아래 리스너들을 등록하지 않고 탈출합니다.
-		if (!modal) {
-			console.warn("Modal element not found on this page.");
-			return; 
-		}
+document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.addEventListener('cancel', () => document.body.style.overflow = '');
+    dialog.addEventListener('close', () => document.body.style.overflow = '');
+});
 
-		// 2. 모달 닫기 이벤트 (이제 안전합니다)
-		modal.addEventListener('close', () => {
-			document.body.style.overflow = ''; 
-			if (modalContent) modalContent.innerHTML = ''; 
-		});
+const modal = document.getElementById('myModal');
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
 
-		// 3. 배경 클릭 시 닫기
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) modal.close();
-		});
+// 모달 열기
+openBtn.addEventListener('click', () => {
+    modal.showModal(); 
+});
 
-		// 4. 링크 클릭 이벤트
-		document.querySelectorAll('.modal-link').forEach(link => {
-			link.addEventListener('click', async (e) => {
-				e.preventDefault();
-				if (!modalContent) return;
+// 모달 닫기
+closeBtn.addEventListener('click', () => {
+    modal.close();
+});
 
-				modalContent.innerHTML = "읽어오는 중...";
-				modal.showModal();
-				document.body.style.overflow = 'hidden';
-
-				try {
-					const response = await fetch(link.href);
-					const text = await response.text();
-					const parser = new DOMParser();
-					const doc = parser.parseFromString(text, 'text/html');
-					
-					// 테마의 본문 영역만 추출
-					const mainContent = doc.querySelector('main') || doc.querySelector('article') || doc.body;
-					modalContent.innerHTML = mainContent.innerHTML;
-				} catch (err) {
-					modalContent.innerHTML = "내용을 불러올 수 없습니다.";
-				}
-			});
-		});
-	});
-// const modal = document.getElementById('myModal');
-// const openBtn = document.getElementById('openModal');
-// const closeBtn = document.getElementById('closeModal');
-
-// // 모달 열기
-// openBtn.addEventListener('click', () => {
-//     modal.showModal(); 
-// });
-
-// // 모달 닫기
-// closeBtn.addEventListener('click', () => {
-//     modal.close();
-// });
-
-// // 배경 클릭 시 닫기 (선택 사항)
-// modal.addEventListener('click', (e) => {
-//     if (e.target === modal) modal.close();
-// });
+// 배경 클릭 시 닫기 (선택 사항)
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+});
 
 //#endregion
 

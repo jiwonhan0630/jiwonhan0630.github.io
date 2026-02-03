@@ -1,0 +1,29 @@
+{% comment %} 
+   1. 전달받은 URL과 일치하는 문서를 찾습니다. 
+   {% link %}가 생성한 URL은 상대 경로이므로 relative_url 필터가 필요할 수 있습니다.
+{% endcomment %}
+{% assign target = site.documents | where: "url", include.url | first %}
+
+{% if target %}
+  <a href="#" 
+     onclick="document.getElementById('modal-{{ target.slug }}').showModal(); return false;" 
+     class="modal-link-style {{ include.class }}">
+     {{ include.text | default: target.title }}
+  </a>
+
+  <dialog id="modal-{{ target.slug }}" class="custom-modal">
+    <div class="modal-wrapper">
+      <header class="modal-header">
+        <h3>{{ target.title }}</h3>
+        <button onclick="this.closest('dialog').close()" class="close-btn">×</button>
+      </header>
+      
+      {% comment %} 2. 내용이 길어지면 스크롤이 생기는 구역 {% endcomment %}
+      <div class="modal-scroll-area markdown-body">
+        {{ target.content }}
+      </div>
+    </div>
+  </dialog>
+{% else %}
+  <span style="color:red;">[Error: URL '{{ include.url }}'에 해당하는 문서를 찾을 수 없음]</span>
+{% endif %}
