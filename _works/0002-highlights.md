@@ -55,7 +55,7 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 </div>
 
 <!-- 엔진 내부 동작 원리를 파악하고 -->
-# Troubleshooting
+# 수정 불가능한 씬 환경에서 NavMesh 데이터를 통한 물리 주행 구현
 {% include highlights/projectpz-plg-refactoring.md %}
 
 # Troubleshooting
