@@ -61,7 +61,7 @@ description: "CSS 미리보기용 페이지"
    class="center" 
 %}
 
-이 프로젝트의 핵심은 [핵심 하이라이트 보기]({% link _works/parts/wang-tile.md.md %}){: .modal-link} 에서 확인하라구.
+이 프로젝트의 핵심은 [핵심 하이라이트 보기]({% link _works/parts/wang-tile.md %}){: .modal-link} 에서 확인하라구.
 
 # Tables
 |제목|
