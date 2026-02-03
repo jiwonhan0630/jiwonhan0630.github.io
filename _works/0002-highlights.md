@@ -24,12 +24,15 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 <h1>Unity 에디터 확장 기능</h1>
 <p>
 프로젝트 특성에 맞는 에디터 확장 기능을 구현하여,<br>
-팀 내에 보다 효율적인 유니티 작업 환경을 제공할 수 있습니다.
+팀 내에 보다 편안한 유니티 작업 환경을 제공할 수 있습니다.
 </p>
 </div>
 
 ## 레벨 에디팅 툴 및 베이킹 툴
 {% include highlights/projectc-editor-ui.md %}
+
+## Addressables 시스템 확장
+{% include highlights/addressablesystem.md %}
 
 ***
 
@@ -39,9 +42,6 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 게임 플레이에 필요한 로직과 다양한 기능 요구사항을 충실히 구현할 수 있습니다.
 </p>
 </div>
-
-## Addressables 시스템 확장
-{% include highlights/addressablesystem.md %}
 
 ## 절차적 레벨 생성
 내용내용~
