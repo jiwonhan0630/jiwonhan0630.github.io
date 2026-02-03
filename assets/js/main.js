@@ -270,87 +270,50 @@
 
 
 // #region Modal Dialog
-document.querySelectorAll('.modal-link').forEach(link => {
-    link.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const contentArea = document.getElementById('modal-content');
-        const modal = document.getElementById('shared-modal');
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('shared-modal');
+    const contentArea = document.getElementById('modal-content');
+    const titleArea = document.getElementById('modal-title');
 
-        contentArea.innerHTML = "로딩 중...";
-        modal.showModal();
+    if (!modal) return;
 
-        try {
-            const response = await fetch(link.href);
-            const html = await response.text();
+    document.querySelectorAll('.modal-link').forEach(link => {
+        link.addEventListener('click', async (e) => {
+            e.preventDefault(); // 실제 페이지 이동 방지
             
-            // 1. HTML을 파싱합니다.
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            // 2. [핵심] 조각 파일이므로 body 안의 모든 내용을 가져옵니다.
-            // 만약 레이아웃이 없는 파일이라면 body 자체가 알맹이입니다.
-            const fragmentContent = doc.body.innerHTML;
+            contentArea.innerHTML = "로딩 중...";
+            modal.showModal();
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 차단
 
-            if (fragmentContent.trim() === "") {
-                contentArea.innerHTML = "가져온 내용이 비어 있습니다.";
-            } else {
-                contentArea.innerHTML = fragmentContent;
+            try {
+                const response = await fetch(link.href);
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // [핵심] 프라이머 테마의 본문 영역(.markdown-body)만 추출
+                const body = doc.querySelector('.markdown-body') || doc.querySelector('main');
+                const title = doc.querySelector('h1')?.innerText || "상세 정보";
+
+                titleArea.innerText = title;
+                contentArea.innerHTML = body.innerHTML;
+            } catch (err) {
+                contentArea.innerHTML = "내용을 불러올 수 없습니다.";
             }
+        });
+    });
 
-            // 3. 제목은 링크 텍스트를 그대로 사용 (가장 담백함)
-            document.getElementById('modal-title').innerText = link.innerText;
+    // 닫힐 때 상태 복구
+    modal.addEventListener('close', () => {
+        document.body.style.overflow = '';
+        contentArea.innerHTML = '';
+    });
 
-        } catch (err) {
-            contentArea.innerHTML = "파일을 읽어오는 중 에러가 발생했습니다.";
-            console.error(err);
-        }
+    // 배경 클릭 시 닫기
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.close();
     });
 });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const modal = document.getElementById('shared-modal');
-//     const contentArea = document.getElementById('modal-content');
-//     const titleArea = document.getElementById('modal-title');
-
-//     if (!modal) return;
-
-//     document.querySelectorAll('.modal-link').forEach(link => {
-//         link.addEventListener('click', async (e) => {
-//             e.preventDefault(); // 실제 페이지 이동 방지
-            
-//             contentArea.innerHTML = "로딩 중...";
-//             modal.showModal();
-//             document.body.style.overflow = 'hidden'; // 배경 스크롤 차단
-
-//             try {
-//                 const response = await fetch(link.href);
-//                 const html = await response.text();
-//                 const parser = new DOMParser();
-//                 const doc = parser.parseFromString(html, 'text/html');
-                
-//                 // [핵심] 프라이머 테마의 본문 영역(.markdown-body)만 추출
-//                 const body = doc.querySelector('.markdown-body') || doc.querySelector('main') || doc.body;
-//                 const title = doc.querySelector('h1')?.innerText || "상세 정보";
-
-//                 titleArea.innerText = title;
-//                 contentArea.innerHTML = body.innerHTML;
-//             } catch (err) {
-//                 contentArea.innerHTML = "내용을 불러올 수 없습니다.";
-//             }
-//         });
-//     });
-
-//     // 닫힐 때 상태 복구
-//     modal.addEventListener('close', () => {
-//         document.body.style.overflow = '';
-//         contentArea.innerHTML = '';
-//     });
-
-//     // 배경 클릭 시 닫기
-//     modal.addEventListener('click', (e) => {
-//         if (e.target === modal) modal.close();
-//     });
-// });
 
 
 // document.querySelectorAll('dialog').forEach(dialog => {
