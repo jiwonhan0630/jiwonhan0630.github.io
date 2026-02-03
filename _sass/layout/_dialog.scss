@@ -2,9 +2,9 @@
     $gutter: _size(gutter);
     width: 100%;
     max-width: _size(inner);
+    max-height: 80%;
     border: none;
     border-radius: 12px;
-    
     // max-width: 650px;
     // max-height: 80vh;
     padding: 0;
@@ -49,7 +49,7 @@
         backdrop-filter: blur(3px);
     }
 
-    .h3 {
+    h3 {
         background: none;
     }
     
