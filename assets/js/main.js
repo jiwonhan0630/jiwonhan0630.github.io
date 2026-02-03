@@ -276,10 +276,9 @@ document.querySelectorAll('.modal-link').forEach(link => {
         const contentArea = document.getElementById('modal-content');
         const modal = document.getElementById('shared-modal');
 
-
-        contentArea.innerHTML = "로딩 중...";
+		contentArea.innerHTML = "로딩 중...";
         modal.showModal();
-
+		document.body.style.overflow = 'hidden';
         try {
             const response = await fetch(link.href);
             const html = await response.text();
