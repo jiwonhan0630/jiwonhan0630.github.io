@@ -7,7 +7,19 @@
     // max-height: 80vh;
     padding: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    &.is-full {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: none !important;
+            max-height: none !important;
+            border-radius: 0;
+            top: 0;
+            left: 0;
+            margin: 0;
 
+            .modal-wrapper {
+                max-height: 100vh; // 스크롤 영역 확보
+            }
     .modal-wrapper {
         display: flex;
         flex-direction: column;
@@ -40,6 +52,11 @@
         padding: 15px 25px;
         border-bottom: 1px solid #eee;
         background: #fff;
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
     }
 
     &::backdrop {
