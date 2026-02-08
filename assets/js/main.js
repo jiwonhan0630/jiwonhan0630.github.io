@@ -274,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('shared-modal');
     const contentArea = document.getElementById('modal-content');
     const titleArea = document.getElementById('modal-title');
-	const expandBtn = modal.querySelector('.expand-btn');
 
     if (!modal || !contentArea) return;
 
@@ -289,11 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.close();
     });
-	// 모달이 닫힐 때 전체 화면 상태 초기화 (필수)
-	modal.addEventListener('close', () => {
-		modal.classList.remove('is-full');
-    if (expandBtn) expandBtn.innerText = "open_in_full";
-
+	
     window.onpopstate = () => {
         if (modal.open) modal.close();
     };
@@ -332,21 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-
-	if (expandBtn) {
-		expandBtn.addEventListener('click', () => {
-			modal.classList.toggle('is-full');
-			
-			// 버튼 텍스트 변경 (선택 사항)
-			if (modal.classList.contains('is-full')) {
-				expandBtn.innerText = "close_fullscreen";
-			} else {
-				expandBtn.innerText = "open_in_full";
-			}
-		});
-	}
-
 
 });
 // document.addEventListener('DOMContentLoaded', () => {

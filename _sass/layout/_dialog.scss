@@ -1,5 +1,5 @@
 .custom-modal {
-    width: (_size(inner) * 0.98);
+    width: (_size(inner) * 0.99);
     max-height: 80%;
     border: none;
     border-radius: 12px;
@@ -62,21 +62,6 @@
         // &:hover{
         //     background-color: var(--color-button-bg-hover);
         // }
-    }
-
-    &.is-full {
-        width: 100vw !important;
-        height: 100vh !important;
-        max-width: none !important;
-        max-height: none !important;
-        border-radius: 0;
-        top: 0;
-        left: 0;
-        margin: 0;
-
-        .modal-wrapper {
-            max-height: 100vh; // 스크롤 영역 확보
-        }
     }
 }
 
