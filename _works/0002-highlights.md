@@ -68,6 +68,7 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 - 데이터 테이블을 통해 상태와 전이 조건을 정의하는 몬스터 패턴 시스템 구현 [(Project C)]({% link _works/0101-ProjectPZ.md %})
 - StateMachineBehaviour를 활용하여 애니메이션 상태와 로직을 1:1로 매핑한 보스 패턴 시스템 구현 [(Project I)]({% link _works/0103-ProjectI.md %})
 
+***
 
 <div class="heading-container">
 <h1>Troubleshooting</h1>
