@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.close();
     });
-	
+
     window.onpopstate = () => {
         if (modal.open) modal.close();
     };
@@ -302,8 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.showModal();
             document.body.style.overflow = 'hidden';
             
-            // 주소창 변경 및 히스토리 기록
-            history.pushState({modal: true}, '', link.href);
+            // // 주소창 변경 및 히스토리 기록
+            // history.pushState({modal: true}, '', link.href);
 
             try {
                 const response = await fetch(link.href);
