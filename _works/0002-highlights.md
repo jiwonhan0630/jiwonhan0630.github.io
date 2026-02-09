@@ -50,12 +50,12 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 </div>
 
 ## 절차적 레벨 생성
-[Project PZ]({% link _works/0101-projectpz.md %})  
+[Project PZ]({% link _works/0101-ProjectPZ.md %})  
 - Wang Tile의 Edge Matching 규칙을 응용한 레벨 생성 로직 구현
 - 퀘스트나 아이템 상태에 따라 생성 규칙이 동적으로 변하는 시스템 설계
 
 ## 물리 기반 자율 주행 및 파츠 시스템
-[Project C]({% link _works/0102-projectc.md %})  
+[Project C]({% link _works/0102-ProjectC.md %})  
 <!-- * **Applied in:** [Project C]
 * **Tech:** WheelCollider, NavMesh Data Extraction, Strategy Pattern
 * **Details:** -->
@@ -63,13 +63,13 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 - 주행 중 실시간으로 파츠(바퀴, 차체) 교체 시, 무게 중심과 회전 반경을 재계산하여 주행 물리에 즉각 반영되는 시스템 구현
 
 ## 산업 데이터 기반 게이미피케이션
-[Project C]({% link _works/0102-projectc.md %})  
+[Project C]({% link _works/0102-ProjectC.md %})  
 - 실제 공장 작업자의 조립 데이터를 실시간으로 수신하여 게임 내 피버 타임, 스테이지 변화 등을 제어하는 자동화 플레이 로직 구현.
 - 데이터 송수신과 게임 로직을 분리하여 네트워크 지연 시에도 게임 흐름이 끊기지 않도록 설계.
 
 ## 몬스터 및 보스 패턴 시스템
-- 데이터 테이블을 통해 상태와 전이 조건을 정의하는 몬스터 패턴 시스템 구현 [(Project C)]({% link _works/0101-projectpz.md %}).
-- StateMachineBehaviour를 활용하여 애니메이션 상태와 로직을 1:1로 매핑한 보스 패턴 시스템 구현 [(Project I)]({% link _works/0103-projecti.md %}).
+- 데이터 테이블을 통해 상태와 전이 조건을 정의하는 몬스터 패턴 시스템 구현 [(Project C)]({% link _works/0101-ProjectPZ.md %}).
+- StateMachineBehaviour를 활용하여 애니메이션 상태와 로직을 1:1로 매핑한 보스 패턴 시스템 구현 [(Project I)]({% link _works/0103-ProjectI.md %}).
 
 
 <div class="heading-container">
