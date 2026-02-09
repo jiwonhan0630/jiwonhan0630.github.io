@@ -30,7 +30,6 @@ private UniTaskVoid Start()
 동일한 타입이라도 상황에 따라 다른 파싱 규칙을 적용할 수 있습니다.  
 
 ```csharp
-
 // 1. 사용자 정의 타입 처리를 위한 컨버터 구현
 // CSVConverter<T>를 상속하여 구현
 public class StatConverter : CSVConverter<StatInfo>
