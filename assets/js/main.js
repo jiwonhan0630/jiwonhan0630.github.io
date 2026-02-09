@@ -281,8 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('close', () => {
         document.body.style.overflow = '';
         contentArea.innerHTML = '';
-        // 사용자가 ESC나 버튼으로 닫았을 때 히스토리 정리
-        if (history.state?.modal) history.back();
+        // // 사용자가 ESC나 버튼으로 닫았을 때 히스토리 정리
+        // if (history.state?.modal) history.back();
     });
 
     modal.addEventListener('click', (e) => {
