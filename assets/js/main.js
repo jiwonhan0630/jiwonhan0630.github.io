@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // #region Section animation
 document.addEventListener('DOMContentLoaded', () => {
 	// [이 숫자만 고치세요!] 화면 상단에서 몇 픽셀 지점에서 효과를 줄 것인가
-	const EXIT_THRESHOLD = 300; 
+	const EXIT_THRESHOLD = 400; 
 
 	const observerOptions = {
 		root: null,
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			// 여기서도 변수를 그대로 사용합니다.
-			const isAboveLine = entry.boundingClientRect.top < EXIT_THRESHOLD;
+			const isAboveLine = entry.boundingClientRect.top < 0; //EXIT_THRESHOLD;
 
 			if (!entry.isIntersecting && isAboveLine) {
 				entry.target.classList.add('is-exited');
