@@ -329,77 +329,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-// document.addEventListener('DOMContentLoaded', () => {
-//     const modal = document.getElementById('shared-modal');
-//     const contentArea = document.getElementById('modal-content');
-//     const titleArea = document.getElementById('modal-title');
 
-//     if (!modal) return;
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null,
+        threshold: 0,
+        // 화면 상단 끝(0px)을 감지 선으로 설정합니다.
+        rootMargin: "0px 0px -100% 0px" 
+    };
 
-//     document.querySelectorAll('.modal-link').forEach(link => {
-//         link.addEventListener('click', async (e) => {
-//             e.preventDefault(); // 실제 페이지 이동 방지
-            
-//             contentArea.innerHTML = "로딩 중...";
-//             modal.showModal();
-//             document.body.style.overflow = 'hidden'; // 배경 스크롤 차단
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // 요소가 화면 상단보다 위에 있는지 확인
+            const isAbove = entry.boundingClientRect.top < 0;
 
-//             try {
-//                 const response = await fetch(link.href);
-//                 const html = await response.text();
-//                 const parser = new DOMParser();
-//                 const doc = parser.parseFromString(html, 'text/html');
-                
-//                 // [핵심] 프라이머 테마의 본문 영역(.markdown-body)만 추출
-//                 const body = doc.querySelector('.markdown-body') || doc.querySelector('main');
-//                 const title = doc.querySelector('h1')?.innerText || "상세 정보";
+            if (isAbove && !entry.isIntersecting) {
+                // 상단으로 나갔을 때 클래스 추가
+                entry.target.classList.add('is-exited');
+            } else if (entry.isIntersecting) {
+                // 다시 화면 안으로 들어오면 클래스 제거
+                entry.target.classList.remove('is-exited');
+            }
+        });
+    }, observerOptions);
 
-//                 titleArea.innerText = title;
-//                 contentArea.innerHTML = body.innerHTML;
-//             } catch (err) {
-//                 contentArea.innerHTML = "내용을 불러올 수 없습니다.";
-//             }
-//         });
-//     });
-
-//     // 닫힐 때 상태 복구
-//     modal.addEventListener('close', () => {
-//         document.body.style.overflow = '';
-//         contentArea.innerHTML = '';
-//     });
-
-//     // 배경 클릭 시 닫기
-//     modal.addEventListener('click', (e) => {
-//         if (e.target === modal) modal.close();
-//     });
-// });
-
-
-// document.querySelectorAll('dialog').forEach(dialog => {
-//     dialog.addEventListener('cancel', () => document.body.style.overflow = '');
-//     dialog.addEventListener('close', () => document.body.style.overflow = '');
-// });
-
-// const modal = document.getElementById('myModal');
-// const openBtn = document.getElementById('openModal');
-// const closeBtn = document.getElementById('closeModal');
-
-// // 모달 열기
-// openBtn.addEventListener('click', () => {
-//     modal.showModal(); 
-// });
-
-// // 모달 닫기
-// closeBtn.addEventListener('click', () => {
-//     modal.close();
-// });
-
-// // 배경 클릭 시 닫기 (선택 사항)
-// modal.addEventListener('click', (e) => {
-//     if (e.target === modal) modal.close();
-// });
-
+    // 감시할 대상들 (.sectionbox 클래스를 가진 모든 요소)
+    document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
+});
 //#endregion
-
 
 })(jQuery);

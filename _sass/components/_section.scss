@@ -24,34 +24,8 @@
 		}
 	}
 
-
-	@keyframes exit-sectionbox {
-		/* 화면 안에 있을 때는 정상 상태 유지 */
-		from {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		/* 화면 위로 나갈 때 흐려짐 */
-		to {
-			opacity: 0.3;
-			transform: translateY(-80px); /* 위로 빨려 들어가는 느낌 */
-		}
-	}
-
 	.sectionbox
 	{
-		/* [핵심] 스크롤 타임라인 연결 */
-		view-timeline-name: --section-exit;
-		view-timeline-axis: block;
-
-		animation-name: exit-sectionbox;
-		animation-fill-mode: both;
-		animation-timeline: --section-exit;
-
-		/* [중요] 퇴장(exit) 구간에서만 애니메이션이 실행되도록 설정 */
-		/* 요소가 화면 상단 경계에 닿는 순간(0%)부터 완전히 사라질 때(100%)까지 작동 */
-		animation-range: exit 50% exit 100%;
-
 		margin-top: 4rem;
 
 		.sectionbox-header {
@@ -81,4 +55,14 @@
 			padding: 0 0.4rem;
 			// border-left: 2px solid var(--color-main-level2);
         }
+
+		transition: 
+			opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+			// filter 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.is-exited {
+		opacity: 0.2;
+		transform: translateY(-40px) scale(0.98); // 위로 밀리며 작아지는 효과
 	}
