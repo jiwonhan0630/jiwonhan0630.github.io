@@ -4,4 +4,11 @@ title: "참여 프로젝트"
 # description: "팀의 생산성을 높이는 도구 개발부터, 게임의 성능을 책임지는 최적화까지 저의 핵심 역량을 소개합니다."
 ---
 
-내용이 없음.
+{% for work in site.works %}
+
+{% include components/button-subject.html url={{ work.url }} class="negative" icon="arrow_forward_ios" 
+    main-text="{{work.title}}" 
+    sub-text="{{work.description}}" 
+%}
+
+{% endfor %}
