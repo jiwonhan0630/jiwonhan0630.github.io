@@ -18,6 +18,9 @@ description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담
 ## CSV Utility
 {% include highlights/csv-utility.md %}
 
+## Naming Tool
+{% include highlights/naming-tool.md %}
+
 ***
 
 <div class="heading-container">
