@@ -59,8 +59,8 @@
 			border-radius: _size(border-radius);
 			font-size: 1.2rem;
 			padding: 3.4rem;
-			margin: 1rem 0;
-			
+			margin-top: 1rem;
+
 			h1 {
 				margin: 0;
 				line-height: 1.4em;
@@ -71,6 +71,6 @@
 		.sectionbox-content {
 			display: flow-root;
 			border-left: 2px solid var(--color-main-level2);
-			padding-left: 1rem;
+			padding-left: 0.8rem;
         }
 	}

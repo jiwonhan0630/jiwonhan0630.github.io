@@ -68,13 +68,13 @@ description: "CSS 미리보기용 페이지"
 
 
 <section class="sectionbox">
-<header class="sectionbox-header">
+<div class="sectionbox-header">
 <h1>개발 편의 기능</h1>
 <p>
 개발 과정에서 발생하는 비효율적인 작업을 개선하고,<br>
 실무에 즉시 도입 가능한 기능을 구현하여 팀의 생산성을 끌어올릴 수 있습니다.
 </p>
-</header>
+</div>
 <div class="sectionbox-content" markdown="1">
 
 ## 이것은 제목입니다.
@@ -87,13 +87,13 @@ description: "CSS 미리보기용 페이지"
 </section>
 
 <section class="sectionbox">
-<header class="sectionbox-header">
+<div class="sectionbox-header">
 <h1>에디터 확장 기능</h1>
 <p>
 개발 과정에서 발생하는 비효율적인 작업을 개선하고,<br>
 실무에 즉시 도입 가능한 기능을 구현하여 팀의 생산성을 끌어올릴 수 있습니다.
 </p>
-</header>
+</div>
 <div class="sectionbox-content" markdown="1">
 
 ## 이것은 제목입니다.
