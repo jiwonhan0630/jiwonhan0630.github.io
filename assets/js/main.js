@@ -334,30 +334,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // #region Section animation
-document.addEventListener('DOMContentLoaded', () => {
-	// [이 숫자만 고치세요!] 화면 상단에서 몇 픽셀 지점에서 효과를 줄 것인가
-	const EXIT_THRESHOLD = 500; 
+// document.addEventListener('DOMContentLoaded', () => {
+// 	// [이 숫자만 고치세요!] 화면 상단에서 몇 픽셀 지점에서 효과를 줄 것인가
+// 	const EXIT_THRESHOLD = 500; 
 
-	const observerOptions = {
-		root: null,
-		// 변수를 활용해 rootMargin을 자동으로 생성 (템플릿 리터럴)
-		rootMargin: `-${EXIT_THRESHOLD}px 0px 0px 0px`, 
-		threshold: 0
-	};
+// 	const observerOptions = {
+// 		root: null,
+// 		// 변수를 활용해 rootMargin을 자동으로 생성 (템플릿 리터럴)
+// 		rootMargin: `-${EXIT_THRESHOLD}px 0px 0px 0px`, 
+// 		threshold: 0
+// 	};
 
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			// 여기서도 변수를 그대로 사용합니다.
-			const isAboveLine = entry.boundingClientRect.top < EXIT_THRESHOLD;
-			if (!entry.isIntersecting && isAboveLine) {
-				entry.target.classList.add('is-exited');
-			} else {
-				entry.target.classList.remove('is-exited');
-			}
-		});
-	}, observerOptions);
+// 	const observer = new IntersectionObserver((entries) => {
+// 		entries.forEach(entry => {
+// 			// 여기서도 변수를 그대로 사용합니다.
+// 			const isAboveLine = entry.boundingClientRect.top < EXIT_THRESHOLD;
+// 			if (!entry.isIntersecting && isAboveLine) {
+// 				entry.target.classList.add('is-exited');
+// 			} else {
+// 				entry.target.classList.remove('is-exited');
+// 			}
+// 		});
+// 	}, observerOptions);
 
-	document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
-});
+// 	document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
+// });
 // #endregion
 })(jQuery);
