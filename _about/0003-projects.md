@@ -6,9 +6,9 @@ title: "참여 프로젝트"
 
 {% for work in site.works %}
 
-{% include components/button-subject.html url={{ work.url }} class="negative" icon="arrow_forward_ios" 
-    main-text="{{work.title}}" 
-    sub-text="{{work.description}}" 
+{% include components/button-subject.html url=work.url class="negative" icon="arrow_forward_ios" 
+    main-text=work.title 
+    sub-text=work.description 
 %}
 
 {% endfor %}
