@@ -172,7 +172,7 @@
 	hr {
 		border: 0;
 		border-bottom: solid _size(border-width) var(--color-border);
-		margin: (_size(element-margin) * 4) 0;
+		margin: 6em 0;
 
 		&.major {
 			margin: (_size(element-margin) * 1.5) 0;
