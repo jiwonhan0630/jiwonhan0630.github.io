@@ -34,7 +34,6 @@ description: "팀의 생산성을 높이는 도구 개발부터, 게임의 성�
 </div>
 </section>
 
-***
 
 <section class="sectionbox">
 <div class="sectionbox-header">
@@ -60,7 +59,7 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 </div>
 </section>
 
-***
+
 <section class="sectionbox">
 <div class="sectionbox-header">
 <h1>게임 로직 및 시스템</h1>
@@ -92,7 +91,7 @@ Gizmos를 통해 Hat Socket의 위치에 장착될 모자 메쉬를 표시하여
 </div>
 </section>
 
-***
+
 
 <section class="sectionbox">
 <div class="sectionbox-header">

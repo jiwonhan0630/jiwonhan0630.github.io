@@ -26,6 +26,8 @@
 
 	.sectionbox
 	{
+		margin-top: 4rem;
+
 		.sectionbox-header {
 			background-color: var(--color-main-level1);
 			color: var(--color-text-negative);
@@ -34,7 +36,7 @@
 			// border-bottom-right-radius: 0;
 			font-size: 1.2rem;
 			padding: 3.4rem;
-			margin-top: 1rem;
+
 			// text-align: center;
 			display: flex;
 			flex-direction: column;
