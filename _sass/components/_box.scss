@@ -53,18 +53,14 @@
 
 	.sectionbox
 	{
-		border-radius: 4px;
-		overflow: hidden;
-		border-radius: 8px;
-		box-shadow: 0 0 4px 0px var(--color-main-level3);
-
 		.sectionbox-header {
 			background-color: var(--color-main-level1);
 			color: var(--color-text-negative);
-
+			border-radius: _size(border-radius);
 			font-size: 1.2rem;
 			padding: 3.4rem;
-			margin-bottom: 1rem;
+			margin: 1rem 0;
+			
 			h1 {
 				margin: 0;
 				line-height: 1.4em;
@@ -72,8 +68,9 @@
 			}
 		}
 
-		.sectionbox-content
-		{
-
-		}
+		.sectionbox-content {
+			display: flow-root;
+			border-left: 2px solid var(--color-main-level2);
+			padding-left: 1rem;
+        }
 	}
