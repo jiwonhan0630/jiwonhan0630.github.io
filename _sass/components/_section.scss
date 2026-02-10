@@ -59,10 +59,10 @@
 		transition: 
 			opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
 			// filter 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-			transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+			// transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.is-exited {
 		opacity: 0.2;
-		transform: translateY(-40px) scale(0.98); // 위로 밀리며 작아지는 효과
+		// transform: translateY(-40px) scale(0.98); // 위로 밀리며 작아지는 효과
 	}
