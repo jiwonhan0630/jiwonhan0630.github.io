@@ -43,8 +43,7 @@
 	}
 
 	p {
-		margin-left: _size(element-margin-h);
-		margin-top: _size(element-margin-h);
+		margin: _size(element-margin-h);
 
 		p + & {
 				margin-top: _size(element-margin-v);
