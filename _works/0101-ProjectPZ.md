@@ -9,7 +9,6 @@ description: "실시간 턴제 전략 액션"
 - Unity Engine
 
 ## 담당 업무
-
 [UIToolkit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템){: .button .subject-negative .arrow sub="Attribute 기반의 자동 이벤트 바인딩 시스템"}
 [에디터 확장 기능](#레벨-디자인-툴){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
 [절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}

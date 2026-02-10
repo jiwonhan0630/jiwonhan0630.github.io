@@ -1,7 +1,7 @@
 ---
 layout: basic
-title: "Highlights"
-description: "이 페이지에서는 제가 강조하고 싶은 내용들이 담겨있습니다. 강조가 되었으면 좋겠는데 그게 잘 드러나지 않을 것 같아서 상당히 슬픕니다."
+title: "핵심 역량 정리"
+description: "팀의 생산성을 높이는 도구 개발부터, 게임의 성능을 책임지는 최적화까지 저의 핵심 역량을 소개합니다."
 ---
 
 <div class="heading-container">
