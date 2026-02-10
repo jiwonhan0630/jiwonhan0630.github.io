@@ -16,10 +16,10 @@
 
     /* 스크롤 가두기 및 줄바꿈 처리 */
     .modal-scroll-area {
-        padding: 25px;
+        padding: 0 1rem 1rem 1rem;
         overflow-y: auto;
         flex: 1;
-        line-height: 1.7;
+        // line-height: 1.7;
         word-break: keep-all;
         /* 한글 단어 단위 줄바꿈 */
         overflow-wrap: anywhere;
@@ -37,7 +37,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 25px;
+        padding: 0.8rem;
         border-bottom: 1px solid #eee;
         background: #fff;
 
