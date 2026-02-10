@@ -77,11 +77,14 @@ description: "CSS 미리보기용 페이지"
 </div>
 <div class="sectionbox-content" markdown="1">
 
-## 이것은 제목입니다.
-리스트도 넣어야겠죠?  
-- 리스트 1
-- 리스트 2
-이제 내용은 끝입니다.
+## Attribute 기반의 자동 이벤트 바인딩 시스템
+{% include highlights/projectpz-editor-ui.md %}
+
+## CSV Utility
+{% include highlights/csv-utility.md %}
+
+## Naming Tool
+{% include highlights/naming-tool.md %}
 
 </div>
 </section>
@@ -96,11 +99,14 @@ description: "CSS 미리보기용 페이지"
 </div>
 <div class="sectionbox-content" markdown="1">
 
-## 이것은 제목입니다.
-리스트도 넣어야겠죠?  
-- 리스트 1
-- 리스트 2
-이제 내용은 끝입니다.
+## Attribute 기반의 자동 이벤트 바인딩 시스템
+{% include highlights/projectpz-editor-ui.md %}
+
+## CSV Utility
+{% include highlights/csv-utility.md %}
+
+## Naming Tool
+{% include highlights/naming-tool.md %}
 
 </div>
 </section>
