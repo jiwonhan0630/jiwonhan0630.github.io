@@ -335,30 +335,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // #region Section animation
 document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = {
-        root: null,
-        threshold: 0,
-        // 화면 상단 끝(0px)을 감지 선으로 설정합니다.
-        rootMargin: "0px 0px -100% 0px" 
-    };
+	// [이 숫자만 고치세요!] 화면 상단에서 몇 픽셀 지점에서 효과를 줄 것인가
+	const EXIT_THRESHOLD = 300; 
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // 요소가 화면 상단보다 위에 있는지 확인
-            const isAbove = entry.boundingClientRect.top < (window.innerHeight * 0.2);
+	const observerOptions = {
+		root: null,
+		// 변수를 활용해 rootMargin을 자동으로 생성 (템플릿 리터럴)
+		rootMargin: `-${EXIT_THRESHOLD}px 0px 0px 0px`, 
+		threshold: 0
+	};
 
-            if (isAbove && !entry.isIntersecting) {
-                // 상단으로 나갔을 때 클래스 추가
-                entry.target.classList.add('is-exited');
-            } else if (entry.isIntersecting) {
-                // 다시 화면 안으로 들어오면 클래스 제거
-                entry.target.classList.remove('is-exited');
-            }
-        });
-    }, observerOptions);
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			// 여기서도 변수를 그대로 사용합니다.
+			const isAboveLine = entry.boundingClientRect.top < EXIT_THRESHOLD;
 
-    // 감시할 대상들 (.sectionbox 클래스를 가진 모든 요소)
-    document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
+			if (!entry.isIntersecting && isAboveLine) {
+				entry.target.classList.add('is-exited');
+			} else {
+				entry.target.classList.remove('is-exited');
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
 });
 // #endregion
 })(jQuery);
