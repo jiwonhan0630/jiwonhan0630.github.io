@@ -330,6 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+//#endregion
+
+
+// #region Section animation
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         root: null,
@@ -341,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             // 요소가 화면 상단보다 위에 있는지 확인
-            const isAbove = entry.boundingClientRect.top < 0;
+            const isAbove = entry.boundingClientRect.top < (window.innerHeight * 0.2);
 
             if (isAbove && !entry.isIntersecting) {
                 // 상단으로 나갔을 때 클래스 추가
@@ -356,6 +360,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // 감시할 대상들 (.sectionbox 클래스를 가진 모든 요소)
     document.querySelectorAll('.sectionbox').forEach(el => observer.observe(el));
 });
-//#endregion
-
+// #endregion
 })(jQuery);
