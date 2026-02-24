@@ -28,6 +28,7 @@
 					</div>
 					<div class="info-content">
 						<div class="inner">
+							{{ page.description }}
 							{% if page.tags and page.tags.size > 0 %}
 							<ul class="info-tags">
 								{% for tag in page.tags %}
@@ -35,7 +36,6 @@
 								{% endfor %}
 							</ul>
 							{% endif %}
-							{{ page.description }}
 						</div>
 					</div>
 				</div>

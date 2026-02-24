@@ -27,8 +27,9 @@
 			display: inline-block;
 			width: fit-content;
 			list-style: none;
-			padding: _size(element-margin-h) _size(element-margin-v) _size(element-margin-h) _size(element-margin-v);
+			padding: 0 _size(element-margin-v);
 			margin-top: 0.3em;
+			background-color: var(--color-border);
 			border-radius: _size(border-radius)
 		}
 	}
