@@ -2,12 +2,10 @@
 layout: basic
 title: "Project I"
 description: "3D 횡스크롤 슈팅 플랫포머"
+tags:
+    - PC
+    - UnityEngine
 ---
-
-### 프로젝트 개요
-- PC (Windows)
-- Unity Engine
-- 3D 횡스크롤 슈팅 플랫포머
 
 ## 담당 업무
 

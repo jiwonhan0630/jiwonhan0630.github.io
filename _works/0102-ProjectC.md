@@ -2,12 +2,11 @@
 layout: basic
 title: "Project C"
 description: "실시간 산업 데이터 기반 게이미피케이션"
+tags:
+    - PC
+    - UnityEngine
+    - MariaDB
 ---
-
-### 프로젝트 개요
-- PC (Windows)
-- Unity Engine
-- MariaDB
 
 ## 담당 업무
 [에디터 확장 기능](#에디터-확장-기능){: .button .subject-negative .arrow sub="주행 경로 에디터, Hat Socket 에디터"}

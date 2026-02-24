@@ -2,11 +2,10 @@
 layout: basic
 title: "Project T"
 description: "2D 퍼즐 플랫포머"
+tags:
+    - PC
+    - UnityEngine
 ---
-
-### 프로젝트 개요
-- PC (Windows)
-- Unity Engine
 
 ## 담당 업무
 [기상 상호작용 시스템](#기상-상호작용-시스템){: .button .subject .arrow sub="날씨 변화에 따른 오브젝트 변화"}

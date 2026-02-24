@@ -2,11 +2,10 @@
 layout: basic
 title: "Project PZ"
 description: "실시간 턴제 전략 액션"
+tags:
+    - Mobile(Android)
+    - UnityEngine
 ---
-
-### 프로젝트 개요
-- Mobile (Android)
-- Unity Engine
 
 ## 담당 업무
 [UIToolkit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템){: .button .subject-negative .arrow sub="Attribute 기반의 자동 이벤트 바인딩 시스템"}
