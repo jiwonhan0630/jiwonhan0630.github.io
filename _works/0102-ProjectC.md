@@ -8,7 +8,7 @@ tags:
     - MariaDB
 ---
 
-## 담당 업무
+# 담당 업무
 [에디터 확장 기능](#에디터-확장-기능){: .button .subject-negative .arrow sub="주행 경로 에디터, Hat Socket 에디터"}
 [실시간 파츠 교체 시스템](#parts-system){: .button .subject .arrow sub="주행 중 정차 없이 차량의 부품을 교체"}
 [산업 데이터 기반 게이미피케이션 로직](#gamification){: .button .subject .arrow sub="UnityWebRequest를 사용한 실제 작업자의 산업 데이터를 사용한 플레이 로직"}

@@ -7,8 +7,7 @@ tags:
     - UnityEngine
 ---
 
-## 담당 업무
-
+# 담당 업무
 [보스 몬스터](#보스-몬스터){: .button .subject .arrow sub="StateMachineBehaviour를 이용한 보스 몬스터"}
 [스테이지 설계 기능](#스테이지-설계-기능){: .button .subject .arrow sub="Gizmos·Handles를 이용한 스테이지 지형 설계 기능"}
 [이벤트 기반 입력 시스템](#이벤트-기반-입력-시스템){: .button .subject .arrow sub="LegacyInputManager 환경에서의 입력 시스템"}
