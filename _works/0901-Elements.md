@@ -2,6 +2,10 @@
 layout: basic
 title: "Elements"
 description: "CSS 미리보기용 페이지"
+tags:
+    - "test1"
+    - "test2"
+    - "test3"
 ---
 
 ## 제목 2단계입니다.
