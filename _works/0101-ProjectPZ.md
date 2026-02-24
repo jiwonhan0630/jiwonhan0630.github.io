@@ -8,13 +8,12 @@ tags:
 ---
 
 # 담당 업무
-[UIToolkit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템){: .button .subject-negative .arrow sub="Attribute 기반의 자동 이벤트 바인딩 시스템"}
-[에디터 확장 기능](#레벨-디자인-툴){: .button .subject-negative .arrow sub="UIToolkit을 사용한 레벨 디자인 툴"}
-[절차적 레벨 생성](#절차적-레벨-생성){: .button .subject .arrow sub="Wang Tile 알고리즘을 응용한 절차적 레벨 생성"}
-[청크 시스템](#청크-시스템){: .button .subject .arrow sub="Spatial Hash Grid 기반의 청크 시스템"}
-[CSV Utility](#csv-utility){: .button .subject .arrow sub="CSV 데이터 변환 유틸리티"}
-[몬스터 패턴 시스템](#몬스터-패턴-시스템){: .button .subject .arrow sub="데이터 기반 몬스터 패턴"}
-[Troubleshooting](#troubleshooting){: .button .subject-negative .arrow sub="절차적 레벨 생성 스크립트 리팩토링"}
+- [UITooklit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템)
+- [레벨 디자인 툴](#레벨-디자인-툴)
+- [절차적 레벨 생성](#절차적-레벨-생성)
+- [청크 시스템](#청크-시스템)
+- [몬스터 패턴 시스템](#몬스터-패턴-시스템)
+- [Troubleshooting](#troubleshooting)
 
 # 세부 내용
 ## Attribute 기반의 자동 이벤트 바인딩 시스템

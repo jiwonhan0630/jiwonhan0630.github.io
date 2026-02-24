@@ -8,10 +8,11 @@ tags:
 ---
 
 # 담당 업무
-[기상 상호작용 시스템](#기상-상호작용-시스템){: .button .subject .arrow sub="날씨 변화에 따른 오브젝트 변화"}
-[동적 NPC 보이스 출력](#동적-npc-보이스-출력){: .button .subject .arrow}
-[대화 이벤트 기반 퀘스트 시스템](#대화-이벤트-기반-퀘스트-시스템){: .button .subject .arrow}
-[UI 시스템](#){: .button .subject .pointer-none sub="계층형 UI 구조, UGUI Navigation 적용"}
+- [기상 상호작용 시스템](#기상-상호작용-시스템)
+- [동적 NPC 보이스 출력](#동적-npc-보이스-출력)
+- [대화 이벤트 기반 퀘스트 시스템](#대화-이벤트-기반-퀘스트-시스템)
+- UI 시스템
+    - 계층형 UI 구조 설계, UGUI Navigation 적용
 - 플레이어 컨트롤
 - 스킬 시스템
 - 퍼즐
