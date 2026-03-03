@@ -65,9 +65,6 @@ tags:
    class="center" 
 %}
 
-이 프로젝트의 핵심은 [핵심 하이라이트 보기]({% link _about/wang-tile.md %}){: .modal-link} 에서 확인하라구.
-
-
 # SectionBox
 
 
