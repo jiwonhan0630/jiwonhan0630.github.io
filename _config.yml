@@ -1,12 +1,15 @@
 # _config.yml
 permalink: pretty
 collections:
-  works:
-    output: true
-    permalink: /works/:slug
   about:
     output: true
     permalink: /about/:slug
+  works:
+    output: true
+    permalink: /works/:slug
+  frags:
+    output: true
+    permalink: /frags/:slug
 sass:
   sass_dir: _sass
   style: compressed # 빌드 시 CSS 파일 용량을 최소화(Minify)해줍니다.
