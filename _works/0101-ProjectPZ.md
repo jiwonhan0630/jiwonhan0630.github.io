@@ -8,7 +8,7 @@ tags:
 ---
 
 # 담당 업무
-- [UITooklit 이벤트 바인딩 시스템](#attribute-기반의-자동-이벤트-바인딩-시스템)
+- [UITooklit 이벤트 바인딩 시스템](#uitooklit-이벤트-바인딩-시스템)
 - [레벨 디자인 툴](#레벨-디자인-툴)
 - [절차적 레벨 생성](#절차적-레벨-생성)
 - [청크 시스템](#청크-시스템)
@@ -16,7 +16,7 @@ tags:
 - [Troubleshooting](#troubleshooting)
 
 # 세부 내용
-## Attribute 기반의 자동 이벤트 바인딩 시스템
+## UITooklit 이벤트 바인딩 시스템
 {% include highlights/projectpz-editor-ui.md %}
 
 ## 레벨 디자인 툴
