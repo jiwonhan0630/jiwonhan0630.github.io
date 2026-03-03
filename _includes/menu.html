@@ -3,14 +3,14 @@
     <ul>
         <li><a href="https://jiwonhan0630.github.io/">홈으로</a></li>
         <!-- <li><a href="/projects/skill">보유 기술</a></li> -->
-        {% for ab in site.about %}
+        {% for ab in site.abouts %}
         <li>
             <a href="{{ ab.url }}" class="menu-link {% if ab.url == page.url %}active{% endif %}" {% if ab.target %}target="{{ ab.target }}"{% endif %}>
                 {{ ab.title }}
             </a>
         </li>
         {% endfor %}
-        
+
         {% for work in site.works %}
         <li>
             <a href="{{ work.url }}" class="menu-link {% if work.url == page.url %}active{% endif %}" {% if work.target %}target="{{ work.target }}"{% endif %}>
