@@ -13,7 +13,7 @@ description: 불편함을 만드는 개발자
 {% capture target %}{% link _abouts/0001-highlights.md %}{% endcapture %}
 {% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
     main-text="핵심 역량 정리" 
-    sub-text="개발 편의 기능, 에디터 확장, 트러블 슈팅과 같은 주요 기술적 성과에 대해 정리했습니다." 
+    sub-text="개발 편의 기능, 에디터 확장, 트러블 슈팅과 같은 주요 기술적 역량에 대해 정리했습니다." 
 %}
 
 {% capture target %}{% link _abouts/0002-skills.md %}{% endcapture %}
