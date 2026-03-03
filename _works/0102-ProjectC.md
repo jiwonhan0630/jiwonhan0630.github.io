@@ -50,4 +50,5 @@ UnityWebRequest와 UniTask를 사용, 백엔드에서 제공한 API를 호출하
 <!-- 실제 공장 작업자의 조립 데이터를 수신하여 플레이 자동화, 게임 내 스테이지 및 보상 체계와 연동하는 시스템을 구현하였습니다.   -->
 
 # Troubleshooting
+수정 불가능한 씬 환경에서 NavMesh 데이터를 통한 물리 주행 구현  
 {% include highlights/projectc-wheel-on-navmesh.md %}
