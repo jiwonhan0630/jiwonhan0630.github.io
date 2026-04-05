@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: home
 title: Jiwon Han's Page
 description: "한지원, 불편함을 만드는 개발자"
 ---
