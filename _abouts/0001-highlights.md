@@ -42,7 +42,7 @@ file="highlights/naming-tool.md" %}
 </div>
 <div class="panelbox-item">
 
-{% include highlights/projectpz-editor-ui.md %}
+{% include highlights/projectpz-editor-ui.md | markdownify %}
 
 </div>
 </article>
