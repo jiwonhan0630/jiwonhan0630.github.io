@@ -36,14 +36,13 @@ file="highlights/naming-tool.md" %}
 
 <article class="panelbox" markdown="1">
 <div class="panelbox-title">
-
-## Attribute 기반의 자동 이벤트 바인딩 시스템
-
+Attribute 기반의 자동 이벤트 바인딩 시스템
 </div>
 <div class="panelbox-item">
-
-{% include highlights/projectpz-editor-ui.md | markdownify %}
-
+{% capture mdown_content %}
+{% include highlights/projectpz-editor-ui.md %}
+{% endcapture %}
+{{ mdown_content | markdownify }}
 </div>
 </article>
 
