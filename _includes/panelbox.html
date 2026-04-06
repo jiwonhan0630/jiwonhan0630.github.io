@@ -2,9 +2,10 @@
     <div class="panelbox-title">{{ include.title }}</div>
     <div class="panelbox-item">
         {% if include.file %}
-            {% include {{ include.file }} %}
+            {% capture mdown %}{% include {{ include.file }} %}{% endcapture %}
+            {{ mdown | markdownify }}
         {% else %}
-            {{ include.content }}
+            {{ include.content | markdownify }}
         {% endif %}
     </div>
 </article>
