@@ -49,14 +49,3 @@
         	}
 		}
 	}
-
-	h2.panelbox-title {
-		@extend .panelbox-title; // 기존 정의된 스타일 불러오기
-		// margin-bottom: 0;
-	}
-
-	h2.panelbox-title + .panelbox-item {
-		@extend .panelbox-item;
-		// border: solid _size(border-width) var(--color-border); //
-		// border-top: none;
-	}
