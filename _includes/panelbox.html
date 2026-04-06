@@ -1,0 +1,10 @@
+<article class="panelbox">
+    <div class="panelbox-title">{{ include.title }}</div>
+    <div class="panelbox-item" markdown="1">
+        {% if include.file %}
+            {% include {{ include.file }} %}
+        {% else %}
+            {{ include.content }}
+        {% endif %}
+    </div>
+</article>
