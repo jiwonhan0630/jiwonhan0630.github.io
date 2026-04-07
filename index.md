@@ -10,12 +10,11 @@ description: "한지원, 불편함을 만드는 개발자"
 [<i class="fa-solid fa-phone"></i> 010-5681-0419](tel:01056810419)  
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
 
-{% capture target %}{% link _abouts/0004-me.md %}{% endcapture %}
+<!-- {% capture target %}{% link _abouts/0004-me.md %}{% endcapture %}
 {% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
     main-text="소개" 
     sub-text="작성중, 임시 소개용 페이지" 
-%}
-
+%} -->
 
 {% capture target %}{% link _abouts/0001-highlights.md %}{% endcapture %}
 {% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
