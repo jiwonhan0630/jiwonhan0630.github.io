@@ -9,11 +9,6 @@ description: "창의성의 액셀러레이터, 한지원"
 [<i class="fa-solid fa-phone"></i> 010-5681-0419](tel:01056810419)  
 [<i class="fa-solid fa-envelope"></i> jiwonhan0630@gmail.com](mailto:jiwonhan0630@gmail.com)  
 
-<!-- {% capture target %}{% link _abouts/0004-me.md %}{% endcapture %}
-{% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
-    main-text="한지원은 어떤 사람인가요?" 
-    sub-text="한지원에 대해 소개합니다" 
-%} -->
 
 {% capture target %}{% link _abouts/0001-highlights.md %}{% endcapture %}
 {% include components/button-subject.html url=target class="negative" icon="arrow_forward_ios" 
