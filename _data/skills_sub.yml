@@ -19,7 +19,7 @@
 
 - title: "Notion"
   icon-type: "icon"
-  icon: "fa-solid fa-triangle-exclamation"
+  icon: "fa-brands fa-notion"
   description:
     - "수식구문과 함수를 사용하여 필요한 값을 시각화할 수 있습니다."
     - "관계형 데이터베이스, 자동화 기능을 통해 업무 보조용 페이지를 제작한 경험이 있습니다."
