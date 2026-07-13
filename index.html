@@ -1210,62 +1210,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             }
         };
         
-        const FRAG_DATA = {
-            wangtile: {
-                title: "Wang Tile 알고리즘",
-                content: `
-                    <h2>개요</h2>
-                    <p><strong>Wang Tile(왕 타일)</strong>은 수학자 Hao Wang이 제안한 시스템으로, 사각형 타일의 각 변에 특정 색상을 부여하고, <strong>"서로 맞닿는 변의 색상이 같은 타일끼리만 연결한다"</strong>는 규칙을 가졌습니다.</p>
-                    <p>이 기법을 활용하면 적은 수의 타일 세트(예: 16개)만으로도 패턴의 반복이 적게 느껴지는 비주기적이고 자연스러운 평면을 생성할 수 있습니다.</p>
-                    
-                    <h2>적용 방식</h2>
-                    <p>Project PZ의 절차적 레벨 생성기에 이 엣지 매칭(Edge Matching)을 응용 구현하여, 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하는 알고리즘을 도입했습니다. 회전 규칙 및 예외 규칙 처리를 통해 맵의 조각 연결 다양성을 극대화했습니다.</p>
-                `
-            },
-            suwon: {
-                title: "수원박물관 전시 도슨트 시스템",
-                content: `
-                    <h2>개요</h2>
-                    <p>소장 유물을 활용한 박물관 전시 게임 콘텐츠 제작 프로젝트입니다.</p>
-                    <h2>담당 업무</h2>
-                    <p>정의된 사내 규약 프레임워크 및 프로세스에 기반하여 전시용 빌드 시스템 연동을 보조하였습니다.</p>
-                `
-            },
-            myway: {
-                title: "마이웨이 (Myway)",
-                content: `
-                    <h2>개요</h2>
-                    <p>인생 첫 게임 개발 프로젝트입니다.</p>
-                    <ul>
-                        <li><strong>플랫폼</strong>: PC (Windows)</li>
-                        <li><strong>장르</strong>: 2D 플랫포머</li>
-                        <li><strong>개발 환경</strong>: Unity Engine</li>
-                    </ul>
-                    
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>일정 조율 및 기능 기획 초안 제안</li>
-                        <li>플레이어 제어 및 4종의 고유 동료 소환/스태킹 시스템 구현</li>
-                        <li>FSM 기반 몬스터 인공지능 패턴</li>
-                        <li>스킬 및 투사체 발사 제어 통합 매니저 구현</li>
-                        <li>CSV 대화 파서 및 인게임 UGUI 레이아웃 연동</li>
-                    </ul>
-                `
-            },
-            fagon: {
-                title: "FAGON 네이밍 툴",
-                content: `
-                    <h2>개요</h2>
-                    <p>외주 작업물 전달 시 규칙에 어긋나는 오브젝트 이름을 자동으로 통일 교정해주는 유니티 에디터 확장 플러그인입니다.</p>
-                    <h2>주요 스펙</h2>
-                    <ul>
-                        <li><strong>컴포넌트 기반 접두/접미 매핑</strong>: 렌더러 감지 시 메쉬 원본 리소스 이름과 재질 이름을 읽어와 접미사로 일관 적용</li>
-                        <li>넘버링 유효성 검사 및 정규표현식 기반 불필요 공백/특수문자 자동 치환 보정</li>
-                    </ul>
-                `
-            }
-        };
-        
         // Modal Trigger functions
         function openProject(projectId) {
             const data = PROJECT_DATA[projectId];
@@ -1306,19 +1250,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     if (descP) descP.remove();
                 }
             }
-            
-            modal.showModal();
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function openFrag(fragId) {
-            const data = FRAG_DATA[fragId];
-            if (!data) return;
-            
-            modalTitle.innerText = data.title;
-            modalTagsContainer.innerHTML = '';
-            modalTagsContainer.style.display = 'none';
-            modalContent.innerHTML = data.content;
             
             modal.showModal();
             document.body.style.overflow = 'hidden';
