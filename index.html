@@ -1,0 +1,1328 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Jiwon Han | Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --color-bg-deep: #121212;
+            --color-bg-sidebar: #181818;
+            --color-bg-card: #1c1c1c;
+            --color-bg-hover: #262626;
+            --color-border: #2c2c2c;
+            --color-border-active: #d4ff3f;
+            --color-text-primary: #f5f5f5;
+            --color-text-secondary: #a0a0a0;
+            --color-accent: #d4ff3f;
+            
+            /* 신규 이관된 색상 변수 */
+            --color-text-button-inactive: #d5d5d5;
+            --color-border-button-inactive: #4a4a4a;
+            --color-bg-pre: #0b0b0b;
+            --color-bg-code: #1a1a1a;
+            --color-text-pre-code: #d8d8d8;
+            --color-bg-modal: #161616;
+            --color-backdrop: rgba(0, 0, 0, 0.85);
+            --color-scrollbar-thumb: #2a2a2a;
+            
+            --sidebar-width: 320px;
+            --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: var(--color-bg-deep);
+            color: var(--color-text-primary);
+            font-family: 'Pretendard-Gov', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            word-break: keep-all;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        /* Layout Grid */
+        #container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Left Sidebar */
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--color-bg-sidebar);
+            border-right: 1px solid var(--color-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        
+        .profile-info .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .profile-info .logo::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-accent);
+            margin-left: 0.4rem;
+        }
+        
+        .profile-info .intro {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 3rem;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .nav-tabs li a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            color: var(--color-text-button-inactive);
+            border: 1px solid var(--color-border-button-inactive);
+            background-color: var(--color-bg-card);
+            font-weight: 700;
+            font-size: 1rem;
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .nav-tabs li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-accent);
+            transform: scaleY(0);
+            transition: var(--transition-smooth);
+        }
+        .nav-tabs li a:hover, .nav-tabs li a.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background-color: var(--color-bg-hover);
+        }
+        .nav-tabs li a:hover::before, .nav-tabs li a.active::before {
+            transform: scaleY(1);
+        }
+        .nav-tabs li a span {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact info at bottom of sidebar */
+        .sidebar-contact {
+            border-top: 1px solid var(--color-border);
+            padding-top: 1.5rem;
+        }
+        .sidebar-contact li {
+            list-style: none;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sidebar-contact li a:hover {
+            color: var(--color-accent);
+        }
+        .sidebar-contact li span {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+        }
+        
+        /* Right Content Area */
+        #content-area {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 4rem 3rem;
+            max-width: 900px;
+            min-width: 0;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Typo */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+        
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 2rem 0 3rem;
+        }
+        
+        /* Grid card box */
+        .sectionbox {
+            margin-bottom: 3.5rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 2.5rem;
+        }
+        .sectionbox:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .sectionbox-header {
+            margin-bottom: 2rem;
+        }
+        .sectionbox-header h3 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        .sectionbox-header p {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
+        .panelbox {
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-card);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+        .panelbox:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .panelbox-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-primary);
+        }
+        .panelbox-item ul {
+            list-style-type: square;
+            margin-left: 1.25rem;
+            color: var(--color-text-secondary);
+        }
+        .panelbox-item ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Grid container for Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .skill-card {
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-card);
+            padding: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+        .skill-card:hover {
+            border-color: var(--color-accent);
+        }
+        .skill-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+        .skill-card ul li {
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 0.8rem;
+        }
+        .skill-card ul li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+        
+        /* Project Cards (Subject Buttons) */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-card);
+            padding: 1.5rem 2rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-accent);
+            transform: scaleY(0);
+            transition: var(--transition-smooth);
+        }
+        .project-card:hover {
+            border-color: var(--color-accent);
+            background-color: var(--color-bg-hover);
+            transform: translateX(5px);
+        }
+        .project-card:hover::before {
+            transform: scaleY(1);
+        }
+        .project-card .main-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .project-card .sub-text {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+        .project-card .icon-container {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        .project-card:hover .icon-container {
+            color: var(--color-accent);
+        }
+        
+        /* Pre / Code styling */
+        pre {
+            background-color: var(--color-bg-pre);
+            border: 1px solid var(--color-border);
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: var(--color-bg-code);
+            color: var(--color-accent);
+            padding: 0.15rem 0.3rem;
+            font-size: 0.85em;
+        }
+        pre code {
+            background-color: transparent;
+            color: var(--color-text-pre-code);
+            padding: 0;
+        }
+        
+        /* Inline utility image */
+        .image-inline {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        /* Modal Overlay & Dialog */
+        dialog {
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-modal);
+            color: var(--color-text-primary);
+            max-width: 800px;
+            width: 90%;
+            padding: 0;
+            margin: auto;
+            outline: none;
+        }
+        dialog::backdrop {
+            background-color: var(--color-backdrop);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+            background-color: var(--color-bg-sidebar);
+        }
+        .modal-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+        .modal-header .close-btn {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .modal-header .close-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .modal-content-area {
+            padding: 2.5rem 2rem;
+            overflow-y: auto;
+        }
+        
+        .modal-content-area h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            color: var(--color-accent);
+        }
+        .modal-content-area h2:first-child {
+            margin-top: 0;
+        }
+        .modal-content-area h4 {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin: 1.5rem 0 0.5rem;
+        }
+        .modal-content-area ul {
+            list-style-type: square;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+        .modal-content-area ul li {
+            margin-bottom: 0.4rem;
+        }
+        
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none !important;
+            list-style-type: none !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .modal-tags li {
+            list-style: none !important;
+            list-style-type: none !important;
+            background-color: var(--color-bg-deep);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .modal-link {
+            color: var(--color-accent);
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        /* Custom Scrollbar for Modal and Content */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-scrollbar-thumb);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent);
+        }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 1024px) {
+            #container {
+                flex-direction: column;
+            }
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 2rem;
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+            .profile-info .intro {
+                margin-bottom: 1.5rem;
+            }
+            .nav-tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .nav-tabs li {
+                flex: 1 1 calc(50% - 0.5rem);
+            }
+            .nav-tabs li a {
+                justify-content: center;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            #content-area {
+                margin-left: 0;
+                padding: 2.5rem 1.5rem;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+        
+        /* Troubleshooting Inner Content Styles */
+        .trouble-content h4 {
+            font-size: 1.15rem;
+            color: var(--color-text-primary);
+            margin: 1.5rem 0 0.5rem;
+            font-weight: 700;
+        }
+        .trouble-content h5 {
+            font-size: 1rem;
+            color: var(--color-accent);
+            margin: 1rem 0 0.4rem;
+            font-weight: 700;
+        }
+        .trouble-content ul, .trouble-content ol {
+            margin-left: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: var(--color-text-secondary);
+        }
+        .trouble-content li {
+            margin-bottom: 0.4rem;
+        }
+        
+        /* Next Tab Navigation */
+        .next-tab-nav {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 4rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 2rem;
+        }
+        .next-tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1px solid var(--color-border-button-inactive);
+            color: var(--color-text-button-inactive);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .next-tab-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background-color: var(--color-bg-hover);
+        }
+        .next-tab-btn span {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div id="container">
+        
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar">
+            <div class="profile-info">
+                <div class="logo">한지원 <span style="font-size: 0.9rem; font-weight: 500; text-transform: none; color: var(--color-text-secondary); margin-left: 0.5rem; letter-spacing: 0;">(Han Jiwon)</span></div>
+                <p class="intro"><strong>"즐거운 개발이 즐거운 게임을 부른다!"</strong><br><br>저는 여러분들과 함께 각자의 창의성을 온전히 발휘할 수 있는 환경을 만들며 성장해나가고 싶습니다.</p>
+                
+                <ul class="nav-tabs">
+                    <li><a class="active" onclick="switchTab('highlights')"><span class="material-symbols-outlined">bolt</span>핵심 역량</a></li>
+                    <li><a onclick="switchTab('skills')"><span class="material-symbols-outlined">construction</span>보유 기술</a></li>
+                    <li><a onclick="switchTab('projects')"><span class="material-symbols-outlined">folder_open</span>참여 프로젝트</a></li>
+                </ul>
+            </div>
+            
+            <ul class="sidebar-contact">
+                <li><span class="material-symbols-outlined">call</span><a href="tel:01056810419">010-5681-0419</a></li>
+                <li><span class="material-symbols-outlined">mail</span><a href="mailto:jiwonhan0630@gmail.com">jiwonhan0630@gmail.com</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main id="content-area">
+            
+            <!-- Tab: Highlights (핵심 역량) -->
+            <section id="highlights" class="tab-content active">
+                <h1>핵심 역량</h1>
+                <p style="margin-bottom: 0;">팀의 생산성을 높이는 에디터 툴 개발부터, 성능을 책임지는 구조 개선까지 저의 핵심 역량을 요약합니다.</p>
+                <hr>
+                
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>개발 편의 기능</h3>
+                        <p>개발 과정에서 발생하는 비효율적인 작업을 개선하고 실무에 즉시 도입 가능한 기능을 구현하여 팀의 생산성을 끌어올립니다</p>
+                    </div>
+                    
+                    <article class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">Attribute 기반의 자동 이벤트 바인딩 시스템</h4>
+                        <p>UIToolkit 환경에서, element class를 통해 이벤트를 자동으로 바인딩하는 기능을 구현하였습니다. 디자이너는 UI를 새로 만들거나 수정할 때, element class를 추가하면 즉시 기능을 적용할 수 있으며, 프로그래머는 Attribute를 선언하는 것으로 추가 바인딩 작업 없이 이벤트를 바인딩할 수 있습니다.</p>
+                        <pre><code class="language-csharp"><span style="color: var(--color-accent);">[ElementCommand("cmd--button--brush-tool")]</span>
+private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");</code></pre>
+                        <p>UQuery를 통한 리플렉션 호출을 초기화 시점에 단 한 번으로 최적화하여 성능 영향을 최소화했습니다. static 람다를 사용해 외부 변수 캡처로 인한 부가적인 가비지 컬렉터(GC) 할당을 방지했습니다.</p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">CSV Utility</h4>
+                        <p>별도의 파싱 코드 작성 없이 CSV 데이터를 C# 컬렉션 및 오브젝트로 자동 변환하는 컨버터 유틸리티를 구현했습니다. 헤더 이름 매핑과 열 인덱스 매핑을 모두 지원합니다.</p>
+                        <pre><code class="language-csharp">public class Weapon
+{
+    <span style="color: var(--color-accent);">[CSVIndex(0)]</span> public string ItemCode;
+    <span style="color: var(--color-accent);">[CSVHeader("wpn_author")]</span> public string AuthorName;
+    public List&lt;string&gt; EnchantList;
+    public EquipSlotType SlotType;
+}</code></pre>
+                        <p>컨버터 클래스를 오버라이딩하여 복잡한 자료형(StatInfo 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원합니다.</p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">Naming Tool</h4>
+                        <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 유틸리티를 구현하였습니다. 단순히 일괄적으로 이름을 변경하는 것을 넘어, 에셋의 세부 타입과 오브젝트에 부착된 컴포넌트 구성의 우선순위를 분석하여 맥락에 맞는 최적의 이름을 생성합니다.</p>
+
+                        <h5 style="font-size: 1rem; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700;">컴포넌트 기반 네이밍</h5>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1rem;">게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메쉬 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메쉬명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
+
+                        <h5 style="font-size: 1rem; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700;">정밀 넘버링 시스템</h5>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1rem;">유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
+
+                        <h5 style="font-size: 1rem; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700;">에셋 타입 기반 유효성 검증</h5>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1rem;">선택된 에셋의 바이너리 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 접두사(Prefix) 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
+
+                        <h5 style="font-size: 1rem; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700;">확장성을 고려한 아키텍처 설계</h5>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 추상 클래스(Abstract Class)로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+                    </article>
+                </div>
+                
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>Unity 에디터 확장 및 리소스 제어</h3>
+                        <p>프로젝트 특성에 맞는 에디터 확장 기능을 구현하여 팀 내에 보다 편안한 유니티 작업 프로세스를 구성합니다</p>
+                    </div>
+                    
+                    <article class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">레벨 에디팅 및 베이킹 툴</h4>
+                        <p>씬 뷰에서 Handles와 Gizmos를 활용하여 AI 이동 경로 노드를 직접 생성하고, 지형 데이터를 가공할 수 있는 레벨 에디터를 개발했습니다. NavMesh 에셋을 직접 구동하지 않고 ScriptableObject로 구역 좌표 데이터를 압축 베이킹하는 툴을 제공했습니다.</p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">Addressables 시스템 확장</h4>
+                        <p>에셋의 드래그 앤 드롭을 지원하되, 씬 인스펙터에서는 직접적인 하드 임포트 링크 대신 Addressable 주소 라벨을 참조하게 하여 암묵적인 메모리 종속성을 원천 차단했습니다. 로드/언로드 시 잦은 에셋 번들 변환 부하(Asset Churn)를 방지하기 위해 Global/Stage Lifecycle 참조 카운팅 시스템을 구현했습니다.</p>
+                    </article>
+                </div>
+                
+                <!-- 콘텐츠 및 시스템 요약 섹션 -->
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>콘텐츠 및 시스템</h3>
+                        <p>게임 플레이에 필요한 콘텐츠와 다양한 기능 요구사항을 구현합니다</p>
+                    </div>
+                    
+                    <div class="sectionbox-content">
+                        <!-- 1. 절차적 레벨 생성 -->
+                        <article class="panelbox">
+                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">절차적 레벨 생성</h4>
+                            <p style="margin-bottom: 0.5rem; font-weight: bold;"><a href="javascript:openProject('projectpz')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project PZ</a></p>
+                            <div class="panelbox-item">
+                                <ul>
+                                    <li>Wang Tile 알고리즘을 참고하여 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하였습니다.</li>
+                                    <li>퀘스트나 아이템 상태에 따라 생성 규칙이 동적으로 변하는 시스템 설계</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- 2. 물리 기반 자율 주행 및 파츠 시스템 -->
+                        <article class="panelbox">
+                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">물리 기반 자율 주행 및 파츠 시스템</h4>
+                            <p style="margin-bottom: 0.5rem; font-weight: bold;"><a href="javascript:openProject('projectc')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project C</a></p>
+                            <div class="panelbox-item">
+                                <ul>
+                                    <li>WheelCollider로 이동하는 물리 기반 자율 주행 AI 구현</li>
+                                    <li>주행 중 실시간으로 파츠(바퀴, 차체) 교체 시, 무게 중심과 회전 반경을 재계산하여 주행 물리에 즉각 반영되는 시스템 구현</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- 3. 산업 데이터 기반 게이미피케이션 -->
+                        <article class="panelbox">
+                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">산업 데이터 기반 게이미피케이션</h4>
+                            <p style="margin-bottom: 0.5rem; font-weight: bold;"><a href="javascript:openProject('projectc')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project C</a></p>
+                            <div class="panelbox-item">
+                                <ul>
+                                    <li>실제 공장 작업자의 조립 데이터를 실시간으로 수신하여 게임 내 피버 타임, 스테이지 변화 등을 제어하는 자동화 플레이 로직 구현</li>
+                                    <li>데이터 송수신과 게임 로직을 분리하여 네트워크 지연 시에도 게임 흐름이 끊기지 않도록 설계</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- 4. 몬스터 및 보스 패턴 시스템 -->
+                        <article class="panelbox">
+                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">몬스터 및 보스 패턴 시스템</h4>
+                            <div class="panelbox-item">
+                                <h5 style="font-size: 1rem; color: var(--color-text-primary); margin-bottom: 0.4rem; font-weight: 700;">
+                                    <a href="javascript:openProject('projectpz')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project PZ</a>
+                                </h5>
+                                <ul style="margin-bottom: 1rem;">
+                                    <li>데이터 테이블을 통해 상태와 전이 조건을 정의하는 몬스터 패턴 시스템 구현</li>
+                                </ul>
+                                
+                                <h5 style="font-size: 1rem; color: var(--color-text-primary); margin-bottom: 0.4rem; font-weight: 700;">
+                                    <a href="javascript:openProject('projecti')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project I</a>
+                                </h5>
+                                <ul>
+                                    <li>StateMachineBehaviour를 활용하여 애니메이션 상태와 로직을 1:1로 매핑한 보스 패턴 시스템 구현</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>Troubleshooting</h3>
+                    </div>
+                    
+                    <!-- Trouble 1: NavMesh WheelCollider -->
+                    <article id="troubleshoot-c-navmesh" class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">프로젝트 내 NavMesh 작업 프로세스를 유지한 채 WheelCollider를 사용하기</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">NavMesh를 사용하는 월드에서 작동하는 WheelCollider를 이용한 주행 기능을 구현하였습니다.</p>
+                        
+                        <div class="trouble-content">
+                            <h4>문제 상황</h4>
+                            <p>개발 도중 플레이어의 이동 방식이 NavMeshAgent에서, 물리가 적용된 WheelCollider로 변경되었습니다.<br>
+                            하지만 기존 스테이지는 NavMesh 규격으로 이미 제작되어 수정이 불가능한 상황이었으며, 단순히 NavMeshAgent를 사용할 경우 물리적 상호작용(충돌, 서스펜션 등)을 구현하는 데 한계가 있었습니다.<br>
+                            따라서 기존 NavMesh 데이터를 활용하면서도, 물리 엔진 기반의 주행이 가능한 시스템을 새롭게 구축해야 했습니다.</p>
+                            
+                            <h4>해결 과정</h4>
+                            <h5>1. NavMesh 데이터 추출</h5>
+                            <p>Unity AI Navigation Package의 Baking 함수를 추적하여, 베이킹 시 생성되는 NavMesh 폴리곤의 좌표 데이터를 추출하는 기능을 구현했습니다.<br>
+                            추출된 데이터를 별도의 ScriptableObject로 저장하여, 런타임에 경로 데이터를 참조할 수 있도록 구조화했습니다.</p>
+                            
+                            <h5>2. 주행 경로 수정</h5>
+                            <p>NavMesh가 지원하는 경로 따라가기 함수 사용 시 폴리곤의 꼭짓점 부분을 이용하여 이동하기 때문에 시각적으로 부자연스러운 문제가 발생하였습니다.<br>
+                            이를 해결하기 위해 삼각형의 무게중심을 선형 보간한 경로를 사용하였으나, 삼각형 형태에 따라 불필요한 움직임이 발생했습니다.<br>
+                            최종적으로는 인접한 폴리곤이 맞닿는 모서리의 중점을 연결하여 경로를 수정하는 로직을 적용하여, 차량이 도로의 중앙을 따라 부드럽게 이동할 수 있도록 구현했습니다.</p>
+                            
+                            <h5>3. 장애물 회피 로직 구현</h5>
+                            <p>NavMeshAgent의 회피 기능을 대체하기 위해, Raycast를 사용하여 전방의 오브젝트를 감지하고 정지/후진하는 로직을 추가했습니다.<br>
+                            박스나 캡슐 콜라이더를 가진 고정 장애물 감지 시, 콜라이더의 좌표와 회전값을 분석하여 우회 경로를 생성합니다.<br>
+                            현재 속도를 기반으로 예상 도착 시간을 계산하고, 지연이 심할 경우 경로를 재탐색하도록 설계했습니다.</p>
+                            
+                            <h4>결과</h4>
+                            <p>기존 스테이지 리소스를 수정하지 않고도 WheelCollider 기반의 물리 주행 시스템을 성공적으로 도입했습니다.<br>
+                            자체적인 경로 보정 알고리즘을 적용하여 자연스러운 차량 주행감을 구현할 수 있었습니다.</p>
+                        </div>
+                    </article>
+
+                    <!-- Trouble 2: C# Optimization -->
+                    <article id="troubleshoot-pz-refactoring" class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">프로토타입 지형 생성 로직을 상용 수준으로 리팩토링</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">기존 코드의 구조적 한계를 파악하고 병목 원인을 분석하여 상용 수준의 퍼포먼스를 확보하였습니다.</p>
+                        
+                        <div class="trouble-content">
+                            <h4>문제 상황</h4>
+                            <p>테스트 기기 환경에서 거대한 레벨을 생성할 경우, 300초 이상의 긴 시간이 소모되는 현상이 발생하였습니다.</p>
+                            
+                            <h4>원인 분석</h4>
+                            <p>Profiler를 사용하여 분석한 결과, 심각한 GC 오버헤드와 비효율적인 연산이 핵심 원인으로 파악되었습니다.</p>
+                            <ol>
+                                <li><strong>GC 오버헤드</strong>:
+                                    <ul>
+                                        <li>class 기반 좌표 클래스의 연산자 오버로딩으로 인해 매 연산마다 발생하는 힙 할당</li>
+                                        <li>ToList, ToDictionary 등의 잦은 LINQ 호출로 인한 리사이징과 박싱</li>
+                                        <li>잦은 Coroutine 호출</li>
+                                    </ul>
+                                </li>
+                                <li><strong>비효율적 알고리즘</strong>:
+                                    <ul>
+                                        <li>오버랩 체크 시 타일 개수만큼 객체를 생성하거나 전체를 순회하는 O(N^2) 로직</li>
+                                        <li>동일한 결과를 반환하는 조건 연산의 중첩 사용</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            
+                            <h4>해결 과정</h4>
+                            <h5>1. GC 오버헤드 제거</h5>
+                            <p>좌표 클래스를 구조체로 변경하는 동시에 지형 정보를 담고 있던 string 등 참조 타입의 변수를 제거하여 GC.Alloc이 완전히 일어나지 않도록 하였습니다.<br>
+                            또한 LINQ 사용으로 인해 발생하는 문제점을 해결하기 위해 아래와 같이 수정하였습니다.</p>
+                            <ul>
+                                <li>콜렉션을 미리 생성함과 동시에 Capacity를 계산하여, 함수 내에서의 생성과 Resizing을 최소화하였습니다. (Memory Profiler를 통해 예약된 메모리와 콜렉션의 최종 크기가 동일함을 검증했습니다.)</li>
+                                <li>쿼리 함수를 for/while를 사용한 순회로 변경하여 새로운 콜렉션을 생성하지 않도록 하였습니다.</li>
+                                <li>List 순회 대신 HashSet과 Dictionary을 사용하여 평균 데이터 접근 속도를 개선하였습니다.</li>
+                            </ul>
+                            <p>마지막으로 코루틴은 컴파일 단계에서 클래스로 선언되어 작동하기 때문에 GC.Alloc이 일어나게 되므로, 이를 방지하기 위해 구조체 기반의 UniTask를 도입하였습니다.</p>
+                            
+                            <h5>2. 청크 시스템 적용</h5>
+                            <p>청크 시스템의 Spatial Hash Grid를 적용하여 좌표 단위로 실행하는 동작을 영역 단위로 실행하도록 수정하였습니다.<br>
+                            오버랩 체크, 영역 회전, 확장 등 관련 함수의 호출 횟수와 평균 데이터 접근 속도를 개선하였습니다.</p>
+                            
+                            <h5>3. CPU Friendly</h5>
+                            <p>개선된 구조에서도 일부 함수는 최악의 경우 수십만번 이상 호출되어 실행 시간에 영향을 주는 것을 확인하였습니다. 더 이상 호출 횟수를 줄이는 것은 어려웠기 때문에, 함수 자체의 동작 시간을 줄이기 위해 아래와 같은 방법을 통해 CPU의 처리 시간 감소를 도모하였습니다.</p>
+                            <ul>
+                                <li>좌표 구조체의 크기를 조절하여 메모리 접근 횟수를 줄였습니다.</li>
+                                <li>불필요한 중간 객체를 제거하고 함수 파라미터에 수식을 직접 넣어 전달하였습니다.</li>
+                                <li>연산자 오버로딩을 제거하고 멤버의 값을 수정하는 연산 함수로 변경하였습니다.</li>
+                            </ul>
+                            
+                            <h4>결과</h4>
+                            <p>최악의 케이스(모든 청크 검사 실패, 기획상 최대 지형 크기 적용 등)를 가정한 테스트 환경에서, 평균 생성 시간이 380초 → 14초로 단축되었습니다.<br>
+                            또한 핵심 생성 로직에서 필수적인 할당을 제외한 Zero Allocation을 달성하여, GC Spike 현상을 방지할 수 있었습니다.</p>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" onclick="switchTab('skills')">
+                        보유 기술 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tab: Skills (보유 기술) -->
+            <section id="skills" class="tab-content">
+                <h1>보유 기술</h1>
+                <p style="margin-bottom: 0;">활용 가능한 언어, 엔진 및 유틸리티 도구에 대한 숙련도 요약입니다.</p>
+                <hr>
+                
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>주요 기술</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h4>Unity Engine</h4>
+                            <ul>
+                                <li>인게임 콘텐츠 구현 및 최적화</li>
+                                <li>UIToolkit을 사용하여 에디터 확장 기능 구현</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>C#</h4>
+                            <ul>
+                                <li>C# 메모리 매커니즘, 구조체 및 클래스 최적화 이해</li>
+                                <li>델리게이트, 이벤트, 제네릭 컨버터, 비동기 UniTask 최적 활용</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>Database</h4>
+                            <ul>
+                                <li>SQL 및 NoSQL 기초 쿼리 운용 가능</li>
+                                <li>MongoDB, MariaDB, TMaxTiberoDB를 활용한 통신 연동 경험</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sectionbox" style="margin-top: 2rem;">
+                    <div class="sectionbox-header">
+                        <h3>보조 기술 및 도구</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h4>Blender</h4>
+                            <ul>
+                                <li>단순한 형태의 모델 및 텍스처 제작 가능</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>Adobe Photoshop</h4>
+                            <ul>
+                                <li>이미지 편집, 텍스처 및 노말맵 생성, 타임라인 등 기본 기능 활용 가능</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>Notion</h4>
+                            <ul>
+                                <li>관계형 데이터베이스 수식 및 통계 자동화 구조 구축</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>AI Agents</h4>
+                            <ul>
+                                <li>Antigravity, Claude Code를 사용한 프로토타이핑 및 스크립트 자동 생성 경험</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>C++</h4>
+                            <ul>
+                                <li>STL 라이브러리 및 기초 메모리 주소 체계 개념 있음</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h4>Unreal Engine</h4>
+                            <ul>
+                                <li>블루프린트 기초 및 기본 에셋 제어 학습 진행 중</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" onclick="switchTab('projects')">
+                        참여 프로젝트 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Tab: Projects (참여 프로젝트 목록) -->
+            <section id="projects" class="tab-content">
+                <h1>참여 프로젝트</h1>
+                <p style="margin-bottom: 0;">제가 개발에 참여한 프로젝트 목록입니다. 카드를 클릭하면 상세한 기술 구현 정보를 확인하실 수 있습니다.</p>
+                <hr>
+                
+                <div class="project-list">
+                    <div class="project-card" onclick="openProject('projectpz')">
+                        <div class="text-container">
+                            <div class="main-text">Project PZ</div>
+                            <div class="sub-text">실시간 턴제 전략 액션 • Mobile Android</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProject('projectc')">
+                        <div class="text-container">
+                            <div class="main-text">Project C</div>
+                            <div class="sub-text">실시간 산업 데이터 기반 게이미피케이션 • PC Web/App</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProject('projecti')">
+                        <div class="text-container">
+                            <div class="main-text">Project I</div>
+                            <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProject('projectt')">
+                        <div class="text-container">
+                            <div class="main-text">Project T</div>
+                            <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" onclick="switchTab('highlights')">
+                        핵심 역량으로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
+                    </button>
+                </div>
+            </section>
+            
+        </main>
+        
+    </div>
+
+    <!-- Integrated Modal Dialog (CORS Error Free) -->
+    <dialog id="shared-modal">
+        <div class="modal-wrapper">
+            <header class="modal-header" style="align-items: flex-start;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <h3 id="modal-title">상세 정보</h3>
+                    <div id="modal-tags-container"></div>
+                </div>
+                <button type="button" class="close-btn" onclick="closeModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </header>
+            <div id="modal-content" class="modal-content-area">
+                <!-- Content injected dynamically -->
+            </div>
+        </div>
+    </dialog>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Tab switching logic based on URL Hash (가볍고 안전한 단방향 라우팅 구조)
+        function renderTab() {
+            let tabId = window.location.hash.replace('#', '');
+            if (!['highlights', 'skills', 'projects'].includes(tabId)) {
+                tabId = 'highlights';
+            }
+            
+            // 모든 탭 구역 중 현재 활성화된 탭만 노출
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.toggle('active', content.id === tabId);
+            });
+            
+            // 사이드바 네비게이션 버튼들의 활성화 상태를 매칭
+            document.querySelectorAll('.nav-tabs li a').forEach(link => {
+                const isActive = link.getAttribute('onclick').includes(tabId);
+                link.classList.toggle('active', isActive);
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 버튼 클릭 시에는 주소창의 해시만 변경해 줍니다.
+        function switchTab(tabId) {
+            window.location.hash = tabId;
+        }
+
+        // 이벤트 리스너 연동 (새로고침 시점 & 주소 해시 변경 시점 감지)
+        window.addEventListener('hashchange', renderTab);
+        window.addEventListener('DOMContentLoaded', renderTab);
+        
+        // Modal logic
+        const modal = document.getElementById('shared-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalTagsContainer = document.getElementById('modal-tags-container');
+        const modalContent = document.getElementById('modal-content');
+        
+        function closeModal() {
+            modal.close();
+            document.body.style.overflow = '';
+        }
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        // Local content storage representing works & frags (CORS bypass)
+        const PROJECT_DATA = {
+            projectpz: {
+                title: "Project PZ",
+                tags: ["Mobile(Android)", "UnityEngine", "C#"],
+                content: `
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 설계</li>
+                        <li>인게임 지형 생성 프리뷰 및 파츠 렌더링 스냅샷 레벨 디자인 에디터 툴 구현</li>
+                        <li>절차적 레벨/메쉬 런타임 생성 모듈 개발</li>
+                        <li>Spatial Hash Grid 기반의 청크 로딩 및 타임스탬프 기반 비활성 심도 시뮬레이션 구조 설계</li>
+                        <li>CSV 대화/몬스터 패턴 데이터 자동 바인딩 유틸리티 및 몬스터 행동 흐름 시각화 패턴 뷰어 개발</li>
+                    </ul>
+                    
+                    <h2>세부 구현 사항</h2>
+                    <h4>레벨 디자인 툴</h4>
+                    <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <strong>Attribute 기반 자동 이벤트 바인딩</strong>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 완벽히 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
+
+                    <h4>절차적 레벨 생성 & 월드맵</h4>
+                    <p>Wang Tile 알고리즘을 참고하여 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하였습니다. 이를 통해 회전, 연결 및 타일 인접 조건을 런타임에 동적으로 보정하는 지형 생성을 구성했습니다.<br>
+                    또한 Greedy 알고리즘을 통한 절차적 메쉬 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메쉬를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 <strong>TilemapRenderer</strong> 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
+                    
+                    <h4>청크 시스템</h4>
+                    <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 무거운 틱 연산 없이 수식 기반으로 즉시 오프라인 시뮬레이션 보정하는 경량화 구조를 정교하게 설계했습니다.</p>
+                    
+                    <h4>CSV Utility</h4>
+                    <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 정밀한 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
+
+                    <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
+                    <p>몬스터의 행동 패턴을 기획자가 CSV 형태로 작성하면, 이를 파싱하여 런타임 FSM(유한 상태 기계)에 주입하는 동작 구성을 설계했습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 실시간 모니터링 할 수 있는 분석 환경을 구축했습니다.</p>
+
+                    <h2>Troubleshooting</h2>
+                    <div id="modal-troubleshoot-target"></div>
+                `
+            },
+            projectc: {
+                title: "Project C",
+                tags: ["PC Web/App", "UnityEngine", "MariaDB"],
+                content: `
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>NavMesh 베이킹 좌표 추출 기반의 자율 주행 경로 에디터 및 Hat Socket 에디터 개발</li>
+                        <li>주행 실시간 차량 파츠(무게중심, 바퀴 반경) 교체 시스템 및 조향선 보정 모듈 구현</li>
+                        <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
+                        <li>전략/커맨드 패턴 기반의 주행 AI 의사결정 시스템 개발</li>
+                        <li>클라이언트 자동 업데이트, 버전 제어 및 프로세스 관리를 위한 C#/WPF 전용 런처 구현</li>
+                    </ul>
+                    
+                    <h2>세부 구현 사항</h2>
+                    <h4>에디터 확장 기능</h4>
+                    <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
+
+                    <h4>실시간 파츠 교체 시스템</h4>
+                    <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심(Center of Mass)을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
+                    
+                    <h4>차량 AI 및 자율 주행 시스템</h4>
+                    <p>유니티 AI Navigation의 NavMesh Baking에서 생성된 폴리곤 메쉬 데이터를 파싱하여, 무거운 NavMeshAgent 없이 WheelCollider의 토크와 서스펜션을 활용해 물리 차량이 완벽하게 주행하는 자율 주행 엔진을 탑재했습니다. 차량 AI는 <strong>전략 패턴(Strategy Pattern)</strong>과 <strong>커맨드 패턴(Command Pattern)</strong>을 연동하여 주행 도중 발생하는 예기치 못한 물리 충돌이나 장애물 우회 기동 시 각각의 독립적인 조작 알고리즘으로 동적 대처가 가능하게 설계했습니다.</p>
+                    
+                    <h4>산업 데이터 기반 게이미피케이션 로직</h4>
+                    <p>UnityWebRequest와 UniTask 비동기 프로세스를 운용하여 백엔드 DB 서버(MariaDB) API를 실시간 호출하고, 현장 작업자의 실제 생산 속도 및 공정 조립 통계 데이터를 받아옵니다. 데이터 통신 모듈을 완전 분리한 후 <strong>Behaviour Tree(행동 트리)</strong> 흐름을 커스텀 적용하여, 누적 작업 통계에 맞춰 게임 내 피버타임 진입, 보너스 스테이지 전환, 씬 및 게임 진행 상태를 동적으로 분기하여 자동화 플레이하도록 오토메이션 로직을 구축했습니다.</p>
+                    
+                    <h4>전용 런처 개발</h4>
+                    <p>클라이언트 자동 업데이트, 강제 재실행 및 세션 연결, 버전 관리 기능이 통합 탑재된 C# WPF 기반의 <strong>전용 데스크탑 런처</strong> 응용 프로그램을 구축하여, 윈도우 실행 스택을 통해 사용자가 매뉴얼하게 씬을 빌드 및 갱신해야 하는 비효율성을 완전 자동화했습니다.</p>
+
+                    <h2>Troubleshooting</h2>
+                    <div id="modal-troubleshoot-target-c"></div>
+                `
+            },
+            projecti: {
+                title: "Project I",
+                tags: ["PC", "UnityEngine", "FSM"],
+                content: `
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
+                        <li>공격 패턴 및 전이 데이터 편집용 커스텀 인스펙터 에디터 툴 개발</li>
+                        <li>Gizmos & Handles API를 이용한 스테이지 플랫폼 지형 설계 및 시각화 시스템 구현</li>
+                        <li>Legacy Input Manager 기반의 이벤트 발행-구독 동적 키바인딩 시스템 설계</li>
+                        <li>계층형 UI 구조 설계 및 조이패드 조작성 확보를 위한 UGUI Navigation 매핑</li>
+                        <li>Cinemachine 연동 스테이지 시작 연출 및 Timeline 카메라 흐름 제어</li>
+                    </ul>
+                    
+                    <h2>세부 구현 사항</h2>
+                    <h4>보스 몬스터 FSM & 커스텀 인스펙터</h4>
+                    <p>유니티 애니메이션 상태 제어기인 <strong>StateMachineBehaviour</strong>를 사용해 애니메이션 클립의 흐름과 실제 보스 상태 로직을 1:1로 일치시켰습니다. 공통적인 기본 행동 흐름은 BaseLayer에 정의하고, 보스의 페이즈 변화에 따른 추가 공격 기법들은 <strong>OverlayLayer</strong> 구조를 통해 설계했습니다. 또한 AnimationClip 에셋의 원본 리소스를 훼손하여 수정하지 않아도, 인스펙터 상에서 Behaviour 단위의 특정 프레임 시점을 지정하여 UnityEvent를 직접 호출하도록 애니메이션 프레임 정밀 제어 툴을 지원했습니다.</p>
+                    
+                    <h4>스테이지 플랫폼 설계 툴</h4>
+                    <p>유니티 <strong>Handles</strong> 및 <strong>Gizmos</strong>를 사용하여 씬 뷰에서 지형(플랫폼) 영역을 생성 및 수정하는 툴을 구현했습니다. 이미 배치된 <strong>MeshRenderer Bound</strong> 경계를 스캔하여 지형 데이터로 바꿔주는 에디터 스냅 기능을 구현했습니다.</p>
+
+                    <h4>이벤트 기반 입력 시스템</h4>
+                    <p>Legacy Input Manager를 사용하여 <strong>발행-구독(Publisher-Subscriber) 패턴</strong>으로 입력 구조를 독립 설계했습니다. 특정 KeyCode를 하드코딩해 참조하지 않고 string key를 구독하여 런타임 게임 도중 사용자가 키 매핑을 즉시 재구성할 수 있는 안전한 입력 리바인딩 흐름을 구축했습니다.</p>
+
+                    <h4>계층형 UI 및 Cinemachine 연출</h4>
+                    <p>게임패드 및 키보드 조작성을 원활히 완비하기 위해 계층화된 UI 아키텍처를 설계하고 <strong>UGUI Navigation</strong> 경로를 매핑하여 조작 연속성을 가다듬었습니다. 더불어 Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동 가동하도록 연동했습니다.</p>
+                `
+            },
+            projectt: {
+                title: "Project T",
+                tags: ["PC", "UnityEngine", "2D Platformer"],
+                content: `
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>기상 변화(비, 바람, 기온)에 따른 인게임 물리 상호작용 설계</li>
+                        <li>대화 노드 연동 이벤트 퀘스트 시스템</li>
+                        <li>문장 분석을 통한 동적 NPC 음성 피치 조절 시스템</li>
+                        <li>UGUI 계층 구조 네비게이션 설계</li>
+                    </ul>
+                    
+                    <h2>세부 구현 사항</h2>
+                    <h4>기상 상호작용 시스템</h4>
+                    <p>인터페이스 및 옵저버 패턴으로 날씨 변경 시에만 구독 오브젝트들에 변경을 뿌리는 구조를 구현했습니다. 바람(AreaEffector) 방향에 맞춰 불 파티클이 전파 번짐 알고리즘을 타도록 처리하고, 수위 변화에 따른 부력 보정을 구현했습니다.</p>
+                    
+                    <h4>동적 NPC 보이스</h4>
+                    <p>NPC 텍스트의 특수 부호 및 감정 라벨을 분석해 피치와 볼륨 속도를 런타임에 오디오 소스에 동적 반영하여 생동감을 더했습니다.</p>
+                `
+            }
+        };
+        
+        const FRAG_DATA = {
+            wangtile: {
+                title: "Wang Tile 알고리즘",
+                content: `
+                    <h2>개요</h2>
+                    <p><strong>Wang Tile(왕 타일)</strong>은 수학자 Hao Wang이 제안한 시스템으로, 사각형 타일의 각 변에 특정 색상을 부여하고, <strong>"서로 맞닿는 변의 색상이 같은 타일끼리만 연결한다"</strong>는 규칙을 가졌습니다.</p>
+                    <p>이 기법을 활용하면 적은 수의 타일 세트(예: 16개)만으로도 패턴의 반복이 적게 느껴지는 비주기적이고 자연스러운 평면을 생성할 수 있습니다.</p>
+                    
+                    <h2>적용 방식</h2>
+                    <p>Project PZ의 절차적 레벨 생성기에 이 엣지 매칭(Edge Matching)을 응용 구현하여, 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하는 알고리즘을 도입했습니다. 회전 규칙 및 예외 규칙 처리를 통해 맵의 조각 연결 다양성을 극대화했습니다.</p>
+                `
+            },
+            suwon: {
+                title: "수원박물관 전시 도슨트 시스템",
+                content: `
+                    <h2>개요</h2>
+                    <p>소장 유물을 활용한 박물관 전시 게임 콘텐츠 제작 프로젝트입니다.</p>
+                    <h2>담당 업무</h2>
+                    <p>정의된 사내 규약 프레임워크 및 프로세스에 기반하여 전시용 빌드 시스템 연동을 보조하였습니다.</p>
+                `
+            },
+            myway: {
+                title: "마이웨이 (Myway)",
+                content: `
+                    <h2>개요</h2>
+                    <p>인생 첫 게임 개발 프로젝트입니다.</p>
+                    <ul>
+                        <li><strong>플랫폼</strong>: PC (Windows)</li>
+                        <li><strong>장르</strong>: 2D 플랫포머</li>
+                        <li><strong>개발 환경</strong>: Unity Engine</li>
+                    </ul>
+                    
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>일정 조율 및 기능 기획 초안 제안</li>
+                        <li>플레이어 제어 및 4종의 고유 동료 소환/스태킹 시스템 구현</li>
+                        <li>FSM 기반 몬스터 인공지능 패턴</li>
+                        <li>스킬 및 투사체 발사 제어 통합 매니저 구현</li>
+                        <li>CSV 대화 파서 및 인게임 UGUI 레이아웃 연동</li>
+                    </ul>
+                `
+            },
+            fagon: {
+                title: "FAGON 네이밍 툴",
+                content: `
+                    <h2>개요</h2>
+                    <p>외주 작업물 전달 시 규칙에 어긋나는 오브젝트 이름을 자동으로 통일 교정해주는 유니티 에디터 확장 플러그인입니다.</p>
+                    <h2>주요 스펙</h2>
+                    <ul>
+                        <li><strong>컴포넌트 기반 접두/접미 매핑</strong>: 렌더러 감지 시 메쉬 원본 리소스 이름과 재질 이름을 읽어와 접미사로 일관 적용</li>
+                        <li>넘버링 유효성 검사 및 정규표현식 기반 불필요 공백/특수문자 자동 치환 보정</li>
+                    </ul>
+                `
+            }
+        };
+        
+        // Modal Trigger functions
+        function openProject(projectId) {
+            const data = PROJECT_DATA[projectId];
+            if (!data) return;
+            
+            modalTitle.innerText = data.title;
+            
+            let tagsHtml = `<ul class="modal-tags">`;
+            data.tags.forEach(tag => tagsHtml += `<li>${tag}</li>`);
+            tagsHtml += `</ul>`;
+            
+            modalTagsContainer.innerHTML = tagsHtml;
+            modalTagsContainer.style.display = 'block';
+            modalContent.innerHTML = data.content;
+            
+            // HTML의 개쩌는 동적 복제 기능 구현 (핵심 역량의 Troubleshooting 리소스 복제 및 결합)
+            const tsTarget = document.getElementById('modal-troubleshoot-target');
+            if (tsTarget) {
+                const tsSource = document.getElementById('troubleshoot-pz-refactoring');
+                if (tsSource) {
+                    tsTarget.innerHTML = tsSource.innerHTML;
+                    const titleH4 = tsTarget.querySelector('h4');
+                    if (titleH4) titleH4.remove();
+                    const descP = tsTarget.querySelector('p');
+                    if (descP) descP.remove();
+                }
+            }
+            
+            // Project C의 Troubleshooting 동적 복제 연동
+            const tsTargetC = document.getElementById('modal-troubleshoot-target-c');
+            if (tsTargetC) {
+                const tsSourceC = document.getElementById('troubleshoot-c-navmesh');
+                if (tsSourceC) {
+                    tsTargetC.innerHTML = tsSourceC.innerHTML;
+                    const titleH4 = tsTargetC.querySelector('h4');
+                    if (titleH4) titleH4.remove();
+                    const descP = tsTargetC.querySelector('p');
+                    if (descP) descP.remove();
+                }
+            }
+            
+            modal.showModal();
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function openFrag(fragId) {
+            const data = FRAG_DATA[fragId];
+            if (!data) return;
+            
+            modalTitle.innerText = data.title;
+            modalTagsContainer.innerHTML = '';
+            modalTagsContainer.style.display = 'none';
+            modalContent.innerHTML = data.content;
+            
+            modal.showModal();
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+</body>
+</html>
