@@ -628,19 +628,19 @@
         <aside id="sidebar">
             <div class="profile-info">
                 <div class="logo">한지원 <span style="font-size: 0.9rem; font-weight: 500; text-transform: none; color: var(--color-text-secondary); margin-left: 0.5rem; letter-spacing: 0;">(Han Jiwon)</span></div>
-                <p class="intro"><strong>"즐거운 개발이 즐거운 게임을 부른다!"</strong><br><br>저는 여러분들과 함께 각자의 창의성을 온전히 발휘할 수 있는 환경을 만들며 성장해나가고 싶습니다.</p>
+                <p class="intro"><strong>"즐거운 개발이 즐거운 게임을 부른다!"</strong></p>
                 
+                <ul class="sidebar-contact" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
+                    <li><span class="material-symbols-outlined">call</span><a href="tel:01056810419">010-5681-0419</a></li>
+                    <li><span class="material-symbols-outlined">mail</span><a href="mailto:jiwonhan0630@gmail.com">jiwonhan0630@gmail.com</a></li>
+                </ul>
+
                 <ul class="nav-tabs">
                     <li><a class="active" onclick="switchTab('highlights')"><span class="material-symbols-outlined">bolt</span>핵심 역량</a></li>
                     <li><a onclick="switchTab('skills')"><span class="material-symbols-outlined">construction</span>보유 기술</a></li>
                     <li><a onclick="switchTab('projects')"><span class="material-symbols-outlined">folder_open</span>참여 프로젝트</a></li>
                 </ul>
             </div>
-            
-            <ul class="sidebar-contact">
-                <li><span class="material-symbols-outlined">call</span><a href="tel:01056810419">010-5681-0419</a></li>
-                <li><span class="material-symbols-outlined">mail</span><a href="mailto:jiwonhan0630@gmail.com">jiwonhan0630@gmail.com</a></li>
-            </ul>
         </aside>
 
         <!-- Content Area -->
@@ -679,6 +679,14 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p>컨버터 클래스를 오버라이딩하여 복잡한 자료형(StatInfo 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원합니다.</p>
                     </article>
 
+                </div>
+                
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>Unity 에디터 확장</h3>
+                        <p>프로젝트 특성에 맞는 에디터 확장 기능을 구현하여 팀 내에 보다 편안한 유니티 작업 프로세스를 구성합니다</p>
+                    </div>
+                    
                     <article class="panelbox">
                         <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">Naming Tool</h4>
                         <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 유틸리티를 구현하였습니다. 단순히 일괄적으로 이름을 변경하는 것을 넘어, 에셋의 세부 타입과 오브젝트에 부착된 컴포넌트 구성의 우선순위를 분석하여 맥락에 맞는 최적의 이름을 생성합니다.</p>
@@ -693,16 +701,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1rem;">선택된 에셋의 바이너리 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 접두사(Prefix) 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
 
                         <h5 style="font-size: 1rem; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700;">확장성을 고려한 아키텍처 설계</h5>
-                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 추상 클래스(Abstract Class)로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
                     </article>
-                </div>
-                
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h3>Unity 에디터 확장 및 리소스 제어</h3>
-                        <p>프로젝트 특성에 맞는 에디터 확장 기능을 구현하여 팀 내에 보다 편안한 유니티 작업 프로세스를 구성합니다</p>
-                    </div>
-                    
+
                     <article class="panelbox">
                         <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">레벨 에디팅 및 베이킹 툴</h4>
                         <p>씬 뷰에서 Handles와 Gizmos를 활용하여 AI 이동 경로 노드를 직접 생성하고, 지형 데이터를 가공할 수 있는 레벨 에디터를 개발했습니다. NavMesh 에셋을 직접 구동하지 않고 ScriptableObject로 구역 좌표 데이터를 압축 베이킹하는 툴을 제공했습니다.</p>
@@ -785,46 +786,14 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <h3>Troubleshooting</h3>
                     </div>
                     
-                    <!-- Trouble 1: NavMesh WheelCollider -->
-                    <article id="troubleshoot-c-navmesh" class="panelbox">
-                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">프로젝트 내 NavMesh 작업 프로세스를 유지한 채 WheelCollider를 사용하기</h4>
-                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">NavMesh를 사용하는 월드에서 작동하는 WheelCollider를 이용한 주행 기능을 구현하였습니다.</p>
-                        
-                        <div class="trouble-content">
-                            <h4>문제 상황</h4>
-                            <p>개발 도중 플레이어의 이동 방식이 NavMeshAgent에서, 물리가 적용된 WheelCollider로 변경되었습니다.<br>
-                            하지만 기존 스테이지는 NavMesh 규격으로 이미 제작되어 수정이 불가능한 상황이었으며, 단순히 NavMeshAgent를 사용할 경우 물리적 상호작용(충돌, 서스펜션 등)을 구현하는 데 한계가 있었습니다.<br>
-                            따라서 기존 NavMesh 데이터를 활용하면서도, 물리 엔진 기반의 주행이 가능한 시스템을 새롭게 구축해야 했습니다.</p>
-                            
-                            <h4>해결 과정</h4>
-                            <h5>1. NavMesh 데이터 추출</h5>
-                            <p>Unity AI Navigation Package의 Baking 함수를 추적하여, 베이킹 시 생성되는 NavMesh 폴리곤의 좌표 데이터를 추출하는 기능을 구현했습니다.<br>
-                            추출된 데이터를 별도의 ScriptableObject로 저장하여, 런타임에 경로 데이터를 참조할 수 있도록 구조화했습니다.</p>
-                            
-                            <h5>2. 주행 경로 수정</h5>
-                            <p>NavMesh가 지원하는 경로 따라가기 함수 사용 시 폴리곤의 꼭짓점 부분을 이용하여 이동하기 때문에 시각적으로 부자연스러운 문제가 발생하였습니다.<br>
-                            이를 해결하기 위해 삼각형의 무게중심을 선형 보간한 경로를 사용하였으나, 삼각형 형태에 따라 불필요한 움직임이 발생했습니다.<br>
-                            최종적으로는 인접한 폴리곤이 맞닿는 모서리의 중점을 연결하여 경로를 수정하는 로직을 적용하여, 차량이 도로의 중앙을 따라 부드럽게 이동할 수 있도록 구현했습니다.</p>
-                            
-                            <h5>3. 장애물 회피 로직 구현</h5>
-                            <p>NavMeshAgent의 회피 기능을 대체하기 위해, Raycast를 사용하여 전방의 오브젝트를 감지하고 정지/후진하는 로직을 추가했습니다.<br>
-                            박스나 캡슐 콜라이더를 가진 고정 장애물 감지 시, 콜라이더의 좌표와 회전값을 분석하여 우회 경로를 생성합니다.<br>
-                            현재 속도를 기반으로 예상 도착 시간을 계산하고, 지연이 심할 경우 경로를 재탐색하도록 설계했습니다.</p>
-                            
-                            <h4>결과</h4>
-                            <p>기존 스테이지 리소스를 수정하지 않고도 WheelCollider 기반의 물리 주행 시스템을 성공적으로 도입했습니다.<br>
-                            자체적인 경로 보정 알고리즘을 적용하여 자연스러운 차량 주행감을 구현할 수 있었습니다.</p>
-                        </div>
-                    </article>
-
-                    <!-- Trouble 2: C# Optimization -->
+                    <!-- Trouble 1: 지형 생성 렉 해결 (Project PZ) -->
                     <article id="troubleshoot-pz-refactoring" class="panelbox">
-                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">프로토타입 지형 생성 로직을 상용 수준으로 리팩토링</h4>
-                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">기존 코드의 구조적 한계를 파악하고 병목 원인을 분석하여 상용 수준의 퍼포먼스를 확보하였습니다.</p>
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">지형 생성 시간 단축 및 메모리 최적화</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">GC Allocation 제거 및 청크 기반 연산 최적화를 통해 맵 생성 시간을 96% 단축했습니다.</p>
                         
                         <div class="trouble-content">
                             <h4>문제 상황</h4>
-                            <p>테스트 기기 환경에서 거대한 레벨을 생성할 경우, 300초 이상의 긴 시간이 소모되는 현상이 발생하였습니다.</p>
+                            <p>기획상 요구되는 최대 크기 환경에서 거대한 레벨을 생성할 경우, 300초 이상의 긴 시간이 소모되는 현상이 발생하였습니다.</p>
                             
                             <h4>원인 분석</h4>
                             <p>Profiler를 사용하여 분석한 결과, 심각한 GC 오버헤드와 비효율적인 연산이 핵심 원인으로 파악되었습니다.</p>
@@ -872,6 +841,55 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             또한 핵심 생성 로직에서 필수적인 할당을 제외한 Zero Allocation을 달성하여, GC Spike 현상을 방지할 수 있었습니다.</p>
                         </div>
                     </article>
+
+                    <!-- Trouble 2: NavMesh WheelCollider -->
+                    <article id="troubleshoot-c-navmesh" class="panelbox">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">프로젝트 내 NavMesh 작업 프로세스를 유지한 채 WheelCollider를 사용하기</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">NavMesh를 사용하는 월드에서 작동하는 WheelCollider를 이용한 주행 기능을 구현하였습니다.</p>
+                        
+                        <div class="trouble-content">
+                            <h4>문제 상황</h4>
+                            <p>개발 도중 플레이어의 이동 방식이 NavMeshAgent에서, 물리가 적용된 WheelCollider로 변경되었습니다.<br>
+                            하지만 기존 스테이지는 NavMesh 규격으로 이미 제작되어 수정이 불가능한 상황이었으며, 단순히 NavMeshAgent를 사용할 경우 물리적 상호작용(충돌, 서스펜션 등)을 구현하는 데 한계가 있었습니다.<br>
+                            따라서 기존 NavMesh 데이터를 활용하면서도, 물리 엔진 기반의 주행이 가능한 시스템을 새롭게 구축해야 했습니다.</p>
+                            
+                            <h4>해결 과정</h4>
+                            <h5>1. NavMesh 데이터 추출</h5>
+                            <p>Unity AI Navigation Package의 Baking 함수를 추적하여, 베이킹 시 생성되는 NavMesh 폴리곤의 좌표 데이터를 추출하는 기능을 구현했습니다.<br>
+                            추출된 데이터를 별도의 ScriptableObject로 저장하여, 런타임에 경로 데이터를 참조할 수 있도록 구조화했습니다.</p>
+                            
+                            <h5>2. 주행 경로 수정</h5>
+                            <p>NavMesh가 지원하는 경로 따라가기 함수 사용 시 폴리곤의 꼭짓점 부분을 이용하여 이동하기 때문에 시각적으로 부자연스러운 문제가 발생하였습니다.<br>
+                            이를 해결하기 위해 삼각형의 무게중심을 선형 보간한 경로를 사용하였으나, 삼각형 형태에 따라 불필요한 움직임이 발생했습니다.<br>
+                            최종적으로는 인접한 폴리곤이 맞닿는 모서리의 중점을 연결하여 경로를 수정하는 로직을 적용하여, 차량이 도로의 중앙을 따라 부드럽게 이동하도록 구현했습니다.</p>
+                            
+                            <h4>결과</h4>
+                            <p>NavMeshAgent를 직접 제어하지 않으면서도, AutoBraking, OffMeshLink, AreaMask 등 기존에 구워져 있던 맵 데이터를 고스란히 재활용하며 WheelCollider 기반의 역동적인 물리 차량 자율 주행을 온전히 성공시켰습니다.</p>
+                        </div>
+                    </article>
+
+                    <!-- Trouble 3: Steam SDK Sync (Project MG) -->
+                    <article id="troubleshoot-mg" class="panelbox" style="display: none;">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-accent);">스팀 리더보드 등록 시의 프레임 드랍 최적화 및 메모리 누수 방지</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: bold; color: var(--color-text-primary);">비동기 래핑과 CancellationToken 생명주기 관리로 스레드 차단 현상을 제거하고 안정성을 갖추었습니다.</p>
+                        
+                        <div class="trouble-content">
+                            <h4>문제 상황</h4>
+                            <p>게임 내 데이터를 스팀 리더보드에 동기화할 때, 네트워크 통신 대기 시간 동안 게임 화면이 순간적으로 멈추는 프레임 드랍 현상이 발생했습니다. 또한, 통신이 완료되기 전에 플레이어가 메뉴로 나가거나 씬이 파괴될 경우, 이미 메모리에서 해제된 오브젝트를 참조하면서 에러와 메모리 누수가 발생했습니다.</p>
+                            
+                            <h4>원인 분석</h4>
+                            <p>Steam API 호출 및 결과 대기가 동기 방식으로 처리되면서 메인 스레드가 대기 상태에 빠졌고, 씬 전환 및 리소스 파괴 시 진행 중인 통신을 차단하는 예외 처리가 부재했던 것이 원인으로 파악되었습니다.</p>
+                            
+                            <h4>해결 과정</h4>
+                            <h5>1. 비동기 처리 도입</h5>
+                            <p>기존의 동기식 통신 방식을 C# UniTask 비동기 방식으로 전환하여, 스팀 서버와의 통신 대기 중에도 메인 스레드가 대기 없이 부드럽게 게임 플레이를 지속할 수 있도록 개선했습니다.</p>
+                            <h5>2. CancellationToken 활용</h5>
+                            <p>플레이어가 씬을 나가거나 오브젝트가 파괴될 때 비동기 통신 작업도 즉각 취소되도록 GetCancellationTokenOnDestroy()를 연결하여 불필요한 메모리 참조를 차단했습니다.</p>
+                            
+                            <h4>결과</h4>
+                            <p>리더보드 등록 시 발생하던 프레임 드랍과 씬 전환 테스트 시의 메모리 누수 현상을 차단하였습니다.</p>
+                        </div>
+                    </article>
                 </div>
                 
                 <div class="next-tab-nav">
@@ -902,8 +920,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="skill-card">
                             <h4>C#</h4>
                             <ul>
-                                <li>C# 메모리 매커니즘, 구조체 및 클래스 최적화 이해</li>
-                                <li>델리게이트, 이벤트, 제네릭 컨버터, 비동기 UniTask 최적 활용</li>
+                                <li>제네릭 컬렉션 자료구조, 열거자, 델리게이트 등을 이해하고 활용 가능</li>
                             </ul>
                         </div>
                         <div class="skill-card">
@@ -974,10 +991,20 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 <hr>
                 
                 <div class="project-list">
+                    <div class="project-card" onclick="openProject('projectmg')">
+                        <div class="text-container">
+                            <div class="main-text">Project MG</div>
+                            <div class="sub-text">2D 비전 연산 탄막 게임 • PC</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+
                     <div class="project-card" onclick="openProject('projectpz')">
                         <div class="text-container">
                             <div class="main-text">Project PZ</div>
-                            <div class="sub-text">실시간 턴제 전략 액션 • Mobile Android</div>
+                            <div class="sub-text">실시간 턴제 전략 액션 • Mobile(Android)</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -987,7 +1014,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     <div class="project-card" onclick="openProject('projectc')">
                         <div class="text-container">
                             <div class="main-text">Project C</div>
-                            <div class="sub-text">실시간 산업 데이터 기반 게이미피케이션 • PC Web/App</div>
+                            <div class="sub-text">실시간 산업 데이터 기반 게이미피케이션 • PC/Mobile(Android)</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1015,7 +1042,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
                 </div>
                 
-                <div class="next-tab-nav">
+                <div class="next-tab-nav" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <span style="font-size: 0.85rem; color: var(--color-text-secondary);">※ 보안 규정을 준수하기 위해 실제 프로젝트명은 공개하지 않았습니다.</span>
                     <button type="button" class="next-tab-btn" onclick="switchTab('highlights')">
                         핵심 역량으로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
                     </button>
@@ -1129,15 +1157,15 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             },
             projectc: {
                 title: "Project C",
-                tags: ["PC Web/App", "UnityEngine", "MariaDB"],
+                tags: ["PC/Mobile(Android)", "UnityEngine", "MariaDB"],
                 content: `
                     <h2>담당 업무</h2>
                     <ul>
+                        <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
                         <li>NavMesh 베이킹 좌표 추출 기반의 자율 주행 경로 에디터 및 Hat Socket 에디터 개발</li>
                         <li>주행 실시간 차량 파츠(무게중심, 바퀴 반경) 교체 시스템 및 조향선 보정 모듈 구현</li>
-                        <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
                         <li>전략/커맨드 패턴 기반의 주행 AI 의사결정 시스템 개발</li>
-                        <li>클라이언트 자동 업데이트, 버전 제어 및 프로세스 관리를 위한 C#/WPF 전용 런처 구현</li>
+                        <li>클라이언트 자동 업데이트, 버전 제어 기능이 포함된 전용 런처 구현</li>
                     </ul>
                     
                     <h2>세부 구현 사항</h2>
@@ -1145,13 +1173,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
 
                     <h4>실시간 파츠 교체 시스템</h4>
-                    <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심(Center of Mass)을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
+                    <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
                     
                     <h4>차량 AI 및 자율 주행 시스템</h4>
-                    <p>유니티 AI Navigation의 NavMesh Baking에서 생성된 폴리곤 메쉬 데이터를 파싱하여, 무거운 NavMeshAgent 없이 WheelCollider의 토크와 서스펜션을 활용해 물리 차량이 완벽하게 주행하는 자율 주행 엔진을 탑재했습니다. 차량 AI는 <strong>전략 패턴(Strategy Pattern)</strong>과 <strong>커맨드 패턴(Command Pattern)</strong>을 연동하여 주행 도중 발생하는 예기치 못한 물리 충돌이나 장애물 우회 기동 시 각각의 독립적인 조작 알고리즘으로 동적 대처가 가능하게 설계했습니다.</p>
+                    <p>유니티 AI Navigation의 NavMesh Baking에서 생성된 데이터를 파싱하여, NavMeshAgent를 사용하는 환경에서 WheelCollider의 토크와 서스펜션을 활용해 차량이 주행하는 자율 주행 기능을 구현하였습니다. 주행 도중 발생하는 예기치 못한 물리 충돌이나 장애물 우회 기동 시, 각각의 독립적인 조작 알고리즘으로 대처하는 주행이 가능하게 설계했습니다.</p>
                     
                     <h4>산업 데이터 기반 게이미피케이션 로직</h4>
-                    <p>UnityWebRequest와 UniTask 비동기 프로세스를 운용하여 백엔드 DB 서버(MariaDB) API를 실시간 호출하고, 현장 작업자의 실제 생산 속도 및 공정 조립 통계 데이터를 받아옵니다. 데이터 통신 모듈을 완전 분리한 후 <strong>Behaviour Tree(행동 트리)</strong> 흐름을 커스텀 적용하여, 누적 작업 통계에 맞춰 게임 내 피버타임 진입, 보너스 스테이지 전환, 씬 및 게임 진행 상태를 동적으로 분기하여 자동화 플레이하도록 오토메이션 로직을 구축했습니다.</p>
+                    <p>UnityWebRequest와 UniTask 비동기 프로세스를 운용하여 백엔드 DB 서버(MariaDB) API를 실시간 호출하고, 현장 작업자의 실제 생산 속도 및 공정 조립 통계 데이터를 받아옵니다. 데이터 통신 모듈을 완전 분리한 후 <strong>Behaviour Tree</strong> 흐름을 커스텀 적용하여, 누적 작업 통계에 맞춰 게임 내 피버타임 진입, 보너스 스테이지 전환, 씬 및 게임 진행 상태를 동적으로 분기하여 자동화 플레이하도록 오토메이션 로직을 구축했습니다.</p>
                     
                     <h4>전용 런처 개발</h4>
                     <p>클라이언트 자동 업데이트, 강제 재실행 및 세션 연결, 버전 관리 기능이 통합 탑재된 C# WPF 기반의 <strong>전용 데스크탑 런처</strong> 응용 프로그램을 구축하여, 윈도우 실행 스택을 통해 사용자가 매뉴얼하게 씬을 빌드 및 갱신해야 하는 비효율성을 완전 자동화했습니다.</p>
@@ -1162,7 +1190,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             },
             projecti: {
                 title: "Project I",
-                tags: ["PC", "UnityEngine", "FSM"],
+                tags: ["PC", "UnityEngine"],
                 content: `
                     <h2>담당 업무</h2>
                     <ul>
@@ -1170,7 +1198,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <li>공격 패턴 및 전이 데이터 편집용 커스텀 인스펙터 에디터 툴 개발</li>
                         <li>Gizmos & Handles API를 이용한 스테이지 플랫폼 지형 설계 및 시각화 시스템 구현</li>
                         <li>Legacy Input Manager 기반의 이벤트 발행-구독 동적 키바인딩 시스템 설계</li>
-                        <li>계층형 UI 구조 설계 및 조이패드 조작성 확보를 위한 UGUI Navigation 매핑</li>
+                        <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
                         <li>Cinemachine 연동 스테이지 시작 연출 및 Timeline 카메라 흐름 제어</li>
                     </ul>
                     
@@ -1182,30 +1210,65 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     <p>유니티 <strong>Handles</strong> 및 <strong>Gizmos</strong>를 사용하여 씬 뷰에서 지형(플랫폼) 영역을 생성 및 수정하는 툴을 구현했습니다. 이미 배치된 <strong>MeshRenderer Bound</strong> 경계를 스캔하여 지형 데이터로 바꿔주는 에디터 스냅 기능을 구현했습니다.</p>
 
                     <h4>이벤트 기반 입력 시스템</h4>
-                    <p>Legacy Input Manager를 사용하여 <strong>발행-구독(Publisher-Subscriber) 패턴</strong>으로 입력 구조를 독립 설계했습니다. 특정 KeyCode를 하드코딩해 참조하지 않고 string key를 구독하여 런타임 게임 도중 사용자가 키 매핑을 즉시 재구성할 수 있는 안전한 입력 리바인딩 흐름을 구축했습니다.</p>
+                    <p>Legacy Input Manager를 사용하여 <strong>발행-구독 패턴</strong>으로 입력 구조를 독립 설계했습니다. 특정 KeyCode를 하드코딩해 참조하지 않고 string key를 구독하여 런타임 게임 도중 사용자가 키 매핑을 즉시 재구성할 수 있는 안전한 입력 리바인딩 흐름을 구축했습니다.</p>
 
-                    <h4>계층형 UI 및 Cinemachine 연출</h4>
-                    <p>게임패드 및 키보드 조작성을 원활히 완비하기 위해 계층화된 UI 아키텍처를 설계하고 <strong>UGUI Navigation</strong> 경로를 매핑하여 조작 연속성을 가다듬었습니다. 더불어 Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동 가동하도록 연동했습니다.</p>
+                    <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
+                    <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
+
+                    <h4>Cinemachine 연출 연동</h4>
+                    <p>Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동으로 구동하도록 구현했습니다.</p>
                 `
             },
             projectt: {
                 title: "Project T",
-                tags: ["PC", "UnityEngine", "2D Platformer"],
+                tags: ["PC", "UnityEngine"],
                 content: `
                     <h2>담당 업무</h2>
                     <ul>
                         <li>기상 변화(비, 바람, 기온)에 따른 인게임 물리 상호작용 설계</li>
-                        <li>대화 노드 연동 이벤트 퀘스트 시스템</li>
-                        <li>문장 분석을 통한 동적 NPC 음성 피치 조절 시스템</li>
-                        <li>UGUI 계층 구조 네비게이션 설계</li>
+                        <li>대화 기반 퀘스트 시스템</li>
+                        <li>스킬 시스템 구현: 퀘스트 진행에 따른 스킬 해금 기능, 캐릭터 스킬 획득 및 사용(쿨타임) 사이클 제어</li>
+                        <li>동적 NPC 보이스 시스템</li>
+                        <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
+                        <li>플레이어 컨트롤러</li>
+                        <li>NPC 구현</li>
                     </ul>
                     
                     <h2>세부 구현 사항</h2>
                     <h4>기상 상호작용 시스템</h4>
                     <p>인터페이스 및 옵저버 패턴으로 날씨 변경 시에만 구독 오브젝트들에 변경을 뿌리는 구조를 구현했습니다. 바람(AreaEffector) 방향에 맞춰 불 파티클이 전파 번짐 알고리즘을 타도록 처리하고, 수위 변화에 따른 부력 보정을 구현했습니다.</p>
                     
-                    <h4>동적 NPC 보이스</h4>
+                    <h4>동적 NPC 보이스 시스템</h4>
                     <p>NPC 텍스트의 특수 부호 및 감정 라벨을 분석해 피치와 볼륨 속도를 런타임에 오디오 소스에 동적 반영하여 생동감을 더했습니다.</p>
+
+                    <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
+                    <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
+                `
+            },
+            projectmg: {
+                title: "Project MG",
+                tags: ["PC", "UnityEngine", "MediaPipe"],
+                content: `
+                    <h2>담당 업무</h2>
+                    <ul>
+                        <li>Python-Unity 간 Named Pipe 비동기 통신 구축 및 Lock 구현</li>
+                        <li>Low-Level 2D Physics API 기반 조작 및 물리 연동</li>
+                        <li>X축 델타 누적 기반 레버 펌프질 충전 시스템</li>
+                        <li>Steam SDK 연동 (업적 잠금 해제 구현)</li>
+                    </ul>
+                    
+                    <h2>세부 구현 사항</h2>
+                    <h4>Named Pipe IPC 통신</h4>
+                    <p>웹캠을 통해 감지된 미디어파이프(MediaPipe)의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 실시간 수신하는 비동기 통신 채널을 구축하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
+                    
+                    <h4>Low-Level 물리 조작 연동</h4>
+                    <p>수신된 손 좌표 데이터를 인게임 2D 물리 시스템과 연동하여, 화면 내 캐릭터를 포획하고 Y축 드래그로 내던질 수 있는 물리 기반의 조작 기능을 구현했습니다.</p>
+                    
+                    <h4>제스처 펌프질 충전 시스템</h4>
+                    <p>주먹을 쥔 제스처 상태에서 손을 좌우로 흔드는(X축 변화량) 동작을 실시간 감지하여 게이지를 충전하는 특수 제스처 판정 및 마력 소모 시스템을 구축했습니다.</p>
+                    
+                    <h2>Troubleshooting</h2>
+                    <div id="modal-troubleshoot-target-mg"></div>
                 `
             }
         };
@@ -1250,6 +1313,19 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     if (descP) descP.remove();
                 }
             }
+
+            // Project MG의 Troubleshooting 동적 복제 연동
+            const tsTargetMg = document.getElementById('modal-troubleshoot-target-mg');
+            if (tsTargetMg) {
+                const tsSourceMg = document.getElementById('troubleshoot-mg');
+                if (tsSourceMg) {
+                    tsTargetMg.innerHTML = tsSourceMg.innerHTML;
+                    const titleH4 = tsTargetMg.querySelector('h4');
+                    if (titleH4) titleH4.remove();
+                    const descP = tsTargetMg.querySelector('p');
+                    if (descP) descP.remove();
+                }
+            }
             
             modal.showModal();
             document.body.style.overflow = 'hidden';
@@ -1257,3 +1333,4 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     </script>
 </body>
 </html>
+
