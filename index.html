@@ -758,9 +758,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             </div>
                         </article>
 
-                        <!-- 2. 물리 기반 자율 주행 및 파츠 시스템 -->
+                        <!-- 2. 주행 중 실시간 차량 파츠 교체 시스템 -->
                         <article class="panelbox">
-                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">물리 기반 자율 주행 및 파츠 시스템</h4>
+                            <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-accent);">주행 중 실시간 차량 파츠 교체 시스템</h4>
                             <p style="margin-bottom: 0.5rem; font-weight: bold;"><a href="javascript:openProject('projectc')" class="modal-link" style="text-decoration: underline; color: var(--color-text-primary);">Project C</a></p>
                             <div class="panelbox-item">
                                 <ul>
@@ -861,7 +861,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             
                             <h4>결과</h4>
                             <p>최악의 케이스(모든 청크 검사 실패, 기획상 최대 지형 크기 적용 등)를 가정한 테스트 환경에서, 평균 생성 시간이 380초 → 14초로 단축되었습니다.<br>
-                            또한 핵심 생성 로직에서 필수적인 할당을 제외한 Zero Allocation을 달성하여, GC Spike 현상을 방지할 수 있었습니다.</p>
+                            또한 핵심 생성 로직에서의  Zero Allocation을 달성하고, GC Spike 현상을 개선할 수 있었습니다.</p>
                         </div>
                     </article>
 
@@ -1128,15 +1128,15 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <template id="temp-projectpz" data-title="Project PZ" data-tags="Mobile(Android),UnityEngine">
         <h2>담당 업무</h2>
         <ul>
-            <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 설계</li>
-            <li>인게임 지형 생성 프리뷰 및 파츠 렌더링 스냅샷 레벨 디자인 에디터 툴 구현</li>
-            <li>절차적 레벨/메쉬 런타임 생성 모듈 개발</li>
-            <li>Spatial Hash Grid 기반의 청크 로딩 및 타임스탬프 기반 비활성 심도 시뮬레이션 구조 설계</li>
+            <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 구현</li>
+            <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
+            <li>절차적 레벨/메쉬 런타임 생성 기능 구현</li>
+            <li>Spatial Hash Grid 기반의 청크 시스템 및 월드 타임스탬프 기반 패턴 예측 구현</li>
             <li>CSV 대화/몬스터 패턴 데이터 자동 바인딩 유틸리티 및 몬스터 행동 흐름 시각화 패턴 뷰어 개발</li>
         </ul>
         
         <h2>세부 구현 사항</h2>
-        <h4>레벨 디자인 툴</h4>
+        <h4>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</h4>
         <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" onclick="event.preventDefault(); window.navigateToHighlight('attr-event-binding');">Attribute 기반 자동 이벤트 바인딩</a> 시스템을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 완벽히 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
 
         <h4>절차적 레벨 생성 & 월드맵</h4>
@@ -1144,13 +1144,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         또한 Greedy 알고리즘을 통한 절차적 메쉬 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메쉬를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 <strong>TilemapRenderer</strong> 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
         
         <h4>청크 시스템</h4>
-        <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 무거운 틱 연산 없이 수식 기반으로 즉시 오프라인 시뮬레이션 보정하는 경량화 구조를 정교하게 설계했습니다.</p>
+        <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 수식 기반으로 시뮬레이션 보정하는 기능을 구현하였습니다.</p>
         
         <h4>CSV Utility</h4>
         <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 정밀한 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
 
         <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
-        <p>몬스터의 행동 패턴을 기획자가 CSV 형태로 작성하면, 이를 파싱하여 런타임 FSM(유한 상태 기계)에 주입하는 동작 구성을 설계했습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 실시간 모니터링 할 수 있는 분석 환경을 구축했습니다.</p>
+        <p>CSV 형식의 텍스트를 파싱하여 몬스터를 동작시키는 기능을 구현하였습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 모니터링할 수 있는 기능을 구현하였습니다.</p>
 
         <h2>Troubleshooting</h2>
         <div id="modal-troubleshoot-target"></div>
@@ -1159,10 +1159,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <template id="temp-projectc" data-title="Project C" data-tags="PC/Mobile(Android),UnityEngine,MariaDB">
         <h2>담당 업무</h2>
         <ul>
-            <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
-            <li>NavMesh 베이킹 좌표 추출 기반의 자율 주행 경로 에디터 및 Hat Socket 에디터 개발</li>
-            <li>주행 실시간 차량 파츠(무게중심, 바퀴 반경) 교체 시스템 및 조향선 보정 모듈 구현</li>
-            <li>전략/커맨드 패턴 기반의 주행 AI 의사결정 시스템 개발</li>
+            <li>산업 데이터 기반 게이미피케이션 로직 구현</li>
+            <li>자율 주행 경로 에디터 및 차량 액세서리 위치 에디터 구현</li>
+            <li>주행 중 실시간 차량 파츠 교체 시스템 구현</li>
             <li>클라이언트 자동 업데이트, 버전 제어 기능이 포함된 전용 런처 구현</li>
         </ul>
         
@@ -1170,7 +1169,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h4>에디터 확장 기능</h4>
         <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
 
-        <h4>실시간 파츠 교체 시스템</h4>
+        <h4>주행 중 실시간 차량 파츠 교체 시스템</h4>
         <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
         
         <h4>차량 AI 및 자율 주행 시스템</h4>
@@ -1246,9 +1245,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <template id="temp-projectmg" data-title="Project MG" data-tags="PC,UnityEngine,MediaPipe">
         <h2>담당 업무</h2>
         <ul>
-            <li>Python-Unity 간 Named Pipe 비동기 통신 기능</li>
+            <li>Python-Unity 간 Named Pipe 비동기 통신 기능 구현</li>
             <li>LowLevelPhysics2D API 적용</li>
-            <li>제스처 기반 조작 시스템</li>
+            <li>제스처 기반 조작 시스템 구현</li>
             <li>Steam SDK 연동</li>
         </ul>
         
