@@ -1246,7 +1246,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h2>담당 업무</h2>
         <ul>
             <li>Python-Unity 간 Named Pipe 비동기 통신 기능 구현</li>
-            <li>LowLevelPhysics2D API 적용</li>
+            <li>LowLevelPhysics2D API 적용: 탄막의 이동 및 충돌 판정 등 중요 물리 오브젝트에 LowLevelPhysics2D API를 적용</li>
             <li>제스처 기반 조작 시스템 구현</li>
             <li>Steam SDK 연동</li>
         </ul>
@@ -1256,7 +1256,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p>카메라를 통해 감지된 MediaPipe의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 수신하는 비동기 통신을 구현하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
         
         <h4>LowLevelPhysics2D API 적용</h4>
-        <p>유니티의 내장 컴포넌트(Rigidbody2D 등)의 무거운 물리 연산을 사용하지 않고, 수많은 인게임 오브젝트들의 이동 및 충돌 판정 등 프로젝트의 모든 물리 연산을 Low Level Physics2D 및 2D 연산 수식을 직접 활용하여 경량화 처리했습니다.</p>
+        <p>탄막의 이동 및 충돌 판정 등 중요 물리 오브젝트를 Low Level Physics2D을 통해 처리하였습니다.</p>
         
         <h4>제스처 기반 조작 시스템</h4>
         <p>수신된 손 좌표 데이터를 인게임 2D 물리 공간과 매핑하여, 화면 내 캐릭터를 포획하고 Y축 드래그로 내던질 수 있는 물리 조작 기능을 구현했습니다. 또한, 주먹을 쥔 제스처 상태에서 손을 좌우로 흔드는(X축 변화량) 동작을 실시간 감지하여 게이지를 충전하는 특수 제스처 판정 및 마력 소모 시스템을 구축했습니다.</p>
