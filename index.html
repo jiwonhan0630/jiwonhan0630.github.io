@@ -59,6 +59,15 @@
             transition: var(--transition-smooth);
         }
         
+        .modal-link {
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        
+        .modal-link:hover {
+            color: var(--color-accent) !important;
+        }
+        
         /* Layout Grid */
         #container {
             display: flex;
@@ -137,12 +146,17 @@
             transform: scaleY(0);
             transition: var(--transition-smooth);
         }
-        .nav-tabs li a:hover, .nav-tabs li a.active {
+        .nav-tabs li a:hover {
             border-color: var(--color-accent);
             color: var(--color-accent);
             background-color: var(--color-bg-hover);
         }
-        .nav-tabs li a:hover::before, .nav-tabs li a.active::before {
+        .nav-tabs li a.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background-color: var(--color-bg-hover);
+        }
+        .nav-tabs li a.active::before {
             transform: scaleY(1);
         }
         .nav-tabs li a span {
@@ -482,6 +496,15 @@
         .modal-content-area ul li {
             margin-bottom: 0.4rem;
         }
+        .modal-content-area a {
+            color: var(--color-text-primary) !important;
+            text-decoration: underline !important;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .modal-content-area a:hover {
+            color: var(--color-accent) !important;
+        }
         
         .modal-tags {
             display: flex;
@@ -658,7 +681,7 @@
                         <p>개발 과정에서 발생하는 비효율적인 작업을 개선하고 실무에 즉시 도입 가능한 기능을 구현하여 팀의 생산성을 끌어올립니다</p>
                     </div>
                     
-                    <article class="panelbox">
+                    <article id="attr-event-binding" class="panelbox">
                         <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent);">Attribute 기반의 자동 이벤트 바인딩 시스템</h4>
                         <p>UIToolkit 환경에서, element class를 통해 이벤트를 자동으로 바인딩하는 기능을 구현하였습니다. 디자이너는 UI를 새로 만들거나 수정할 때, element class를 추가하면 즉시 기능을 적용할 수 있으며, 프로그래머는 Attribute를 선언하는 것으로 추가 바인딩 작업 없이 이벤트를 바인딩할 수 있습니다.</p>
                         <pre><code class="language-csharp"><span style="color: var(--color-accent);">[ElementCommand("cmd--button--brush-tool")]</span>
@@ -923,13 +946,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <li>제네릭 컬렉션 자료구조, 열거자, 델리게이트 등을 이해하고 활용 가능</li>
                             </ul>
                         </div>
-                        <div class="skill-card">
-                            <h4>Database</h4>
-                            <ul>
-                                <li>SQL 및 NoSQL 기초 쿼리 운용 가능</li>
-                                <li>MongoDB, MariaDB, TMaxTiberoDB를 활용한 통신 연동 경험</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 
@@ -938,6 +954,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <h3>보조 기술 및 도구</h3>
                     </div>
                     <div class="skills-grid">
+                        <div class="skill-card">
+                            <h4>Database</h4>
+                            <ul>
+                                <li>SQL 및 NoSQL 기초 쿼리 운용 가능</li>
+                                <li>MongoDB, MariaDB, TMaxTiberoDB를 활용한 통신 연동 경험</li>
+                            </ul>
+                        </div>
                         <div class="skill-card">
                             <h4>Blender</h4>
                             <ul>
@@ -953,7 +976,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="skill-card">
                             <h4>Notion</h4>
                             <ul>
-                                <li>관계형 데이터베이스 수식 및 통계 자동화 구조 구축</li>
+                                <li>관계형 데이터베이스 수식 작성 가능</li>
+                                <li>업무보고서 자동화 구조 구축 경험</li>
                             </ul>
                         </div>
                         <div class="skill-card">
@@ -965,7 +989,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="skill-card">
                             <h4>C++</h4>
                             <ul>
-                                <li>STL 라이브러리 및 기초 메모리 주소 체계 개념 있음</li>
+                                <li>STL 라이브러리 및 기초 메모리 주소 체계에 대한 이해</li>
                             </ul>
                         </div>
                         <div class="skill-card">
@@ -992,9 +1016,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 
                 <div class="project-list">
                     <div class="project-card" onclick="openProject('projectmg')">
-                        <div class="text-container">
-                            <div class="main-text">Project MG</div>
-                            <div class="sub-text">2D 비전 연산 탄막 게임 • PC</div>
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">Project MG</div>
+                                <div class="sub-text">2D 비전 연산 탄막 • PC</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2026</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1002,9 +1029,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
 
                     <div class="project-card" onclick="openProject('projectpz')">
-                        <div class="text-container">
-                            <div class="main-text">Project PZ</div>
-                            <div class="sub-text">실시간 턴제 전략 액션 • Mobile(Android)</div>
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">Project PZ</div>
+                                <div class="sub-text">3D 실시간 턴제 전략 • Mobile(Android)</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2024 - 2025</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1012,9 +1042,25 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
 
                     <div class="project-card" onclick="openProject('projectc')">
-                        <div class="text-container">
-                            <div class="main-text">Project C</div>
-                            <div class="sub-text">실시간 산업 데이터 기반 게이미피케이션 • PC/Mobile(Android)</div>
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">Project C</div>
+                                <div class="sub-text">3D 실시간 산업 데이터 기반 게이미피케이션 • PC/Mobile(Android)</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2022 - 2024</div>
+                        </div>
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openProject('suwon_museum')">
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">수원시 박물관 도슨트 시스템</div>
+                                <div class="sub-text">2D 수원시 박물관 도슨트 애플리케이션 • Mobile(Android)</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2022</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1022,9 +1068,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
 
                     <div class="project-card" onclick="openProject('projecti')">
-                        <div class="text-container">
-                            <div class="main-text">Project I</div>
-                            <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">Project I</div>
+                                <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2022</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1032,9 +1081,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
 
                     <div class="project-card" onclick="openProject('projectt')">
-                        <div class="text-container">
-                            <div class="main-text">Project T</div>
-                            <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
+                        <div class="text-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-right: 1.5rem;">
+                            <div>
+                                <div class="main-text">Project T</div>
+                                <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
+                            </div>
+                            <div class="sub-text" style="font-weight: 500; color: var(--color-text-secondary);">2021</div>
                         </div>
                         <div class="icon-container">
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -1043,7 +1095,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
                 
                 <div class="next-tab-nav" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                    <span style="font-size: 0.85rem; color: var(--color-text-secondary);">※ 보안 규정을 준수하기 위해 실제 프로젝트명은 공개하지 않았습니다.</span>
+                    <span style="font-size: 0.85rem; color: var(--color-text-secondary);">※ 보안을 준수하기 위해 프로젝트의 실제 명칭 및 이미지가 기재되지 않을 수 있습니다.</span>
                     <button type="button" class="next-tab-btn" onclick="switchTab('highlights')">
                         핵심 역량으로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
                     </button>
@@ -1071,6 +1123,148 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             </div>
         </div>
     </dialog>
+    
+    <!-- HTML Templates for Modal Content (자바스크립트 변수 데이터 격리) -->
+    <template id="temp-projectpz" data-title="Project PZ" data-tags="Mobile(Android),UnityEngine">
+        <h2>담당 업무</h2>
+        <ul>
+            <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 설계</li>
+            <li>인게임 지형 생성 프리뷰 및 파츠 렌더링 스냅샷 레벨 디자인 에디터 툴 구현</li>
+            <li>절차적 레벨/메쉬 런타임 생성 모듈 개발</li>
+            <li>Spatial Hash Grid 기반의 청크 로딩 및 타임스탬프 기반 비활성 심도 시뮬레이션 구조 설계</li>
+            <li>CSV 대화/몬스터 패턴 데이터 자동 바인딩 유틸리티 및 몬스터 행동 흐름 시각화 패턴 뷰어 개발</li>
+        </ul>
+        
+        <h2>세부 구현 사항</h2>
+        <h4>레벨 디자인 툴</h4>
+        <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" onclick="event.preventDefault(); window.navigateToHighlight('attr-event-binding');">Attribute 기반 자동 이벤트 바인딩</a> 시스템을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 완벽히 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
+
+        <h4>절차적 레벨 생성 & 월드맵</h4>
+        <p>Wang Tile 알고리즘을 참고하여 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하였습니다. 이를 통해 회전, 연결 및 타일 인접 조건을 런타임에 동적으로 보정하는 지형 생성을 구성했습니다.<br>
+        또한 Greedy 알고리즘을 통한 절차적 메쉬 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메쉬를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 <strong>TilemapRenderer</strong> 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
+        
+        <h4>청크 시스템</h4>
+        <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 무거운 틱 연산 없이 수식 기반으로 즉시 오프라인 시뮬레이션 보정하는 경량화 구조를 정교하게 설계했습니다.</p>
+        
+        <h4>CSV Utility</h4>
+        <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 정밀한 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
+
+        <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
+        <p>몬스터의 행동 패턴을 기획자가 CSV 형태로 작성하면, 이를 파싱하여 런타임 FSM(유한 상태 기계)에 주입하는 동작 구성을 설계했습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 실시간 모니터링 할 수 있는 분석 환경을 구축했습니다.</p>
+
+        <h2>Troubleshooting</h2>
+        <div id="modal-troubleshoot-target"></div>
+    </template>
+
+    <template id="temp-projectc" data-title="Project C" data-tags="PC/Mobile(Android),UnityEngine,MariaDB">
+        <h2>담당 업무</h2>
+        <ul>
+            <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
+            <li>NavMesh 베이킹 좌표 추출 기반의 자율 주행 경로 에디터 및 Hat Socket 에디터 개발</li>
+            <li>주행 실시간 차량 파츠(무게중심, 바퀴 반경) 교체 시스템 및 조향선 보정 모듈 구현</li>
+            <li>전략/커맨드 패턴 기반의 주행 AI 의사결정 시스템 개발</li>
+            <li>클라이언트 자동 업데이트, 버전 제어 기능이 포함된 전용 런처 구현</li>
+        </ul>
+        
+        <h2>세부 구현 사항</h2>
+        <h4>에디터 확장 기능</h4>
+        <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
+
+        <h4>실시간 파츠 교체 시스템</h4>
+        <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
+        
+        <h4>차량 AI 및 자율 주행 시스템</h4>
+        <p>유니티 AI Navigation의 NavMesh Baking에서 생성된 데이터를 파싱하여, NavMeshAgent를 사용하는 환경에서 WheelCollider의 토크와 서스펜션을 활용해 차량이 주행하는 자율 주행 기능을 구현하였습니다. 주행 도중 발생하는 예기치 못한 물리 충돌이나 장애물 우회 기동 시, 각각의 독립적인 조작 알고리즘으로 대처하는 주행이 가능하게 설계했습니다.</p>
+        
+        <h4>산업 데이터 기반 게이미피케이션 로직</h4>
+        <p>UnityWebRequest와 UniTask를 통해 백엔드 API를 호출하여 현장 작업자의 실제 공정 조립 데이터를 수신하고, 차량의 AI에 Behaviour Tree 구조를 적용하여, 작업 상황에 따른 게임 내 피버타임 진입, 스테이지 전환 등 게임의 자동 플레이 로직을 구현하였습니다.</p>
+        
+        <h4>전용 런처 구현</h4>
+        <p>클라이언트 자동 업데이트, 강제 재실행 및 종료/접속, 버전 관리 기능이 포함된 런처를 구현하였습니다.</p>
+
+        <h2>Troubleshooting</h2>
+        <div id="modal-troubleshoot-target-c"></div>
+    </template>
+
+    <template id="temp-projecti" data-title="Project I" data-tags="PC,UnityEngine">
+        <h2>담당 업무</h2>
+        <ul>
+            <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
+            <li>공격 패턴 및 전이 데이터 편집용 커스텀 인스펙터 에디터 툴 개발</li>
+            <li>Gizmos & Handles API를 이용한 스테이지 플랫폼 지형 설계 및 시각화 시스템 구현</li>
+            <li>Legacy Input Manager 기반의 이벤트 발행-구독 동적 키바인딩 시스템 설계</li>
+            <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
+            <li>Cinemachine 연동 스테이지 시작 연출 및 Timeline 카메라 흐름 제어</li>
+        </ul>
+        
+        <h2>세부 구현 사항</h2>
+        <h4>보스 몬스터 FSM & 커스텀 인스펙터</h4>
+        <p>유니티 애니메이션 상태 제어기인 <strong>StateMachineBehaviour</strong>를 사용해 애니메이션 클립의 흐름과 실제 보스 상태 로직을 1:1로 일치시켰습니다. 공통적인 기본 행동 흐름은 BaseLayer에 정의하고, 보스의 페이즈 변화에 따른 추가 공격 기법들은 <strong>OverlayLayer</strong> 구조를 통해 설계했습니다. 또한 AnimationClip 에셋의 원본 리소스를 훼손하여 수정하지 않아도, 인스펙터 상에서 Behaviour 단위의 특정 프레임 시점을 지정하여 UnityEvent를 직접 호출하도록 애니메이션 프레임 정밀 제어 툴을 지원했습니다.</p>
+        
+        <h4>스테이지 플랫폼 설계 툴</h4>
+        <p>유니티 <strong>Handles</strong> 및 <strong>Gizmos</strong>를 사용하여 씬 뷰에서 지형(플랫폼) 영역을 생성 및 수정하는 툴을 구현했습니다. 이미 배치된 <strong>MeshRenderer Bound</strong> 경계를 스캔하여 지형 데이터로 바꿔주는 에디터 스냅 기능을 구현했습니다.</p>
+
+        <h4>이벤트 기반 입력 시스템</h4>
+        <p>Legacy Input Manager를 사용하여 <strong>발행-구독 패턴</strong>으로 입력 구조를 독립 설계했습니다. 특정 KeyCode를 하드코딩해 참조하지 않고 string key를 구독하여 런타임 게임 도중 사용자가 키 매핑을 즉시 재구성할 수 있는 안전한 입력 리바인딩 흐름을 구축했습니다.</p>
+
+        <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
+        <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
+
+        <h4>Cinemachine 연출 연동</h4>
+        <p>Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동으로 구동하도록 구현했습니다.</p>
+    </template>
+
+    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-tags="Mobile(Android),UnityEngine">
+        <h2>담당 업무</h2>
+        <h4>도슨트 시스템 내 게임 콘텐츠 구현</h4>
+        <p>박물관 내 유물 정보를 사용한 짝맞추기, 유령 길찾기 등의 게임 콘텐츠를 구현했습니다.</p>
+    </template>
+
+    <template id="temp-projectt" data-title="Project T" data-tags="PC,UnityEngine">
+        <h2>담당 업무</h2>
+        <ul>
+            <li>기상 변화(비, 바람, 기온)에 따른 인게임 물리 상호작용 설계</li>
+            <li>대화 기반 퀘스트 시스템</li>
+            <li>스킬 시스템 구현: 퀘스트 진행에 따른 스킬 해금 기능, 캐릭터 스킬 획득 및 사용(쿨타임) 사이클 제어</li>
+            <li>동적 NPC 보이스 시스템</li>
+            <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
+            <li>플레이어 컨트롤러</li>
+            <li>NPC 구현</li>
+        </ul>
+        
+        <h2>세부 구현 사항</h2>
+        <h4>기상 상호작용 시스템</h4>
+        <p>인게임 물리 상호작용 설계 및 기상 변화에 따른 기믹 적용</p>
+        
+        <h4>동적 NPC 보이스 시스템</h4>
+        <p>NPC 텍스트의 특수 부호 및 감정 라벨을 분석해 피치와 볼륨 속도를 런타임에 오디오 소스에 동적 반영하여 생동감을 더했습니다.</p>
+
+        <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
+        <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
+    </template>
+
+    <template id="temp-projectmg" data-title="Project MG" data-tags="PC,UnityEngine,MediaPipe">
+        <h2>담당 업무</h2>
+        <ul>
+            <li>Python-Unity 간 Named Pipe 비동기 통신 기능</li>
+            <li>LowLevelPhysics2D API 적용</li>
+            <li>제스처 기반 조작 시스템</li>
+            <li>Steam SDK 연동</li>
+        </ul>
+        
+        <h2>세부 구현 사항</h2>
+        <h4>Python-Unity 간 Named Pipe 비동기 통신 기능</h4>
+        <p>카메라를 통해 감지된 MediaPipe의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 수신하는 비동기 통신을 구현하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
+        
+        <h4>LowLevelPhysics2D API 적용</h4>
+        <p>유니티의 내장 컴포넌트(Rigidbody2D 등)의 무거운 물리 연산을 사용하지 않고, 수많은 인게임 오브젝트들의 이동 및 충돌 판정 등 프로젝트의 모든 물리 연산을 Low Level Physics2D 및 2D 연산 수식을 직접 활용하여 경량화 처리했습니다.</p>
+        
+        <h4>제스처 기반 조작 시스템</h4>
+        <p>수신된 손 좌표 데이터를 인게임 2D 물리 공간과 매핑하여, 화면 내 캐릭터를 포획하고 Y축 드래그로 내던질 수 있는 물리 조작 기능을 구현했습니다. 또한, 주먹을 쥔 제스처 상태에서 손을 좌우로 흔드는(X축 변화량) 동작을 실시간 감지하여 게이지를 충전하는 특수 제스처 판정 및 마력 소모 시스템을 구축했습니다.</p>
+        
+        <h2>Troubleshooting</h2>
+        <div id="modal-troubleshoot-target-mg"></div>
+    </template>
 
     <!-- JavaScript Data & Logic -->
     <script>
@@ -1115,180 +1309,50 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             document.body.style.overflow = '';
         }
         
+        // 모달에서 특정 핵심 역량 앵커로 이동하는 전역 함수
+        window.navigateToHighlight = function(elementId) {
+            closeModal();
+            switchTab('highlights');
+            setTimeout(() => {
+                const targetElement = document.getElementById(elementId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 시각적 강조 효과 부여
+                    targetElement.style.outline = '3px solid var(--color-accent)';
+                    targetElement.style.outlineOffset = '4px';
+                    setTimeout(() => {
+                        targetElement.style.outline = 'none';
+                        targetElement.style.outlineOffset = '';
+                    }, 2000);
+                }
+            }, 150);
+        };
+        
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
         
-        // Local content storage representing works & frags (CORS bypass)
-        const PROJECT_DATA = {
-            projectpz: {
-                title: "Project PZ",
-                tags: ["Mobile(Android)", "UnityEngine", "C#"],
-                content: `
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 설계</li>
-                        <li>인게임 지형 생성 프리뷰 및 파츠 렌더링 스냅샷 레벨 디자인 에디터 툴 구현</li>
-                        <li>절차적 레벨/메쉬 런타임 생성 모듈 개발</li>
-                        <li>Spatial Hash Grid 기반의 청크 로딩 및 타임스탬프 기반 비활성 심도 시뮬레이션 구조 설계</li>
-                        <li>CSV 대화/몬스터 패턴 데이터 자동 바인딩 유틸리티 및 몬스터 행동 흐름 시각화 패턴 뷰어 개발</li>
-                    </ul>
-                    
-                    <h2>세부 구현 사항</h2>
-                    <h4>레벨 디자인 툴</h4>
-                    <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <strong>Attribute 기반 자동 이벤트 바인딩</strong>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 완벽히 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
-
-                    <h4>절차적 레벨 생성 & 월드맵</h4>
-                    <p>Wang Tile 알고리즘을 참고하여 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하였습니다. 이를 통해 회전, 연결 및 타일 인접 조건을 런타임에 동적으로 보정하는 지형 생성을 구성했습니다.<br>
-                    또한 Greedy 알고리즘을 통한 절차적 메쉬 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메쉬를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 <strong>TilemapRenderer</strong> 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
-                    
-                    <h4>청크 시스템</h4>
-                    <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 무거운 틱 연산 없이 수식 기반으로 즉시 오프라인 시뮬레이션 보정하는 경량화 구조를 정교하게 설계했습니다.</p>
-                    
-                    <h4>CSV Utility</h4>
-                    <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 정밀한 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
-
-                    <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
-                    <p>몬스터의 행동 패턴을 기획자가 CSV 형태로 작성하면, 이를 파싱하여 런타임 FSM(유한 상태 기계)에 주입하는 동작 구성을 설계했습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 실시간 모니터링 할 수 있는 분석 환경을 구축했습니다.</p>
-
-                    <h2>Troubleshooting</h2>
-                    <div id="modal-troubleshoot-target"></div>
-                `
-            },
-            projectc: {
-                title: "Project C",
-                tags: ["PC/Mobile(Android)", "UnityEngine", "MariaDB"],
-                content: `
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>공장 실시간 작업 데이터 연동 API 비동기 통신 로직 및 Behaviour Tree 자동 플레이 설계</li>
-                        <li>NavMesh 베이킹 좌표 추출 기반의 자율 주행 경로 에디터 및 Hat Socket 에디터 개발</li>
-                        <li>주행 실시간 차량 파츠(무게중심, 바퀴 반경) 교체 시스템 및 조향선 보정 모듈 구현</li>
-                        <li>전략/커맨드 패턴 기반의 주행 AI 의사결정 시스템 개발</li>
-                        <li>클라이언트 자동 업데이트, 버전 제어 기능이 포함된 전용 런처 구현</li>
-                    </ul>
-                    
-                    <h2>세부 구현 사항</h2>
-                    <h4>에디터 확장 기능</h4>
-                    <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
-
-                    <h4>실시간 파츠 교체 시스템</h4>
-                    <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 바경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
-                    
-                    <h4>차량 AI 및 자율 주행 시스템</h4>
-                    <p>유니티 AI Navigation의 NavMesh Baking에서 생성된 데이터를 파싱하여, NavMeshAgent를 사용하는 환경에서 WheelCollider의 토크와 서스펜션을 활용해 차량이 주행하는 자율 주행 기능을 구현하였습니다. 주행 도중 발생하는 예기치 못한 물리 충돌이나 장애물 우회 기동 시, 각각의 독립적인 조작 알고리즘으로 대처하는 주행이 가능하게 설계했습니다.</p>
-                    
-                    <h4>산업 데이터 기반 게이미피케이션 로직</h4>
-                    <p>UnityWebRequest와 UniTask 비동기 프로세스를 운용하여 백엔드 DB 서버(MariaDB) API를 실시간 호출하고, 현장 작업자의 실제 생산 속도 및 공정 조립 통계 데이터를 받아옵니다. 데이터 통신 모듈을 완전 분리한 후 <strong>Behaviour Tree</strong> 흐름을 커스텀 적용하여, 누적 작업 통계에 맞춰 게임 내 피버타임 진입, 보너스 스테이지 전환, 씬 및 게임 진행 상태를 동적으로 분기하여 자동화 플레이하도록 오토메이션 로직을 구축했습니다.</p>
-                    
-                    <h4>전용 런처 개발</h4>
-                    <p>클라이언트 자동 업데이트, 강제 재실행 및 세션 연결, 버전 관리 기능이 통합 탑재된 C# WPF 기반의 <strong>전용 데스크탑 런처</strong> 응용 프로그램을 구축하여, 윈도우 실행 스택을 통해 사용자가 매뉴얼하게 씬을 빌드 및 갱신해야 하는 비효율성을 완전 자동화했습니다.</p>
-
-                    <h2>Troubleshooting</h2>
-                    <div id="modal-troubleshoot-target-c"></div>
-                `
-            },
-            projecti: {
-                title: "Project I",
-                tags: ["PC", "UnityEngine"],
-                content: `
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
-                        <li>공격 패턴 및 전이 데이터 편집용 커스텀 인스펙터 에디터 툴 개발</li>
-                        <li>Gizmos & Handles API를 이용한 스테이지 플랫폼 지형 설계 및 시각화 시스템 구현</li>
-                        <li>Legacy Input Manager 기반의 이벤트 발행-구독 동적 키바인딩 시스템 설계</li>
-                        <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
-                        <li>Cinemachine 연동 스테이지 시작 연출 및 Timeline 카메라 흐름 제어</li>
-                    </ul>
-                    
-                    <h2>세부 구현 사항</h2>
-                    <h4>보스 몬스터 FSM & 커스텀 인스펙터</h4>
-                    <p>유니티 애니메이션 상태 제어기인 <strong>StateMachineBehaviour</strong>를 사용해 애니메이션 클립의 흐름과 실제 보스 상태 로직을 1:1로 일치시켰습니다. 공통적인 기본 행동 흐름은 BaseLayer에 정의하고, 보스의 페이즈 변화에 따른 추가 공격 기법들은 <strong>OverlayLayer</strong> 구조를 통해 설계했습니다. 또한 AnimationClip 에셋의 원본 리소스를 훼손하여 수정하지 않아도, 인스펙터 상에서 Behaviour 단위의 특정 프레임 시점을 지정하여 UnityEvent를 직접 호출하도록 애니메이션 프레임 정밀 제어 툴을 지원했습니다.</p>
-                    
-                    <h4>스테이지 플랫폼 설계 툴</h4>
-                    <p>유니티 <strong>Handles</strong> 및 <strong>Gizmos</strong>를 사용하여 씬 뷰에서 지형(플랫폼) 영역을 생성 및 수정하는 툴을 구현했습니다. 이미 배치된 <strong>MeshRenderer Bound</strong> 경계를 스캔하여 지형 데이터로 바꿔주는 에디터 스냅 기능을 구현했습니다.</p>
-
-                    <h4>이벤트 기반 입력 시스템</h4>
-                    <p>Legacy Input Manager를 사용하여 <strong>발행-구독 패턴</strong>으로 입력 구조를 독립 설계했습니다. 특정 KeyCode를 하드코딩해 참조하지 않고 string key를 구독하여 런타임 게임 도중 사용자가 키 매핑을 즉시 재구성할 수 있는 안전한 입력 리바인딩 흐름을 구축했습니다.</p>
-
-                    <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
-                    <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
-
-                    <h4>Cinemachine 연출 연동</h4>
-                    <p>Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동으로 구동하도록 구현했습니다.</p>
-                `
-            },
-            projectt: {
-                title: "Project T",
-                tags: ["PC", "UnityEngine"],
-                content: `
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>기상 변화(비, 바람, 기온)에 따른 인게임 물리 상호작용 설계</li>
-                        <li>대화 기반 퀘스트 시스템</li>
-                        <li>스킬 시스템 구현: 퀘스트 진행에 따른 스킬 해금 기능, 캐릭터 스킬 획득 및 사용(쿨타임) 사이클 제어</li>
-                        <li>동적 NPC 보이스 시스템</li>
-                        <li>계층형 UI 구조 및 UGUI Navigation 설계</li>
-                        <li>플레이어 컨트롤러</li>
-                        <li>NPC 구현</li>
-                    </ul>
-                    
-                    <h2>세부 구현 사항</h2>
-                    <h4>기상 상호작용 시스템</h4>
-                    <p>인터페이스 및 옵저버 패턴으로 날씨 변경 시에만 구독 오브젝트들에 변경을 뿌리는 구조를 구현했습니다. 바람(AreaEffector) 방향에 맞춰 불 파티클이 전파 번짐 알고리즘을 타도록 처리하고, 수위 변화에 따른 부력 보정을 구현했습니다.</p>
-                    
-                    <h4>동적 NPC 보이스 시스템</h4>
-                    <p>NPC 텍스트의 특수 부호 및 감정 라벨을 분석해 피치와 볼륨 속도를 런타임에 오디오 소스에 동적 반영하여 생동감을 더했습니다.</p>
-
-                    <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
-                    <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
-                `
-            },
-            projectmg: {
-                title: "Project MG",
-                tags: ["PC", "UnityEngine", "MediaPipe"],
-                content: `
-                    <h2>담당 업무</h2>
-                    <ul>
-                        <li>Python-Unity 간 Named Pipe 비동기 통신 구축 및 Lock 구현</li>
-                        <li>Low-Level 2D Physics API 기반 조작 및 물리 연동</li>
-                        <li>X축 델타 누적 기반 레버 펌프질 충전 시스템</li>
-                        <li>Steam SDK 연동 (업적 잠금 해제 구현)</li>
-                    </ul>
-                    
-                    <h2>세부 구현 사항</h2>
-                    <h4>Named Pipe IPC 통신</h4>
-                    <p>웹캠을 통해 감지된 미디어파이프(MediaPipe)의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 실시간 수신하는 비동기 통신 채널을 구축하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
-                    
-                    <h4>Low-Level 물리 조작 연동</h4>
-                    <p>수신된 손 좌표 데이터를 인게임 2D 물리 시스템과 연동하여, 화면 내 캐릭터를 포획하고 Y축 드래그로 내던질 수 있는 물리 기반의 조작 기능을 구현했습니다.</p>
-                    
-                    <h4>제스처 펌프질 충전 시스템</h4>
-                    <p>주먹을 쥔 제스처 상태에서 손을 좌우로 흔드는(X축 변화량) 동작을 실시간 감지하여 게이지를 충전하는 특수 제스처 판정 및 마력 소모 시스템을 구축했습니다.</p>
-                    
-                    <h2>Troubleshooting</h2>
-                    <div id="modal-troubleshoot-target-mg"></div>
-                `
-            }
-        };
-        
-        // Modal Trigger functions
+        // Modal Trigger functions (HTML5 template 복제 방식으로 스크립트 용량 최적화)
         function openProject(projectId) {
-            const data = PROJECT_DATA[projectId];
-            if (!data) return;
+            const temp = document.getElementById('temp-' + projectId);
+            if (!temp) return;
             
-            modalTitle.innerText = data.title;
+            modalTitle.innerText = temp.dataset.title;
             
+            // 데이터셋에서 태그 추출해 삽입
+            const tags = temp.dataset.tags.split(',');
             let tagsHtml = `<ul class="modal-tags">`;
-            data.tags.forEach(tag => tagsHtml += `<li>${tag}</li>`);
+            tags.forEach(tag => tagsHtml += `<li>${tag}</li>`);
             tagsHtml += `</ul>`;
             
             modalTagsContainer.innerHTML = tagsHtml;
             modalTagsContainer.style.display = 'block';
-            modalContent.innerHTML = data.content;
             
-            // HTML의 개쩌는 동적 복제 기능 구현 (핵심 역량의 Troubleshooting 리소스 복제 및 결합)
+            // 템플릿의 컨텐츠 복제 및 주입
+            modalContent.innerHTML = '';
+            modalContent.appendChild(temp.content.cloneNode(true));
+            
+            // 핵심 역량의 Troubleshooting 리소스 동적 복제 연동
             const tsTarget = document.getElementById('modal-troubleshoot-target');
             if (tsTarget) {
                 const tsSource = document.getElementById('troubleshoot-pz-refactoring');
