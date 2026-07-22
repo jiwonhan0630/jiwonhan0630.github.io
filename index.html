@@ -107,6 +107,13 @@
             background-color: var(--color-accent);
             margin-left: 0.4rem;
         }
+
+        .profile-info .role-title {
+            margin-bottom: 0.25rem;
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            font-weight: 700;
+        }
         
         .profile-info .intro {
             font-size: 0.95rem;
@@ -752,11 +759,11 @@
         <!-- Sidebar Navigation -->
         <aside id="sidebar">
             <div class="profile-info">
+                <div class="role-title">Unity 클라이언트 엔지니어</div>
                 <div class="logo">한지원 <span style="font-size: 0.9rem; font-weight: 500; text-transform: none; color: var(--color-text-secondary); margin-left: 0.5rem; letter-spacing: 0;">(Han Jiwon)</span></div>
                 <p class="intro"><strong>"즐거운 개발이 즐거운 게임을 부른다!"</strong></p>
                 
                 <ul class="sidebar-contact" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
-                    <li><span class="material-symbols-outlined">call</span><a href="tel:01056810419">010-5681-0419</a></li>
                     <li><span class="material-symbols-outlined">mail</span><a href="mailto:jiwonhan0630@gmail.com">jiwonhan0630@gmail.com</a></li>
                 </ul>
 
@@ -774,13 +781,13 @@
             <!-- Tab: Highlights (핵심 역량) -->
             <section id="highlights" class="tab-content active">
                 <h1>핵심 역량</h1>
-                <p class="inline-no-margin">팀의 생산성을 높이는 에디터 확장 기능부터 성능을 끌어올리는 구조 개선까지, 저의 핵심 역량을 요약하였습니다.</p>
+                <p class="inline-no-margin">팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>,<br>기술 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>까지 저의 핵심 역량을 정리하였습니다.</p>
                 <hr>
                 
                 <div class="sectionbox">
                     <div class="sectionbox-header">
-                        <h3>개발 편의 기능</h3>
-                        <p>개발 과정에서 발생하는 비효율적인 작업을 개선하고 실무에 즉시 도입 가능한 기능을 구현하여 팀의 생산성을 끌어올립니다</p>
+                        <h3>Unity 에디터 확장·개발 편의 기능</h3>
+                        <p>개발 과정의 반복 작업과 비효율을 개선하고, 프로젝트 특성에 맞는 유틸리티와 Unity 에디터 확장 기능을 구현하여<br>팀의 작업 효율과 생산성을 높입니다</p>
                     </div>
                     
                     <article id="attr-event-binding" class="panelbox">
@@ -789,6 +796,23 @@
                         <pre><code class="language-csharp"><span class="accent-text">[ElementCommand("cmd--button--brush-tool")]</span>
 private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");</code></pre>
                         <p>UQuery를 통한 리플렉션 호출을 초기화 시점에 단 한 번으로 최적화하여 성능 영향을 최소화했습니다. static 람다를 사용해 외부 변수 캡처로 인한 부가적인 가비지 컬렉터(GC) 할당을 방지했습니다.</p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 class="panel-title">Naming Tool</h4>
+                        <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 확장 기능을 구현하였습니다. 컴포넌트 구성의 우선순위를 분석하여 이름을 생성합니다.</p>
+
+                        <h5 class="panel-subtitle">컴포넌트 기반 네이밍</h5>
+                        <p class="panel-text-muted">게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메쉬 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메쉬명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
+
+                        <h5 class="panel-subtitle">넘버링 시스템</h5>
+                        <p class="panel-text-muted">유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
+
+                        <h5 class="panel-subtitle">에셋 타입 기반 유효성 검증</h5>
+                        <p class="panel-text-muted">선택된 에셋의 바이너리 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 접두사(Prefix) 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
+
+                        <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
                     </article>
 
                     <article class="panelbox">
@@ -801,32 +825,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     public List&lt;string&gt; EnchantList;
     public EquipSlotType SlotType;
 }</code></pre>
-                        <p>컨버터 클래스를 오버라이딩하여 복잡한 자료형(StatInfo 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원합니다.</p>
-                    </article>
-
-                </div>
-                
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h3>Unity 에디터 확장</h3>
-                        <p>프로젝트 특성에 맞는 에디터 확장 기능을 구현하여 팀 내에 보다 편안한 유니티 작업 프로세스를 구성합니다</p>
-                    </div>
-                    
-                    <article class="panelbox">
-                        <h4 class="panel-title">Naming Tool</h4>
-                        <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 유틸리티를 구현하였습니다. 단순히 일괄적으로 이름을 변경하는 것을 넘어, 에셋의 세부 타입과 오브젝트에 부착된 컴포넌트 구성의 우선순위를 분석하여 맥락에 맞는 최적의 이름을 생성합니다.</p>
-
-                        <h5 class="panel-subtitle">컴포넌트 기반 네이밍</h5>
-                        <p class="panel-text-muted">게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메쉬 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메쉬명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
-
-                        <h5 class="panel-subtitle">정밀 넘버링 시스템</h5>
-                        <p class="panel-text-muted">유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
-
-                        <h5 class="panel-subtitle">에셋 타입 기반 유효성 검증</h5>
-                        <p class="panel-text-muted">선택된 에셋의 바이너리 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 접두사(Prefix) 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
-
-                        <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
-                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+                        <p>컨버터 클래스를 상속하여 복잡한 자료형(2중 딕셔너리 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원합니다.</p>
                     </article>
 
                     <article class="panelbox">
@@ -834,16 +833,16 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p>씬 뷰에서 Handles와 Gizmos를 활용하여 AI 이동 경로 노드를 직접 생성하고, 지형 데이터를 가공할 수 있는 레벨 에디터를 개발했습니다. NavMesh 에셋을 직접 구동하지 않고 ScriptableObject로 구역 좌표 데이터를 압축 베이킹하는 툴을 제공했습니다.</p>
                     </article>
 
-                    <article class="panelbox">
+                    <article class="panelbox" id="addressables-system-extension">
                         <h4 class="panel-title">Addressables 시스템 확장</h4>
-                        <p>에셋의 드래그 앤 드롭을 지원하되, 씬 인스펙터에서는 직접적인 하드 임포트 링크 대신 Addressable 주소 라벨을 참조하게 하여 암묵적인 메모리 종속성을 원천 차단했습니다. 로드/언로드 시 잦은 에셋 번들 변환 부하(Asset Churn)를 방지하기 위해 Global/Stage Lifecycle 참조 카운팅 시스템을 구현했습니다.</p>
+                        <p>프로젝트의 Addressables 적용 방식에 맞춘 커스텀 래퍼 클래스와 커스텀 인스펙터를 구현했습니다. 이를 바탕으로 에셋 참조 규칙과 라이프사이클 관리 구조를 정비하고, Global/Stage 단위 참조 카운팅으로 에셋의 로드·언로드 흐름을 관리했습니다. 예제가 포함된 가이드라인을 공유해 팀원이 일관된 방식으로 에셋을 적용할 수 있도록 지원했습니다.</p>
                     </article>
                 </div>
                 
                 <!-- 콘텐츠 및 시스템 요약 섹션 -->
                 <div class="sectionbox">
                     <div class="sectionbox-header">
-                        <h3>콘텐츠 및 시스템</h3>
+                        <h3>콘텐츠·시스템</h3>
                         <p>게임 플레이에 필요한 콘텐츠와 다양한 기능 요구사항을 구현합니다</p>
                     </div>
                     
@@ -908,7 +907,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 
                 <div class="sectionbox">
                     <div class="sectionbox-header">
-                        <h3>Troubleshooting</h3>
+                        <h3>트러블슈팅</h3>
                     </div>
                     
                     <!-- Trouble 1: 지형 생성 렉 해결 (Project PZ) -->
@@ -940,7 +939,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             
                             <h4>해결 과정</h4>
                             <h5>1. GC 오버헤드 제거</h5>
-                            <p>좌표 클래스를 구조체로 변경하는 동시에 지형 정보를 담고 있던 string 등 참조 타입의 변수를 제거하여 GC.Alloc이 완전히 일어나지 않도록 하였습니다.<br>
+                            <p>좌표 클래스를 구조체로 변경하는 동시에 지형 정보를 담고 있던 string 등 참조 타입의 변수를 제거하여 GC.Alloc을 0B로 유지할 수 있게 하였습니다.<br>
                             또한 LINQ 사용으로 인해 발생하는 문제점을 해결하기 위해 아래와 같이 수정하였습니다.</p>
                             <ul>
                                 <li>컬렉션을 미리 생성함과 동시에 Capacity를 계산하여, 함수 내에서의 생성과 Resizing을 최소화하였습니다. (Memory Profiler를 통해 예약된 메모리와 컬렉션의 최종 크기가 동일함을 검증했습니다.)</li>
@@ -963,7 +962,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             
                             <h4>결과</h4>
                             <p>최악의 케이스(모든 청크 검사 실패, 기획상 최대 지형 크기 적용 등)를 가정한 테스트 환경에서, 평균 생성 시간이 380초 → 14초로 단축되었습니다.<br>
-                            또한 핵심 생성 로직에서의  Zero Allocation을 달성하고, GC Spike 현상을 개선할 수 있었습니다.</p>
+                            또한 Profiler로 측정 결과, 핵심 생성 로직에서의 ZeroAllocation을 달성하고, GC Spike 현상을 개선할 수 있었습니다.</p>
                         </div>
                     </article>
 
@@ -1017,14 +1016,15 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="skill-card">
                             <h4>Unity Engine</h4>
                             <ul>
-                                <li>인게임 콘텐츠 구현 및 최적화</li>
-                                <li>UIToolkit을 사용하여 에디터 확장 기능 구현</li>
+                                <li>UIToolkit 기반 에디터 확장</li>
+                                <li>런타임 컨텐츠·시스템 구현, Profiler를 사용한 최적화 경험</li>
                             </ul>
                         </div>
                         <div class="skill-card">
                             <h4>C#</h4>
                             <ul>
-                                <li>제네릭 컬렉션 자료구조, 열거자, 델리게이트 등을 이해하고 활용 가능</li>
+                                <li>Attribute·Reflection 기반 자동화</li>
+                                <li>Generic Converter 구현 경험</li>
                             </ul>
                         </div>
                     </div>
@@ -1210,6 +1210,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h2>담당 업무</h2>
         <ul>
             <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 구현</li>
+            <li>Addressables 커스텀 래퍼 클래스·인스펙터 및 Global/Stage 라이프사이클 관리 구조 구현</li>
             <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
             <li>절차적 레벨/메쉬 런타임 생성 기능 구현</li>
             <li>Spatial Hash Grid 기반의 청크 시스템 및 월드 타임스탬프 기반 패턴 예측 구현</li>
@@ -1218,7 +1219,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         
         <h2>세부 구현 사항</h2>
         <h4>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</h4>
-        <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" data-highlight-id="attr-event-binding">Attribute 기반 자동 이벤트 바인딩 시스템</a>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 완벽히 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
+        <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" data-highlight-id="attr-event-binding">Attribute 기반 자동 이벤트 바인딩 시스템</a>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
+
+        <div id="modal-addressables-target"></div>
 
         <h4>절차적 레벨 생성 & 월드맵</h4>
         <p>Wang Tile 알고리즘을 참고하여 각 지형 파츠 엣지에 인접 가용 ID를 배치하고 유효성을 1차 필터링하였습니다. 이를 통해 회전, 연결 및 타일 인접 조건을 런타임에 동적으로 보정하는 지형 생성을 구성했습니다.<br>
@@ -1228,12 +1231,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p><strong>Spatial Hash Grid</strong> 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 <strong>월드 타임스탬프</strong>를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 수식 기반으로 시뮬레이션 보정하는 기능을 구현하였습니다.</p>
         
         <h4>CSV Utility</h4>
-        <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 정밀한 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
+        <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
 
         <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
         <p>CSV 형식의 텍스트를 파싱하여 몬스터를 동작시키는 기능을 구현하였습니다. 또한 <strong>UIToolkit</strong> 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 모니터링할 수 있는 기능을 구현하였습니다.</p>
 
-        <h2>Troubleshooting</h2>
+        <h2>트러블슈팅</h2>
         <div id="modal-troubleshoot-target"></div>
     </template>
 
@@ -1251,7 +1254,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 <strong>주행 경로 에디터</strong>를 <strong>UIToolkit</strong> 프레임워크와 유니티 커스텀 <strong>Handles 기즈모</strong>를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 <strong>Hat Socket 에디터</strong>를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
 
         <h4>주행 중 실시간 차량 파츠 교체 시스템</h4>
-        <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 반경을 정밀 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
+        <p>차량 주행 도중 정차 없이 실시간으로 파츠(바퀴, 차체)를 교체하면, 바퀴 메쉬의 <strong>MeshRenderer Bound</strong> 크기를 자동 계산하여 물리 WheelCollider의 반지름을 실시간으로 조절합니다. 또한 차체 변경에 따른 무게 및 길이 스펙이 변할 때 무게 중심을 즉각 조율하고 차량의 기하학적 예상 회전 반경을 계산하여 주행 조향 경로를 능동적으로 보정하도록 구현했습니다.</p>
         
         <h4>차량 AI 및 자율 주행 시스템</h4>
         <p>유니티 AI Navigation의 NavMesh Baking 데이터를 파싱하고, AutoBraking, OffMeshLink, AreaMask의 동작을 분석해 WheelCollider 차량용 주행 로직으로 재구현했습니다. NavMeshAgent를 직접 제어하지 않고도 토크와 서스펜션을 활용한 자율 주행을 구현했으며, 물리 충돌이나 장애물 우회 상황에는 독립적인 조향 알고리즘으로 대응하도록 설계했습니다.</p>
@@ -1262,7 +1265,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h4>전용 런처 구현</h4>
         <p>클라이언트 자동 업데이트, 강제 재실행 및 종료/접속, 버전 관리 기능이 포함된 런처를 구현하였습니다.</p>
 
-        <h2>Troubleshooting</h2>
+        <h2>트러블슈팅</h2>
         <div id="modal-troubleshoot-target-c"></div>
     </template>
 
@@ -1297,7 +1300,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h4>Cinemachine 연출 연동</h4>
         <p>Cinemachine 가상 카메라와 타임라인(Timeline)을 연동해 각 스테이지에 플레이어가 진입할 때 역동적인 입장 연출을 자동으로 구동하도록 구현했습니다.</p>
 
-        <h2>Troubleshooting</h2>
+        <h2>트러블슈팅</h2>
         <div class="trouble-content">
             <h4>문제 상황</h4>
             <p>보스 몬스터의 공격 페이즈 전환 시 히트박스 활성화와 사운드 출력 등의 이벤트를 애니메이션 재생 시점에 맞춰 제어해야 했습니다. 그러나 FBX 클립의 구성이나 임포트 설정이 변경되면 Animation Event 설정을 재검증해야 하므로 유지보수 비용이 발생했습니다.</p>
@@ -1355,7 +1358,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h4>계층형 UI 구조 및 UGUI Navigation 설계</h4>
         <p>UGUI Navigation 매핑을 통해 게임 패드 및 키보드로 조작이 가능한 계층형 UI 시스템을 설계했습니다.</p>
 
-        <h2>Troubleshooting</h2>
+        <h2>트러블슈팅</h2>
         <div class="trouble-content">
             <h4>문제 상황</h4>
             <p>기상 변화 시에만 IWeatherReactable 인터페이스를 호출하는 구조에서, 비가 시작될 때 수위와 식물 상태가 한 번 갱신된 뒤 변화가 멈췄습니다. 비의 지속 시간과 강도에 비례해야 하는 수위 상승 및 식물 성장 효과를 이벤트 한 번으로 처리하려 했기 때문입니다.</p>
@@ -1534,6 +1537,15 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             // 템플릿의 컨텐츠 복제 및 주입
             modalContent.innerHTML = '';
             modalContent.appendChild(temp.content.cloneNode(true));
+
+            // 핵심 역량의 Addressables 시스템 확장 내용을 Project PZ에 복제합니다.
+            const addressablesTarget = document.getElementById('modal-addressables-target');
+            if (addressablesTarget) {
+                const addressablesSource = document.getElementById('addressables-system-extension');
+                if (addressablesSource) {
+                    addressablesTarget.innerHTML = addressablesSource.innerHTML;
+                }
+            }
             
             // 핵심 역량의 Troubleshooting 리소스 동적 복제 연동
             const tsTarget = document.getElementById('modal-troubleshoot-target');
