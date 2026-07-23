@@ -397,6 +397,115 @@
             left: -0.2em;
             color: var(--color-accent);
         }
+
+        /* Experience & Education Timeline */
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .timeline-entry {
+            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-card);
+            padding: 2rem;
+        }
+        .timeline-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-entry-title {
+            margin-bottom: 0.25rem;
+            color: var(--color-text-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .timeline-duration {
+            margin-left: 0.4rem;
+            color: var(--color-text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .timeline-entry-role {
+            margin-bottom: 0;
+            color: var(--color-accent);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .timeline-period {
+            flex-shrink: 0;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .timeline-summary {
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        .timeline-projects {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--color-border);
+        }
+        .timeline-project {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.35rem 1rem;
+            width: 100%;
+            border: 1px solid transparent;
+            border-bottom: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-primary);
+            padding: 1rem 0;
+            font: inherit;
+            text-align: left;
+        }
+        button.timeline-project {
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        button.timeline-project:hover {
+            border-top-color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            background-color: var(--color-bg-hover);
+        }
+        button.timeline-project:hover .timeline-project-name,
+        button.timeline-project:focus-visible .timeline-project-name {
+            color: var(--color-accent);
+        }
+        button.timeline-project:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+        .timeline-project-name {
+            font-weight: 700;
+            transition: var(--transition-smooth);
+        }
+        .timeline-project-period {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+        }
+        .timeline-project-action {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .timeline-project-action .icon-placeholder {
+            visibility: hidden;
+        }
+        .timeline-project-desc {
+            grid-column: 1 / -1;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .timeline-project .material-symbols-outlined {
+            align-self: center;
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+        }
         
         /* Project Cards (Subject Buttons) */
         .project-list {
@@ -699,6 +808,16 @@
             .panelbox {
                 padding: 1.25rem;
             }
+            .timeline-entry {
+                padding: 1.25rem;
+            }
+            .timeline-entry-header {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .next-tab-nav .next-tab-btn {
+                margin-left: auto;
+            }
             dialog {
                 width: calc(100% - 1rem);
             }
@@ -784,6 +903,7 @@
 
                 <ul class="nav-tabs">
                     <li><button type="button" class="active" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 역량</button></li>
+                    <li><button type="button" data-tab="experience"><span class="material-symbols-outlined">work_history</span>경력 및 학력</button></li>
                     <li><button type="button" data-tab="skills"><span class="material-symbols-outlined">construction</span>보유 기술</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>참여 프로젝트</button></li>
                 </ul>
@@ -1010,6 +1130,117 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
                 </div>
                 
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" data-tab="experience">
+                        경력 및 학력 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tab: Experience (경력 및 학력) -->
+            <section id="experience" class="tab-content">
+                <h1>경력 및 학력</h1>
+                <hr>
+
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>경력 사항</h3>
+                    </div>
+
+                    <div class="experience-timeline">
+                        <article class="timeline-entry">
+                            <div class="timeline-entry-header">
+                                <div>
+                                    <h4 class="timeline-entry-title">(주) 펀딜 <span class="timeline-duration">(3년 2개월)</span></h4>
+                                    <p class="timeline-entry-role">Unity 클라이언트 엔지니어</p>
+                                </div>
+                                <span class="timeline-period">2022.01 - 2025.02</span>
+                            </div>
+                            <div class="timeline-projects">
+                                <button type="button" class="timeline-project" data-project-id="suwon_museum">
+                                    <span class="timeline-project-name">수원시 박물관 도슨트 시스템 (2D 박물관 도슨트 애플리케이션)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2022</span>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">도슨트 시스템 내 게임 콘텐츠 구현</span>
+                                </button>
+                                <button type="button" class="timeline-project" data-project-id="projectc">
+                                    <span class="timeline-project-name">Project C (3D 실시간 산업 데이터 기반 게이미피케이션)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2022 - 2024</span>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
+                                </button>
+                                <button type="button" class="timeline-project" data-project-id="projectpz">
+                                    <span class="timeline-project-name">Project PZ (3D 실시간 턴제 전략)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2024 - 2025</span>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="timeline-entry">
+                            <div class="timeline-entry-header">
+                                <div>
+                                    <h4 class="timeline-entry-title">인디 게임 프로젝트</h4>
+                                </div>
+                                <span class="timeline-period">2025.03 - 2026.07</span>
+                            </div>
+                            <div class="timeline-projects">
+                                <div class="timeline-project">
+                                    <span class="timeline-project-name">Project TW (2D 액션 플랫포머)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2025</span>
+                                        <span class="material-symbols-outlined icon-placeholder" aria-hidden="true">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">Unity 에디터 확장 구현</span>
+                                </div>
+                                <button type="button" class="timeline-project" data-project-id="projectmg">
+                                    <span class="timeline-project-name">Project MG (2D 핸드 트래킹 탄막)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2026</span>
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>학력 사항</h3>
+                    </div>
+                    <div class="experience-timeline">
+                        <article class="timeline-entry">
+                            <div class="timeline-entry-header">
+                                <div>
+                                    <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                    <p class="timeline-entry-role">만화애니게임학과 · 학사 졸업</p>
+                                </div>
+                                <span class="timeline-period">2022.03 - 2023.02</span>
+                            </div>
+                            <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5 · (주) 펀딜 재직 중 입학·졸업</p>
+                        </article>
+                        <article class="timeline-entry">
+                            <div class="timeline-entry-header">
+                                <div>
+                                    <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                    <p class="timeline-entry-role">게임학과 · 전문학사 졸업</p>
+                                </div>
+                                <span class="timeline-period">2019.03 - 2022.02</span>
+                            </div>
+                            <p class="timeline-summary inline-no-margin">학점 4.1 / 4.5</p>
+                        </article>
+                    </div>
+                </div>
+
                 <div class="next-tab-nav">
                     <button type="button" class="next-tab-btn" data-tab="skills">
                         보유 기술 보기 <span class="material-symbols-outlined">arrow_forward</span>
@@ -1440,7 +1671,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         // Tab switching logic based on URL Hash (가볍고 안전한 단방향 라우팅 구조)
         function renderTab() {
             let tabId = window.location.hash.replace('#', '');
-            if (!['highlights', 'skills', 'projects'].includes(tabId)) {
+            if (!['highlights', 'experience', 'skills', 'projects'].includes(tabId)) {
                 tabId = 'highlights';
             }
             
