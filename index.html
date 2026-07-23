@@ -409,6 +409,13 @@
             background-color: var(--color-bg-card);
             padding: 2rem;
         }
+        .timeline-entry.education-entry {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .education-entry .timeline-entry-header {
+            margin-bottom: 0.75rem;
+        }
         .timeline-entry-header {
             display: flex;
             justify-content: space-between;
@@ -438,6 +445,9 @@
         .timeline-summary {
             margin-bottom: 1.25rem;
             font-size: 0.95rem;
+        }
+        .timeline-summary.inline-no-margin {
+            margin-bottom: 0;
         }
         .timeline-projects {
             display: flex;
@@ -1212,7 +1222,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <h3>학력 사항</h3>
                     </div>
                     <div class="experience-timeline">
-                        <article class="timeline-entry">
+                        <article class="timeline-entry education-entry">
                             <div class="timeline-entry-header">
                                 <div>
                                     <h4 class="timeline-entry-title">청강문화산업대학교</h4>
@@ -1222,7 +1232,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             </div>
                             <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5 · (주) 펀딜 재직 중 입학·졸업</p>
                         </article>
-                        <article class="timeline-entry">
+                        <article class="timeline-entry education-entry">
                             <div class="timeline-entry-header">
                                 <div>
                                     <h4 class="timeline-entry-title">청강문화산업대학교</h4>
