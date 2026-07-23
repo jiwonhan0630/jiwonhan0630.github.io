@@ -795,7 +795,7 @@
                         <p>UIToolkit 환경에서, element class를 통해 이벤트를 자동으로 바인딩하는 기능을 구현하였습니다. 디자이너는 UI를 새로 만들거나 수정할 때, element class를 추가하면 즉시 기능을 적용할 수 있으며, 프로그래머는 Attribute를 선언하는 것으로 추가 바인딩 작업 없이 이벤트를 바인딩할 수 있습니다.</p>
                         <pre><code class="language-csharp"><span class="accent-text">[ElementCommand("cmd--button--brush-tool")]</span>
 private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");</code></pre>
-                        <p>UQuery를 통한 리플렉션 호출을 초기화 시점에 단 한 번으로 최적화하여 성능 영향을 최소화했습니다. static 람다를 사용해 외부 변수 캡처로 인한 부가적인 가비지 컬렉터(GC) 할당을 방지했습니다.</p>
+                        <p>UQuery를 통한 리플렉션 호출을 초기화 시점에 단 한 번으로 최적화하여 성능 영향을 최소화했습니다. static 람다를 사용해 외부 변수 캡처로 인한 부가적인 GC 할당을 방지했습니다.</p>
                     </article>
 
                     <article class="panelbox">
