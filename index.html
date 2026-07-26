@@ -1124,7 +1124,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         
                         <div class="trouble-content">
                             <h4>문제 상황</h4>
-                            <p>개발 도중 플레이어의 이동 방식이 NavMeshAgent에서, 물리가 적용된 WheelCollider로 변경되었습니다.<br>
+                            <p>차량의 이동 방식을 NavMeshAgent에서, 물리가 적용된 WheelCollider로 변경해야 했습니다.<br>
                             하지만 기존 스테이지는 NavMesh 규격으로 이미 제작되어 수정이 불가능한 상황이었으며, 단순히 NavMeshAgent를 사용할 경우 물리적 상호작용(충돌, 서스펜션 등)을 구현하는 데 한계가 있었습니다.<br>
                             따라서 기존 NavMesh 데이터를 활용하면서도, 물리 엔진 기반의 주행이 가능한 시스템을 새롭게 구축해야 했습니다.</p>
                             
@@ -1138,6 +1138,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             이를 해결하기 위해 삼각형의 무게중심을 선형 보간한 경로를 사용하였으나, 삼각형 형태에 따라 불필요한 움직임이 발생했습니다.<br>
                             최종적으로는 인접한 폴리곤이 맞닿는 모서리의 중점을 연결하여 경로를 수정하는 로직을 적용하여, 차량이 도로의 중앙을 따라 부드럽게 이동하도록 구현했습니다.<br>
                             또한 Box, Capsule 등 장애물을 감지하면 Raycast를 통해 우회 경로를 생성하도록 구현했습니다.</p>
+
+                            <h5>3. 조향 및 감속 제어 구현</h5>
+                            <p>차량의 속도와 경로 곡률에 따른 조향·감속 처리를 구현하기 위해 차량 제어 관련 자료를 조사하고, 참고한 제어 수식을 WheelCollider 기반 주행 구조에 맞게 재구성했습니다.</p>
                             
                             <h4>결과</h4>
                             <p>NavMeshAgent를 직접 제어하지 않고, AI Navigation의 AutoBraking, OffMeshLink, AreaMask 동작을 분석해 WheelCollider 차량 주행 로직으로 재구현했습니다. 기존 NavMesh 데이터를 경로 생성에 활용하여, 물리 차량의 자율 주행을 구현했습니다.</p>
@@ -1280,7 +1283,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             <h4>Unity Engine</h4>
                             <ul>
                                 <li>UIToolkit 기반 에디터 확장</li>
-                                <li>런타임 컨텐츠·시스템 구현, Profiler를 사용한 최적화 경험</li>
+                                <li>런타임 콘텐츠·시스템 구현, Profiler를 사용한 최적화 경험</li>
                             </ul>
                         </div>
                         <div class="skill-card">
@@ -1810,7 +1813,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             modalTagsContainer.innerHTML = tagsHtml;
             modalTagsContainer.style.display = 'block';
             
-            // 템플릿의 컨텐츠 복제 및 주입
+            // 템플릿의 콘텐츠 복제 및 주입
             modalContent.innerHTML = '';
             modalContent.appendChild(temp.content.cloneNode(true));
 
