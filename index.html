@@ -251,7 +251,7 @@
         
         h3 {
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: var(--color-accent);
         }
@@ -302,11 +302,6 @@
             margin-bottom: 1.5rem;
             transition: var(--transition-smooth);
         }
-        .panelbox-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: var(--color-text-primary);
-        }
         .panelbox-item ul {
             list-style-type: square;
             margin-left: 1.25rem;
@@ -326,17 +321,8 @@
             margin-bottom: 0.75rem;
             color: var(--color-accent);
         }
-        .panel-title-summary {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--color-accent);
-        }
         .panel-title-trouble {
-            font-size: 1.25rem;
-            font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--color-accent);
         }
         .panel-subtitle {
             line-height: 1.4;
@@ -1004,7 +990,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     <div class="sectionbox-content">
                         <!-- 1. 절차적 레벨 생성 -->
                         <article class="panelbox">
-                            <h4 class="panel-title-summary">절차적 레벨 생성</h4>
+                            <h4 class="panel-title">절차적 레벨 생성</h4>
                             <p class="project-link-wrapper"><button type="button" class="modal-link project-link" data-project-id="projectpz">Project PZ</button></p>
                             <div class="panelbox-item">
                                 <ul>
@@ -1016,7 +1002,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
                         <!-- 2. 주행 중 실시간 차량 파츠 교체 시스템 -->
                         <article class="panelbox">
-                            <h4 class="panel-title-summary">주행 중 실시간 차량 파츠 교체 시스템</h4>
+                            <h4 class="panel-title">주행 중 실시간 차량 파츠 교체 시스템</h4>
                             <p class="project-link-wrapper"><button type="button" class="modal-link project-link" data-project-id="projectc">Project C</button></p>
                             <div class="panelbox-item">
                                 <ul>
@@ -1028,7 +1014,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
                         <!-- 3. 산업 데이터 기반 게이미피케이션 -->
                         <article class="panelbox">
-                            <h4 class="panel-title-summary">산업 데이터 기반 게이미피케이션</h4>
+                            <h4 class="panel-title">산업 데이터 기반 게이미피케이션</h4>
                             <p class="project-link-wrapper"><button type="button" class="modal-link project-link" data-project-id="projectc">Project C</button></p>
                             <div class="panelbox-item">
                                 <ul>
@@ -1040,7 +1026,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
                         <!-- 4. 몬스터 및 보스 패턴 시스템 -->
                         <article class="panelbox">
-                            <h4 class="panel-title-summary">몬스터 및 보스 패턴 시스템</h4>
+                            <h4 class="panel-title">몬스터 및 보스 패턴 시스템</h4>
                             <div class="panelbox-item">
                                 <h5 class="panel-project-name">
                                     <button type="button" class="modal-link project-link" data-project-id="projectpz">Project PZ</button>
@@ -1067,7 +1053,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     
                     <!-- Trouble 1: 지형 생성 렉 해결 (Project PZ) -->
                     <article id="troubleshoot-pz-refactoring" class="panelbox">
-                        <h4 class="panel-title-trouble">지형 생성 시간 단축 및 메모리 최적화</h4>
+                        <h4 class="panel-title panel-title-trouble">지형 생성 시간 단축 및 메모리 최적화</h4>
                         <p class="panel-lead">GC Allocation 제거 및 청크 기반 연산 최적화를 통해 맵 생성 시간을 96% 단축했습니다.</p>
                         
                         <div class="trouble-content">
@@ -1123,7 +1109,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
                     <!-- Trouble 2: NavMesh WheelCollider -->
                     <article id="troubleshoot-c-navmesh" class="panelbox">
-                        <h4 class="panel-title-trouble">프로젝트 내 NavMesh 작업 프로세스를 유지한 채 WheelCollider를 사용하기</h4>
+                        <h4 class="panel-title panel-title-trouble">프로젝트 내 NavMesh 작업 프로세스를 유지한 채 WheelCollider를 사용하기</h4>
                         <p class="panel-lead">NavMesh를 사용하는 월드에서 작동하는 WheelCollider를 이용한 주행 기능을 구현하였습니다.</p>
                         
                         <div class="trouble-content">
