@@ -1068,7 +1068,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         
                         <div class="trouble-content">
                             <h4>문제 상황</h4>
-                            <p>기획상 요구되는 최대 크기 환경에서 거대한 레벨을 생성할 경우, 300초 이상의 긴 시간이 소모되는 현상이 발생하였습니다.</p>
+                            <p>기획상 요구되는 최대 크기 환경에서 거대한 레벨을 생성할 경우, 380초의 긴 시간이 소모되는 현상이 발생하였습니다.</p>
                             
                             <h4>원인 분석</h4>
                             <p>Profiler를 사용하여 분석한 결과, 심각한 GC 오버헤드와 비효율적인 연산이 핵심 원인으로 파악되었습니다.</p>
@@ -1112,7 +1112,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             </ul>
                             
                             <h4>결과</h4>
-                            <p>최악의 케이스(모든 청크 검사 실패, 기획상 최대 지형 크기 적용 등)를 가정한 테스트 환경에서, 평균 생성 시간이 380초 → 14초로 단축되었습니다.<br>
+                            <p>모든 청크 검사 실패와 기획상 최대 지형 크기 적용 등을 가정한 동일한 테스트 환경에서, 생성 시간이 380초 → 14초로 단축되었습니다.<br>
                             또한 Profiler로 측정 결과, 핵심 생성 로직에서의 ZeroAllocation을 달성하고, GC Spike 현상을 개선할 수 있었습니다.</p>
                         </div>
                     </article>
@@ -1661,7 +1661,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <template id="temp-projectmg" data-title="Project MG" data-tags="PC,UnityEngine,MediaPipe">
         <h2>담당 업무</h2>
         <ul>
-            <li>Python-Unity 간 Named Pipe 비동기 통신 기능 구현</li>
+            <li>MediaPipe 기반 실시간 손 트래킹 연동</li>
             <li>LowLevelPhysics2D API 적용</li>
             <li>제스처 기반 조작 시스템 구현</li>
             <li>탄막 요격 AI 구현</li>
@@ -1669,7 +1669,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
         
         <h2>세부 구현 사항</h2>
-        <h4>Python-Unity 간 Named Pipe 비동기 통신 기능</h4>
+        <h4>MediaPipe 기반 실시간 손 트래킹 연동</h4>
         <p>카메라를 통해 감지된 MediaPipe의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 수신하는 비동기 통신을 구현하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
         
         <h4>LowLevelPhysics2D API 적용</h4>
