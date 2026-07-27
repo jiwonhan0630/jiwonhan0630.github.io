@@ -1729,7 +1729,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <!-- JavaScript Data & Logic -->
     <script>
         // Tab switching logic based on URL Hash (가볍고 안전한 단방향 라우팅 구조)
-        function renderTab() {
+        function renderTab(event) {
             let tabId = window.location.hash.replace('#', '');
             if (!['about', 'highlights', 'experience', 'skills', 'projects'].includes(tabId)) {
                 tabId = 'about';
@@ -1744,6 +1744,16 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             document.querySelectorAll('.nav-tabs li button').forEach(button => {
                 button.classList.toggle('active', button.dataset.tab === tabId);
             });
+
+            const pageTitle = document.querySelector(`#${tabId} h1`).textContent;
+            document.title = `${pageTitle} | Jiwon Han Portfolio`;
+
+            if (event?.type === 'hashchange') {
+                gtag('event', 'page_view', {
+                    page_title: document.title,
+                    page_location: location.href
+                });
+            }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
