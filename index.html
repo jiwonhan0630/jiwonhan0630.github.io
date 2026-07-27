@@ -378,6 +378,7 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .skill-card ul {
             list-style: none;
             font-size: 0.9rem;
@@ -744,10 +745,6 @@
             color: var(--color-accent) !important;
         }
 
-        #highlights .highlights-intro {
-            margin-bottom: 0.5rem;
-        }
-        
         /* Custom Scrollbar for Modal and Content */
         ::-webkit-scrollbar {
             width: 6px;
@@ -907,9 +904,10 @@
                 </ul>
 
                 <ul class="nav-tabs">
-                    <li><button type="button" class="active" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 역량</button></li>
-                    <li><button type="button" data-tab="experience"><span class="material-symbols-outlined">work</span>경력 및 학력</button></li>
+                    <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
+                    <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 역량</button></li>
                     <li><button type="button" data-tab="skills"><span class="material-symbols-outlined">construction</span>보유 기술</button></li>
+                    <li><button type="button" data-tab="experience"><span class="material-symbols-outlined">work</span>경력 및 학력</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>참여 프로젝트</button></li>
                 </ul>
             </div>
@@ -917,12 +915,48 @@
 
         <!-- Content Area -->
         <main id="content-area">
+
+            <!-- Tab: About (소개) -->
+            <section id="about" class="tab-content active">
+                <h1>소개</h1>
+                <p>즐거운 개발이 즐거운 결과를 부른다! 안녕하세요, Unity 클라이언트 엔지니어 한지원입니다.</p>
+                <p>저는 반복 작업과 비효율적인 작업 프로세스를 개선하고, 필요한 기술을 학습하며 문제의 원인을 파악해 해결하려 합니다. 서로를 존중하며 협력하고 더 나은 방식을 함께 찾아가는 과정을 즐기며, <span class="accent-text">모두가 즐겁게 창작에 몰입하는 과정이 콘텐츠를 접하는 사람들의 즐거움으로 이어질 수 있다고 믿습니다.</span></p>
+                <hr>
+
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>저는 이렇게 일합니다</h3>
+                    </div>
+
+                    <div class="sectionbox-content">
+                        <article class="panelbox">
+                            <h4 class="panel-title">반복되는 불편을 개선합니다</h4>
+                            <p>작업 과정에서 반복되는 불편과 병목을 그대로 지나치지 않습니다. 팀 전체가 콘텐츠의 완성도를 높이는 창작 활동에 집중할 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p>
+                        </article>
+
+                        <article class="panelbox">
+                            <h4 class="panel-title">더 나은 방식을 함께 찾습니다</h4>
+                            <p>좋은 결과는 서로의 관점과 경험을 존중하며 협력할 때 만들어진다고 생각합니다. 저는 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p>
+                        </article>
+
+                        <article class="panelbox">
+                            <h4 class="panel-title">필요한 지식을 학습하며 성장합니다</h4>
+                            <p>저는 모든 것을 알고 있는 개발자는 아닙니다. 모르는 것을 부끄러워하지 않고 인정하며, 필요한 지식과 기술을 학습합니다. 관련 자료와 문서, 패키지 소스 등을 분석해 동작 원리를 이해하고 문제의 원인을 파악한 뒤, 프로젝트의 구조와 요구사항에 맞는 기능을 구현합니다.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" data-tab="highlights">
+                        핵심 역량 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
             
             <!-- Tab: Highlights (핵심 역량) -->
-            <section id="highlights" class="tab-content active">
+            <section id="highlights" class="tab-content">
                 <h1>핵심 역량</h1>
-                <p class="inline-no-margin highlights-intro">저는 반복 작업과 비효율적인 작업 프로세스를 개선하고, 필요한 기술을 학습하며 문제의 원인을 파악해 해결하려 합니다. 서로를 존중하며 협력하고 더 나은 방식을 함께 찾아가는 과정을 즐기며, 모두가 즐겁게 창작에 몰입할 때 그 결과가 콘텐츠를 접하는 사람들의 즐거움으로 이어진다고 믿습니다.</p>
-                <p>이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 기술 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>까지 저의 핵심 역량을 정리하였습니다.</p>
+                <p class="inline-no-margin">이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 기술 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>을 중심으로 핵심 역량을 정리하였습니다.</p>
                 <hr>
                 
                 <div class="sectionbox">
@@ -1140,8 +1174,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
                 
                 <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="experience">
-                        경력 및 학력 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="skills">
+                        보유 기술 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -1167,13 +1201,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <span class="timeline-period">2022.01 - 2025.02</span>
                             </div>
                             <div class="timeline-projects">
-                                <button type="button" class="timeline-project" data-project-id="suwon_museum">
-                                    <span class="timeline-project-name">수원시 박물관 도슨트 시스템 (2D 박물관 도슨트 애플리케이션)</span>
+                                <button type="button" class="timeline-project" data-project-id="projectpz">
+                                    <span class="timeline-project-name">Project PZ (3D 실시간 턴제 전략)</span>
                                     <span class="timeline-project-action">
-                                        <span class="timeline-project-period">2022</span>
+                                        <span class="timeline-project-period">2024 - 2025</span>
                                         <span class="material-symbols-outlined">arrow_forward</span>
                                     </span>
-                                    <span class="timeline-project-desc">2D 게임 콘텐츠 및 DOTween 기반 인게임 연출 구현</span>
+                                    <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
                                 </button>
                                 <button type="button" class="timeline-project" data-project-id="projectc">
                                     <span class="timeline-project-name">Project C (3D 실시간 산업 데이터 기반 게이미피케이션)</span>
@@ -1183,13 +1217,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                     </span>
                                     <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
                                 </button>
-                                <button type="button" class="timeline-project" data-project-id="projectpz">
-                                    <span class="timeline-project-name">Project PZ (3D 실시간 턴제 전략)</span>
+                                <button type="button" class="timeline-project" data-project-id="suwon_museum">
+                                    <span class="timeline-project-name">수원시 박물관 도슨트 시스템 (2D 박물관 도슨트 애플리케이션)</span>
                                     <span class="timeline-project-action">
-                                        <span class="timeline-project-period">2024 - 2025</span>
+                                        <span class="timeline-project-period">2022</span>
                                         <span class="material-symbols-outlined">arrow_forward</span>
                                     </span>
-                                    <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
+                                    <span class="timeline-project-desc">2D 게임 콘텐츠 및 DOTween 기반 인게임 연출 구현</span>
                                 </button>
                             </div>
                         </article>
@@ -1202,14 +1236,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <span class="timeline-period">2025.03 - 2026.07</span>
                             </div>
                             <div class="timeline-projects">
-                                <div class="timeline-project">
-                                    <span class="timeline-project-name">Project TW (2D 액션 플랫포머)</span>
-                                    <span class="timeline-project-action">
-                                        <span class="timeline-project-period">2025</span>
-                                        <span class="material-symbols-outlined icon-placeholder" aria-hidden="true">arrow_forward</span>
-                                    </span>
-                                    <span class="timeline-project-desc">Unity 에디터 확장 구현</span>
-                                </div>
                                 <button type="button" class="timeline-project" data-project-id="projectmg">
                                     <span class="timeline-project-name">Project MG (2D 핸드 트래킹 탄막)</span>
                                     <span class="timeline-project-action">
@@ -1218,6 +1244,14 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                     </span>
                                     <span class="timeline-project-desc">콘텐츠·시스템 구현, Unity 에디터 확장 구현</span>
                                 </button>
+                                <div class="timeline-project">
+                                    <span class="timeline-project-name">Project TW (2D 액션 플랫포머)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2025</span>
+                                        <span class="material-symbols-outlined icon-placeholder" aria-hidden="true">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">Unity 에디터 확장 구현</span>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -1252,8 +1286,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
 
                 <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="skills">
-                        보유 기술 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="projects">
+                        참여 프로젝트 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -1351,8 +1385,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
                 
                 <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="projects">
-                        참여 프로젝트 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="experience">
+                        경력 및 학력 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -1445,8 +1479,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 
                 <div class="next-tab-nav" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                     <span style="font-size: 0.85rem; color: var(--color-text-secondary);">※ 보안을 준수하기 위해 프로젝트의 실제 명칭 및 이미지가 기재되지 않을 수 있습니다.</span>
-                    <button type="button" class="next-tab-btn" data-tab="highlights">
-                        핵심 역량으로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
+                    <button type="button" class="next-tab-btn" data-tab="about">
+                        소개로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
                     </button>
                 </div>
             </section>
@@ -1684,8 +1718,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         // Tab switching logic based on URL Hash (가볍고 안전한 단방향 라우팅 구조)
         function renderTab() {
             let tabId = window.location.hash.replace('#', '');
-            if (!['highlights', 'experience', 'skills', 'projects'].includes(tabId)) {
-                tabId = 'highlights';
+            if (!['about', 'highlights', 'experience', 'skills', 'projects'].includes(tabId)) {
+                tabId = 'about';
             }
             
             // 모든 탭 구역 중 현재 활성화된 탭만 노출
