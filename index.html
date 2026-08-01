@@ -1526,6 +1526,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <ul>
             <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 구현</li>
             <li>Addressables 커스텀 래퍼 클래스·인스펙터 및 Global/Stage 라이프사이클 관리 구조 구현</li>
+            <li>씬 렌더링 최적화</li>
             <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
             <li>절차적 레벨·메쉬 생성 기능 구현</li>
             <li>Spatial Hash Grid 기반의 청크 시스템 및 월드 타임스탬프 기반 패턴 예측 구현</li>
@@ -1533,6 +1534,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
         
         <h2>세부 구현 사항</h2>
+        <h4>씬 렌더링 최적화</h4>
+        <p>Frame Debugger, Rendering Profiler 등 Unity 렌더링 분석 도구 활용. Texture Atlas와 sharedMaterial 기반의 지형 리소스 구조 적용, 오브젝트 특성에 따라 Mesh Combine, GPU Instancing 적용</p>
+
         <h4>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</h4>
         <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" data-highlight-id="attr-event-binding">Attribute 기반 자동 이벤트 바인딩 시스템</a>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
 
@@ -1559,6 +1563,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <h2>담당 업무</h2>
         <ul>
             <li>모빌리티·ICT 기업과 협업</li>
+            <li>씬 렌더링 최적화</li>
             <li>산업 데이터 기반 게이미피케이션 로직 구현</li>
             <li>자율 주행 경로 에디터 및 차량 액세서리 위치 에디터 구현</li>
             <li>주행 중 실시간 차량 파츠 교체 시스템 구현</li>
@@ -1566,6 +1571,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
         
         <h2>세부 구현 사항</h2>
+        <h4>씬 렌더링 최적화</h4>
+        <p>Frame Debugger, Rendering Profiler 등 Unity 렌더링 분석 도구 활용. Texture Atlas와 sharedMaterial 기반의 리소스 구조 적용, 오브젝트 특성에 따라 Static Batching, GPU Instancing 적용</p>
+
         <h4>에디터 확장 기능</h4>
         <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 주행 경로 에디터를 UIToolkit 프레임워크와 유니티 커스텀 Handles 기즈모를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 Hat Socket 에디터를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
 
