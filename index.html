@@ -678,6 +678,7 @@
         .modal-content-area {
             padding: 2.5rem 2rem;
             overflow-y: auto;
+            overflow-anchor: none;
         }
         
         .modal-content-area h2 {
@@ -1865,6 +1866,11 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         let modalTrigger = null;
         let currentModalView = null;
         const modalHistory = [];
+
+        function setModalScroll(scrollTop = 0) {
+            const maxScrollTop = Math.max(0, modalContent.scrollHeight - modalContent.clientHeight);
+            modalContent.scrollTop = Math.min(Math.max(0, scrollTop), maxScrollTop);
+        }
         
         function closeModal() {
             modalHistory.length = 0;
@@ -1873,16 +1879,18 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         }
 
         function handleModalExit() {
-            const previousView = modalHistory.pop();
-            if (previousView) {
-                renderModalView(previousView);
-                return;
+            if (currentModalView?.type === 'highlight') {
+                const previousState = modalHistory.pop();
+                if (previousState && renderModalView(previousState.view, previousState.scrollTop)) {
+                    return;
+                }
             }
 
             closeModal();
         }
 
         modal.addEventListener('close', () => {
+            setModalScroll(0);
             document.body.style.overflow = '';
             modalTrigger?.focus();
             modalTrigger = null;
@@ -1902,7 +1910,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         });
         
         // HTML5 template 복제 방식으로 모달 내용을 렌더링합니다.
-        function renderProject(projectId) {
+        function renderProject(projectId, scrollTop = 0) {
             const temp = document.getElementById('temp-' + projectId);
             if (!temp) return false;
 
@@ -1961,11 +1969,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             }
 
             buildTroubleTimelines(modalContent);
+            setModalScroll(scrollTop);
 
             return true;
         }
 
-        function renderHighlightDetail(elementId) {
+        function renderHighlightDetail(elementId, scrollTop = 0) {
             const source = document.getElementById(elementId);
             if (!source) return false;
 
@@ -1980,12 +1989,13 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             detail.querySelector('h4')?.remove();
             modalContent.append(...detail.childNodes);
             modalContent.insertAdjacentHTML('beforeend', '<button type="button" class="next-tab-btn modal-back-btn" data-modal-back><span class="material-symbols-outlined">arrow_back</span> Project PZ로 돌아가기</button>');
+            setModalScroll(scrollTop);
             return true;
         }
 
-        function renderModalView(view) {
-            if (view.type === 'project') return renderProject(view.projectId);
-            if (view.type === 'highlight') return renderHighlightDetail(view.elementId);
+        function renderModalView(view, scrollTop = 0) {
+            if (view.type === 'project') return renderProject(view.projectId, scrollTop);
+            if (view.type === 'highlight') return renderHighlightDetail(view.elementId, scrollTop);
             return false;
         }
 
@@ -1995,13 +2005,17 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             if (!renderProject(projectId)) return;
 
             modal.showModal();
+            setModalScroll(0);
             document.body.style.overflow = 'hidden';
         }
 
         function openHighlightDetail(elementId) {
             if (!currentModalView) return;
 
-            modalHistory.push(currentModalView);
+            modalHistory.push({
+                view: currentModalView,
+                scrollTop: modalContent.scrollTop
+            });
             if (!renderHighlightDetail(elementId)) {
                 modalHistory.pop();
             }
