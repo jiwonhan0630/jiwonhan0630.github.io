@@ -1089,14 +1089,24 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             </div>
                         </article>
 
-                        <!-- 3. 산업 데이터 기반 게이미피케이션 -->
+                        <!-- 3. 퀘스트 시스템 -->
                         <article class="panelbox">
-                            <h4 class="panel-title">산업 데이터 기반 게이미피케이션</h4>
-                            <p class="project-link-wrapper"><button type="button" class="modal-link project-link" data-project-id="projectc">Project C</button></p>
+                            <h4 class="panel-title">퀘스트 시스템</h4>
                             <div class="panelbox-item">
+                                <h5 class="panel-project-name">
+                                    <button type="button" class="modal-link project-link" data-project-id="projectpz">Project PZ</button>
+                                </h5>
+                                <ul style="margin-bottom: 1rem;">
+                                    <li>게임 내 타 시스템에서 발생하는 이벤트를 퀘스트 목표 조건과 연결해 달성 여부를 판정</li>
+                                    <li>완료 결과를 스테이지 해금·연계 퀘스트 발생 등 콘텐츠 진행과 연동</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">
+                                    <button type="button" class="modal-link project-link" data-project-id="projectt">Project T</button>
+                                </h5>
                                 <ul>
-                                    <li>실제 공장 작업자의 조립 데이터를 실시간으로 수신하여 게임 내 피버 타임, 스테이지 변화 등을 제어하는 자동화 플레이 로직 구현</li>
-                                    <li>데이터 송수신과 게임 로직을 분리하여 네트워크 지연 시에도 게임 흐름이 끊기지 않도록 설계</li>
+                                    <li>대화 시작·종료 및 특정 대사 출력을 퀘스트 완료·실패 조건으로 활용</li>
+                                    <li>퀘스트 보상을 스킬 해금과 연동하고 NPC 대화 진행에 반영</li>
                                 </ul>
                             </div>
                         </article>
@@ -1117,6 +1127,17 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 </h5>
                                 <ul>
                                     <li>StateMachineBehaviour 기반의 상태별 이벤트 제어로 애니메이션과 보스 패턴 로직을 1:1로 매핑</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- 5. 산업 데이터 기반 게이미피케이션 -->
+                        <article class="panelbox">
+                            <h4 class="panel-title">산업 데이터 기반 게이미피케이션</h4>
+                            <p class="project-link-wrapper"><button type="button" class="modal-link project-link" data-project-id="projectc">Project C</button></p>
+                            <div class="panelbox-item">
+                                <ul>
+                                    <li>실제 공장 작업자의 조립 데이터를 실시간으로 수신하여 게임 내 피버 타임, 스테이지 변화 등을 제어하는 자동화 플레이 로직 구현</li>
                                 </ul>
                             </div>
                         </article>
