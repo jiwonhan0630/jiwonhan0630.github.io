@@ -1456,7 +1456,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <!-- Tab: Projects (참여 프로젝트 목록) -->
             <section id="projects" class="tab-content">
                 <h1>참여 프로젝트</h1>
-                <p class="inline-no-margin">참여한 프로젝트 목록입니다. 각 프로젝트별 담당 업무, 세부 구현 사항을 정리하였습니다.</p>
+                <p class="inline-no-margin">참여한 프로젝트의 담당 업무와 세부 구현 사항을 정리하였습니다. 하단에는 개인 프로젝트를 정리하였습니다.</p>
                 <hr>
                 
                 <div class="project-list">
@@ -1538,6 +1538,40 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         </div>
                     </button>
                 </div>
+
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h3>개인 프로젝트</h3>
+                    </div>
+
+                    <div class="project-list">
+                        <button type="button" class="project-card" aria-haspopup="dialog" data-project-id="pdf-merger">
+                            <div class="project-card-content">
+                                <div>
+                                    <div class="main-text">PDF 병합기</div>
+                                    <div class="sub-text">지원 서류 PDF 병합 유틸리티 • Windows</div>
+                                </div>
+                                <div class="sub-text project-card-period">2026</div>
+                            </div>
+                            <div class="icon-container">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </div>
+                        </button>
+
+                        <button type="button" class="project-card" aria-haspopup="dialog" data-project-id="screen-overlay-tool">
+                            <div class="project-card-content">
+                                <div>
+                                    <div class="main-text">게임 화면 영역 오버레이 도구</div>
+                                    <div class="sub-text">실시간 화면 캡처·재배치 유틸리티 • Windows</div>
+                                </div>
+                                <div class="sub-text project-card-period">2026</div>
+                            </div>
+                            <div class="icon-container">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
                 
                 <div class="next-tab-nav" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                     <span style="font-size: 0.85rem; color: var(--color-text-secondary);">※ 보안을 준수하기 위해 프로젝트의 실제 명칭 및 이미지가 기재되지 않을 수 있습니다.</span>
@@ -1570,6 +1604,58 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     </dialog>
     
     <!-- HTML Templates for Modal Content (자바스크립트 변수 데이터 격리) -->
+    <template id="temp-pdf-merger" data-title="PDF 병합기" data-tags="Windows,C#,.NET 9,Windows Forms,PDFsharp">
+        <h2>프로젝트 개요</h2>
+        <p>입사 지원 시 개별로 관리하는 이력서, 자기소개서, 경력기술서 PDF를 제출 형식에 맞춰 빠르게 하나의 파일로 구성하기 위해 제작한 Windows 데스크톱 유틸리티입니다.</p>
+
+        <h2>주요 기능</h2>
+        <ul>
+            <li>폴더 내 지원 서류 PDF 자동 탐색</li>
+            <li>파일 탐색기를 통한 개별 PDF 직접 선택</li>
+            <li>선택한 문서 구성과 생성 시각을 반영한 출력 파일명 미리보기</li>
+            <li>누락 및 중복 선택 검사, 기존 파일 덮어쓰기 확인, 오류 안내</li>
+        </ul>
+
+        <h2>세부 구현 사항</h2>
+        <h4>문서 유형별 PDF 자동 탐색</h4>
+        <p>실행 파일이 위치한 폴더의 PDF를 검색하고 파일명에 포함된 문서 유형을 기준으로 이력서, 자기소개서, 경력기술서 후보를 분류했습니다. 최근 수정된 파일을 우선 노출하고 이전 병합 결과물은 후보에서 제외하여 반복 제출 작업에서 잘못된 파일을 선택할 가능성을 줄였습니다.</p>
+
+        <h4>선택 순서를 보장하는 PDF 병합</h4>
+        <p>사용자가 포함하도록 체크한 문서를 이력서, 자기소개서, 경력기술서 순서로 구성한 뒤 PDFsharp의 Import 모드로 각 PDF를 열어 모든 페이지를 새 문서에 순차적으로 추가했습니다. 문서별 페이지 수와 관계없이 제출 서류의 고정된 순서를 유지하도록 구현했습니다.</p>
+
+        <h4>출력 파일명 자동 생성</h4>
+        <p>선택된 문서 유형을 조합하고 생성 시각을 덧붙여 출력 파일명을 자동으로 생성했습니다. 병합 전에 결과 파일명을 미리 보여주며, 같은 이름의 파일이 이미 존재할 경우 사용자 확인 후에만 덮어쓰도록 처리했습니다.</p>
+
+        <h4>입력 검증 및 사용자 피드백</h4>
+        <p>병합 대상이 두 개 미만이거나 체크한 항목에 파일이 지정되지 않은 경우 작업을 중단하고 안내 메시지를 표시합니다. 서로 다른 항목에 같은 PDF가 선택되는 경우도 검사하며, 병합 진행 상태와 완료·실패 결과를 화면과 대화상자로 제공하도록 구성했습니다.</p>
+    </template>
+
+    <template id="temp-screen-overlay-tool" data-title="게임 화면 영역 오버레이 도구" data-tags="Windows,C#,.NET 8,WPF,Win32 API">
+        <h2>프로젝트 개요</h2>
+        <p>UI 위치를 사용자가 조절할 수 없는 특정 게임에서 필요한 정보를 원하는 위치에 표시하기 위해 제작한 Windows 오버레이 유틸리티입니다. 화면의 필요한 영역을 실시간으로 캡처하고, 캡처 영역과 출력 영역을 직접 배치하여 원본 화면의 일부를 원하는 위치와 크기의 별도 창에서 확인할 수 있도록 구현했습니다.</p>
+
+        <h2>주요 기능</h2>
+        <ul>
+            <li>캡처 영역과 오버레이 출력 영역의 독립적인 위치·크기 조절</li>
+            <li>여러 캡처 영역을 동시에 표시하는 다중 오버레이 구성</li>
+            <li>오버레이 투명도와 목표 프레임 레이트 조절</li>
+            <li>실행 중인 오버레이 창의 마우스 입력 통과</li>
+        </ul>
+
+        <h2>세부 구현 사항</h2>
+        <h4>캡처 영역과 출력 영역의 분리</h4>
+        <p>각 오버레이를 화면 캡처 범위를 지정하는 Target Window와 결과를 표시하는 Overlay Window로 구성했습니다. 사용자가 두 창을 각각 이동하고 크기를 조절할 수 있으며, 오버레이를 시작하면 지정된 위치와 크기를 기준으로 화면 캡처와 출력이 이루어지도록 구성했습니다.</p>
+
+        <h4>비트맵 메모리 복사 기반 실시간 렌더링</h4>
+        <p>Graphics.CopyFromScreen으로 지정 영역을 캡처한 뒤 Bitmap의 픽셀 버퍼를 잠그고, unsafe 환경의 Buffer.MemoryCopy를 사용해 WPF WriteableBitmap의 BackBuffer로 복사했습니다. 갱신 영역을 WriteableBitmap에 전달하여 캡처 결과가 오버레이 이미지에 연속적으로 표시되도록 구현했습니다.</p>
+
+        <h4>다중 오버레이 렌더링 관리</h4>
+        <p>캡처 창과 출력 창을 하나의 OverlayModule로 묶고, 여러 모듈을 목록으로 관리하도록 구성했습니다. DispatcherTimer가 설정된 목표 프레임 레이트에 맞춰 모든 활성 모듈에 렌더링을 요청하며, 오버레이 종료 시 캡처용 Bitmap과 Graphics 리소스를 해제하도록 처리했습니다.</p>
+
+        <h4>DPI 보정과 클릭 통과 처리</h4>
+        <p>WPF의 논리 좌표를 화면 캡처에 사용하는 실제 픽셀 좌표로 변환하기 위해 창의 DPI 배율을 반영했습니다. 오버레이가 활성화되면 Win32 API로 확장 창 스타일에 WS_EX_TRANSPARENT와 WS_EX_LAYERED를 적용해 마우스 입력이 아래 창으로 전달되도록 구현했습니다.</p>
+    </template>
+
     <template id="temp-projectpz" data-title="Project PZ" data-tags="Mobile(Android),UnityEngine">
         <h2>담당 업무</h2>
         <ul>
