@@ -478,22 +478,25 @@
             font: inherit;
             text-align: left;
         }
-        button.timeline-project {
+        button.timeline-project:not(:disabled) {
             cursor: pointer;
             transition: var(--transition-smooth);
         }
-        button.timeline-project:hover {
+        button.timeline-project:not(:disabled):hover {
             border-top-color: var(--color-accent);
             border-bottom-color: var(--color-accent);
             background-color: var(--color-bg-hover);
         }
-        button.timeline-project:hover .timeline-project-name,
-        button.timeline-project:focus-visible .timeline-project-name {
+        button.timeline-project:not(:disabled):hover .timeline-project-name,
+        button.timeline-project:not(:disabled):focus-visible .timeline-project-name {
             color: var(--color-accent);
         }
-        button.timeline-project:focus-visible {
+        button.timeline-project:not(:disabled):focus-visible {
             outline: 2px solid var(--color-accent);
             outline-offset: 3px;
+        }
+        button.timeline-project:disabled {
+            cursor: default;
         }
         .timeline-project-name {
             font-weight: 700;
@@ -1287,6 +1290,14 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                     </span>
                                     <span class="timeline-project-desc">인게임 콘텐츠 구현</span>
                                 </button>
+                                <button type="button" class="timeline-project" disabled>
+                                    <span class="timeline-project-name">전남 메타버스 (3D 관광 메타버스)</span>
+                                    <span class="timeline-project-action">
+                                        <span class="timeline-project-period">2022</span>
+                                        <span class="material-symbols-outlined icon-placeholder" aria-hidden="true">arrow_forward</span>
+                                    </span>
+                                    <span class="timeline-project-desc">디토랜드 플랫폼 내 관광지 구현</span>
+                                </button>
                                 <button type="button" class="timeline-project" data-project-id="suwon_museum">
                                     <span class="timeline-project-name">수원시 박물관 도슨트 시스템 (2D 박물관 도슨트 애플리케이션)</span>
                                     <span class="timeline-project-action">
@@ -1340,7 +1351,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 </div>
                                 <span class="timeline-period">2022.03 - 2023.02</span>
                             </div>
-                            <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5 · (주) 펀딜 재직 중 입학·졸업</p>
+                            <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5</p>
                         </article>
                         <article class="timeline-entry education-entry">
                             <div class="timeline-entry-header">
@@ -1525,7 +1536,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="project-card-content">
                             <div>
                                 <div class="main-text">수원시 박물관 도슨트 시스템</div>
-                                <div class="sub-text">2D 수원시 박물관 도슨트 애플리케이션 • Mobile(Android)</div>
+                                <div class="sub-text">2D 수원시 박물관 도슨트 애플리케이션 • Mobile(Android·iOS)</div>
                             </div>
                             <div class="sub-text project-card-period">2022</div>
                         </div>
@@ -1729,6 +1740,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>자율 주행 경로 에디터 및 차량 액세서리 위치 에디터 구현</li>
             <li>주행 중 실시간 차량 파츠 교체 시스템 구현</li>
             <li>클라이언트 자동 업데이트, 버전 제어 기능이 포함된 전용 런처 구현</li>
+            <li>클라이언트 로그 시스템 개발</li>
         </ul>
         
         <h2>세부 구현 사항</h2>
@@ -1746,6 +1758,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         
         <h4>전용 런처 구현</h4>
         <p>클라이언트 자동 업데이트, 강제 재실행 및 종료/접속, 버전 관리 기능이 포함된 런처를 구현하였습니다.</p>
+
+        <h4>클라이언트 로그 시스템 개발</h4>
+        <p>Conditional Attribute를 활용하여 빌드 환경별 로그 출력 제어 기능을 구현하였으며, 호출 클래스 유형에 따른 머리말·태그 자동 적용, 서버 전송 규격에 맞춘 로그 데이터 변환 기능, 로컬 파일 출력 기능을 구현하였습니다.</p>
 
         <h2>트러블슈팅</h2>
         <div id="modal-troubleshoot-target-c"></div>
@@ -1808,7 +1823,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
     </template>
 
-    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-tags="Mobile(Android),UnityEngine">
+    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-tags="Mobile(Android·iOS),UnityEngine">
         <h2>담당 업무</h2>
         <ul>
             <li>박물관 유물 정보를 활용한 짝맞추기, 유령 길찾기 등의 게임 콘텐츠 제작</li>
