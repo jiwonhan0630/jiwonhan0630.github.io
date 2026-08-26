@@ -753,7 +753,7 @@
             font: inherit;
         }
 
-        /* 핵심 역량 내 프로젝트 링크는 흰색으로 고정한다. */
+        /* 핵심 경험 내 프로젝트 링크는 흰색으로 고정한다. */
         #highlights .modal-link.project-link {
             color: var(--color-text-primary) !important;
         }
@@ -950,7 +950,7 @@
 
                 <ul class="nav-tabs">
                     <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
-                    <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 역량</button></li>
+                    <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
                     <li><button type="button" data-tab="skills"><span class="material-symbols-outlined">construction</span>보유 기술</button></li>
                     <li><button type="button" data-tab="experience"><span class="material-symbols-outlined">work</span>경력 및 학력</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>참여 프로젝트</button></li>
@@ -993,15 +993,15 @@
 
                 <div class="next-tab-nav">
                     <button type="button" class="next-tab-btn" data-tab="highlights">
-                        핵심 역량 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
             
-            <!-- Tab: Highlights (핵심 역량) -->
+            <!-- Tab: Highlights (핵심 경험) -->
             <section id="highlights" class="tab-content">
-                <h1>핵심 역량</h1>
-                <p class="inline-no-margin">이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>을 중심으로 핵심 역량을 정리하였습니다.</p>
+                <h1>핵심 경험</h1>
+                <p class="inline-no-margin">이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>을 중심으로 핵심 경험을 정리하였습니다.</p>
                 <hr>
                 
                 <div class="sectionbox">
@@ -1035,9 +1035,9 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
                     </article>
 
-                    <article class="panelbox">
+                    <article class="panelbox" id="csv-utility">
                         <h4 class="panel-title">CSV Utility</h4>
-                        <p>별도의 파싱 코드 작성 없이 CSV 데이터를 C# 컬렉션 및 오브젝트로 자동 변환하는 컨버터 유틸리티를 구현했습니다. 헤더 이름 매핑과 열 인덱스 매핑을 모두 지원합니다.</p>
+                        <p>별도의 파싱 코드 작성 없이 CSV 데이터를 C# 컬렉션 및 오브젝트로 자동 변환하는 컨버터 유틸리티를 구현했습니다. 헤더 이름 매핑과 열 인덱스 매핑을 모두 지원했습니다.</p>
                         <pre><code class="language-csharp">public class Weapon
 {
     <span class="accent-text">[CSVIndex(0)]</span> public string ItemCode;
@@ -1045,7 +1045,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     public List&lt;string&gt; EnchantList;
     public EquipSlotType SlotType;
 }</code></pre>
-                        <p>컨버터 클래스를 상속하여 복잡한 자료형(2중 딕셔너리 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원합니다.</p>
+                        <p>컨버터 클래스를 상속하여 복잡한 자료형(2중 딕셔너리 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원했습니다.</p>
                     </article>
 
                     <article class="panelbox">
@@ -1067,6 +1067,34 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
                     
                     <div class="sectionbox-content">
+                        <article class="panelbox">
+                            <h4 class="panel-title">외부 라이브러리 학습 후 활용</h4>
+                            <div class="panelbox-item">
+
+                                <h5 class="panel-project-name">MediaPipe</h5>
+                                <ul>
+                                    <li>손 추적 기능 연동을 통한 제스처 입력 방식 구현</li> 
+                                </ul>
+
+                                <h5 class="panel-project-name">UniTask</h5>
+                                <ul>
+                                    <li>서버 통신 작업(API 호출 및 대기), 인게임 로딩 등 비동기 작업 처리</li> 
+                                    <li>GC Zero Allcation 달성을 위한 코루틴 사용 환경 마이그레이션 경험</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">DOTween</h5>
+                                <ul>
+                                    <li>UI 애니메이션 구현</li>
+                                    <li>(2D) 인게임 연출 구현</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">SteamWorks</h5>
+                                <ul>
+                                    <li>플레이 기록, 업적 데이터 저장</li>
+                                </ul>
+                            </div>
+                        </article>
+
                         <!-- 1. 절차적 레벨·메시 생성 -->
                         <article class="panelbox">
                             <h4 class="panel-title">절차적 레벨·메시 생성</h4>
@@ -1098,7 +1126,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <h5 class="panel-project-name">
                                     <button type="button" class="modal-link project-link" data-project-id="projectpz">Project PZ</button>
                                 </h5>
-                                <ul style="margin-bottom: 1rem;">
+                                <ul>
                                     <li>게임 내 타 시스템에서 발생하는 이벤트를 퀘스트 목표 조건과 연결해 달성 여부를 판정</li>
                                     <li>완료 결과를 스테이지 해금·연계 퀘스트 발생 등 콘텐츠 진행과 연동</li>
                                 </ul>
@@ -1488,7 +1516,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <!-- Tab: Projects (참여 프로젝트 목록) -->
             <section id="projects" class="tab-content">
                 <h1>참여 프로젝트</h1>
-                <p class="inline-no-margin">참여한 프로젝트의 담당 업무와 세부 구현 사항을 정리하였습니다. 하단에는 개인 프로젝트를 정리하였습니다.</p>
+                <p class="inline-no-margin">참여한 프로젝트의 담당 업무와 상세 내용을 정리하였습니다. 하단에는 개인 프로젝트를 정리하였습니다.</p>
                 <hr>
                 
                 <div class="project-list">
@@ -1648,7 +1676,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>누락 및 중복 선택 검사, 기존 파일 덮어쓰기 확인, 오류 안내</li>
         </ul>
 
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>문서 유형별 PDF 자동 탐색</h4>
         <p>실행 파일이 위치한 폴더의 PDF를 검색하고 파일명에 포함된 문서 유형을 기준으로 이력서, 자기소개서, 경력기술서 후보를 분류했습니다. 최근 수정된 파일을 우선 노출하고 이전 병합 결과물은 후보에서 제외하여 반복 제출 작업에서 잘못된 파일을 선택할 가능성을 줄였습니다.</p>
 
@@ -1674,7 +1702,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>실행 중인 오버레이 창의 마우스 입력 통과</li>
         </ul>
 
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>캡처 영역과 출력 영역의 분리</h4>
         <p>각 오버레이를 화면 캡처 범위를 지정하는 Target Window와 결과를 표시하는 Overlay Window로 구성했습니다. 사용자가 두 창을 각각 이동하고 크기를 조절할 수 있으며, 오버레이를 시작하면 지정된 위치와 크기를 기준으로 화면 캡처와 출력이 이루어지도록 구성했습니다.</p>
 
@@ -1688,50 +1716,51 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p>WPF의 논리 좌표를 화면 캡처에 사용하는 실제 픽셀 좌표로 변환하기 위해 창의 DPI 배율을 반영했습니다. 오버레이가 활성화되면 Win32 API로 확장 창 스타일에 WS_EX_TRANSPARENT와 WS_EX_LAYERED를 적용해 마우스 입력이 아래 창으로 전달되도록 구현했습니다.</p>
     </template>
 
-    <template id="temp-projectpz" data-title="Project PZ" data-tags="Mobile(Android),UnityEngine">
+    <template id="temp-projectpz" data-title="Project PZ" data-tags="UnityEngine,Mobile(Android),UniTask">
         <h2>담당 업무</h2>
         <ul>
-            <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 구현</li>
-            <li>Addressables 커스텀 래퍼 클래스·인스펙터 및 Global/Stage 라이프사이클 관리 구조 구현</li>
-            <li>씬 렌더링 최적화</li>
             <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
-            <li>절차적 레벨·메시 생성 기능 구현</li>
-            <li>Spatial Hash Grid 기반의 청크 시스템 및 월드 타임스탬프 기반 패턴 예측 구현</li>
-            <li>CSV 대화/몬스터 패턴 데이터 자동 바인딩 유틸리티 및 몬스터 행동 흐름 시각화 패턴 뷰어 개발</li>
+            <li>Addressables 적용 및 프레임워크 설계</li>
+            <li>몬스터 패턴 시스템 및 패턴 뷰어</li>
             <li>퀘스트 시스템</li>
+            <li>CSV Utility</li>
+            <li>절차적 레벨 생성 · 월드맵</li>
+            <li>청크 시스템</li>
+            <li>씬 렌더링 최적화</li>
+            <li>Attribute 기반의 UIToolkit 이벤트 자동 바인딩 시스템 구현</li>
         </ul>
         
-        <h2>세부 구현 사항</h2>
-        <h4>씬 렌더링 최적화</h4>
-        <p>Frame Debugger, Rendering Profiler를 사용하여 병목을 순차적으로 분석하였습니다. Texture Atlas와 sharedMaterial 기반의 지형 리소스 구조 적용, 오브젝트 특성에 따라 Mesh Combine, GPU Instancing을 적용하였습니다.</p>
-        <p>동일 조건에서의 테스트를 통해 평균 프레임 레이트가 개선되었음을 검증하였습니다.</p>
+        <h2>상세 내용</h2>
 
         <h4>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</h4>
         <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" data-highlight-id="attr-event-binding">Attribute 기반 자동 이벤트 바인딩 시스템</a>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
 
         <div id="modal-addressables-target"></div>
-
-        <h4>절차적 레벨 생성 · 월드맵</h4>
-        <p>Wang Tile 알고리즘을 응용한 타일 연결 적합성 검증 로직과 각 타일의 회전, 연결을 통한 절차절 레벨 생성 기능을 구현하였습니다.<br>
-        또한 Greedy 알고리즘을 통한 절차적 메시 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메시를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 TilemapRenderer 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
-        
-        <h4>청크 시스템</h4>
-        <p>Spatial Hash Grid 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 월드 타임스탬프를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 수식 기반으로 시뮬레이션 보정하는 기능을 구현하였습니다.</p>
-        
-        <h4>CSV Utility</h4>
-        <p>수동 파싱 로직을 생략하고 CSV 파일 데이터를 C# 오브젝트 및 리스트 컬렉션에 자동 결합하는 직관적인 컨버터 라이브러리를 구축했습니다. 인덱스 기반 및 헤더 이름 기반 매핑을 제공하며, 사용자 정의 포맷터 변환을 상속 오버라이딩하여 단일 열 내의 복잡한 컬렉션이나 다차원 데이터 구조도 파싱할 수 있게 지원합니다.</p>
+              
+        <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
+        <p>CSV 형식의 텍스트를 파싱하여 몬스터를 동작시키는 기능을 구현하였습니다. 또한 UIToolkit 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 모니터링할 수 있는 기능을 구현하였습니다.</p>
 
         <h4>퀘스트 시스템</h4>
         <p>게임 내 타 시스템에서 발생하는 이벤트를 퀘스트 목표 조건과 연결하여 달성 여부를 판정하도록 구현했습니다. 스테이지 해금, 연계 퀘스트 발생 등 콘텐츠 진행과 연동할 수 있는 구조를 설계하였습니다. 퀘스트 진행 데이터를 조회하고 갱신하는 공용 Model을 설계하고, 다른 프로그래머가 담당하는 시스템에서는 해당 Model을 통해서만 데이터를 주고받도록 구성했습니다. 이를 통해 퀘스트 시스템의 내부 구현에 대한 의존 범위를 줄이고, 각 시스템이 퀘스트 진행 상황과 필요한 기능을 연동할 수 있도록 설계했습니다.</p>
 
-        <h4>몬스터 패턴 시스템 및 패턴 뷰어</h4>
-        <p>CSV 형식의 텍스트를 파싱하여 몬스터를 동작시키는 기능을 구현하였습니다. 또한 UIToolkit 기반의 몬스터 패턴 뷰어를 구현하여, 게임 실행 중 몬스터가 이전 틱에 수행한 행동 기록과 다음 틱에 전환/실행할 대기 행동 패턴을 모니터링할 수 있는 기능을 구현하였습니다.</p>
+        <div id="modal-csv-utility-target"></div>
+
+        <h4>절차적 레벨 생성 · 월드맵</h4>
+        <p>Wang Tile 알고리즘을 응용한 타일 연결 적합성 검증 로직과 각 타일의 회전, 연결을 통한 절차절 레벨 생성 기능을 구현하였습니다.<br>
+        또한 Greedy 알고리즘을 통한 절차적 메시 생성을 구현하였습니다. 다른 지형에 가려지거나 불필요한 정점의 생성을 가능한 방지하여 청크 시스템 단위로 나눠진 메시를 생성하고 렌더링 성능을 개선했습니다. 생성된 지형 데이터와 인게임 내 주요 오브젝트 위치는 TilemapRenderer 기반의 실시간 미니맵/월드맵 시스템에 반영되도록 최적화하여 표시합니다.</p>
+
+        <h4>청크 시스템</h4>
+        <p>Spatial Hash Grid 방식을 활용해 월드 공간을 바둑판 형태의 청크 영역으로 나누고 플레이어 반경에 맞춰 활성화/비활성화 상태를 실시간 스케줄링합니다. 특히 청크 상태가 전환될 때의 월드 타임스탬프를 기록하여, 해당 청크가 재활성화되는 시점에 흐른 공백 시간만큼의 오브젝트 물리/상태 변화를 수식 기반으로 시뮬레이션 보정하는 기능을 구현하였습니다.</p>
+        
+        <h4>씬 렌더링 최적화</h4>
+        <p>Frame Debugger, Rendering Profiler를 사용하여 병목을 순차적으로 분석하였습니다. Texture Atlas와 sharedMaterial 기반의 지형 리소스 구조 적용, 오브젝트 특성에 따라 Mesh Combine, GPU Instancing을 적용하였습니다.</p>
+        <p>동일 조건에서의 테스트를 통해 평균 프레임 레이트가 개선되었음을 검증하였습니다.</p>
 
         <h2>트러블슈팅</h2>
         <div id="modal-troubleshoot-target"></div>
     </template>
 
-    <template id="temp-projectc" data-title="Project C" data-tags="PC/Mobile(Android·iOS),UnityEngine,MariaDB">
+    <template id="temp-projectc" data-title="Project C" data-tags="UnityEngine,PC/Mobile(Android·iOS),MariaDB">
         <h2>담당 업무</h2>
         <ul>
             <li>모빌리티·ICT 기업과 협업</li>
@@ -1743,7 +1772,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>클라이언트 로그 시스템 개발</li>
         </ul>
         
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>에디터 확장 기능</h4>
         <p>자율 주행에 사용되는 노드 및 가이드 라인을 시각화하고 편집할 수 있는 주행 경로 에디터를 UIToolkit 프레임워크와 유니티 커스텀 Handles 기즈모를 조합하여 구현했습니다. 또한 에디터 상에서 실시간으로 차량 캐릭터에 액세서리를 탈부착 및 위치/각도 조절 소켓을 동적으로 관리할 수 있는 Hat Socket 에디터를 제공하여 기획 단계의 세팅 공수를 최소화했습니다.</p>
 
@@ -1766,7 +1795,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <div id="modal-troubleshoot-target-c"></div>
     </template>
 
-    <template id="temp-projecti" data-title="Project I" data-tags="PC,UnityEngine">
+    <template id="temp-projecti" data-title="Project I" data-tags="UnityEngine,PC">
         <h2>담당 업무</h2>
         <ul>
             <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
@@ -1778,7 +1807,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>Cinemachine 연동 스테이지 시작 연출 및 Timeline 카메라 흐름 제어</li>
         </ul>
         
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>보스 몬스터 FSM · 커스텀 인스펙터</h4>
         <p>유니티 애니메이션 상태 제어기인 StateMachineBehaviour를 사용해 애니메이션 클립의 흐름과 실제 보스 상태 로직을 1:1로 일치시켰습니다. 공통적인 기본 행동 흐름은 BaseLayer에 정의하고, 보스의 페이즈 변화에 따른 추가 공격 기법들은 OverlayLayer 구조를 통해 설계했습니다. 또한 FBX 클립의 구성 또는 임포트 설정 변경 시 Animation Event 설정을 재검증해야 하는 유지보수 비용을 줄이기 위해, 인스펙터에서 Behaviour별 normalized time과 UnityEvent를 설정하는 확장 기능을 구현했습니다. 이벤트 데이터를 FBX 임포트 설정에서 분리하여, 리소스 재임포트 후에도 상태별 히트박스·사운드 발동 로직을 일관되게 관리했습니다.</p>
 
@@ -1814,7 +1843,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </div>
     </template>
 
-    <template id="temp-projectwd" data-title="Project WD" data-tags="Mobile(Android),UnityEngine">
+    <template id="temp-projectwd" data-title="Project WD" data-tags="UnityEngine,Mobile(Android),DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>한글 조합 라이브러리를 활용한 단어 조합 기반의 인게임 플레이 구현</li>
@@ -1823,7 +1852,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
     </template>
 
-    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-tags="Mobile(Android·iOS),UnityEngine">
+    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-tags="UnityEngine,Mobile(Android·iOS),DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>박물관 유물 정보를 활용한 짝맞추기, 유령 길찾기 등의 게임 콘텐츠 제작</li>
@@ -1833,7 +1862,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </ul>
     </template>
 
-    <template id="temp-projectt" data-title="Project T" data-tags="PC,UnityEngine">
+    <template id="temp-projectt" data-title="Project T" data-tags="UnityEngine,PC">
         <h2>담당 업무</h2>
         <ul>
             <li>기상 변화에 따른 인게임 물리 상호작용 구현</li>
@@ -1845,7 +1874,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>NPC 구현</li>
         </ul>
         
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>기상 변화에 따른 인게임 물리 상호작용</h4>
         <p>비, 번개, 불 등 기상 변화가 월드 오브젝트의 상태와 물리 상호작용에 영향을 주도록 구현했습니다.</p>
 
@@ -1899,7 +1928,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <li>Steamworks 연동</li>
         </ul>
         
-        <h2>세부 구현 사항</h2>
+        <h2>상세 내용</h2>
         <h4>MediaPipe 기반 실시간 손 트래킹 연동</h4>
         <p>카메라를 통해 감지된 MediaPipe의 손 좌표 데이터를 Named Pipe를 거쳐 유니티로 수신하는 비동기 통신을 구현하고, 데이터 유실 및 레이스 컨디션을 방지하기 위한 Lock 처리를 구현했습니다.</p>
         
@@ -2088,7 +2117,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             modalContent.innerHTML = '';
             modalContent.appendChild(temp.content.cloneNode(true));
 
-            // 핵심 역량의 Addressables 시스템 확장 내용을 Project PZ에 복제합니다.
+            // 핵심 경험의 Addressables 시스템 확장 내용을 Project PZ에 복제합니다.
             const addressablesTarget = document.getElementById('modal-addressables-target');
             if (addressablesTarget) {
                 const addressablesSource = document.getElementById('addressables-system-extension');
@@ -2096,8 +2125,17 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     addressablesTarget.innerHTML = addressablesSource.innerHTML;
                 }
             }
+
+            // 핵심 경험의 CSV Utility 내용을 Project PZ에 복제합니다.
+            const csvUtilityTarget = document.getElementById('modal-csv-utility-target');
+            if (csvUtilityTarget) {
+                const csvUtilitySource = document.getElementById('csv-utility');
+                if (csvUtilitySource) {
+                    csvUtilityTarget.innerHTML = csvUtilitySource.innerHTML;
+                }
+            }
             
-            // 핵심 역량의 Troubleshooting 리소스 동적 복제 연동
+            // 핵심 경험의 Troubleshooting 리소스 동적 복제 연동
             const tsTarget = document.getElementById('modal-troubleshoot-target');
             if (tsTarget) {
                 const tsSource = document.getElementById('troubleshoot-pz-refactoring');
@@ -2136,7 +2174,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             currentModalView = { type: 'highlight', elementId };
             modalCloseButton.setAttribute('aria-label', 'Project PZ로 돌아가기');
             modalCloseIcon.textContent = 'arrow_back';
-            modalTitle.innerText = source.querySelector('h4')?.textContent ?? '핵심 역량 상세';
+            modalTitle.innerText = source.querySelector('h4')?.textContent ?? '핵심 경험 상세';
             modalTagsContainer.style.display = 'none';
             modalContent.innerHTML = '';
 
