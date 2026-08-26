@@ -34,7 +34,6 @@
             --color-text-secondary: #a0a0a0;
             --color-accent: #d4ff3f;
             
-            /* 신규 이관된 색상 변수 */
             --color-text-button-inactive: #d5d5d5;
             --color-border-button-inactive: #4a4a4a;
             --color-bg-pre: #0b0b0b;
@@ -58,7 +57,7 @@
             background-color: var(--color-bg-deep);
             color: var(--color-text-primary);
             font-family: 'Pretendard GOV', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
             word-break: keep-all;
         }
@@ -275,7 +274,7 @@
         
         p {
             color: var(--color-text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         hr {
@@ -1002,7 +1001,7 @@
             <!-- Tab: Highlights (핵심 역량) -->
             <section id="highlights" class="tab-content">
                 <h1>핵심 역량</h1>
-                <p class="inline-no-margin">이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 기술 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>을 중심으로 핵심 역량을 정리하였습니다.</p>
+                <p class="inline-no-margin">이 페이지에서는 팀의 생산성을 높이는 <span class="accent-text">Unity 에디터 확장·개발 편의 기능</span>, 분석과 학습을 바탕으로 한 <span class="accent-text">콘텐츠·시스템 구현</span>, <span class="accent-text">트러블슈팅 경험</span>을 중심으로 핵심 역량을 정리하였습니다.</p>
                 <hr>
                 
                 <div class="sectionbox">
@@ -1033,7 +1032,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p class="panel-text-muted">선택된 에셋의 바이너리 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 접두사(Prefix) 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
 
                         <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
-                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. OCP(개방-폐쇄 원칙)를 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 0;">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
                     </article>
 
                     <article class="panelbox">
@@ -1187,7 +1186,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <li>쿼리 함수를 for/while를 사용한 순회로 변경하여 새로운 컬렉션을 생성하지 않도록 하였습니다.</li>
                                 <li>List 순회 대신 HashSet과 Dictionary을 사용하여 평균 데이터 접근 속도를 개선하였습니다.</li>
                             </ul>
-                            <p>마지막으로 코루틴은 컴파일 단계에서 클래스로 선언되어 작동하기 때문에 GC.Alloc이 일어나게 되므로, 이를 방지하기 위해 구조체 기반의 UniTask를 도입하였습니다.</p>
+                            <p>마지막으로 코루틴은 컴파일 단계에서 클래스로 선언되어 작동하기 때문에 GC.Alloc이 일어나게 되므로, 이를 방지하기 위해 구조체 기반의 UniTask를 도입하였습니다(솔직히, 개인적으로 사용하고 싶었던 라이브러리인 점도 있었습니다).</p>
                             
                             <h5>2. 청크 시스템 적용</h5>
                             <p>청크 시스템의 Spatial Hash Grid를 적용하여 좌표 단위로 실행하는 동작을 영역 단위로 실행하도록 수정하였습니다.<br>
@@ -1704,7 +1703,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         
         <h2>세부 구현 사항</h2>
         <h4>씬 렌더링 최적화</h4>
-        <p>Frame Debugger, Rendering Profiler 등 Unity 렌더링 분석 도구 활용. Texture Atlas와 sharedMaterial 기반의 지형 리소스 구조 적용, 오브젝트 특성에 따라 Mesh Combine, GPU Instancing 적용</p>
+        <p>Frame Debugger, Rendering Profiler를 사용하여 병목을 순차적으로 분석하였습니다. Texture Atlas와 sharedMaterial 기반의 지형 리소스 구조 적용, 오브젝트 특성에 따라 Mesh Combine, GPU Instancing을 적용하였습니다.</p>
+        <p>동일 조건에서의 테스트를 통해 평균 프레임 레이트가 개선되었음을 검증하였습니다.</p>
 
         <h4>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</h4>
         <p>절차적 레벨 생성에 사용되는 파츠 데이터를 효율적으로 제작할 수 있는 유니티 에디터 확장 기능을 구현했습니다. <a href="#highlights" data-highlight-id="attr-event-binding">Attribute 기반 자동 이벤트 바인딩 시스템</a>을 적용하여 툴 UI 수정이 유연하도록 설계했습니다. 인게임 레벨 생성 로직을 모듈화하여 에디터 뷰포트에 통합함으로써, 빌드 없이 파츠 생성 결과를 뷰포트에서 즉시 확인할 수 있습니다. 아울러 ObjectPreview 및 스냅샷 자동 출력 기능으로 툴을 열지 않고도 에셋 인스펙터 상에서 지형 파츠의 형태를 미리 확인할 수 있습니다.</p>
