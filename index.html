@@ -101,7 +101,7 @@
         
         .profile-info .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: bold;
             letter-spacing: -0.03em;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
@@ -137,7 +137,7 @@
             padding: 1rem 1.25rem;
             color: var(--color-text-button-inactive);
             border: 1px solid var(--color-border-button-inactive);
-            font-weight: 700;
+            font-weight: bold;
             font-size: 1rem;
             font-family: inherit;
             text-align: left;
@@ -238,25 +238,23 @@
         /* Typo */
         h1 {
             font-size: 2.8rem;
-            font-weight: 700;
             margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
         }
         h2 {
             font-size: 1.8rem;
-            font-weight: 700;
             margin-bottom: 1.5rem;
         }
         
         h3 {
             font-size: 1.5rem;
-            font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--color-accent);
         }
 
         h5 {
             font-size: 1.1rem;
+            margin: 1.25rem 0 0.5rem;
         }
         
         p {
@@ -326,24 +324,10 @@
             margin-bottom: 0.75rem;
             color: var(--color-accent);
         }
-        .panel-title-trouble {
-            margin-bottom: 0.5rem;
-        }
-        .panel-subtitle {
-            line-height: 1.4;
-            color: var(--color-text-primary);
-            margin: 1.25rem 0 0.5rem;
-            font-weight: 700;
-        }
         .panel-project-name {
             color: var(--color-text-primary);
             margin-bottom: 0.4rem;
             font-weight: 600;
-        }
-        .panel-text-muted {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
         }
         .panel-lead {
             font-size: 0.95rem;
@@ -836,11 +820,6 @@
             font-size: 1.15rem;
             color: var(--color-accent);
             margin: 0 0 0.5rem;
-            font-weight: 700;
-        }
-        .trouble-content h5 {
-            margin: 1rem 0 0.4rem;
-            font-weight: 700;
         }
         .trouble-content ul, .trouble-content ol {
             margin-left: 1.25rem;
@@ -1013,16 +992,16 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 확장 기능을 구현하였습니다. 컴포넌트 구성의 우선순위를 분석하여 이름을 생성합니다.</p>
 
                         <h5 class="panel-subtitle">컴포넌트 기반 네이밍</h5>
-                        <p class="panel-text-muted">게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메시 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메시명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
+                        <p>게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메시 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메시명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
 
                         <h5 class="panel-subtitle">넘버링 시스템</h5>
-                        <p class="panel-text-muted">유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
+                        <p>유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
 
                         <h5 class="panel-subtitle">에셋 타입 기반 유효성 검증</h5>
-                        <p class="panel-text-muted">선택된 에셋의 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 Prefix 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
+                        <p>선택된 에셋의 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 Prefix 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
 
                         <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
-                        <p class="panel-text-muted">네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+                        <p>네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
 
                         <hr>
                         <h5>고민의 흔적</h5>
