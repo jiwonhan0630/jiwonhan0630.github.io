@@ -710,6 +710,9 @@
             .nav-tabs li {
                 flex: 1 1 calc(50% - 0.5rem);
             }
+            .nav-tabs li:first-child {
+                flex-basis: 100%;
+            }
             .nav-tabs li button {
                 justify-content: center;
                 padding: 0.75rem;
@@ -864,9 +867,9 @@
                 </ul>
 
                 <ul class="nav-tabs">
-                    <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
-                    <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
+                    <li><button type="button" class="active" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>프로젝트 목록</button></li>
+                    <li><button type="button" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
                 </ul>
             </div>
         </aside>
@@ -1560,7 +1563,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 <div class="next-tab-nav project-notice-nav">
                     <span>※ 보안을 준수하기 위해 프로젝트의 실제 명칭 및 이미지가 기재되지 않을 수 있습니다.</span>
                     <button type="button" class="next-tab-btn" data-tab="about">
-                        소개로 돌아가기 <span class="material-symbols-outlined">restart_alt</span>
+                        소개 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -1905,7 +1908,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         }
 
         // 탭 및 프로젝트 상세 라우팅 (예: #/projects, #/project/projectpz)
-        const TAB_IDS = ['about', 'highlights', 'projects'];
+        const TAB_IDS = ['highlights', 'projects', 'about'];
         const PROJECT_ROUTE_NAME = 'project';
         const HIGHLIGHT_ROUTE_NAME = 'highlight';
         const projectDetail = document.getElementById('project-detail');
@@ -1959,7 +1962,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
 
             return {
                 type: 'tab',
-                id: TAB_IDS.includes(rawHash) ? rawHash : 'about'
+                id: TAB_IDS.includes(rawHash) ? rawHash : 'highlights'
             };
         }
 
