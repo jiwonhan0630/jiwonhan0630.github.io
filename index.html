@@ -58,6 +58,16 @@
             overflow-x: hidden;
             word-break: keep-all;
         }
+
+        ul {
+            list-style-type: square;
+            margin-left: 1.25rem;
+            color: var(--color-text-secondary);
+        }
+
+        ul li {
+            margin-bottom: 0.4rem;
+        }
         
         a {
             color: inherit;
@@ -125,9 +135,14 @@
         /* Navigation Tabs */
         .nav-tabs {
             list-style: none;
+            margin-left: 0;
+            margin-bottom: 0;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+        }
+        .nav-tabs li {
+            margin-bottom: 0;
         }
         .nav-tabs li button {
             display: flex;
@@ -187,6 +202,7 @@
         .sidebar-contact {
             border-top: 1px solid var(--color-border);
             padding-top: 1.25rem;
+            margin-left: 0;
             margin-bottom: 1.25rem;
         }
         .sidebar-contact li {
@@ -252,6 +268,13 @@
             color: var(--color-accent);
         }
 
+        .about-work-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--color-accent);
+        }
+
         h5 {
             font-size: 1.1rem;
             margin: 1.25rem 0 0.5rem;
@@ -298,22 +321,13 @@
             margin-bottom: 0;
             line-height: 1.6;
         }
-        
+
         .panelbox {
             border: 1px solid var(--color-border);
             background-color: var(--color-bg-card);
             padding: 2rem;
             margin-bottom: 1.5rem;
         }
-        .panelbox-item ul {
-            list-style-type: square;
-            margin-left: 1.25rem;
-            color: var(--color-text-secondary);
-        }
-        .panelbox-item ul li {
-            margin-bottom: 0.5rem;
-        }
-
         /* 반복되는 콘텐츠 스타일 */
         .inline-no-margin {
             margin-bottom: 0;
@@ -343,42 +357,14 @@
             color: var(--color-accent);
         }
         
-        /* Grid container for Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .skill-card {
-            border: 1px solid var(--color-border);
-            background-color: var(--color-bg-card);
-            padding: 1.5rem;
-        }
-        .skill-card h4 {
+        /* 기술 목록 */
+        .skill-list h4 {
             font-size: 1.15rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 0.2rem;
         }
-
-        .skill-card ul {
-            list-style: none;
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-        }
-        .skill-card ul li {
-            margin-bottom: 0.4rem;
-            position: relative;
-            padding-left: 0.8rem;
-        }
-        .skill-card ul li::before {
-            content: '▪';
-            position: absolute;
-            left: -0.2em;
-            color: var(--color-accent);
+        .skill-list hr {
+            margin: 1.25rem 0;
         }
 
         /* Experience & Education Timeline */
@@ -640,15 +626,6 @@
             color: var(--color-text-primary);
             margin: 1.5rem 0 0.5rem;
         }
-        .project-detail-content ul {
-            list-style-type: square;
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-text-secondary);
-        }
-        .project-detail-content ul li {
-            margin-bottom: 0.4rem;
-        }
         .project-detail-content a {
             color: var(--color-text-primary) !important;
             text-decoration: underline !important;
@@ -663,6 +640,8 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             list-style: none;
+            margin-left: 0;
+            margin-bottom: 0;
             margin-top: 0.6rem;
         }
         .project-tags li {
@@ -672,6 +651,7 @@
             padding: 0.2rem 0.6rem;
             font-size: 0.8rem;
             font-weight: 600;
+            margin-bottom: 0;
         }
         button.project-link {
             background: transparent;
@@ -821,18 +801,11 @@
             color: var(--color-accent);
             margin: 0 0 0.5rem;
         }
-        .trouble-content ul, .trouble-content ol {
+        .trouble-content ol {
             margin-left: 1.25rem;
             margin-bottom: 1.25rem;
             color: var(--color-text-secondary);
         }
-        .trouble-content ul {
-            list-style-type: square;
-        }
-        .trouble-content li {
-            margin-bottom: 0.4rem;
-        }
-        
         /* Next Tab Navigation */
         .next-tab-nav {
             display: flex;
@@ -892,8 +865,6 @@
 
                 <ul class="nav-tabs">
                     <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
-                    <li><button type="button" data-tab="experience"><span class="material-symbols-outlined">work</span>학력·경력·활동</button></li>
-                    <li><button type="button" data-tab="skills"><span class="material-symbols-outlined">construction</span>보유 기술</button></li>
                     <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>프로젝트 목록</button></li>
                 </ul>
@@ -909,34 +880,222 @@
                 <p>안녕하세요, 세상에 즐거움을 전하고픈 한지원입니다.</p>
                 <p>저는 반복 작업과 비효율적인 작업 프로세스를 개선하고, 필요한 기술을 학습하며 문제의 원인을 파악해 해결하려 합니다. 서로를 존중하며 협력하고 더 나은 방식을 함께 찾아가는 과정을 즐기며, <span class="accent-text">작업자의 즐거움이 콘텐츠를 접하는 사람의 즐거움으로 이어진다고 믿습니다.</span></p>
                 <hr>
+                <div>
+                    <h2>저는 이렇게 일합니다</h2>
+                    <div class="panelbox">
+                        <h3 class="about-work-heading">불편을 줄여나갑니다</h3>
+                        <p>반복되는 불편과 병목을 줄여 팀의 작업 과정을 원활하게 만드는 데서 보람을 느낍니다. 팀이 창작 활동에 집중하고 콘텐츠의 완성도를 높일 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p>
 
+                        <hr>
+                        <h3 class="about-work-heading">더 나은 방식을 함께 찾습니다</h3>
+                        <p>서로의 관점과 경험을 존중하며 협력할 때 더 좋은 결과가 만들어진다고 생각합니다. 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p>
 
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>저는 이렇게 일합니다</h2>
-                    </div>
-
-                    <div class="sectionbox-content">
-                        <article class="panelbox">
-                            <h4 class="panel-title">불편을 줄여나갑니다</h4>
-                            <p>반복되는 불편과 병목을 줄여 팀의 작업 과정을 원활하게 만드는 데서 보람을 느낍니다. 팀이 창작 활동에 집중하고 콘텐츠의 완성도를 높일 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p>
-                        </article>
-
-                        <article class="panelbox">
-                            <h4 class="panel-title">더 나은 방식을 함께 찾습니다</h4>
-                            <p>서로의 관점과 경험을 존중하며 협력할 때 더 좋은 결과가 만들어진다고 생각합니다. 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p>
-                        </article>
-
-                        <article class="panelbox">
-                            <h4 class="panel-title">필요한 지식을 학습하며 성장합니다</h4>
-                            <p>모르는 것을 숨기기보다 무엇을 더 알아야 하는지 파악하고, 필요한 지식과 기술을 학습합니다. 스스로 답을 찾기 어려울 때에는 동료에게 도움을 구하고, 새롭게 알게 된 내용은 다시 나누며 지식과 경험을 함께 쌓아갑니다.</p>
-                        </article>
+                        <hr>
+                        <h3 class="about-work-heading">필요한 지식을 학습하며 성장합니다</h3>
+                        <p>모르는 것을 숨기기보다 무엇을 더 알아야 하는지 파악하고, 필요한 지식과 기술을 학습합니다. 스스로 답을 찾기 어려울 때에는 동료에게 도움을 구하고, 새롭게 알게 된 내용은 다시 나누며 지식과 경험을 함께 쌓아갑니다.</p>
                     </div>
                 </div>
 
+                <div class="sectionbox">
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>학력</h2>
+                        </div>
+                        <div class="panelbox">
+                            <article class="education-entry">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                        <p class="timeline-entry-role">만화애니게임학과 · 학사 졸업</p>
+                                    </div>
+                                    <span class="timeline-period">2022.03 - 2023.02</span>
+                                </div>
+                                <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5</p>
+                            </article>
+
+                            <hr>
+
+                            <article class="education-entry">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                        <p class="timeline-entry-role">게임콘텐츠스쿨 · 전문학사 졸업</p>
+                                    </div>
+                                    <span class="timeline-period">2019.03 - 2022.02</span>
+                                </div>
+                                <p class="timeline-summary inline-no-margin">학점 4.1 / 4.5</p>
+                            </article>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>경력</h2>
+                        </div>
+                        <div class="experience-timeline">
+                            <article class="timeline-entry">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">㈜펀딜</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2022.01 - 2025.02</span>
+                                </div>
+                                <p>3년간 PC, 모바일 게임 및 앱 개발 프로젝트에 참여하며 콘텐츠·시스템 및 에디터 확장 기능, 유틸리티 개발을 담당하였습니다. 프로젝트 초기 설계부터 기능 구현, 개발 도구 제작, 성능 분석·최적화, 외부 기업 기술 연계와 글로벌 서비스 검증 업무를 수행하였습니다.</p>
+                            </article>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>활동</h2>
+                        </div>
+                        <div class="panelbox">
+                            <article>
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">인디 게임 팀</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2025.03 - 현재</span>
+                                </div>
+                                <p>한국·일본 Steam 출시를 목표로 활동 중인 인디 게임 팀입니다.</p>
+                            </article>
+
+                            <hr>
+
+                            <article>
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">사이드 프로젝트</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2021 - 2022</span>
+                                </div>
+                                <p>재학 중 게임 프로젝트 활동을 통해 개발 역량을 길렀습니다.</p>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h2>보유 기술</h2>
+                        <p class="inline-no-margin">활용 가능한 언어, 도구 등을 정리하였습니다.</p>
+                    </div>
+
+                    <section>
+                        <div class="sectionbox-header">
+                            <h3>주요 기술</h3>
+                        </div>
+                        <div class="panelbox">
+                            <div class="skill-list">
+                                <div>
+                                    <h4>Unity Engine</h4>
+                                    <ul>
+                                        <li>UIToolkit 기반 에디터 확장, UGUI, 런타임 콘텐츠·시스템 구현</li>
+                                        <li>Unity Profiler 등 내부 분석 도구를 활용하여 메모리 및 성능 최적화 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>C#</h4>
+                                    <ul>
+                                        <li>기본 자료구조 및 알고리즘 지식 보유</li>
+                                        <li>Visual Studio 내부 진단 도구를 활용하여 CPU 사용량 최적화 가능</li>
+                                        <li>Attribute·Reflection 기반 자동화</li>
+                                        <li>Generic Converter 구현 경험</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h3>보조 기술</h3>
+                        </div>
+                        <div class="panelbox">
+                            <div class="skill-list">
+                                <div>
+                                    <h4>Database</h4>
+                                    <ul>
+                                        <li>MongoDB, MariaDB, TMaxTiberoDB 활용 경험 및 기초 쿼리 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Blender</h4>
+                                    <ul>
+                                        <li>프로토타입 리소스 등의 단순 모델링 및 텍스처 제작 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Adobe Photoshop</h4>
+                                    <ul>
+                                        <li>이미지 편집, 텍스처 및 노말맵 생성, 타임라인 등 기본 기능 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>GitHub · GitLab · SourceTree</h4>
+                                    <ul>
+                                        <li>Git GUI를 사용한 협업 및 브랜치 관리 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Notion</h4>
+                                    <ul>
+                                        <li>업무보고서 자동화 구조 구축 경험</li>
+                                        <li>휴가 관리 시스템 구축 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Google Spreadsheet · MS Excel</h4>
+                                    <ul>
+                                        <li>데이터 입력·정리 및 필터·정렬 기능 활용 가능</li>
+                                        <li>IF, LOOKUP 등 기본 함수 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Google Docs · MS Word · Confluence</h4>
+                                    <ul>
+                                        <li>제안서, 보고서, 계획서 등 업무에 필요한 문서 작성 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>OBS</h4>
+                                    <ul>
+                                        <li>화면·오디오 소스 설정 및 기본 녹화·송출 기능 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>AI Agents</h4>
+                                    <ul>
+                                        <li>Antigravity, Codex를 활용한 프로토타이핑 및 자동화 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>C++</h4>
+                                    <ul>
+                                        <li>STL 라이브러리 및 기초 메모리 주소 체계에 대한 이해</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
                 <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="experience">
-                        경력·학력·활동 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="highlights">
+                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -1265,210 +1424,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
             </section>
 
-            <!-- Tab: Experience (경력 및 학력) -->
-            <section id="experience" class="tab-content">
-                <h1>학력·경력·활동</h1>
-                <p>청강문화산업대학을 졸업한 뒤 약 3년간 클라이언트 프로그래머로 근무하였으며, 현재는 인디 게임 팀에 소속되어 게임 개발을 이어나가고 있습니다.</p>
-                <hr>
-
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>학력</h2>
-                    </div>
-                    <div class="experience-timeline">
-                        <article class="timeline-entry education-entry">
-                            <div class="timeline-entry-header">
-                                <div>
-                                    <h4 class="timeline-entry-title">청강문화산업대학교</h4>
-                                    <p class="timeline-entry-role">만화애니게임학과 · 학사 졸업</p>
-                                </div>
-                                <span class="timeline-period">2022.03 - 2023.02</span>
-                            </div>
-                            <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5</p>
-                        </article>
-
-                        <article class="timeline-entry education-entry">
-                            <div class="timeline-entry-header">
-                                <div>
-                                    <h4 class="timeline-entry-title">청강문화산업대학교</h4>
-                                    <p class="timeline-entry-role">게임콘텐츠스쿨 · 전문학사 졸업</p>
-                                </div>
-                                <span class="timeline-period">2019.03 - 2022.02</span>
-                            </div>
-                            <p class="timeline-summary inline-no-margin">학점 4.1 / 4.5</p>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>경력</h2>
-                    </div>
-                    
-                    <div class="experience-timeline">
-                        <article class="timeline-entry">
-                            <div class="timeline-entry-header">
-                                <div>
-                                    <h4 class="timeline-entry-title">㈜펀딜</h4>
-                                    <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                </div>
-                                <span class="timeline-period">2022.01 - 2025.02</span>
-                            </div>
-                            <p>3년간 PC, 모바일 게임 및 앱 개발 프로젝트에 참여하며 콘텐츠·시스템 및 에디터 확장 기능, 유틸리티 개발을 담당하였습니다. 프로젝트 초기 설계부터 기능 구현, 개발 도구 제작, 성능 분석·최적화, 외부 기업 기술 연계와 글로벌 서비스 검증 업무를 수행하였습니다.</p>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>활동</h2>
-                    </div>
-                    
-                    <div class="experience-timeline">
-                        <article class="timeline-entry">
-                            <div class="timeline-entry-header">
-                                <div>
-                                    <h4 class="timeline-entry-title">인디 게임 팀</h4>
-                                    <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                </div>
-                                <span class="timeline-period">2025.03 - 현재</span>
-                            </div>
-                            <p>한국·일본 Steam 출시를 목표로 활동 중인 인디 게임 팀입니다.</p>
-                        </article>
-
-                        <article class="timeline-entry">
-                            <div class="timeline-entry-header">
-                                <div>
-                                    <h4 class="timeline-entry-title">사이드 프로젝트</h4>
-                                    <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                </div>
-                                <span class="timeline-period">2021 - 2022</span>
-                            </div>
-                            <p>재학 중 게임 프로젝트 활동을 통해 개발 역량을 길렀습니다.</p>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="skills">
-                        보유 기술 보기 <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </div>
-            </section>
-            
-            <!-- Tab: Skills (보유 기술) -->
-            <section id="skills" class="tab-content">
-                <h1>보유 기술</h1>
-                <p class="inline-no-margin">활용 가능한 언어, 도구 등을 정리하였습니다.</p>
-                <hr>
-                
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h3>주요 기술</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <h4>Unity Engine</h4>
-                            <ul>
-                                <li>UIToolkit 기반 에디터 확장, UGUI, 런타임 콘텐츠·시스템 구현</li>
-                                <li>Unity Profiler 등 내부 분석 도구를 활용하여 메모리 및 성능 최적화 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>C#</h4>
-                            <ul>
-                                <li>기본 자료구조 및 알고리즘 지식 보유</li>
-                                <li>Visual Studio 내부 진단 도구를 활용하여 CPU 사용량 최적화 가능</li>
-                                <li>Attribute·Reflection 기반 자동화</li>
-                                <li>Generic Converter 구현 경험</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h3>보조 기술</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <h4>Database</h4>
-                            <ul>
-                                <li>MongoDB, MariaDB, TMaxTiberoDB 활용 경험 및 기초 쿼리 활용 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Blender</h4>
-                            <ul>
-                                <li>프로토타입 리소스 등의 단순 모델링 및 텍스처 제작 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Adobe Photoshop</h4>
-                            <ul>
-                                <li>이미지 편집, 텍스처 및 노말맵 생성, 타임라인 등 기본 기능 활용 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>GitHub · GitLab · SourceTree</h4>
-                            <ul>
-                                <li>Git GUI를 사용한 협업 및 브랜치 관리 경험</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Notion</h4>
-                            <ul>
-                                <li>업무보고서 자동화 구조 구축 경험</li>
-                                <li>휴가 관리 시스템 구축 경험</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Google Spreadsheet · MS Excel</h4>
-                            <ul>
-                                <li>데이터 입력·정리 및 필터·정렬 기능 활용 가능</li>
-                                <li>IF, LOOKUP 등 기본 함수 활용 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Google Docs · MS Word · Confluence</h4>
-                            <ul>
-                                <li>제안서, 보고서, 계획서 등 업무에 필요한 문서 작성 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>OBS</h4>
-                            <ul>
-                                <li>화면·오디오 소스 설정 및 기본 녹화·송출 기능 활용 가능</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>AI Agents</h4>
-                            <ul>
-                                <li>Antigravity, Codex를 활용한 프로토타이핑 및 자동화 경험</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>C++</h4>
-                            <ul>
-                                <li>STL 라이브러리 및 기초 메모리 주소 체계에 대한 이해</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4>Unreal Engine</h4>
-                            <ul>
-                                <li>블루프린트 기초 및 기본 에셋 제어 학습 진행 중</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="highlights">
-                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </div>
-            </section>
-            
             <!-- Tab: Projects (참여 프로젝트 목록) -->
             <section id="projects" class="tab-content">
                 <h1>프로젝트 목록</h1>
@@ -1950,7 +1905,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         }
 
         // 탭 및 프로젝트 상세 라우팅 (예: #/projects, #/project/projectpz)
-        const TAB_IDS = ['about', 'highlights', 'experience', 'skills', 'projects'];
+        const TAB_IDS = ['about', 'highlights', 'projects'];
         const PROJECT_ROUTE_NAME = 'project';
         const HIGHLIGHT_ROUTE_NAME = 'highlight';
         const projectDetail = document.getElementById('project-detail');
