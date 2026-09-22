@@ -1377,7 +1377,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
             <!-- Tab: Projects (참여 프로젝트 목록) -->
             <section id="projects" class="tab-content">
                 <h1>프로젝트 목록</h1>
-                <p class="inline-no-margin">참여한 프로젝트의 담당 업무와 상세 내용을 정리하였습니다. 하단에는 개인 프로젝트를 정리하였습니다.</p>
+                <p class="inline-no-margin">참여한 프로젝트의 담당 업무와 상세 내용을 정리하였습니다. 하단에는 사이드 프로젝트를 정리하였습니다.</p>
                 <hr>
                 
                 <div class="project-list">
@@ -1446,36 +1446,11 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         </div>
                     </button>
 
-                    <button type="button" class="project-card" data-project-id="projecti">
-                        <div class="project-card-content">
-                            <div>
-                                <div class="main-text">Project I</div>
-                                <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
-                            </div>
-                            <div class="sub-text project-card-period">2022</div>
-                        </div>
-                        <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </div>
-                    </button>
-
-                    <button type="button" class="project-card" data-project-id="projectt">
-                        <div class="project-card-content">
-                            <div>
-                                <div class="main-text">Project T</div>
-                                <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
-                            </div>
-                            <div class="sub-text project-card-period">2021</div>
-                        </div>
-                        <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </div>
-                    </button>
                 </div>
 
                 <div class="sectionbox">
                     <div class="sectionbox-header">
-                        <h3>개인 프로젝트</h3>
+                        <h3>사이드 프로젝트</h3>
                     </div>
 
                     <div class="project-list">
@@ -1499,6 +1474,32 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                     <div class="sub-text">실시간 화면 캡처·재배치 유틸리티 • Windows</div>
                                 </div>
                                 <div class="sub-text project-card-period">2026</div>
+                            </div>
+                            <div class="icon-container">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </div>
+                        </button>
+
+                        <button type="button" class="project-card" data-project-id="projecti">
+                            <div class="project-card-content">
+                                <div>
+                                    <div class="main-text">Project I</div>
+                                    <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
+                                </div>
+                                <div class="sub-text project-card-period">2022</div>
+                            </div>
+                            <div class="icon-container">
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </div>
+                        </button>
+
+                        <button type="button" class="project-card" data-project-id="projectt">
+                            <div class="project-card-content">
+                                <div>
+                                    <div class="main-text">Project T</div>
+                                    <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
+                                </div>
+                                <div class="sub-text project-card-period">2021</div>
                             </div>
                             <div class="icon-container">
                                 <span class="material-symbols-outlined">arrow_forward</span>
