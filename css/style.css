@@ -566,10 +566,14 @@
             margin-top: 0;
         }
         .mermaid {
-            overflow-x: auto;
+            overflow: auto;
+            /* max-height: 75vh; */
         }
         .mermaid svg {
-            min-width: 760px;
+            /* width: 100% !important; */
+            /* min-width: 960px; */
+            /* min-height: 560px; */
+            /* max-width: 1440px !important; */
         }
         .project-detail-content h4 {
             font-size: 1.4rem;

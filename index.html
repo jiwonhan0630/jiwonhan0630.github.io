@@ -788,31 +788,36 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p>WPF와 C#으로 만든 앱에서 마이크 입력을 로컬 분석합니다. YAMNet이 521개 소리 종류의 점수를 계산하고, 현재 등록된 재채기·기침 규칙만 실제 흔들림으로 이어집니다. 실시간 화면을 움직이는 방식이 기본이며, 화면을 한 번 캡처해 움직이는 호환 방식도 선택할 수 있습니다. 음성 데이터는 저장하거나 네트워크로 보내지 않습니다.</p>
 
         <h4>한눈에 보는 동작 구조</h4>
-        <p>소리를 듣는 일, 어떤 소리인지 판단하는 일, 화면을 움직이는 일은 서로 다른 책임으로 나눴습니다. <code>DetectionCoordinator</code>가 이 과정을 연결하고 감지의 시작·중지와 결과 통지를 관리합니다. 아래 그림은 호출 관계 전체보다 소리 한 번이 화면 반응으로 이어지는 흐름에 집중했습니다.</p>
-        <div class="panelbox achueoheu-architecture" role="img" aria-label="마이크 입력을 수집하고 분류한 뒤 감지 정책을 거쳐 화면 효과와 결과 기록으로 이어지는 구조도">
+        <p>소리를 듣는 일, 어떤 소리인지 판단하는 일, 화면을 움직이는 일은 서로 다른 책임으로 나눴습니다. <code>DetectionCoordinator</code>가 이 과정을 연결하고 감지의 시작·중지와 결과 통지를 관리합니다. 아래 그림은 감지 시작부터 결과 통지까지의 큰 흐름을 위에서 아래로 보여줍니다. 각 단계 안에서는 클래스의 역할과 세부 동작을 왼쪽에서 오른쪽으로 읽을 수 있습니다.</p>
+        <div class="panelbox" role="img" aria-label="감지 시작부터 소리 입력과 분석, 감지 판단, 화면 움직임, 결과 기록으로 이어지는 위에서 아래 방향의 구조도">
             <div class="mermaid">
 %%{init: {"themeVariables": {"fontSize": "20px"}}}%%
-flowchart LR
-    subgraph INPUT["1. 소리 입력과 분석"]
+flowchart TB
+    subgraph START["1. 감지 시작과 처리 준비"]
         direction LR
-        CAP["마이크 소리 수집<br/>WasapiAudioCaptureService"] --> PRE["분류용 소리로 변환<br/>AudioPreprocessor"]
-        PRE --> RING["최근 0.96초 보관<br/>AudioRingBuffer"]
-        RING --> MODEL["소리별 점수 계산<br/>YamNetClassifier"]
-        PRE --> DIR["소리의 좌우 방향 추정<br/>StereoDirectionEstimator"]
+        UI["<b>MainViewModel</b><br/>감지 시작·설정"] --> COORD["<b>DetectionCoordinator</b><br/>전체 처리 순서 관리"]
     end
-    subgraph DECISION["2. 감지 판단"]
-        RULE["대상 소리·기준값 정의<br/>DetectionRules"] --> POLICY["새 소리인지 판단<br/>DetectionPolicy"]
+    subgraph INPUT["2. 소리 입력과 분석"]
+        direction LR
+        CAP["<b>WasapiAudioCaptureService</b><br/>마이크 소리 수집"] --> PRE["<b>AudioPreprocessor</b><br/>분류용 소리로 변환"]
+        PRE --> RING["<b>AudioRingBuffer</b><br/>최근 0.96초 보관"]
+        RING --> MODEL["<b>YamNetClassifier</b><br/>소리별 점수 계산"]
+        PRE --> DIR["<b>StereoDirectionEstimator</b><br/>소리의 좌우 방향 추정"]
     end
-    subgraph EFFECT["3. 화면 움직임"]
-        SHAKE["흔들림을 합쳐 재생<br/>MagnificationShakeService"] --> LIVE["현재 화면을 계속 표시<br/>LiveMagnifierOverlay"]
-        SHAKE --> SNAP["캡처 화면을 표시<br/>DesktopOverlay"]
+    subgraph DECISION["3. 감지 판단"]
+        direction LR
+        RULE["<b>DetectionRules</b><br/>대상 소리·기준값 정의"] --> POLICY["<b>DetectionPolicy</b><br/>새 소리인지 판단"]
     end
-    UI["감지 시작·설정<br/>MainViewModel"] --> COORD["전체 처리 순서 관리<br/>DetectionCoordinator"]
-    COORD --> CAP
-    MODEL -->|소리별 점수| POLICY
-    DIR -->|좌우 방향| POLICY
-    POLICY -->|새 소리 감지| SHAKE
-    SHAKE -->|화면 적용 확인 후 통지| RESULT["결과 기록<br/>MainViewModel"]
+    subgraph EFFECT["4. 화면 움직임"]
+        direction LR
+        SHAKE["<b>MagnificationShakeService</b><br/>흔들림을 합쳐 재생"] --> LIVE["<b>LiveMagnifierOverlay</b><br/>현재 화면을 계속 표시"]
+        SHAKE --> SNAP["<b>DesktopOverlay</b><br/>캡처 화면을 표시"]
+    end
+    RESULT["<b>MainViewModel</b><br/>5. 적용 결과 기록"]
+    START -->|감지 요청| INPUT
+    INPUT -->|소리별 점수와 좌우 방향| DECISION
+    DECISION -->|새 소리 감지| EFFECT
+    EFFECT -->|화면 적용 확인 후 통지| RESULT
             </div>
         </div>
         <p>실시간 화면 표시 창은 감지 시작 시 숨긴 채 준비해 둡니다. 소리가 감지되면 새 창을 만드는 대신 준비된 창에 이동 좌표를 적용합니다. 화면이 흔들리는 약 0.8초 동안에도 다음 소리 분석은 계속되므로, 새 기침이나 재채기가 들어오면 진행 중인 움직임에 더할 수 있습니다.</p>
