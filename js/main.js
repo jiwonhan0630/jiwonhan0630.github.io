@@ -33,8 +33,187 @@
             if (diagrams.length === 0) return;
 
             loadMermaid()
-                .then(mermaid => mermaid.run({ nodes: diagrams }))
+                .then(async mermaid => {
+                    try {
+                        await mermaid.run({ nodes: diagrams });
+                    } finally {
+                        diagrams.forEach(addMermaidControls);
+                    }
+                })
                 .catch(error => console.error('Mermaid 다이어그램 렌더링 실패:', error));
+        }
+
+        function addMermaidControls(diagram) {
+            const svg = diagram.querySelector('svg');
+            if (!svg || diagram.querySelector('.mermaid-controls')) return;
+
+            const excludedTags = new Set(['defs', 'style', 'title', 'desc', 'metadata']);
+            const graphicChildren = Array.from(svg.children)
+                .filter(child => !excludedTags.has(child.tagName.toLowerCase()));
+            if (graphicChildren.length === 0) return;
+
+            let viewBox = svg.viewBox.baseVal;
+            if (!viewBox.width || !viewBox.height) {
+                const bounds = svg.getBBox();
+                if (!bounds.width || !bounds.height) return;
+                svg.setAttribute('viewBox', `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`);
+                viewBox = svg.viewBox.baseVal;
+            }
+
+            const viewport = document.createElement('div');
+            viewport.className = 'mermaid-viewport';
+            diagram.insertBefore(viewport, svg);
+            viewport.appendChild(svg);
+
+            const panSurface = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            panSurface.setAttribute('class', 'mermaid-pan-surface');
+            panSurface.setAttribute('x', viewBox.x);
+            panSurface.setAttribute('y', viewBox.y);
+            panSurface.setAttribute('width', viewBox.width);
+            panSurface.setAttribute('height', viewBox.height);
+            panSurface.setAttribute('fill', 'transparent');
+            panSurface.setAttribute('pointer-events', 'all');
+            svg.insertBefore(panSurface, graphicChildren[0]);
+
+            const zoomLayer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            zoomLayer.setAttribute('class', 'mermaid-zoom-layer');
+            svg.insertBefore(zoomLayer, graphicChildren[0]);
+            graphicChildren.forEach(child => zoomLayer.appendChild(child));
+
+            let scale = 1;
+            let translateX = 0;
+            let translateY = 0;
+            let panEnabled = false;
+            let activePointerId = null;
+            let lastPointer = null;
+
+            const clampTranslation = () => {
+                const minVisibleX = Math.min(viewBox.width * scale, viewBox.width * 0.2);
+                const minVisibleY = Math.min(viewBox.height * scale, viewBox.height * 0.2);
+                const minX = viewBox.x + minVisibleX - scale * (viewBox.x + viewBox.width);
+                const maxX = viewBox.x + viewBox.width - minVisibleX - scale * viewBox.x;
+                const minY = viewBox.y + minVisibleY - scale * (viewBox.y + viewBox.height);
+                const maxY = viewBox.y + viewBox.height - minVisibleY - scale * viewBox.y;
+                translateX = Math.max(minX, Math.min(maxX, translateX));
+                translateY = Math.max(minY, Math.min(maxY, translateY));
+            };
+
+            const updateTransform = () => {
+                clampTranslation();
+                zoomLayer.setAttribute('transform', `translate(${translateX} ${translateY}) scale(${scale})`);
+            };
+
+            const toSvgPoint = (clientX, clientY) => {
+                const point = svg.createSVGPoint();
+                point.x = clientX;
+                point.y = clientY;
+                const matrix = svg.getScreenCTM();
+                return matrix ? point.matrixTransform(matrix.inverse()) : point;
+            };
+
+            const zoomAt = (nextScale, point) => {
+                const clampedScale = Math.min(4, Math.max(0.5, nextScale));
+                if (clampedScale === scale) return;
+
+                const anchorX = point?.x ?? viewBox.x + viewBox.width / 2;
+                const anchorY = point?.y ?? viewBox.y + viewBox.height / 2;
+                const ratio = clampedScale / scale;
+                translateX = anchorX - (anchorX - translateX) * ratio;
+                translateY = anchorY - (anchorY - translateY) * ratio;
+                scale = clampedScale;
+                updateTransform();
+            };
+
+            const controls = document.createElement('div');
+            controls.className = 'mermaid-controls';
+            controls.setAttribute('role', 'toolbar');
+            controls.setAttribute('aria-label', '다이어그램 조작');
+
+            const panButton = document.createElement('button');
+            panButton.type = 'button';
+            panButton.className = 'mermaid-pan-toggle';
+            panButton.setAttribute('aria-pressed', 'false');
+            panButton.setAttribute('aria-label', '드래그 이동');
+            const panIcon = document.createElement('span');
+            panIcon.className = 'material-symbols-outlined';
+            panIcon.setAttribute('aria-hidden', 'true');
+            panIcon.textContent = 'pan_tool';
+            const panLabel = document.createElement('span');
+            panLabel.textContent = '드래그';
+            panButton.append(panIcon, panLabel);
+            panButton.addEventListener('click', () => {
+                panEnabled = !panEnabled;
+                panButton.setAttribute('aria-pressed', String(panEnabled));
+                diagram.classList.toggle('mermaid-pan-enabled', panEnabled);
+            });
+
+            const zoomOutButton = document.createElement('button');
+            zoomOutButton.type = 'button';
+            zoomOutButton.setAttribute('aria-label', '다이어그램 축소');
+            const zoomOutIcon = document.createElement('span');
+            zoomOutIcon.className = 'material-symbols-outlined';
+            zoomOutIcon.setAttribute('aria-hidden', 'true');
+            zoomOutIcon.textContent = 'zoom_out';
+            zoomOutButton.appendChild(zoomOutIcon);
+            zoomOutButton.addEventListener('click', () => zoomAt(scale / 1.2));
+
+            const zoomInButton = document.createElement('button');
+            zoomInButton.type = 'button';
+            zoomInButton.setAttribute('aria-label', '다이어그램 확대');
+            const zoomInIcon = document.createElement('span');
+            zoomInIcon.className = 'material-symbols-outlined';
+            zoomInIcon.setAttribute('aria-hidden', 'true');
+            zoomInIcon.textContent = 'zoom_in';
+            zoomInButton.appendChild(zoomInIcon);
+            zoomInButton.addEventListener('click', () => zoomAt(scale * 1.2));
+
+            const resetButton = document.createElement('button');
+            resetButton.type = 'button';
+            resetButton.setAttribute('aria-label', '다이어그램 보기 초기화');
+            const resetIcon = document.createElement('span');
+            resetIcon.className = 'material-symbols-outlined';
+            resetIcon.setAttribute('aria-hidden', 'true');
+            resetIcon.textContent = 'zoom_in_map';
+            resetButton.appendChild(resetIcon);
+            resetButton.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+            });
+
+            controls.append(panButton, zoomOutButton, zoomInButton, resetButton);
+            diagram.appendChild(controls);
+            diagram.setAttribute('role', 'group');
+            diagram.setAttribute('aria-label', '이동 및 확대·축소할 수 있는 다이어그램');
+
+            svg.addEventListener('pointerdown', event => {
+                if (!panEnabled || (event.pointerType === 'mouse' && event.button !== 0)) return;
+
+                activePointerId = event.pointerId;
+                lastPointer = toSvgPoint(event.clientX, event.clientY);
+                svg.setPointerCapture(event.pointerId);
+                event.preventDefault();
+            });
+
+            svg.addEventListener('pointermove', event => {
+                if (event.pointerId !== activePointerId || !lastPointer) return;
+
+                const currentPointer = toSvgPoint(event.clientX, event.clientY);
+                translateX += (currentPointer.x - lastPointer.x) / scale;
+                translateY += (currentPointer.y - lastPointer.y) / scale;
+                lastPointer = currentPointer;
+                updateTransform();
+            });
+
+            const stopPanning = event => {
+                if (event.pointerId !== activePointerId) return;
+                activePointerId = null;
+                lastPointer = null;
+            };
+            svg.addEventListener('pointerup', stopPanning);
+            svg.addEventListener('pointercancel', stopPanning);
+            svg.addEventListener('lostpointercapture', stopPanning);
         }
 
         // 트러블슈팅의 각 최상위 항목을 가변 높이 타임라인 단계로 구성합니다.
