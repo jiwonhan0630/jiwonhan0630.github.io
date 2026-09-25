@@ -791,7 +791,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         <p>소리를 듣는 일, 어떤 소리인지 판단하는 일, 화면을 움직이는 일은 서로 다른 책임으로 나눴습니다. <code>DetectionCoordinator</code>가 이 과정을 연결하고 감지의 시작·중지와 결과 통지를 관리합니다. 아래 그림은 호출 관계 전체보다 소리 한 번이 화면 반응으로 이어지는 흐름에 집중했습니다.</p>
         <div class="panelbox" role="img" aria-label="마이크 입력을 수집하고 분류한 뒤 감지 정책을 거쳐 화면 효과와 결과 기록으로 이어지는 구조도">
             <div class="mermaid">
-flowchart TB
+flowchart LR
     subgraph INPUT["1. 소리 입력과 분석"]
         direction LR
         CAP["마이크 소리 수집<br/>WasapiAudioCaptureService"] --> PRE["분류용 소리로 변환<br/>AudioPreprocessor"]

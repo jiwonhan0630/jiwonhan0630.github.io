@@ -568,6 +568,9 @@
         .mermaid {
             overflow-x: auto;
         }
+        .mermaid svg {
+            min-width: 760px;
+        }
         .project-detail-content h4 {
             font-size: 1.4rem;
             color: var(--color-text-primary);
