@@ -581,20 +581,27 @@
             right: 0.5rem;
             z-index: 2;
             display: flex;
-            gap: 0.35rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border-button-inactive);
+            border-radius: 0.5rem;
+            background: var(--color-bg-sidebar);
+            box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
         }
         .mermaid-controls button {
             min-width: 2.5rem;
-            min-height: 2.25rem;
+            min-height: 2.5rem;
             padding: 0.25rem 0.6rem;
-            border: 1px solid var(--color-border-button-inactive);
-            border-radius: 0.4rem;
-            background: var(--color-bg-sidebar);
+            border: 0;
+            border-radius: 0;
+            background: transparent;
             color: var(--color-text-primary);
             font: inherit;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
+        }
+        .mermaid-controls button + button {
+            border-left: 1px solid var(--color-border-button-inactive);
         }
         .mermaid-controls .mermaid-pan-toggle {
             display: inline-flex;
@@ -618,18 +625,16 @@
         }
         .mermaid-controls button:hover,
         .mermaid-controls button:focus-visible {
-            border-color: var(--color-accent);
             color: var(--color-accent);
             background: var(--color-bg-hover);
         }
         .mermaid-controls button[aria-pressed="true"] {
-            border-color: var(--color-accent);
             background: var(--color-accent);
             color: var(--color-bg-deep);
         }
         .mermaid-controls button:focus-visible {
             outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
+            outline-offset: -3px;
         }
         .mermaid-pan-enabled svg {
             cursor: grab;
