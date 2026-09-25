@@ -565,6 +565,9 @@
         .project-detail-content h2:first-child {
             margin-top: 0;
         }
+        .mermaid {
+            overflow-x: auto;
+        }
         .project-detail-content h4 {
             font-size: 1.4rem;
             color: var(--color-text-primary);
