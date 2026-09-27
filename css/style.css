@@ -239,10 +239,12 @@
             font-size: 2.8rem;
             margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
+            color: var(--color-text-primary);
         }
         h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
         }
         
         h3 {
@@ -251,9 +253,14 @@
             color: var(--color-accent);
         }
 
+        h4 {
+            color: var(--color-text-primary);
+        }
+
         h5 {
             font-size: 1.1rem;
             margin: 1.25rem 0 0.5rem;
+            color: var(--color-accent);
         }
         
         p {
@@ -311,10 +318,8 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
-            color: var(--color-accent);
         }
         .panel-project-name {
-            color: var(--color-text-primary);
             margin-bottom: 0.4rem;
             font-weight: 600;
         }
@@ -355,7 +360,6 @@
         }
         .timeline-entry-title {
             margin-bottom: 0.25rem;
-            color: var(--color-text-primary);
             font-size: 1.25rem;
             font-weight: 700;
         }
@@ -560,7 +564,6 @@
             font-size: 1.7rem;
             margin-bottom: 1rem;
             margin-top: 1.5rem;
-            color: var(--color-accent);
         }
         .project-detail-content h2:first-child {
             margin-top: 0;
@@ -645,7 +648,6 @@
         }
         .project-detail-content h4 {
             font-size: 1.4rem;
-            color: var(--color-text-primary);
             margin: 1.5rem 0 0.5rem;
         }
         .project-detail-content a {
@@ -818,7 +820,6 @@
         }
         .trouble-step > h4 {
             font-size: 1.15rem;
-            color: var(--color-accent);
             margin: 0 0 0.5rem;
         }
         .trouble-content ol {
