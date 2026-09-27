@@ -242,18 +242,20 @@
             color: var(--color-text-primary);
         }
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             color: var(--color-text-primary);
         }
         
         h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             color: var(--color-accent);
         }
 
         h4 {
+            font-size: 1.15rem;
+            margin-top: 1.4rem;
             color: var(--color-text-primary);
         }
 
