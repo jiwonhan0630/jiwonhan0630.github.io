@@ -331,10 +331,6 @@
             font-weight: bold;
             color: var(--color-text-primary);
         }
-        .project-link-wrapper {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
         .accent-text {
             color: var(--color-accent);
         }
