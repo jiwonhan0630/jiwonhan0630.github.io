@@ -48,139 +48,37 @@
             <section id="highlights" class="tab-content active">
                 <h1>핵심 경험</h1>
                 <p>제 강점이 드러날 수 있는 작업들을 정리하였습니다. 각 내용은 프로젝트별 상세에 어느정도 포함된 내용이지만, <span class="accent-text">제가 보여주고 싶은 역량을 한 페이지에 담고자</span> 이러한 페이지를 마련하였습니다. </p>
-                                    <ul>
-                        <li>
-                            Unity
-                            <p>C#, UI Toolkit, UGUI, Addressables, Localization, Cinemachine, Timeline, AI Navigation, Input System</p>
-                        </li>
-                        <li>
-                            라이브러리 및 연동
-                            <p>UniTask, DOTween, MediaPipe, Steamworks, ONNX Runtime</p>
-                        </li>
-                        <li>
-                            에디터 및 도구
-                            <p>Editor Extension, UI Builder, Handles / Gizmos, Reflection / Attribute</p>
-                        </li>
-                        <li>
-                            렌더링 및 최적화
-                            <p>Profiler, Frame Debugger, GPU Instancing, Mesh Combine, GC / Zero Allocation</p>
-                        </li>
-                        <li>
-                            시스템
-                            <p>Procedural Generation, AI / FSM / Behaviour Tree, Physics / WheelCollider</p>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        Unity
+                        <p>C#, UI Toolkit, UGUI, Addressables, Localization, Cinemachine, Timeline, AI Navigation, Input System</p>
+                    </li>
+                    <li>
+                        라이브러리 및 연동
+                        <p>UniTask, DOTween, MediaPipe, Steamworks, ONNX Runtime</p>
+                    </li>
+                    <li>
+                        에디터 및 도구
+                        <p>Editor Extension, UI Builder, Handles / Gizmos, Reflection / Attribute</p>
+                    </li>
+                    <li>
+                        렌더링 및 최적화
+                        <p>Profiler, Frame Debugger, GPU Instancing, Mesh Combine, GC / Zero Allocation</p>
+                    </li>
+                    <li>
+                        시스템
+                        <p>Procedural Generation, AI / FSM / Behaviour Tree, Physics / WheelCollider</p>
+                    </li>
+                </ul>
                 <hr>
 
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>Unity 에디터 확장·유틸리티</h2>
-                        <p>프로젝트 특성에 맞는 유틸리티와 Unity 에디터 확장 기능을 구현하여, 개발 과정에서 발생하는 비효율적인 반복 작업 개선과 생산성 향상을 도모합니다.</p>
-                    </div>
-                    
-                    <article id="attr-event-binding" class="panelbox">
-                        <h4 class="panel-title">Attribute 기반의 자동 이벤트 바인딩 시스템</h4>
-                        <p>UIToolkit 환경에서, element class를 통해 이벤트를 자동으로 바인딩하는 기능을 구현하였습니다. 디자이너는 UI를 새로 만들거나 수정할 때, element class를 추가하면 즉시 기능을 적용할 수 있으며, 프로그래머는 Attribute를 선언하는 것으로 추가 바인딩 작업 없이 이벤트를 바인딩할 수 있습니다.</p>
-                        <pre><code class="language-csharp"><span class="accent-text">[ElementCommand("cmd--button--brush-tool")]</span>
-private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");</code></pre>
-
-                        <hr>
-                        <h5>고민의 흔적</h5>
-                        <p>                            
-                            처음 고민한 것은 '어떻게 하면 작업 영역을 벗어나지 않고 협업하는 시스템을 만들까?'였습니다.
-                            그동안 여러 편의 기능을 개발하며, '무언가를 개선하기 위해 새로운 툴과 프로세스를 만들었지만, 작업 절차 자체를 줄일 수는 없을까?'라는 의문이 자연스레 생겼습니다.
-                            따라서 이번에는 각 직군이 '원래 하던 일'에 최대한 자연스럽게 녹여보자는 것을 목표로 삼아 설계를 진행했습니다.
-                        </p>
-
-                        <p>
-                            먼저 각 직군이 UIToolkit과 UI Builder를 '실제로 어떻게 사용하고, 어디서 불편함을 느끼는가?'를 검토했습니다.
-                            UI 설계 문서를 기준으로 삼아, 디자이너는 UI Builder에서 화면과 요소를 구성하고, 프로그래머는 코드에서 동작을 구현하고 에디터에서 이벤트를 연결한다는 작업 흐름을 확인했습니다.
-                        </p>
-
-                        <p>
-                            UI 디자이너가 element class를 식별자처럼 사용하고 있다는 점에 착안해,
-                            이것을 이벤트 바인딩 키로 활용하는 구조를 구상했습니다. 프로그래머는 에디터에서 직접 바인딩하지 않고,
-                            각 함수에 Attribute를 선언하는 것으로 해당 요소와 이벤트가 자동으로 연결되도록 설계했습니다.
-                        </p>
-
-                        <p>
-                            기능 구현 시에는 Attribute 탐색을 위한 Reflection과 UQuery 사용을 초기화 시점에 단 한 번만 수행하도록 구성하여,
-                            런타임 중 발생할 수 있는 비용을 줄였습니다. 또한 이벤트 등록 과정에 static 람다 등을 사용하여 외부 변수 캡처로 인한 추가 GC 할당을 방지하였습니다.
-                        </p>
-                    </article>
-
-                    <article class="panelbox">
-                        <h4 class="panel-title">Naming Tool</h4>
-                        <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 확장 기능을 구현하였습니다. 컴포넌트 구성의 우선순위를 분석하여 이름을 생성합니다.</p>
-
-                        <h5 class="panel-subtitle">컴포넌트 기반 네이밍</h5>
-                        <p>게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메시 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메시명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
-
-                        <h5 class="panel-subtitle">넘버링 시스템</h5>
-                        <p>유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
-
-                        <h5 class="panel-subtitle">에셋 타입 기반 유효성 검증</h5>
-                        <p>선택된 에셋의 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 Prefix 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
-
-                        <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
-                        <p>네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
-
-                        <hr>
-                        <h5>고민의 흔적</h5>
-                        
-                        <p>처음 고민한 것은 '네이밍 규칙에 따라 이름을 적용하는 과정 자체를 줄일 수는 없을까?'였습니다.</p>
-                        <p>
-                            아트 리소스는 관리 시트를 통해 이미 네이밍 정보가 정리되어 있었고, 프로젝트 내 에셋과 연결되면서 네이밍에 활용할 수 있는 정보도 자연스럽게 만들어지고 있었습니다.
-                            하지만, 그러한 리소스를 엔진 내에서 사용할 때에는 별도의 네이밍 규칙을 다시 확인하고 규칙에 맞는 이름을 직접 입력하는 과정이 반복되고 있었습니다.
-                        </p>
-                        <p>
-                            이러한 작업에 불편함을 느끼는 경우가 여러 번 발생했고, 이를 해결하기 위해 고민을 거듭하다
-                            '기존에 존재하는 정보를 활용한다면, 규칙에 맞는 이름을 만들어줄 수 있지 않을까?'라는 생각이 떠올랐습니다.
-                        </p>
-                        <p>
-                            GameObject의 컴포넌트 구성과 참조 중인 원본 리소스, Mesh·Material, 에셋 타입, 하이어라키 내 순서 등 프로젝트 내부에서 확인할 수 있는 정보를 이름 생성에 활용했습니다.
-                            다만 오브젝트마다 이름을 결정하는 데 필요한 정보가 다르기 때문에, 하나의 기준을 일괄적으로 적용하기는 어렵다고 판단했습니다.
-                        </p>
-                        <p>
-                            이에 별도의 설정 창에서 네이밍에 사용할 컴포넌트와 정보, 적용 우선순위를 직접 지정할 수 있도록 구성하고, 설정된 기준에 따라 필요한 정보를 조합하여 이름을 생성·선택 후 일괄 적용하도록 설계했습니다.
-                        </p>
-                        <p>
-                            이후 실제로 사용해보았을 때, 에셋 하나에 이름을 적용할 때마다 창을 열어 사용하는 것은 불편하다고 판단했습니다. 이에 개별 적용 기능을 각 에셋의 컨텍스트 메뉴로도 제공하여, 작업 흐름을 크게 벗어나지 않고 바로 사용할 수 있도록 구성했습니다.
-                        </p>
-
-                    </article>
-
-                    <article class="panelbox" id="csv-utility">
-                        <h4 class="panel-title">CSV Utility</h4>
-                        <p>별도의 파싱 코드 작성 없이 CSV 데이터를 C# 컬렉션 및 오브젝트로 자동 변환하는 컨버터 유틸리티를 구현했습니다. 헤더 이름 매핑과 열 인덱스 매핑을 모두 지원했습니다.</p>
-                        <pre><code class="language-csharp">public class Weapon
-{
-    <span class="accent-text">[CSVIndex(0)]</span> public string ItemCode;
-    <span class="accent-text">[CSVHeader("wpn_author")]</span> public string AuthorName;
-    public List&lt;string&gt; EnchantList;
-    public EquipSlotType SlotType;
-}</code></pre>
-                        <p>컨버터 클래스를 상속하여 복잡한 자료형(2중 딕셔너리 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원했습니다.</p>
-                    </article>
-
-                    <article class="panelbox">
-                        <h4 class="panel-title">레벨 에디팅 및 베이킹 툴</h4>
-                        <p>씬 뷰에서 Handles와 Gizmos를 활용하여 AI 이동 경로 노드를 직접 생성하고, 지형 데이터를 가공할 수 있는 레벨 에디터를 개발했습니다. NavMesh 에셋을 직접 구동하지 않고 ScriptableObject로 구역 좌표 데이터를 압축 베이킹하는 툴을 제공했습니다.</p>
-                    </article>
-
-                    <article class="panelbox" id="addressables-system-extension">
-                        <h4 class="panel-title">Addressables 시스템 확장</h4>
-                        <p>프로젝트의 Addressables 적용 방식에 맞춘 커스텀 래퍼 클래스와 커스텀 인스펙터를 구현했습니다. 이를 바탕으로 에셋 참조 규칙과 라이프사이클 관리 구조를 정비하고, Global/Stage 단위 참조 카운팅으로 에셋의 로드·언로드 흐름을 관리했습니다. 예제가 포함된 가이드라인을 공유해 팀원이 일관된 방식으로 에셋을 적용할 수 있도록 지원했습니다.</p>
-                    </article>
-                </div>
-                
                 <!-- 콘텐츠 및 시스템 요약 섹션 -->
                 <div class="sectionbox">
                     <div class="sectionbox-header">
                         <h2>콘텐츠·시스템</h2>
                         <p>요구사항을 분석해 콘텐츠·시스템을 구현하고, 기존 구조와의 연계 및 안정적인 동작을 위해 노력합니다.</p>
                     </div>
-                    
+
                     <div class="sectionbox-content">
                         <article class="panelbox">
                             <h4 class="panel-title">외부 라이브러리 활용</h4>
@@ -208,6 +106,54 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <ul>
                                     <li>플레이 기록, 업적 데이터 저장</li>
                                 </ul>
+                            </div>
+                        </article>
+
+                        <article class="panelbox">
+                            <h4 class="panel-title">Unity 공식 패키지 활용</h4>
+                            <div class="panelbox-item">
+
+                                <h5 class="panel-project-name">UGUI</h5>
+                                <ul>
+                                    <li>게임패드·키보드로 조작할 수 있는 계층형 UI 구조 설계 및 Navigation 매핑 경험</li>
+                                    <li>UGUI Only 모바일 게임 콘텐츠 구현 경험</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">UI Toolkit</h5>
+                                <ul>
+                                    <li>몬스터 패턴 뷰어, 레벨 에디터, 에셋 네이밍 툴 등 다양한 에디터 확장 기능 구현 경험</li>
+                                    <li>UI 이벤트 자동 바인딩 기능 구현 경험</li>
+                                </ul>
+                                
+                                <h5 class="panel-project-name">Input System</h5>
+                                <ul>
+                                    <li>MediaPipe 손 추적·제스처 입력을 Custom InputDevice로 구현하여 InputAction 기반 입력 체계 적용 경험</li>
+                                    <li>게임패드·키보드 입력 매핑 구현 경험</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">Addressables</h5>
+                                <ul>
+                                    <li>AssetBundle, Resources 사용 환경에서의 마이그레이션 경험</li>
+                                    <li>커스텀 래퍼 및 인스펙터 구현, Global·Stage 단위 참조 카운팅으로 에셋 로드·언로드 관리 구조 구현</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">Cinemachine·Timeline</h5>
+                                <ul>
+                                    <li>가상 카메라를 활용한 스테이지 입장 연출 구현 경험</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">AI Navigation</h5>
+                                <ul>
+                                    <li>NavMesh 데이터 추출, WheelCollider 차량의 자율 주행 경로 생성 활용 경험</li>
+                                </ul>
+
+                                <h5 class="panel-project-name">Localization</h5>
+                                <ul>
+                                    <li>한국어·일본어 String Table 및 Addressables 연동 경험</li>
+                                    <li>Localization Entry 생성·수정·참조 자동화 기능 구현</li>
+                                </ul>
+
+
                             </div>
                         </article>
 
@@ -290,6 +236,108 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     </div>
                 </div>
                 
+                <div class="sectionbox">
+                    <div class="sectionbox-header">
+                        <h2>Unity 에디터 확장·유틸리티</h2>
+                        <p>프로젝트 특성에 맞는 유틸리티와 Unity 에디터 확장 기능을 구현하여, 개발 과정에서 발생하는 비효율적인 반복 작업 개선과 생산성 향상을 도모합니다.</p>
+                    </div>
+
+                    <article id="attr-event-binding" class="panelbox">
+                        <h4 class="panel-title">Attribute 기반의 자동 이벤트 바인딩 시스템</h4>
+                        <p>UIToolkit 환경에서, element class를 통해 이벤트를 자동으로 바인딩하는 기능을 구현하였습니다. 디자이너는 UI를 새로 만들거나 수정할 때, element class를 추가하면 즉시 기능을 적용할 수 있으며, 프로그래머는 Attribute를 선언하는 것으로 추가 바인딩 작업 없이 이벤트를 바인딩할 수 있습니다.</p>
+                        <pre><code class="language-csharp"><span class="accent-text">[ElementCommand("cmd--button--brush-tool")]</span>
+private static void SelectBrushTool(VisualElement target) => History.Log("브러쉬 도구를 선택하였음");</code></pre>
+
+                        <hr>
+                        <h5>고민의 흔적</h5>
+                        <p>
+                            처음 고민한 것은 '어떻게 하면 작업 영역을 벗어나지 않고 협업하는 시스템을 만들까?'였습니다.
+                            그동안 여러 편의 기능을 개발하며, '무언가를 개선하기 위해 새로운 툴과 프로세스를 만들었지만, 작업 절차 자체를 줄일 수는 없을까?'라는 의문이 자연스레 생겼습니다.
+                            따라서 이번에는 각 직군이 '원래 하던 일'에 최대한 자연스럽게 녹여보자는 것을 목표로 삼아 설계를 진행했습니다.
+                        </p>
+
+                        <p>
+                            먼저 각 직군이 UIToolkit과 UI Builder를 '실제로 어떻게 사용하고, 어디서 불편함을 느끼는가?'를 검토했습니다.
+                            UI 설계 문서를 기준으로 삼아, 디자이너는 UI Builder에서 화면과 요소를 구성하고, 프로그래머는 코드에서 동작을 구현하고 에디터에서 이벤트를 연결한다는 작업 흐름을 확인했습니다.
+                        </p>
+
+                        <p>
+                            UI 디자이너가 element class를 식별자처럼 사용하고 있다는 점에 착안해,
+                            이것을 이벤트 바인딩 키로 활용하는 구조를 구상했습니다. 프로그래머는 에디터에서 직접 바인딩하지 않고,
+                            각 함수에 Attribute를 선언하는 것으로 해당 요소와 이벤트가 자동으로 연결되도록 설계했습니다.
+                        </p>
+
+                        <p>
+                            기능 구현 시에는 Attribute 탐색을 위한 Reflection과 UQuery 사용을 초기화 시점에 단 한 번만 수행하도록 구성하여,
+                            런타임 중 발생할 수 있는 비용을 줄였습니다. 또한 이벤트 등록 과정에 static 람다 등을 사용하여 외부 변수 캡처로 인한 추가 GC 할당을 방지하였습니다.
+                        </p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 class="panel-title">Naming Tool</h4>
+                        <p>지정된 네이밍 규칙에 맞추어 하이어라키 내 오브젝트 및 프로젝트 에셋의 파일명을 자동으로 변경해주는 에디터 확장 기능을 구현하였습니다. 컴포넌트 구성의 우선순위를 분석하여 이름을 생성합니다.</p>
+
+                        <h5 class="panel-subtitle">컴포넌트 기반 네이밍</h5>
+                        <p>게임 오브젝트에 부착된 컴포넌트의 특성을 다각도로 분석하여 이름을 결정합니다. 단순히 컴포넌트 형식명만 부여하는 것이 아니라, 컴포넌트 내부의 멤버 변수(참조 중인 메시 데이터, 렌더러 재질 등) 정보를 정교하게 읽어와 네이밍 규칙에 맞게 반영합니다. (예: MeshRenderer 감지 시, MeshFilter의 메시명과 Material명을 결합하여 고유 네이밍을 자동 생성)</p>
+
+                        <h5 class="panel-subtitle">넘버링 시스템</h5>
+                        <p>유니티 엔진에서 에셋 중복 생성 시 무분별하게 부여하는 디폴트 넘버링 패턴을 감지하여 프로젝트 표준 포맷으로 즉시 보정합니다. 또한 계층 구조 내 자식 객체들의 순서를 분석해 정렬된 인덱스 넘버링을 적용함으로써 복잡한 하이어라키 뷰의 시각적 정돈과 휴먼 에러 차단을 도모했습니다.</p>
+
+                        <h5 class="panel-subtitle">에셋 타입 기반 유효성 검증</h5>
+                        <p>선택된 에셋의 타입(Texture, AudioClip, Material 등)을 판별하여 사전에 정의된 고유 Prefix 규칙을 자동 매핑합니다. 정규표현식을 활용하여 공백이나 허용되지 않는 특수문자 등의 예외 규칙을 걸러내고, 유효하지 않은 문자는 자동 제거 또는 사전 합의된 규칙 문자로 안전하게 치환합니다.</p>
+
+                        <h5 class="panel-subtitle">확장성을 고려한 아키텍처 설계</h5>
+                        <p>네이밍 로직 전체를 Abstract Class로 정의하고, Light, Texture 등 개별 에셋/컴포넌트 타입이 이를 구현하여 상속받도록 결합도를 낮추었습니다. 개방-폐쇄 원칙을 준수하여 새로운 에셋 규격이나 컴포넌트 타입이 추가되더라도 기존 코드를 수정할 필요 없이, 해당 네이밍 구현체를 추가 정의하는 것만으로 손쉽게 기능 확장이 가능하도록 설계했습니다.</p>
+
+                        <hr>
+                        <h5>고민의 흔적</h5>
+
+                        <p>처음 고민한 것은 '네이밍 규칙에 따라 이름을 적용하는 과정 자체를 줄일 수는 없을까?'였습니다.</p>
+                        <p>
+                            아트 리소스는 관리 시트를 통해 이미 네이밍 정보가 정리되어 있었고, 프로젝트 내 에셋과 연결되면서 네이밍에 활용할 수 있는 정보도 자연스럽게 만들어지고 있었습니다.
+                            하지만, 그러한 리소스를 엔진 내에서 사용할 때에는 별도의 네이밍 규칙을 다시 확인하고 규칙에 맞는 이름을 직접 입력하는 과정이 반복되고 있었습니다.
+                        </p>
+                        <p>
+                            이러한 작업에 불편함을 느끼는 경우가 여러 번 발생했고, 이를 해결하기 위해 고민을 거듭하다
+                            '기존에 존재하는 정보를 활용한다면, 규칙에 맞는 이름을 만들어줄 수 있지 않을까?'라는 생각이 떠올랐습니다.
+                        </p>
+                        <p>
+                            GameObject의 컴포넌트 구성과 참조 중인 원본 리소스, Mesh·Material, 에셋 타입, 하이어라키 내 순서 등 프로젝트 내부에서 확인할 수 있는 정보를 이름 생성에 활용했습니다.
+                            다만 오브젝트마다 이름을 결정하는 데 필요한 정보가 다르기 때문에, 하나의 기준을 일괄적으로 적용하기는 어렵다고 판단했습니다.
+                        </p>
+                        <p>
+                            이에 별도의 설정 창에서 네이밍에 사용할 컴포넌트와 정보, 적용 우선순위를 직접 지정할 수 있도록 구성하고, 설정된 기준에 따라 필요한 정보를 조합하여 이름을 생성·선택 후 일괄 적용하도록 설계했습니다.
+                        </p>
+                        <p>
+                            이후 실제로 사용해보았을 때, 에셋 하나에 이름을 적용할 때마다 창을 열어 사용하는 것은 불편하다고 판단했습니다. 이에 개별 적용 기능을 각 에셋의 컨텍스트 메뉴로도 제공하여, 작업 흐름을 크게 벗어나지 않고 바로 사용할 수 있도록 구성했습니다.
+                        </p>
+
+                    </article>
+
+                    <article class="panelbox" id="csv-utility">
+                        <h4 class="panel-title">CSV Utility</h4>
+                        <p>별도의 파싱 코드 작성 없이 CSV 데이터를 C# 컬렉션 및 오브젝트로 자동 변환하는 컨버터 유틸리티를 구현했습니다. 헤더 이름 매핑과 열 인덱스 매핑을 모두 지원했습니다.</p>
+                        <pre><code class="language-csharp">public class Weapon
+{
+    <span class="accent-text">[CSVIndex(0)]</span> public string ItemCode;
+    <span class="accent-text">[CSVHeader("wpn_author")]</span> public string AuthorName;
+    public List&lt;string&gt; EnchantList;
+    public EquipSlotType SlotType;
+}</code></pre>
+                        <p>컨버터 클래스를 상속하여 복잡한 자료형(2중 딕셔너리 등)도 CSV 포맷 안에서 직접 구조화하여 파싱할 수 있게 지원했습니다.</p>
+                    </article>
+
+                    <article class="panelbox">
+                        <h4 class="panel-title">레벨 에디팅 및 베이킹 툴</h4>
+                        <p>씬 뷰에서 Handles와 Gizmos를 활용하여 AI 이동 경로 노드를 직접 생성하고, 지형 데이터를 가공할 수 있는 레벨 에디터를 개발했습니다. NavMesh 에셋을 직접 구동하지 않고 ScriptableObject로 구역 좌표 데이터를 압축 베이킹하는 툴을 제공했습니다.</p>
+                    </article>
+
+                    <article class="panelbox" id="addressables-system-extension">
+                        <h4 class="panel-title">Addressables 시스템 확장</h4>
+                        <p>프로젝트의 Addressables 적용 방식에 맞춘 커스텀 래퍼 클래스와 커스텀 인스펙터를 구현했습니다. 이를 바탕으로 에셋 참조 규칙과 라이프사이클 관리 구조를 정비하고, Global/Stage 단위 참조 카운팅으로 에셋의 로드·언로드 흐름을 관리했습니다. 예제가 포함된 가이드라인을 공유해 팀원이 일관된 방식으로 에셋을 적용할 수 있도록 지원했습니다.</p>
+                    </article>
+                </div>
+
                 <div class="sectionbox">
                     <div class="sectionbox-header">
                         <h2>트러블슈팅</h2>
@@ -807,8 +855,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
         </div>
         <p>WPF와 C#으로 만든 앱에서 마이크 입력을 로컬 분석합니다. YAMNet이 521개 소리 종류의 점수를 계산하고, 현재 등록된 재채기·기침 규칙만 실제 흔들림으로 이어집니다. 실시간 화면을 움직이는 방식이 기본이며, 화면을 한 번 캡처해 움직이는 호환 방식도 선택할 수 있습니다. 음성 데이터는 저장하거나 네트워크로 보내지 않습니다.</p>
 
-        <h4>한눈에 보는 동작 구조</h4>
-        <p>소리를 듣는 일, 어떤 소리인지 판단하는 일, 화면을 움직이는 일은 서로 다른 책임으로 나눴습니다. <code>DetectionCoordinator</code>가 이 과정을 연결하고 감지의 시작·중지와 결과 통지를 관리합니다. 아래 그림은 감지 시작부터 결과 통지까지의 큰 흐름을 위에서 아래로 보여줍니다. 각 단계 안에서는 클래스의 역할과 세부 동작을 왼쪽에서 오른쪽으로 읽을 수 있습니다.</p>
+        <h4>동작 구조</h4>
+        <p>소리를 듣는 일, 어떤 소리인지 판단하는 일, 화면을 움직이는 일은 서로 다른 책임으로 나눴습니다. <code>DetectionCoordinator</code>가 이 과정을 연결하고 감지의 시작·중지와 결과 통지를 관리합니다.</p>
         <div class="panelbox">
             <div class="mermaid">
 %%{init: {"themeVariables": {"fontSize": "20px"}}}%%
@@ -820,23 +868,23 @@ flowchart TB
     subgraph INPUT["2. 소리 입력과 분석"]
         direction LR
         CAP["<b>WasapiAudioCaptureService</b><br/>마이크 소리 수집"] --> PRE["<b>AudioPreprocessor</b><br/>분류용 소리로 변환"]
-        PRE --> RING["<b>AudioRingBuffer</b><br/>최근 0.96초 보관"]
+        PRE --> RING["<b>AudioRingBuffer</b><br/>수집된 소리 보관"]
         RING --> MODEL["<b>YamNetClassifier</b><br/>소리별 점수 계산"]
         PRE --> DIR["<b>StereoDirectionEstimator</b><br/>소리의 좌우 방향 추정"]
     end
-    subgraph DECISION["3. 감지 판단"]
+    subgraph DECISION["3. 재채기 여부 판단"]
         direction LR
-        RULE["<b>DetectionRules</b><br/>대상 소리·기준값 정의"] --> POLICY["<b>DetectionPolicy</b><br/>새 소리인지 판단"]
+        RULE["<b>DetectionRules</b><br/>판단 규칙, 기준값 정의"] --> POLICY["<b>DetectionPolicy</b><br/>재채기 판단"]
     end
     subgraph EFFECT["4. 화면 움직임"]
         direction LR
-        SHAKE["<b>MagnificationShakeService</b><br/>흔들림을 합쳐 재생"] --> LIVE["<b>LiveMagnifierOverlay</b><br/>현재 화면을 계속 표시"]
-        SHAKE --> SNAP["<b>DesktopOverlay</b><br/>캡처 화면을 표시"]
+        SHAKE["<b>MagnificationShakeService</b><br/>화면 흔들림 기능 정의"] --> LIVE["<b>LiveMagnifierOverlay</b><br/>실시간 화면 흔들림 효과 적용 "]
+        SHAKE --> SNAP["<b>DesktopOverlay</b><br/>캡처된 화면 흔들림 효과 적용"]
     end
-    RESULT["<b>MainViewModel</b><br/>5. 적용 결과 기록"]
+    RESULT["<b>MainViewModel</b><br/>로그 기록"]
     START -->|감지 요청| INPUT
-    INPUT -->|소리별 점수와 좌우 방향| DECISION
-    DECISION -->|새 소리 감지| EFFECT
+    INPUT -->|소리별 점수와 좌우 방향 전달| DECISION
+    DECISION -->|재채기 감지| EFFECT
     EFFECT -->|화면 적용 확인 후 통지| RESULT
             </div>
         </div>
