@@ -248,8 +248,7 @@
         }
         
         h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
             color: var(--color-accent);
         }
 
@@ -558,14 +557,14 @@
         .project-detail-tags {
             margin-bottom: 2rem;
         }
-        .project-detail-content h2 {
+        /* .project-detail-content h2 {
             font-size: 1.7rem;
             margin-bottom: 1rem;
             margin-top: 1.5rem;
-        }
-        .project-detail-content h2:first-child {
+        } */
+        /* .project-detail-content h2:first-child {
             margin-top: 0;
-        }
+        } */
         .mermaid {
             position: relative;
         }
