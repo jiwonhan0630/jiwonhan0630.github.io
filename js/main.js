@@ -32,15 +32,32 @@
             const diagrams = root.querySelectorAll('.mermaid');
             if (diagrams.length === 0) return;
 
+            const loadingStates = Array.from(diagrams, diagram => {
+                const container = document.createElement('div');
+                container.className = 'mermaid-rendering';
+                diagram.parentNode.insertBefore(container, diagram);
+                container.appendChild(diagram);
+
+                const status = document.createElement('div');
+                status.className = 'mermaid-loading-status';
+                status.setAttribute('role', 'status');
+                status.innerHTML = '<span class="mermaid-spinner" aria-hidden="true"></span><span>로딩 중</span>';
+                container.appendChild(status);
+                return { container, status };
+            });
+
             loadMermaid()
                 .then(async mermaid => {
-                    try {
-                        await mermaid.run({ nodes: diagrams });
-                    } finally {
-                        diagrams.forEach(addMermaidControls);
-                    }
+                    await mermaid.run({ nodes: diagrams });
                 })
-                .catch(error => console.error('Mermaid 다이어그램 렌더링 실패:', error));
+                .catch(error => console.error('Mermaid 다이어그램 렌더링 실패:', error))
+                .finally(() => {
+                    loadingStates.forEach(({ container, status }) => {
+                        container.classList.remove('mermaid-rendering');
+                        status.remove();
+                    });
+                    diagrams.forEach(addMermaidControls);
+                });
         }
 
         function addMermaidControls(diagram) {
