@@ -339,6 +339,7 @@
         /* 기술 목록 */
         .skill-list h4 {
             font-size: 1.15rem;
+            margin-top: 0;
             font-weight: 600;
             margin-bottom: 0.2rem;
         }
