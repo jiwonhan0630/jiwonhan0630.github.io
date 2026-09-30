@@ -11,7 +11,7 @@
             if (!mermaidLoadPromise) {
                 mermaidLoadPromise = new Promise((resolve, reject) => {
                     const script = document.createElement('script');
-                    script.src = 'js/lib/mermaid.min.js';
+                    script.src = 'js/lib/mermaid.tiny.js';
                     script.onload = () => {
                         window.mermaid.initialize({
                             startOnLoad: false,
