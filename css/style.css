@@ -248,12 +248,13 @@
         }
         
         h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            margin-top: 1.4rem;
             color: var(--color-accent);
         }
 
         h4 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             margin-top: 1.4rem;
             color: var(--color-text-primary);
         }
@@ -318,6 +319,7 @@
         .panel-title {
             font-size: 1.25rem;
             font-weight: 700;
+            margin-top:0;
             margin-bottom: 0.75rem;
         }
         .panel-project-name {
@@ -357,6 +359,7 @@
         }
         .timeline-entry-title {
             margin-bottom: 0.25rem;
+            margin-top: 0;
             font-size: 1.25rem;
             font-weight: 700;
         }
@@ -569,8 +572,7 @@
             position: relative;
         }
         .mermaid-viewport {
-            overflow: auto;
-            max-height: 75vh;
+            overflow-x: auto;
         }
         .mermaid svg {
             display: block;
@@ -642,10 +644,6 @@
         }
         .mermaid-pan-enabled svg:active {
             cursor: grabbing;
-        }
-        .project-detail-content h4 {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 0.5rem;
         }
         .project-detail-content a {
             color: var(--color-text-primary) !important;
@@ -815,10 +813,7 @@
             left: calc((var(--trouble-node-size) - 1px) / 2);
             border-left: 1px dashed var(--color-text-secondary);
         }
-        .trouble-step > h4 {
-            font-size: 1.15rem;
-            margin: 0 0 0.5rem;
-        }
+
         .trouble-content ol {
             margin-left: 1.25rem;
             margin-bottom: 1.25rem;
