@@ -110,7 +110,7 @@
                         </article>
 
                         <article class="panelbox">
-                            <h3 class="panel-title">Unity 공식 패키지 활용</h3>
+                            <h3 class="panel-title">Unity 기능·패키지 활용</h3>
                             <div class="panelbox-item">
 
                                 <h4 class="panel-project-name">UGUI</h4>
@@ -520,7 +520,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             <div class="project-card-content">
                                 <div>
                                     <div class="main-text">에취어흐</div>
-                                    <div class="sub-text">소리 감지로 화면을 흔드는 데스크톱 앱 • Windows</div>
+                                    <div class="sub-text">재채기로 화면을 흔드는 데스크톱 앱 • Windows</div>
                                 </div>
                                 <div class="sub-text project-card-period">2026</div>
                             </div>
@@ -848,14 +848,11 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     <!-- HTML Templates for Project Detail Content (자바스크립트 변수 데이터 격리) -->
     <template id="temp-achueoheu" data-title="에취어흐" data-period="2026" data-tags="C#,WPF,NAudio,ONNX Runtime,Win32 API">
         <h2>프로젝트 개요</h2>
-        <div class="panelbox">
-            <h3 class="panel-title">화면이 재채기를 한다</h3>
-            <p>디스코드로 친구에게 게임 화면을 보여 주던 중, 마우스를 쥔 채 재채기를 했습니다. 화면이 덜컥 흔들렸고 친구가 웃었습니다. 재채기 하나가 게임의 뜻밖의 연출이 된 순간, “이 우연을 프로그램으로 만들면 어떨까?” 하는 생각이 들었습니다.</p>
-            <p class="inline-no-margin">에취어흐는 그 장면에서 시작한 Windows 데스크톱 앱입니다. 마이크로 들어온 기침·재채기를 알아보고, 화면 전체가 휙 밀렸다가 조금씩 잦아드는 연출을 만듭니다. ‘세상에 즐거움을 전한다’는 제 핵심 가치를 작은 장면 하나에서 시작해, 화면을 함께 보는 사람이 알아차리고 웃는 경험으로 옮겨 보았습니다.</p>
-        </div>
-        <p>WPF와 C#으로 만든 앱에서 마이크 입력을 로컬 분석합니다. YAMNet이 521개 소리 종류의 점수를 계산하고, 현재 등록된 재채기·기침 규칙만 실제 흔들림으로 이어집니다. 실시간 화면을 움직이는 방식이 기본이며, 화면을 한 번 캡처해 움직이는 호환 방식도 선택할 수 있습니다.</p>
+            <h3>비염으로 사람을 웃길 수 있을까?</h3>
+            <p>친구에게 게임 화면을 공유하던 중, 마우스를 잡은 채 재채기를 하고 말았습니다. 연속된 재채기로 인해 화면이 오랫동안 흔들리자, 제 방은 친구들의 웃음 소리로 가득찼습니다.</p>
+            <p>에취어흐는 이 우연에서 시작한 데스크톱 앱입니다. 마이크를 통해 들어온 소리를 YAMNet로 분류하여 재채기를 감지하고, 스테레오 입력 방향을 계산하여 화면 전체에 흔들리는 효과를 줍니다.</p>
 
-        <h4>동작 구조</h4>
+        <h3>동작 구조</h3>
         <div class="panelbox">
             <div class="mermaid">
 %%{init: {"themeVariables": {"fontSize": "20px"}}}%%
@@ -880,7 +877,7 @@ flowchart TB
         SHAKE["<b>MagnificationShakeService</b><br/>화면 흔들림 기능 정의"] --> LIVE["<b>LiveMagnifierOverlay</b><br/>실시간 화면 흔들림 효과 적용 "]
         SHAKE --> SNAP["<b>DesktopOverlay</b><br/>캡처된 화면 흔들림 효과 적용"]
     end
-    RESULT["<b>MainViewModel</b><br/>로그 기록"]
+    RESULT["<b>MainViewModel</b><br/>UI 갱신"]
     START -->|감지 요청| INPUT
     INPUT -->|소리별 점수와 좌우 방향 전달| DECISION
     DECISION -->|재채기 감지| EFFECT
@@ -892,10 +889,10 @@ flowchart TB
         <h2>개발 과정</h2>
         <p>‘세상에 즐거움을 전한다’는 가치를 화면을 함께 보는 사람이 알아차리고 웃는 경험으로 구체화했습니다. 구현 목표는 기침·재채기를 감지해 화면을 흔드는 것이었고, 개발 과정에서 모델 준비, 화면 효과 방식, 첫 반응 지연, 다중 모니터 좌표 처리, 중복 감지 문제를 해결했습니다. 주요 구현 변경을 순서대로 정리했습니다.</p>
         <div class="trouble-content">
-            <h3>초기 기획 및 요구사항 정의</h3>
+            <h3>목표 설정</h3>
             <p>기획의 출발점은 친구와 화면을 공유하던 중 재채기에 맞춰 화면이 흔들려 웃음이 난 경험이었습니다. 분류 성공 자체보다 화면 효과의 동작을 요구사항으로 정의했습니다. 화면을 모니터 경계 밖까지 이동시키고, 큰 초기 진폭을 감쇠해 원점으로 복귀시키는 궤적을 구현 기준으로 설정했습니다.</p>
 
-            <h3>프로젝트 구조 및 모델 준비</h3>
+            <h3>프로젝트 설계</h3>
             <p>WPF UI, 감지 로직을 포함한 Core, 테스트 프로젝트로 역할을 분리했습니다. 실행에 필요한 모델과 클래스 맵이 누락되어 공식 TensorFlow Hub YAMNet을 ONNX로 변환하고 클래스 맵을 준비했습니다. 동일 입력으로 TensorFlow 원본과 ONNX 출력을 비교했으며, 앱 시작 시 입력 길이와 521개 출력 클래스를 검증하도록 구성했습니다.</p>
 
             <h3>오디오 감지 파이프라인 구현</h3>
@@ -911,6 +908,7 @@ flowchart TB
             <p>겹치는 오디오 창에서 동일한 재채기가 반복 감지되어 고정 쿨다운을 클래스별 활성·해제 상태로 대체했습니다. 해당 클래스의 점수가 발동 임계값 절반 이하로 3회 연속 유지된 뒤 재감지를 허용합니다. 또한 <code>DetectionEvent</code>와 효과 적용 결과를 연결해, 오버레이에 이동 좌표가 적용된 뒤에만 [흔들림]으로 기록하도록 했습니다.</p>
         </div>
 
+        <hr>
         <h2>트러블 슈팅</h2>
         <div class="trouble-content">
             <h3>중복 감지 억제 정책</h3>
@@ -929,6 +927,7 @@ flowchart TB
             <h4>결과</h4>
             <p>일정 시간이 지났다는 이유로 재발동을 허용하던 구조를, 분류 점수의 하락을 확인한 뒤 재감지를 허용하는 구조로 변경했습니다. 상태 해제 대기 중에도 추론과 다른 클래스의 판정은 계속됩니다. 다만 두 재채기 사이에 점수가 해제 조건을 만족하지 않으면 하나의 이벤트로 처리될 수 있습니다. 실제 소리에서의 중복 억제율과 연속 재채기 분리 성능은 별도 확인이 필요합니다.</p>
         </div>
+        <hr>
         <div class="trouble-content">
             <h3>화면 흔들림 구현 방식 재설계</h3>
             <h4>문제 상황</h4>
@@ -946,6 +945,7 @@ flowchart TB
             <h4>결과</h4>
             <p>실시간 화면을 원본 배율로 표시한 채 이동하는 구조로 변경하고, 큰 초기 변위가 왕복하며 줄어든 뒤 원점으로 돌아오는 궤적을 구현했습니다. 화면 표시 방식의 호환성과 움직임의 형태를 별도로 조정할 수 있게 됐습니다.</p>
         </div>
+        <hr>
         <div class="trouble-content">
             <h3>감지 지연 및 화면 초기화 비용</h3>
             <h4>문제 상황</h4>
@@ -967,7 +967,7 @@ flowchart TB
             <h4>결과</h4>
             <p>첫 효과 경로에서 창 생성 작업을 앞당기고, 추론이 밀리더라도 대기열에 과거 분석 구간이 누적되지 않도록 변경했습니다. 다만 수정 전후의 전체 반응 시간은 측정하지 않았습니다. 모델 추론 수치가 화면 반응 시간을 뜻하지 않으며, 첫 표시의 검은 프레임과 OS 합성에 따른 지연은 실행 환경별 확인이 필요합니다.</p>
         </div>
-
+        <hr>    
         <div class="trouble-content">
             <h3>혼합 DPI 좌표 변환 오류</h3>
             <h4>문제 상황</h4>
@@ -985,6 +985,7 @@ flowchart TB
             <h4>결과</h4>
             <p>화면 이동량은 물리 픽셀로 정의하고, 실시간·캡처 방식의 적용 단계에서 각 좌표계에 맞게 처리하도록 구성했습니다. 빈 영역 처리도 별도 창 대신 교집합 기반 배치로 변경했습니다. 혼합 DPI 환경의 표시 결과는 수동 확인 대상으로 남아 있으며, 배경 창 제거에 따른 CPU/GPU 사용량 개선 수치는 측정하지 않았습니다.</p>
         </div>
+        <hr>
         <div class="trouble-content">
             <h3>감지 결과와 효과 적용 결과 분리</h3>
             <h4>문제 상황</h4>
