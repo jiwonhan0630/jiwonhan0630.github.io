@@ -577,7 +577,69 @@
 
         window.addEventListener('hashchange', event => renderRoute(event));
         window.addEventListener('popstate', event => renderRoute(event));
+        function buildHighlightsToc() {
+            const highlights = document.getElementById('highlights');
+            const toc = highlights.querySelector('.highlights-toc');
+            const list = toc.querySelector('ul');
+            let scrollFrame = null;
+            list.replaceChildren();
+
+            highlights.querySelectorAll('h2').forEach(heading => {
+                const item = document.createElement('li');
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = heading.textContent.trim();
+                button.addEventListener('click', () => {
+                    window.cancelAnimationFrame(scrollFrame);
+                    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    // 제목의 실제 위치에서 보이는 화면 상단과 이동 여유를 뺀다.
+                    const getTargetTop = () => {
+                        const viewportTop = window.visualViewport?.offsetTop || 0;
+                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - 32);
+                    };
+                    const arrive = () => {
+                        window.scrollTo({ top: getTargetTop(), behavior: 'instant' });
+                        heading.setAttribute('tabindex', '-1');
+                        heading.focus({ preventScroll: true });
+                        scrollFrame = null;
+                    };
+                    if (reducedMotion) {
+                        arrive();
+                        return;
+                    }
+
+                    const startTop = window.scrollY;
+                    const distance = getTargetTop() - startTop;
+                    const previewDistance = Math.sign(distance) * Math.min(120, Math.abs(distance) * 0.15);
+                    let startTime = null;
+                    // 자동 스크롤 대신 짧은 이동을 직접 그린 뒤 목적지로 이동한다.
+                    const animate = timestamp => {
+                        if (!highlights.classList.contains('active')) {
+                            scrollFrame = null;
+                            return;
+                        }
+                        if (startTime === null) startTime = timestamp;
+                        const progress = Math.min(1, (timestamp - startTime) / 140);
+                        if (progress === 1) {
+                            arrive();
+                            return;
+                        }
+                        window.scrollTo({
+                            top: startTop + previewDistance * (1 - (1 - progress) ** 2),
+                            behavior: 'instant'
+                        });
+                        scrollFrame = window.requestAnimationFrame(animate);
+                    };
+                    scrollFrame = window.requestAnimationFrame(animate);
+                });
+                item.appendChild(button);
+                list.appendChild(item);
+            });
+            toc.hidden = list.children.length === 0;
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            buildHighlightsToc();
             buildTroubleTimelines();
             renderMermaidDiagrams();
             renderRoute({ type: 'initial' });
