@@ -418,7 +418,7 @@
             projectDetailContent.innerHTML = '';
             projectDetailContent.appendChild(template.content.cloneNode(true));
             hydrateProjectContent();
-            setProjectBackLabels('프로젝트 목록으로 돌아가기');
+            setProjectBackLabels('돌아가기');
             return true;
         }
 
