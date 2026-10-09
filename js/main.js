@@ -398,7 +398,7 @@
                 if (!target || !source) return;
 
                 target.innerHTML = source.innerHTML;
-                target.querySelector('h4')?.remove();
+                target.querySelector('.panel-title')?.remove();
                 target.querySelector('p')?.remove();
             });
 
@@ -426,7 +426,7 @@
             const source = document.getElementById(elementId);
             if (!source) return false;
 
-            const title = source.querySelector('h4')?.textContent.trim() || '핵심 경험 상세';
+            const title = source.querySelector('.panel-title')?.textContent.trim() || '핵심 경험 상세';
             projectDetailTitle.textContent = title;
             projectDetailBodyTitle.textContent = title;
             projectDetailPeriod.hidden = true;
@@ -434,7 +434,7 @@
             projectDetailContent.innerHTML = '';
 
             const detail = source.cloneNode(true);
-            detail.querySelector('h4')?.remove();
+            detail.querySelector('.panel-title')?.remove();
             projectDetailContent.append(...Array.from(detail.childNodes));
             setProjectBackLabels(`${document.getElementById(`temp-${projectId}`)?.dataset.title || '프로젝트'}로 돌아가기`);
             buildTroubleTimelines(projectDetailContent);

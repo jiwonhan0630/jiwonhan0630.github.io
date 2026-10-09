@@ -231,7 +231,7 @@
 
         /* 핵심 경험의 h2 제목만 목차에 표시한다. */
         .highlights-toc {
-            margin: 1.5rem 0 2rem;
+            margin: 1.5rem 0 3rem;
             padding: 1.25rem 1.5rem;
             border: 1px solid var(--color-border);
             background-color: var(--color-bg-card);
