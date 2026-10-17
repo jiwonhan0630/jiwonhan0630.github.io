@@ -217,8 +217,8 @@
                 if (event.pointerId !== activePointerId || !lastPointer) return;
 
                 const currentPointer = toSvgPoint(event.clientX, event.clientY);
-                translateX += (currentPointer.x - lastPointer.x) / scale;
-                translateY += (currentPointer.y - lastPointer.y) / scale;
+                translateX += currentPointer.x - lastPointer.x;
+                translateY += currentPointer.y - lastPointer.y;
                 lastPointer = currentPointer;
                 updateTransform();
             });
