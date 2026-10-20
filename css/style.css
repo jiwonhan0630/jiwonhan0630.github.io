@@ -152,21 +152,6 @@
             background-color: rgb(198 232 92 / 7%);
             font-weight: 700;
         }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--color-accent);
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: var(--transition-smooth);
-        }
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
         .next-tab-btn:hover {
             border-color: var(--color-accent);
             color: var(--color-accent);
@@ -232,40 +217,65 @@
             display: block;
         }
 
-        /* 핵심 경험의 h2 제목만 목차에 표시한다. */
+        /* 핵심 경험 목차는 번호와 굵은 외곽선으로 정리합니다. */
         .highlights-toc {
-            margin: 1.5rem 0 3rem;
-            padding: 1.25rem 1.5rem;
-            border: 1px solid var(--color-border);
-            background-color: var(--color-bg-card);
+            margin: 2rem 0 3rem;
+            border: 2px solid var(--color-border-button-inactive);
+            background: var(--color-bg-deep);
+            box-shadow: 5px 5px 0 var(--color-border);
+        }
+        .highlights-toc > strong {
+            display: block;
+            padding: 1rem 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
         }
         .highlights-toc ul {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin: 0.75rem 0 0;
-            list-style: none;
-        }
-        .highlights-toc li {
             margin: 0;
+            list-style: none;
+            counter-reset: experience;
         }
+        .highlights-toc li { margin: 0; border-top: 1px solid var(--color-border-button-inactive); }
         .highlights-toc button {
-            padding: 0.25rem 0;
-            border: none;
+            display: grid;
+            grid-template-columns: 2.5rem minmax(0, 1fr) 1.25rem;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            min-height: 68px;
+            padding: 1rem 1.25rem;
+            border: 0;
             background: transparent;
-            color: var(--color-text-secondary);
+            color: var(--color-text-primary);
             font: inherit;
+            font-weight: 650;
+            line-height: 1.5;
             text-align: left;
             cursor: pointer;
+            overflow-wrap: anywhere;
         }
-        .highlights-toc button:hover {
+        .highlights-toc button::before {
+            counter-increment: experience;
+            content: counter(experience, decimal-leading-zero);
             color: var(--color-accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
         }
+        .highlights-toc button::after { content: '↘'; font-size: 1.4rem; font-weight: 400; }
+        .highlights-toc button:hover { background: var(--color-accent); color: var(--color-bg-deep); }
+        .highlights-toc button:hover::before { color: inherit; }
         .highlights-toc button:focus-visible {
             outline: 2px solid var(--color-accent);
-            outline-offset: 3px;
+            outline-offset: -4px;
+            background: var(--color-bg-hover);
         }
-        
+        @media screen and (max-width: 640px) {
+            .highlights-toc button { grid-template-columns: 1.75rem minmax(0, 1fr) 1.25rem; padding: 1rem; gap: 0.5rem; }
+            .highlights-toc > strong { padding: 1rem; }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: none; }
@@ -418,66 +428,6 @@
             margin-bottom: 1.25rem;
             font-size: 0.95rem;
         }
-        /* Project Cards (Subject Buttons) */
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        .project-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            border: 1px solid var(--color-border);
-            background-color: var(--color-bg-card);
-            color: var(--color-text-primary);
-            padding: 1.5rem 2rem;
-            font: inherit;
-            text-align: left;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            position: relative;
-        }
-        .project-card:hover {
-            border-color: var(--color-accent);
-            background-color: var(--color-bg-hover);
-            transform: translateX(5px);
-        }
-        .project-card .main-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        .project-card .sub-text {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-        }
-        .project-card .icon-container {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-            display: flex;
-            align-items: center;
-        }
-        .project-card:hover .icon-container {
-            color: var(--color-accent);
-        }
-        .project-card-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-right: 1.5rem;
-        }
-        .project-card-content > div:first-child {
-            min-width: 0;
-        }
-        .project-card-period {
-            font-weight: 500;
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-        
         /* Pre / Code styling */
         pre {
             background-color: var(--color-bg-pre);
@@ -894,7 +844,22 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            border-radius: 0;
+            box-shadow: 3px 3px 0 var(--color-border);
+            font-family: inherit;
+            transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+        }
+        .next-tab-btn:hover {
+            box-shadow: 5px 5px 0 var(--color-accent);
+            transform: translate(-2px, -2px);
+        }
+        .next-tab-btn:active {
+            box-shadow: 1px 1px 0 var(--color-border);
+            transform: translate(1px, 1px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .next-tab-btn { transition: none; }
+            .next-tab-btn:hover, .next-tab-btn:active { transform: none; }
         }
 
 /* 소개: 큰 타이포그래피와 여백으로 작업 철학을 전달합니다. */
@@ -1065,9 +1030,16 @@
     #about .about-headline { font-size: clamp(2rem, calc((100vw - 640px) * 0.07), 7rem); }
 }
 
-/* 프로젝트 목록은 이미지 없이 제목과 기술 태그로 탐색합니다. */
-#projects .project-list { gap: 1.25rem; }
-#projects .project-card {
+/* 프로젝트 진입 버튼은 모든 페이지에서 같은 디자인을 사용합니다. */
+.project-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--color-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
     align-items: flex-start;
     gap: 1.25rem;
     padding: 1.5rem;
@@ -1077,13 +1049,13 @@
     box-shadow: 4px 4px 0 var(--color-border);
     transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
-#projects .project-card::before { display: none; }
-#projects .project-card:hover {
+.project-card:hover {
     border-color: var(--color-accent);
     box-shadow: 6px 6px 0 var(--color-accent);
     transform: translate(-2px, -2px);
 }
-#projects .project-card-content {
+.project-card-content {
+    width: 100%;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
@@ -1091,7 +1063,7 @@
     padding: 0;
     min-width: 0;
 }
-#projects .project-card .main-text {
+.project-card .main-text {
     margin-bottom: 0.5rem;
     font-size: 1.6rem;
     font-weight: 750;
@@ -1099,20 +1071,24 @@
     line-height: 1.3;
     overflow-wrap: anywhere;
 }
-#projects .project-card .sub-text { font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
-#projects .project-card .project-card-period {
+.project-card .sub-text { color: var(--color-text-secondary); font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.project-card .project-card-period {
+    white-space: nowrap;
+    font-weight: 500;
     padding-top: 0.25rem;
     font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
 }
-#projects .project-card .icon-container {
+.project-card .icon-container {
+    display: flex;
+    align-items: center;
     flex-shrink: 0;
     color: var(--color-text-primary);
     padding-top: 0.15rem;
 }
-#projects .project-card .project-list-arrow { font-size: 1.6rem; line-height: 1; }
-#projects .project-card:hover .main-text,
-#projects .project-card:hover .icon-container { color: var(--color-accent); }
+.project-card .project-list-arrow { font-size: 1.6rem; line-height: 1; }
+.project-card:hover .main-text,
+.project-card:hover .icon-container { color: var(--color-accent); }
 .project-list-tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .project-list-tags > span {
     border: 1px solid var(--color-border-button-inactive);
@@ -1126,14 +1102,14 @@
 }
 #projects .sectionbox > .sectionbox-header h3 { color: var(--color-text-primary); font-size: 1.6rem; letter-spacing: -0.04em; }
 @media screen and (max-width: 640px), screen and (min-width: 1025px) and (max-width: 1200px) {
-    #projects .project-card { padding: 1.25rem; gap: 0.75rem; }
-    #projects .project-card-content { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
-    #projects .project-card-period { grid-row: 1; }
-    #projects .project-card .main-text { font-size: 1.35rem; }
+    .project-card { padding: 1.25rem; gap: 0.75rem; }
+    .project-card-content { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+    .project-card-period { grid-row: 1; }
+    .project-card .main-text { font-size: 1.35rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-    #projects .project-card { transition: none; }
-    #projects .project-card:hover { transform: none; }
+    .project-card { transition: none; }
+    .project-card:hover { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -649,7 +649,8 @@
                     // 제목의 실제 위치에서 보이는 화면 상단과 이동 여유를 뺀다.
                     const getTargetTop = () => {
                         const viewportTop = window.visualViewport?.offsetTop || 0;
-                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - 32);
+                        const headerHeight = mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0;
+                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - headerHeight - 32);
                     };
                     const arrive = () => {
                         window.scrollTo({ top: getTargetTop(), behavior: 'instant' });
@@ -693,7 +694,7 @@
         }
 
         function populateProjectListTags() {
-            document.querySelectorAll('#projects .project-card').forEach(button => {
+            document.querySelectorAll('.project-card').forEach(button => {
                 const template = document.getElementById(`temp-${button.dataset.projectId}`);
                 const tags = getProjectTechTags(template?.dataset.tags || '');
                 if (!tags.length) return;
