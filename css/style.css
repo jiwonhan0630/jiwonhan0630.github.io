@@ -1360,17 +1360,11 @@
     padding: 1.5rem;
     border-top: 1px solid var(--color-border-button-inactive);
 }
-#highlights .experience-reflection > .reflection-title {
-    margin: 0 0 1rem;
-    color: var(--color-text-primary);
-    font-size: 1.1rem;
-    font-weight: 700;
-}
+
 #highlights .reflection-content { padding: 0; }
 .reflection-content > :last-child { margin-bottom: 0; }
 /* 상세에 재사용되는 내용은 기존 본문 흐름 안에서 구분선으로 나눕니다. */
 .project-detail-content .experience-reflection { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-.project-detail-content .reflection-title { margin: 0 0 1rem; }
 @media screen and (max-width: 640px) {
     #highlights .experience-reflection { margin-inline: -1.25rem; padding: 1.25rem; }
 }
