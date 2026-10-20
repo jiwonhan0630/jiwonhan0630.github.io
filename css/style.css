@@ -336,8 +336,8 @@
 
         /* Grid card box */
         .sectionbox {
-            margin-bottom: 3.5rem;
-            border-top: 1px solid var(--color-border);
+            margin-bottom: 4rem;
+            border-top: 2px solid var(--color-border-button-inactive);
             padding-top: 2.5rem;
         }
         .sectionbox:first-of-type {
@@ -354,11 +354,16 @@
         }
 
         .panelbox {
-            border: 1px solid var(--color-border);
-            background-color: var(--color-bg-card);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
+            border: 0;
+            background: transparent;
+            padding: 0;
+            margin-bottom: 2.5rem;
         }
+        .panelbox + .panelbox {
+            border-top: 1px solid var(--color-border-button-inactive);
+            padding-top: 2.5rem;
+        }
+        .panelbox > :last-child { margin-bottom: 0; }
         /* 반복되는 콘텐츠 스타일 */
         .inline-no-margin {
             margin-bottom: 0;
@@ -760,9 +765,6 @@
         }
 
         @media screen and (max-width: 640px) {
-            .panelbox {
-                padding: 1.25rem;
-            }
             .timeline-entry-header {
                 flex-direction: column;
                 gap: 0.4rem;
@@ -1212,3 +1214,79 @@
 .project-detail-content :is(ul, ol) { margin-bottom: 1.5rem; }
 .project-detail-content li > :is(ul, ol) { margin-top: 0.5rem; margin-bottom: 0.5rem; }
 .project-detail-content > :last-child { margin-bottom: 0; }
+
+/* 경험 본문은 제목과 여백으로 정보의 위계를 구분합니다. */
+#highlights > .sectionbox > .sectionbox-header h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+#highlights .panel-title,
+.project-detail-content .panel-title {
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+    font-weight: 750;
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+    margin-bottom: 1rem;
+}
+#highlights .panelbox-item > h4 { margin-top: 1.75rem; margin-bottom: 0.5rem; }
+#highlights .panelbox-item > h4:first-child { margin-top: 0; }
+#highlights .panelbox-item > ul { margin-bottom: 1.25rem; }
+#highlights .panelbox-item > :last-child { margin-bottom: 0; }
+@media screen and (max-width: 640px) {
+    .sectionbox { margin-bottom: 3rem; padding-top: 2rem; }
+    .panelbox + .panelbox { padding-top: 2rem; }
+    #highlights .panel-title, .project-detail-content .panel-title { font-size: 1.3rem; }
+}
+
+/* 짧은 활용 경험은 기술명과 설명을 짝지어 읽을 수 있게 배치합니다. */
+.experience-row {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+}
+.experience-row:first-child { padding-top: 0; border-top: 0; }
+.experience-row:last-child { padding-bottom: 0; }
+#highlights .experience-row .panel-project-name {
+    margin: 0 0 0.5rem;
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+.experience-row > ul { margin-bottom: 0; }
+#highlights .panel-lead {
+    color: var(--color-accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+}
+#highlights .panelbox > .panel-project-name { margin-top: 0; margin-bottom: 1rem; }
+@media screen and (min-width: 1201px), screen and (min-width: 768px) and (max-width: 1024px) {
+    .experience-row {
+        display: grid;
+        grid-template-columns: minmax(0, 0.35fr) minmax(0, 1fr);
+        gap: 1.5rem;
+        align-items: baseline;
+    }
+    #highlights .experience-row .panel-project-name { margin-bottom: 0; }
+}
+
+@media screen and (min-width: 1025px) {
+    #highlights .panelbox:has(> .experience-rows) > .panel-title {
+        margin-bottom: 2rem;
+    }
+}
+
+/* 상위 제목과 기술명의 크기 차이로 읽는 순서를 명확하게 합니다. */
+#highlights .panel-title {
+    font-size: clamp(1.5rem, 2.1vw, 1.75rem);
+    font-weight: 800;
+}
+@media screen and (max-width: 1024px) {
+    #highlights .panelbox:has(> .experience-rows) > .panel-title { margin-bottom: 1.5rem; }
+}
