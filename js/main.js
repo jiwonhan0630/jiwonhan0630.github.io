@@ -253,14 +253,17 @@
             });
         }
 
-        // 탭 및 프로젝트 상세 라우팅 (예: #/projects, #/project/projectpz)
-        const TAB_IDS = ['highlights', 'projects', 'about'];
-        const PROJECT_ROUTE_NAME = 'project';
+        // 탭 및 프로젝트 상세 라우팅 (예: #/projects, #/projects/projectpz)
+        const TAB_IDS = ['about', 'highlights', 'projects'];
+        const PROJECT_ROUTE_NAME = 'projects';
         const HIGHLIGHT_ROUTE_NAME = 'highlight';
         const projectDetail = document.getElementById('project-detail');
         const projectDetailTitle = document.getElementById('project-detail-title');
         const projectDetailBodyTitle = document.getElementById('project-detail-body-title');
         const projectDetailPeriod = document.getElementById('project-detail-period');
+        const projectDetailMetadata = document.getElementById('project-detail-metadata');
+        const projectDetailCategory = document.getElementById('project-detail-category');
+        const projectDetailPlatform = document.getElementById('project-detail-platform');
         const projectDetailTags = document.getElementById('project-detail-tags');
         const projectDetailContent = document.getElementById('project-detail-content');
         const projectBackButtons = document.querySelectorAll('[data-project-back]');
@@ -290,7 +293,7 @@
             // 새 URL은 '/'로 나누고, 기존에 공유된 '#project#id' URL도 읽을 수 있게 처리합니다.
             const routeParts = rawHash.includes('#') ? rawHash.split('#') : rawHash.split('/');
 
-            if (routeParts[0] === PROJECT_ROUTE_NAME) {
+            if (routeParts[0] === PROJECT_ROUTE_NAME || routeParts[0] === 'project') {
                 const projectId = decodeRoutePart(routeParts[1] || '');
                 const template = document.getElementById(`temp-${projectId}`);
                 const isProjectRoute = routeParts.length === 2;
@@ -308,7 +311,7 @@
 
             return {
                 type: 'tab',
-                id: TAB_IDS.includes(rawHash) ? rawHash : 'highlights'
+                id: TAB_IDS.includes(rawHash) ? rawHash : 'about'
             };
         }
 
@@ -366,10 +369,15 @@
             if (bottomLabel) bottomLabel.textContent = label;
         }
 
+        function getProjectTechTags(tagsCsv) {
+            return tagsCsv.split(',').map(tag => tag.trim())
+                .filter(tag => tag && !/^(?:PC|Mobile|Windows)(?:$|[(/])/.test(tag));
+        }
+
         function renderProjectTags(tagsCsv) {
             const list = document.createElement('ul');
             list.className = 'project-tags';
-            tagsCsv.split(',').map(tag => tag.trim()).filter(Boolean).forEach(tag => {
+            getProjectTechTags(tagsCsv).forEach(tag => {
                 const item = document.createElement('li');
                 item.textContent = tag;
                 list.appendChild(item);
@@ -411,6 +419,9 @@
 
             projectDetailTitle.textContent = template.dataset.title;
             projectDetailBodyTitle.textContent = template.dataset.title;
+            projectDetailCategory.textContent = template.dataset.category;
+            projectDetailPlatform.textContent = template.dataset.platform;
+            projectDetailMetadata.hidden = false;
             projectDetailPeriod.textContent = template.dataset.period || '';
             projectDetailPeriod.hidden = !template.dataset.period;
             projectDetailTags.hidden = false;
@@ -429,6 +440,7 @@
             const title = source.querySelector('.panel-title')?.textContent.trim() || '핵심 경험 상세';
             projectDetailTitle.textContent = title;
             projectDetailBodyTitle.textContent = title;
+            projectDetailMetadata.hidden = true;
             projectDetailPeriod.hidden = true;
             projectDetailTags.hidden = true;
             projectDetailContent.innerHTML = '';
@@ -451,6 +463,8 @@
             });
             document.querySelectorAll('.nav-tabs li button').forEach(button => {
                 button.classList.toggle('active', button.dataset.tab === route.id);
+                if (button.dataset.tab === route.id) button.setAttribute('aria-current', 'page');
+                else button.removeAttribute('aria-current');
             });
 
             const pageTitle = document.querySelector(`#${route.id} h1`)?.textContent || '소개';
@@ -467,7 +481,10 @@
         function renderProjectRoute(route, scrollIntent) {
             document.body.classList.add('project-detail-open');
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.nav-tabs li button').forEach(button => button.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs li button').forEach(button => {
+                button.classList.remove('active');
+                button.removeAttribute('aria-current');
+            });
             projectDetail.hidden = false;
             projectDetail.classList.add('active');
 
@@ -550,9 +567,46 @@
             else navigateTo('#/projects', { replace: true });
         }
 
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuMedia = window.matchMedia('(max-width: 1024px)');
+        const sidebarContact = sidebar.querySelector('.sidebar-contact');
+        const sidebarIntro = sidebar.querySelector('.intro');
+
+        function positionSidebarContact() {
+            if (mobileMenuMedia.matches) mobileMenuToggle.before(sidebarContact);
+            else sidebarIntro.after(sidebarContact);
+        }
+        positionSidebarContact();
+
+
+        function setMobileMenuOpen(open) {
+            sidebar.classList.toggle('mobile-menu-open', open);
+            mobileMenuToggle.setAttribute('aria-expanded', String(open));
+            mobileMenuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        }
+
+        mobileMenuToggle.addEventListener('click', () => {
+            setMobileMenuOpen(mobileMenuToggle.getAttribute('aria-expanded') !== 'true');
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && mobileMenuToggle.getAttribute('aria-expanded') === 'true') {
+                setMobileMenuOpen(false);
+                mobileMenuToggle.focus();
+            }
+        });
+        mobileMenuMedia.addEventListener('change', () => {
+            setMobileMenuOpen(false);
+            positionSidebarContact();
+        });
+
         document.addEventListener('click', event => {
             const tabButton = event.target.closest('[data-tab]');
             if (tabButton) {
+                if (mobileMenuMedia.matches) {
+                    setMobileMenuOpen(false);
+                    if (sidebar.contains(tabButton)) mobileMenuToggle.focus();
+                }
                 switchTab(tabButton.dataset.tab);
                 return;
             }
@@ -638,7 +692,24 @@
             toc.hidden = list.children.length === 0;
         }
 
+        function populateProjectListTags() {
+            document.querySelectorAll('#projects .project-card').forEach(button => {
+                const template = document.getElementById(`temp-${button.dataset.projectId}`);
+                const tags = getProjectTechTags(template?.dataset.tags || '');
+                if (!tags.length) return;
+                const tagList = document.createElement('span');
+                tagList.className = 'project-list-tags';
+                tags.forEach(tag => {
+                    const label = document.createElement('span');
+                    label.textContent = tag;
+                    tagList.appendChild(label);
+                });
+                button.querySelector('.project-card-content').appendChild(tagList);
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            populateProjectListTags();
             buildHighlightsToc();
             buildTroubleTimelines();
             renderMermaidDiagrams();

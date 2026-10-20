@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov-dynamic-subset.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
     
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/main.js"></script>
@@ -26,7 +26,12 @@
         <aside id="sidebar">
             <div class="profile-info">
 
-                <div class="logo">한지원 <span class="logo-name-english">(Han Jiwon)</span></div>
+                <div class="logo">한지원</div>
+                <button type="button" class="mobile-menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar-menu">
+                    <span class="material-symbols-outlined menu-open-icon" aria-hidden="true">menu</span>
+                    <span class="material-symbols-outlined menu-close-icon" aria-hidden="true">close</span>
+                </button>
+                <div id="sidebar-menu">
                 <p class="intro">세상에 즐거움을 전하자!</p>
                 
                 <ul class="sidebar-contact">
@@ -34,18 +39,258 @@
                 </ul>
 
                 <ul class="nav-tabs">
-                    <li><button type="button" class="active" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
+                    <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
+                    <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>프로젝트 목록</button></li>
-                    <li><button type="button" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
                 </ul>
+                </div>
             </div>
         </aside>
 
         <!-- Content Area -->
         <main id="content-area">
 
+            <!-- Tab: About (소개) -->
+            <section id="about" class="tab-content active">
+                <header class="about-hero">
+                    <h1 class="about-headline">
+                        <span class="about-statement"><span class="about-audience">유저에겐</span><span>즐거운 경험을,</span></span>
+                        <span class="about-statement about-statement-accent"><span class="about-audience">동료에겐</span><span>즐거운 작업환경을,</span></span>
+                    </h1>
+                    <div class="about-hero-footer">
+                        <p>만드는 사람도, 쓰는 사람도 즐거울 수 있도록.<br>로딩 시간을 96% 단축하고, 작업 프로세스를 개선해 온<br><strong>클라이언트 프로그래머 한지원입니다.</strong></p>
+                        <button type="button" class="about-cta" data-tab="highlights">핵심 경험 살펴보기 <span aria-hidden="true">↗</span></button>
+                    </div>
+                </header>
+
+                <section class="about-principles" aria-labelledby="about-principles-title">
+                    <div class="about-section-heading"><h2 id="about-principles-title">이런 마음가짐으로<br>일합니다.</h2></div>
+                    <div class="about-principle-list">
+                        <article class="about-principle"><span class="about-principle-number">01</span><div><h3>불편을 줄여나갑니다</h3><p>반복되는 불편과 병목을 줄여 팀의 작업 과정을 원활하게 만드는 데서 보람을 느낍니다. 팀이 창작 활동에 집중하고 콘텐츠의 완성도를 높일 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p></div></article>
+                        <article class="about-principle"><span class="about-principle-number">02</span><div><h3>더 나은 방식을 함께 찾습니다</h3><p>서로의 관점과 경험을 존중하며 협력할 때 더 좋은 결과가 만들어진다고 생각합니다. 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p></div></article>
+                        <article class="about-principle"><span class="about-principle-number">03</span><div><h3>필요한 지식을 학습하며 성장합니다</h3><p>모르는 것을 숨기기보다 무엇을 더 알아야 하는지 파악하고, 필요한 지식과 기술을 학습합니다. 스스로 답을 찾기 어려울 때에는 동료에게 도움을 구하고, 새롭게 알게 된 내용은 다시 나누며 지식과 경험을 함께 쌓아갑니다.</p></div></article>
+                    </div>
+                </section>
+
+                <div class="sectionbox about-history">
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>학력</h2>
+                        </div>
+                        <div class="panelbox">
+                            <article class="education-entry">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                        <p class="timeline-entry-role">만화애니게임학과 학사 졸업</p>
+                                    </div>
+                                    <span class="timeline-period">2022.03 - 2023.02</span>
+                                </div>
+                                <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5</p>
+                            </article>
+
+                            <hr>
+
+                            <article class="education-entry">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
+                                        <p class="timeline-entry-role">게임콘텐츠스쿨 전문학사 졸업</p>
+                                    </div>
+                                    <span class="timeline-period">2019.03 - 2022.02</span>
+                                </div>
+                                <p class="timeline-summary inline-no-margin">학점 4.1 / 4.5</p>
+                            </article>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>경력</h2>
+                        </div>
+                        <div>
+                            <article class="panelbox inline-no-margin">
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">㈜펀딜</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2022.01 - 2025.02</span>
+                                </div>
+                                <p class="inline-no-margin">3년간 PC, 모바일 게임 및 앱 개발 프로젝트에 참여하며<br>콘텐츠·시스템 및 에디터 확장 기능, 유틸리티 개발을 담당하였습니다.<br><br>프로젝트 초기 설계부터 기능 구현, 개발 도구 제작, 성능 분석·최적화,<br>외부 기업 기술 연계와 글로벌 서비스 검증 업무를 수행하였습니다.</p>
+                            </article>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h2>활동</h2>
+                        </div>
+                        <div class="panelbox">
+                            <article>
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">인디 게임 팀</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2025.03 - 현재</span>
+                                </div>
+                                <p>한국·일본 Steam 출시를 목표로 활동 중인 인디 게임 팀입니다.</p>
+                            </article>
+
+                            <hr>
+
+                            <article>
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">온라인 출판물 번역 그룹</h4>
+                                        <p class="timeline-entry-role">번역 · 식자</p>
+                                    </div>
+                                </div>
+                                <p>약 20명 규모의 번역 그룹에서 일본어로 출판된 창작물(전자책 및 게임)의 한국어 번역과 식자 작업을 담당하였습니다.</p>
+                            </article>
+
+                            <hr>
+
+                            <article>
+                                <div class="timeline-entry-header">
+                                    <div>
+                                        <h4 class="timeline-entry-title">사이드 프로젝트</h4>
+                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
+                                    </div>
+                                    <span class="timeline-period">2021 - 2022</span>
+                                </div>
+                                <p>재학 중 게임 프로젝트 활동을 통해 개발 역량을 길렀습니다.</p>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="sectionbox about-skills">
+                    <div class="sectionbox-header">
+                        <h2>보유 기술</h2>
+                        <p class="inline-no-margin">활용 가능한 언어, 도구 등을 정리하였습니다.</p>
+                    </div>
+
+                    <section>
+                        <div class="sectionbox-header">
+                            <h3>주요 기술</h3>
+                        </div>
+                        <div class="panelbox">
+                            <div class="skill-list">
+                                <div>
+                                    <h4>Unity Engine</h4>
+                                    <ul>
+                                        <li>UIToolkit 기반 에디터 확장, UGUI, 런타임 콘텐츠·시스템 구현</li>
+                                        <li>Unity Profiler 등 내부 분석 도구를 활용하여 메모리 및 성능 최적화 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>C#</h4>
+                                    <ul>
+                                        <li>기본 자료구조 및 알고리즘 지식 보유</li>
+                                        <li>Visual Studio 내부 진단 도구를 활용하여 CPU 사용량 최적화 가능</li>
+                                        <li>Attribute·Reflection 기반 자동화</li>
+                                        <li>Generic Converter 구현 경험</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <hr>
+                    <section>
+                        <div class="sectionbox-header">
+                            <h3>보조 기술</h3>
+                        </div>
+                        <div class="panelbox">
+                            <div class="skill-list">
+                                <div>
+                                    <h4>Database</h4>
+                                    <ul>
+                                        <li>MongoDB, MariaDB, TMaxTiberoDB 활용 경험 및 기초 쿼리 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Blender</h4>
+                                    <ul>
+                                        <li>프로토타입 리소스 등의 단순 모델링 및 텍스처 제작 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Adobe Photoshop</h4>
+                                    <ul>
+                                        <li>이미지 편집, 텍스처 및 노말맵 생성, 타임라인 등 기본 기능 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>GitHub · GitLab · SourceTree</h4>
+                                    <ul>
+                                        <li>Git GUI를 사용한 협업 및 브랜치 관리 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Notion</h4>
+                                    <ul>
+                                        <li>업무보고서 자동화 구조 구축 경험</li>
+                                        <li>휴가 관리 시스템 구축 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Google Sheets · MS Excel</h4>
+                                    <ul>
+                                        <li>데이터 입력·정리 및 필터·정렬 기능 활용 가능</li>
+                                        <li>IF, LOOKUP 등 기본 함수 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>Google Docs · MS Word · Confluence</h4>
+                                    <ul>
+                                        <li>제안서, 보고서, 계획서 등 업무에 필요한 문서 작성 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>OBS</h4>
+                                    <ul>
+                                        <li>화면·오디오 소스 설정 및 기본 녹화·송출 기능 활용 가능</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>AI Agents</h4>
+                                    <ul>
+                                        <li>Antigravity, Codex를 활용한 프로토타이핑 및 자동화 경험</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h4>C++</h4>
+                                    <ul>
+                                        <li>STL 라이브러리 및 기초 메모리 주소 체계에 대한 이해</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" data-tab="highlights">
+                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+
+
             <!-- Tab: Highlights (핵심 경험) -->
-            <section id="highlights" class="tab-content active">
+            <section id="highlights" class="tab-content">
                 <h1>핵심 경험</h1>
                 <p>제 강점이 드러날 수 있는 작업들을 정리하였습니다. 각 내용은 프로젝트별 상세에 어느정도 포함된 내용이지만, <span class="accent-text">제가 보여주고 싶은 역량을 한 페이지에 담고자</span> 이러한 페이지를 마련하였습니다. </p>
                 <nav class="highlights-toc" aria-label="핵심 경험 목차" hidden>
@@ -484,12 +729,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="project-card-content">
                             <div>
                                 <div class="main-text">Project MG</div>
-                                <div class="sub-text">2D 핸드 트래킹 탄막 • PC</div>
+                                <div class="sub-text">2D 핸드 트래킹 탄막 게임 • PC</div>
                             </div>
                             <div class="sub-text project-card-period">2026</div>
                         </div>
                         <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                            <span class="project-list-arrow" aria-hidden="true">↗</span>
                         </div>
                     </button>
 
@@ -497,12 +742,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="project-card-content">
                             <div>
                                 <div class="main-text">Project PZ</div>
-                                <div class="sub-text">3D 실시간 턴제 전략 • Mobile(Android)</div>
+                                <div class="sub-text">3D 실시간 턴제 전략 게임 • PC/Mobile(Android·iOS)</div>
                             </div>
                             <div class="sub-text project-card-period">2024 - 2025</div>
                         </div>
                         <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                            <span class="project-list-arrow" aria-hidden="true">↗</span>
                         </div>
                     </button>
 
@@ -510,12 +755,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="project-card-content">
                             <div>
                                 <div class="main-text">Project C</div>
-                                <div class="sub-text">3D 실시간 산업 데이터 기반 게이미피케이션 • PC/Mobile(Android·iOS)</div>
+                                <div class="sub-text">3D 실시간 산업 데이터 기반 게이미피케이션 게임 • PC/Mobile(Android·iOS)</div>
                             </div>
                             <div class="sub-text project-card-period">2022 - 2024</div>
                         </div>
                         <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                            <span class="project-list-arrow" aria-hidden="true">↗</span>
                         </div>
                     </button>                    
                     
@@ -523,12 +768,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <div class="project-card-content">
                             <div>
                                 <div class="main-text">Project WD</div>
-                                <div class="sub-text">2D 캐주얼 워드 퍼즐 • Mobile(Android)</div>
+                                <div class="sub-text">2D 캐주얼 워드 퍼즐 게임 • Mobile(Android)</div>
                             </div>
                             <div class="sub-text project-card-period">2024</div>
                         </div>
                         <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                            <span class="project-list-arrow" aria-hidden="true">↗</span>
                         </div>
                     </button>
 
@@ -541,7 +786,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             <div class="sub-text project-card-period">2022</div>
                         </div>
                         <div class="icon-container">
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                            <span class="project-list-arrow" aria-hidden="true">↗</span>
                         </div>
                     </button>
 
@@ -562,7 +807,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <div class="sub-text project-card-period">2026</div>
                             </div>
                             <div class="icon-container">
-                                <span class="material-symbols-outlined">arrow_forward</span>
+                                <span class="project-list-arrow" aria-hidden="true">↗</span>
                             </div>
                         </button>
 
@@ -575,7 +820,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <div class="sub-text project-card-period">2026</div>
                             </div>
                             <div class="icon-container">
-                                <span class="material-symbols-outlined">arrow_forward</span>
+                                <span class="project-list-arrow" aria-hidden="true">↗</span>
                             </div>
                         </button>
 
@@ -588,7 +833,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                                 <div class="sub-text project-card-period">2026</div>
                             </div>
                             <div class="icon-container">
-                                <span class="material-symbols-outlined">arrow_forward</span>
+                                <span class="project-list-arrow" aria-hidden="true">↗</span>
                             </div>
                         </button>
 
@@ -596,12 +841,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             <div class="project-card-content">
                                 <div>
                                     <div class="main-text">Project I</div>
-                                    <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 • PC</div>
+                                    <div class="sub-text">3D 횡스크롤 슈팅 플랫포머 게임 • PC</div>
                                 </div>
                                 <div class="sub-text project-card-period">2022</div>
                             </div>
                             <div class="icon-container">
-                                <span class="material-symbols-outlined">arrow_forward</span>
+                                <span class="project-list-arrow" aria-hidden="true">↗</span>
                             </div>
                         </button>
 
@@ -609,12 +854,12 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                             <div class="project-card-content">
                                 <div>
                                     <div class="main-text">Project T</div>
-                                    <div class="sub-text">2D 퍼즐 플랫포머 • PC</div>
+                                    <div class="sub-text">2D 퍼즐 플랫포머 게임 • PC</div>
                                 </div>
                                 <div class="sub-text project-card-period">2021</div>
                             </div>
                             <div class="icon-container">
-                                <span class="material-symbols-outlined">arrow_forward</span>
+                                <span class="project-list-arrow" aria-hidden="true">↗</span>
                             </div>
                         </button>
                     </div>
@@ -628,232 +873,6 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 </div>
             </section>
 
-            <!-- Tab: About (소개) -->
-            <section id="about" class="tab-content">
-                <h1>소개</h1>
-                <p>안녕하세요, 세상에 즐거움을 전하고픈 한지원입니다.</p>
-                <p>저는 반복 작업과 비효율적인 작업 프로세스를 개선하고, 필요한 기술을 학습하며 문제의 원인을 파악해 해결하려 합니다. 서로를 존중하며 협력하고 더 나은 방식을 함께 찾아가는 과정을 즐기며, <span class="accent-text">작업자의 즐거움이 콘텐츠를 접하는 사람의 즐거움으로 이어진다고 믿습니다.</span></p>
-                <hr>
-                <div>
-                    <h2>저는 이렇게 일합니다</h2>
-                    <div class="panelbox">
-                        <h3 class="panel-title">불편을 줄여나갑니다</h3>
-                        <p>반복되는 불편과 병목을 줄여 팀의 작업 과정을 원활하게 만드는 데서 보람을 느낍니다. 팀이 창작 활동에 집중하고 콘텐츠의 완성도를 높일 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p>
-
-                        <hr>
-                        <h3 class="panel-title">더 나은 방식을 함께 찾습니다</h3>
-                        <p>서로의 관점과 경험을 존중하며 협력할 때 더 좋은 결과가 만들어진다고 생각합니다. 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p>
-
-                        <hr>
-                        <h3 class="panel-title">필요한 지식을 학습하며 성장합니다</h3>
-                        <p>모르는 것을 숨기기보다 무엇을 더 알아야 하는지 파악하고, 필요한 지식과 기술을 학습합니다. 스스로 답을 찾기 어려울 때에는 동료에게 도움을 구하고, 새롭게 알게 된 내용은 다시 나누며 지식과 경험을 함께 쌓아갑니다.</p>
-                    </div>
-                </div>
-
-                <div class="sectionbox">
-                    <section>
-                        <div class="sectionbox-header">
-                            <h2>학력</h2>
-                        </div>
-                        <div class="panelbox">
-                            <article class="education-entry">
-                                <div class="timeline-entry-header">
-                                    <div>
-                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
-                                        <p class="timeline-entry-role">만화애니게임학과 학사 졸업</p>
-                                    </div>
-                                    <span class="timeline-period">2022.03 - 2023.02</span>
-                                </div>
-                                <p class="timeline-summary inline-no-margin">학점 3.5 / 4.5</p>
-                            </article>
-
-                            <hr>
-
-                            <article class="education-entry">
-                                <div class="timeline-entry-header">
-                                    <div>
-                                        <h4 class="timeline-entry-title">청강문화산업대학교</h4>
-                                        <p class="timeline-entry-role">게임콘텐츠스쿨 전문학사 졸업</p>
-                                    </div>
-                                    <span class="timeline-period">2019.03 - 2022.02</span>
-                                </div>
-                                <p class="timeline-summary inline-no-margin">학점 4.1 / 4.5</p>
-                            </article>
-                        </div>
-                    </section>
-                    <hr>
-                    <section>
-                        <div class="sectionbox-header">
-                            <h2>경력</h2>
-                        </div>
-                        <div>
-                            <article class="panelbox inline-no-margin">
-                                <div class="timeline-entry-header">
-                                    <div>
-                                        <h4 class="timeline-entry-title">㈜펀딜</h4>
-                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                    </div>
-                                    <span class="timeline-period">2022.01 - 2025.02</span>
-                                </div>
-                                <p class="inline-no-margin">3년간 PC, 모바일 게임 및 앱 개발 프로젝트에 참여하며 콘텐츠·시스템 및 에디터 확장 기능, 유틸리티 개발을 담당하였습니다. 프로젝트 초기 설계부터 기능 구현, 개발 도구 제작, 성능 분석·최적화, 외부 기업 기술 연계와 글로벌 서비스 검증 업무를 수행하였습니다.</p>
-                            </article>
-                        </div>
-                    </section>
-                    <hr>
-                    <section>
-                        <div class="sectionbox-header">
-                            <h2>활동</h2>
-                        </div>
-                        <div class="panelbox">
-                            <article>
-                                <div class="timeline-entry-header">
-                                    <div>
-                                        <h4 class="timeline-entry-title">인디 게임 팀</h4>
-                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                    </div>
-                                    <span class="timeline-period">2025.03 - 현재</span>
-                                </div>
-                                <p>한국·일본 Steam 출시를 목표로 활동 중인 인디 게임 팀입니다.</p>
-                            </article>
-
-                            <hr>
-
-                            <article>
-                                <div class="timeline-entry-header">
-                                    <div>
-                                        <h4 class="timeline-entry-title">사이드 프로젝트</h4>
-                                        <p class="timeline-entry-role">클라이언트 프로그래머</p>
-                                    </div>
-                                    <span class="timeline-period">2021 - 2022</span>
-                                </div>
-                                <p>재학 중 게임 프로젝트 활동을 통해 개발 역량을 길렀습니다.</p>
-                            </article>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="sectionbox">
-                    <div class="sectionbox-header">
-                        <h2>보유 기술</h2>
-                        <p class="inline-no-margin">활용 가능한 언어, 도구 등을 정리하였습니다.</p>
-                    </div>
-
-                    <section>
-                        <div class="sectionbox-header">
-                            <h3>주요 기술</h3>
-                        </div>
-                        <div class="panelbox">
-                            <div class="skill-list">
-                                <div>
-                                    <h4>Unity Engine</h4>
-                                    <ul>
-                                        <li>UIToolkit 기반 에디터 확장, UGUI, 런타임 콘텐츠·시스템 구현</li>
-                                        <li>Unity Profiler 등 내부 분석 도구를 활용하여 메모리 및 성능 최적화 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>C#</h4>
-                                    <ul>
-                                        <li>기본 자료구조 및 알고리즘 지식 보유</li>
-                                        <li>Visual Studio 내부 진단 도구를 활용하여 CPU 사용량 최적화 가능</li>
-                                        <li>Attribute·Reflection 기반 자동화</li>
-                                        <li>Generic Converter 구현 경험</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <hr>
-                    <section>
-                        <div class="sectionbox-header">
-                            <h3>보조 기술</h3>
-                        </div>
-                        <div class="panelbox">
-                            <div class="skill-list">
-                                <div>
-                                    <h4>Database</h4>
-                                    <ul>
-                                        <li>MongoDB, MariaDB, TMaxTiberoDB 활용 경험 및 기초 쿼리 활용 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>Blender</h4>
-                                    <ul>
-                                        <li>프로토타입 리소스 등의 단순 모델링 및 텍스처 제작 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>Adobe Photoshop</h4>
-                                    <ul>
-                                        <li>이미지 편집, 텍스처 및 노말맵 생성, 타임라인 등 기본 기능 활용 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>GitHub · GitLab · SourceTree</h4>
-                                    <ul>
-                                        <li>Git GUI를 사용한 협업 및 브랜치 관리 경험</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>Notion</h4>
-                                    <ul>
-                                        <li>업무보고서 자동화 구조 구축 경험</li>
-                                        <li>휴가 관리 시스템 구축 경험</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>Google Sheets · MS Excel</h4>
-                                    <ul>
-                                        <li>데이터 입력·정리 및 필터·정렬 기능 활용 가능</li>
-                                        <li>IF, LOOKUP 등 기본 함수 활용 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>Google Docs · MS Word · Confluence</h4>
-                                    <ul>
-                                        <li>제안서, 보고서, 계획서 등 업무에 필요한 문서 작성 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>OBS</h4>
-                                    <ul>
-                                        <li>화면·오디오 소스 설정 및 기본 녹화·송출 기능 활용 가능</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>AI Agents</h4>
-                                    <ul>
-                                        <li>Antigravity, Codex를 활용한 프로토타이핑 및 자동화 경험</li>
-                                    </ul>
-                                </div>
-                                <hr>
-                                <div>
-                                    <h4>C++</h4>
-                                    <ul>
-                                        <li>STL 라이브러리 및 기초 메모리 주소 체계에 대한 이해</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="highlights">
-                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </div>
-            </section>
-            
             <!-- Project Detail Page (프로젝트 상세 페이지) -->
             <section id="project-detail" class="project-detail-view" aria-labelledby="project-detail-title" hidden>
                 <header class="project-detail-header">
@@ -864,10 +883,17 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                     <span id="project-detail-title" class="project-detail-header-title">프로젝트 상세</span>
                 </header>
                 <div class="project-detail-body">
-                    <h1 id="project-detail-body-title" class="project-detail-body-title"></h1>
-                    <p id="project-detail-period" class="project-detail-period"></p>
-                    <div id="project-detail-tags" class="project-detail-tags"></div>
-                    <hr>
+                    <div class="project-detail-overview">
+                        <div class="project-detail-heading">
+                            <h1 id="project-detail-body-title" class="project-detail-body-title"></h1>
+                            <p id="project-detail-period" class="project-detail-period"></p>
+                        </div>
+                        <dl id="project-detail-metadata" class="project-detail-metadata">
+                            <div><dt>분류</dt><dd id="project-detail-category"></dd></div>
+                            <div><dt>플랫폼</dt><dd id="project-detail-platform"></dd></div>
+                            <div><dt>기술 태그</dt><dd id="project-detail-tags" class="project-detail-tags"></dd></div>
+                        </dl>
+                    </div>
                     <div id="project-detail-content" class="project-detail-content"></div>
                     <div class="next-tab-nav project-detail-bottom-nav">
                         <button type="button" class="next-tab-btn project-detail-back-btn" data-project-back>
@@ -883,7 +909,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
     </div>
     
     <!-- HTML Templates for Project Detail Content (자바스크립트 변수 데이터 격리) -->
-    <template id="temp-achueoheu" data-title="에취어흐" data-period="2026" data-tags="C#,WPF,NAudio,ONNX Runtime,Win32 API">
+    <template id="temp-achueoheu" data-category="재채기 감지 데스크톱 애플리케이션" data-platform="Windows" data-title="에취어흐" data-period="2026" data-tags="C#,WPF,NAudio,ONNX Runtime,Win32 API">
         <h2>프로젝트 개요</h2>
             <h3>비염으로 사람을 웃길 수 있을까?</h3>
             <p>친구에게 게임 화면을 공유하던 중, 마우스를 잡은 채 재채기를 하고 말았습니다. 연속된 재채기로 인해 화면이 오랫동안 흔들리자, 제 방은 친구들의 웃음 소리로 가득찼습니다.</p>
@@ -1054,7 +1080,7 @@ flowchart TB
         <p>이를 개선하기 위해 ‘에… 엣…!’처럼 재채기 직전에 나는 전조음을 먼저 감지하는 방식을 고민하였으나, YAMNet은 소리의 종류를 구분하는 모델이기에 사람의 말소리는 대부분 speech로 분류됩니다. 또한 이러한 전조음은 사람마다 다르기 때문에, 별도로 Calibration 과정도 필요할 것입니다. 어떻게 하면 재채기를 좀 더 빠르게 감지할 수 있을지 방안을 모색하고 있습니다.</p>
     </template>
 
-    <template id="temp-pdf-merger" data-title="PDF 병합기" data-period="2026" data-tags="WinForms,PDFsharp">
+    <template id="temp-pdf-merger" data-category="PDF 병합 유틸리티" data-platform="Windows" data-title="PDF 병합기" data-period="2026" data-tags="WinForms,PDFsharp">
         <h2>프로젝트 개요</h2>
         <p>입사 지원 시 개별로 관리하는 이력서, 자기소개서, 경력기술서 PDF를 제출 형식에 맞춰 빠르게 하나의 파일로 구성하기 위해 제작한 Windows 데스크톱 유틸리티입니다.</p>
 
@@ -1080,7 +1106,7 @@ flowchart TB
         <p>병합 대상이 두 개 미만이거나 체크한 항목에 파일이 지정되지 않은 경우 작업을 중단하고 안내 메시지를 표시합니다. 서로 다른 항목에 같은 PDF가 선택되는 경우도 검사하며, 병합 진행 상태와 완료·실패 결과를 화면과 대화상자로 제공하도록 구성했습니다.</p>
     </template>
 
-    <template id="temp-screen-overlay-tool" data-title="게임 화면 영역 오버레이 도구" data-period="2026" data-tags="WPF,Win32 API">
+    <template id="temp-screen-overlay-tool" data-category="화면 캡처·재배치 유틸리티" data-platform="Windows" data-title="게임 화면 영역 오버레이 도구" data-period="2026" data-tags="WPF,Win32 API">
         <h2>프로젝트 개요</h2>
         <p>UI 위치를 사용자가 조절할 수 없는 특정 게임에서 필요한 정보를 원하는 위치에 표시하기 위해 제작한 Windows 오버레이 유틸리티입니다. 화면의 필요한 영역을 실시간으로 캡처하고, 캡처 영역과 출력 영역을 직접 배치하여 원본 화면의 일부를 원하는 위치와 크기의 별도 창에서 확인할 수 있도록 구현했습니다.</p>
 
@@ -1106,7 +1132,7 @@ flowchart TB
         <p>WPF의 논리 좌표를 화면 캡처에 사용하는 실제 픽셀 좌표로 변환하기 위해 창의 DPI 배율을 반영했습니다. 오버레이가 활성화되면 Win32 API로 확장 창 스타일에 WS_EX_TRANSPARENT와 WS_EX_LAYERED를 적용해 마우스 입력이 아래 창으로 전달되도록 구현했습니다.</p>
     </template>
 
-    <template id="temp-projectpz" data-title="Project PZ" data-period="2024 - 2025" data-tags="UnityEngine,Mobile(Android),UniTask">
+    <template id="temp-projectpz" data-category="3D 실시간 턴제 전략 게임" data-platform="PC/Mobile(Android·iOS)" data-title="Project PZ" data-period="2024 - 2025" data-tags="UnityEngine,PC/Mobile(Android·iOS),UniTask,Addressables">
         <h2>담당 업무</h2>
         <ul>
             <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
@@ -1150,7 +1176,7 @@ flowchart TB
         <div id="project-troubleshoot-target"></div>
     </template>
 
-    <template id="temp-projectc" data-title="Project C" data-period="2022 - 2024" data-tags="UnityEngine,PC/Mobile(Android·iOS),UniTask,MariaDB">
+    <template id="temp-projectc" data-category="3D 실시간 산업 데이터 기반 게이미피케이션 게임" data-platform="PC / Mobile(Android·iOS)" data-title="Project C" data-period="2022 - 2024" data-tags="UnityEngine,PC/Mobile(Android·iOS),UniTask,MariaDB">
         <h2>담당 업무</h2>
         <ul>
             <li>모빌리티·ICT 기업과 협업</li>
@@ -1191,7 +1217,7 @@ flowchart TB
         <div id="project-troubleshoot-target-c"></div>
     </template>
 
-    <template id="temp-projecti" data-title="Project I" data-period="2022" data-tags="UnityEngine,PC,Cinemachine,Timeline">
+    <template id="temp-projecti" data-category="3D 횡스크롤 슈팅 플랫포머 게임" data-platform="PC" data-title="Project I" data-period="2022" data-tags="UnityEngine,PC,Cinemachine,Timeline">
         <h2>담당 업무</h2>
         <ul>
             <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
@@ -1239,7 +1265,7 @@ flowchart TB
         </div>
     </template>
 
-    <template id="temp-projectwd" data-title="Project WD" data-period="2024" data-tags="UnityEngine,Mobile(Android),DOTween">
+    <template id="temp-projectwd" data-category="2D 캐주얼 워드 퍼즐 게임" data-platform="Mobile(Android)" data-title="Project WD" data-period="2024" data-tags="UnityEngine,Mobile(Android),DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>한글 조합 라이브러리를 활용한 단어 조합 기반의 인게임 플레이 구현</li>
@@ -1248,7 +1274,7 @@ flowchart TB
         </ul>
     </template>
 
-    <template id="temp-suwon_museum" data-title="수원시 박물관 도슨트 시스템" data-period="2022" data-tags="UnityEngine,Mobile(Android·iOS),DOTween">
+    <template id="temp-suwon_museum" data-category="박물관 도슨트 애플리케이션" data-platform="Mobile(Android·iOS)" data-title="수원시 박물관 도슨트 시스템" data-period="2022" data-tags="UnityEngine,Mobile(Android·iOS),DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>박물관 유물 정보를 활용한 짝맞추기, 유령 길찾기 등의 게임 콘텐츠 제작</li>
@@ -1258,7 +1284,7 @@ flowchart TB
         </ul>
     </template>
 
-    <template id="temp-projectt" data-title="Project T" data-period="2021" data-tags="UnityEngine,PC,Cinemachine">
+    <template id="temp-projectt" data-category="2D 퍼즐 플랫포머 게임" data-platform="PC" data-title="Project T" data-period="2021" data-tags="UnityEngine,PC,Cinemachine">
         <h2>담당 업무</h2>
         <ul>
             <li>기상 변화에 따른 인게임 물리 상호작용 구현</li>
@@ -1314,7 +1340,7 @@ flowchart TB
         </div>
     </template>
 
-    <template id="temp-projectmg" data-title="Project MG" data-period="2026" data-tags="UnityEngine,PC,MediaPipe, SteamWorks">
+    <template id="temp-projectmg" data-category="2D 핸드 트래킹 탄막 게임" data-platform="PC" data-title="Project MG" data-period="2026" data-tags="UnityEngine,PC,MediaPipe,LowLevelPhysics2D,SteamWorks">
         <h2>담당 업무</h2>
         <ul>
             <li>MediaPipe 기반 실시간 손 트래킹 연동</li>
