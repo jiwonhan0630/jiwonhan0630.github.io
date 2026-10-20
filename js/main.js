@@ -613,6 +613,8 @@
 
             const projectButton = event.target.closest('[data-project-id]');
             if (projectButton) {
+                if (projectButton.tagName === 'A' && (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)) return;
+                event.preventDefault();
                 openProject(projectButton.dataset.projectId);
                 return;
             }
