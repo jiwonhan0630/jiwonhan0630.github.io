@@ -474,7 +474,7 @@
                 else button.removeAttribute('aria-current');
             });
 
-            const pageTitle = document.querySelector(`#${route.id} h1`)?.textContent || '소개';
+            const pageTitle = document.querySelector(`#${route.id} h1`)?.textContent.replace(/\s+/g, ' ').trim() || '소개';
             document.title = `${pageTitle} | Jiwon Han Portfolio`;
             if (event?.type !== 'initial' && typeof gtag === 'function') {
                 gtag('event', 'page_view', {

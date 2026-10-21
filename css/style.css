@@ -11,6 +11,7 @@
             
             --color-text-button-inactive: #d5d5d5;
             --color-border-button-inactive: #4a4a4a;
+            --color-button-shadow: #3b3b3b;
             --color-bg-pre: #0b0b0b;
             --color-bg-code: #1a1a1a;
             --color-text-pre-code: #d8d8d8;
@@ -145,7 +146,7 @@
             padding: 0.85rem 1rem;
             border: 1px solid var(--color-border-button-inactive);
             border-radius: 0;
-            box-shadow: 2px 2px 0 var(--color-border);
+            box-shadow: 2px 2px 0 var(--color-button-shadow);
             font-size: 0.95rem;
             font-weight: 500;
             gap: 0.75rem;
@@ -154,7 +155,7 @@
             color: var(--color-text-primary);
             border-color: var(--color-text-secondary);
             background-color: var(--color-bg-hover);
-            box-shadow: 3px 3px 0 var(--color-border-button-inactive);
+            box-shadow: 3px 3px 0 var(--color-button-shadow);
             transform: translate(-1px, -1px);
         }
         .nav-tabs li button.active {
@@ -849,7 +850,7 @@
             font-weight: 700;
             cursor: pointer;
             border-radius: 0;
-            box-shadow: 3px 3px 0 var(--color-border);
+            box-shadow: 3px 3px 0 var(--color-button-shadow);
             font-family: inherit;
             transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
         }
@@ -866,7 +867,7 @@
             transform: translate(-2px, -2px);
         }
         .next-tab-btn:active {
-            box-shadow: 1px 1px 0 var(--color-border);
+            box-shadow: 1px 1px 0 var(--color-button-shadow);
             transform: translate(1px, 1px);
         }
         @media (prefers-reduced-motion: reduce) {
@@ -927,7 +928,7 @@
     padding: 1.1rem 1.4rem; border: 1px solid var(--color-border-button-inactive); background: var(--color-bg-deep);
     color: var(--color-text-primary); font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
     border-radius: 0;
-    box-shadow: 4px 4px 0 var(--color-border-button-inactive);
+    box-shadow: 4px 4px 0 var(--color-button-shadow);
     transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .about-cta:hover {
@@ -1025,7 +1026,7 @@
         width: 44px; height: 44px; padding: 0;
         border: 1px solid var(--color-border-button-inactive);
         border-radius: 0;
-        box-shadow: 2px 2px 0 var(--color-border);
+        box-shadow: 2px 2px 0 var(--color-button-shadow);
         background: var(--color-bg-deep); color: var(--color-text-primary); cursor: pointer;
     }
     .mobile-menu-toggle[aria-expanded="true"] { border-color: var(--color-accent); box-shadow: 2px 2px 0 var(--color-accent); }
@@ -1059,7 +1060,7 @@
     border: 1px solid var(--color-border-button-inactive);
     border-radius: 0;
     background: var(--color-bg-deep);
-    box-shadow: 4px 4px 0 var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-button-shadow);
     transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .project-card:hover {
@@ -1210,7 +1211,7 @@
 }
 .project-detail-header .project-back-btn {
     border-radius: 0;
-    box-shadow: 2px 2px 0 var(--color-border);
+    box-shadow: 2px 2px 0 var(--color-button-shadow);
 }
 @media screen and (max-width: 640px) {
     .project-detail-overview { margin-bottom: 2.5rem; }
@@ -1438,7 +1439,7 @@
     white-space: nowrap;
     cursor: pointer;
 }
-.floating-highlights-toc li button { flex-shrink: 0; box-shadow: 2px 2px 0 var(--color-border); }
+.floating-highlights-toc li button { flex-shrink: 0; box-shadow: 2px 2px 0 var(--color-button-shadow); }
 .floating-highlights-toc button:hover,
 .floating-highlights-toc button[aria-current="location"] { color: var(--color-accent); border-color: var(--color-accent); }
 .floating-highlights-toc button[aria-current="location"] { box-shadow: 2px 2px 0 var(--color-accent); }
@@ -1483,7 +1484,7 @@
 .achievement {
     border: 1px solid var(--color-border-button-inactive);
     background: var(--color-bg-deep);
-    box-shadow: 4px 4px 0 var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-button-shadow);
     transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .achievement:hover {
