@@ -269,6 +269,7 @@
         const projectBackButtons = document.querySelectorAll('[data-project-back]');
         let lastRenderedRoute = null;
         let restoreScrollFrame = null;
+        let scheduleHighlightsTocUpdate = () => {};
 
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
@@ -502,6 +503,7 @@
             if (route.type === 'project') renderProjectRoute(route, scrollIntent);
             else renderTabRoute(route, event, scrollIntent);
             lastRenderedRoute = route;
+            scheduleHighlightsTocUpdate();
         }
 
         function navigateTo(hash, { replace = false, state = null, scrollIntent = 'top' } = {}) {
@@ -584,6 +586,7 @@
             sidebar.classList.toggle('mobile-menu-open', open);
             mobileMenuToggle.setAttribute('aria-expanded', String(open));
             mobileMenuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+            scheduleHighlightsTocUpdate();
         }
 
         mobileMenuToggle.addEventListener('click', () => {
@@ -637,10 +640,30 @@
             const highlights = document.getElementById('highlights');
             const toc = highlights.querySelector('.highlights-toc');
             const list = toc.querySelector('ul');
+            const headings = Array.from(highlights.querySelectorAll('h2'));
+            const floatingToc = document.createElement('nav');
+            floatingToc.className = 'floating-highlights-toc content-sticky-header';
+            floatingToc.setAttribute('aria-label', '핵심 경험 빠른 목차');
+            floatingToc.hidden = true;
+            const floatingList = document.createElement('ul');
+            const previous = document.createElement('button');
+            const next = document.createElement('button');
+            previous.type = next.type = 'button';
+            previous.className = next.className = 'floating-toc-scroll';
+            previous.textContent = '‹';
+            next.textContent = '›';
+            previous.setAttribute('aria-label', '목차 왼쪽으로 이동');
+            next.setAttribute('aria-label', '목차 오른쪽으로 이동');
+            floatingToc.append(previous, floatingList, next);
+            document.body.appendChild(floatingToc);
+            const compactButtons = [];
+            let updateFrame = null;
+            let activeIndex = -1;
+            const floatingHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-header-height'));
             let scrollFrame = null;
             list.replaceChildren();
 
-            highlights.querySelectorAll('h2').forEach(heading => {
+            headings.forEach(heading => {
                 const item = document.createElement('li');
                 const button = document.createElement('button');
                 button.type = 'button';
@@ -652,7 +675,7 @@
                     const getTargetTop = () => {
                         const viewportTop = window.visualViewport?.offsetTop || 0;
                         const headerHeight = mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0;
-                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - headerHeight - 32);
+                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - headerHeight - floatingHeight - 32);
                     };
                     const arrive = () => {
                         window.scrollTo({ top: getTargetTop(), behavior: 'instant' });
@@ -691,8 +714,97 @@
                 });
                 item.appendChild(button);
                 list.appendChild(item);
+                const compactItem = document.createElement('li');
+                const compactButton = document.createElement('button');
+                compactButton.type = 'button';
+                compactButton.textContent = heading.textContent.trim();
+                compactButton.addEventListener('click', () => {
+                    activeIndex = -1;
+                    button.click();
+                    scheduleHighlightsTocUpdate();
+                });
+                compactItem.appendChild(compactButton);
+                floatingList.appendChild(compactItem);
+                compactButtons.push(compactButton);
             });
             toc.hidden = list.children.length === 0;
+
+            const updateScrollButtons = () => {
+                previous.disabled = floatingList.scrollLeft <= 1;
+                next.disabled = floatingList.scrollLeft + floatingList.clientWidth >= floatingList.scrollWidth - 1;
+            };
+            const scrollList = direction => {
+                floatingList.scrollBy({
+                    left: direction * floatingList.clientWidth * 0.7,
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+                });
+            };
+            previous.addEventListener('click', () => scrollList(-1));
+            next.addEventListener('click', () => scrollList(1));
+            floatingList.addEventListener('scroll', updateScrollButtons, { passive: true });
+            const update = () => {
+                updateFrame = null;
+                const headerHeight = mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0;
+                const visible = highlights.classList.contains('active') && !toc.hidden
+                    && toc.getBoundingClientRect().bottom <= headerHeight
+                    && !(mobileMenuMedia.matches && sidebar.classList.contains('mobile-menu-open'));
+                floatingToc.hidden = !visible;
+                if (!visible) {
+                    activeIndex = -1;
+                    return;
+                }
+                floatingToc.style.setProperty('--sticky-header-top', `${headerHeight}px`);
+                let current = 0;
+                headings.forEach((heading, index) => {
+                    if (heading.getBoundingClientRect().top <= headerHeight + floatingHeight + 48) current = index;
+                });
+                compactButtons.forEach((button, index) => {
+                    if (index === current) button.setAttribute('aria-current', 'location');
+                    else button.removeAttribute('aria-current');
+                });
+                if (activeIndex !== current) {
+                    compactButtons.forEach(button => button.style.removeProperty('max-width'));
+                    const button = compactButtons[current];
+                    const nextButton = compactButtons[current + 1];
+                    const gap = parseFloat(getComputedStyle(floatingList).columnGap) || 0;
+                    const available = floatingList.clientWidth - 6;
+                    // 좁은 화면에서도 현재 항목과 다음 항목을 함께 보여줍니다.
+                    if (nextButton && button.offsetWidth + nextButton.offsetWidth + gap > available) {
+                        const nextWidth = Math.min(nextButton.offsetWidth, available * 0.45);
+                        nextButton.style.maxWidth = `${nextWidth}px`;
+                        button.style.maxWidth = `${available - nextWidth - gap}px`;
+                    } else if (!nextButton) {
+                        button.style.maxWidth = `${available}px`;
+                    }
+                    const listRect = floatingList.getBoundingClientRect();
+                    const firstRect = button.getBoundingClientRect();
+                    const lastRect = (nextButton || button).getBoundingClientRect();
+                    let shift = 0;
+                    if (lastRect.right > listRect.right - 3) shift = lastRect.right - listRect.right + 3;
+                    else if (firstRect.left < listRect.left + 3) shift = firstRect.left - listRect.left - 3;
+                    if (Math.abs(shift) > 1) {
+                        floatingList.scrollTo({
+                            left: floatingList.scrollLeft + shift,
+                            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+                        });
+                    }
+                    activeIndex = current;
+                }
+                updateScrollButtons();
+            };
+            scheduleHighlightsTocUpdate = () => {
+                if (updateFrame === null) updateFrame = requestAnimationFrame(update);
+            };
+            window.addEventListener('scroll', scheduleHighlightsTocUpdate, { passive: true });
+            window.addEventListener('resize', () => {
+                activeIndex = -1;
+                scheduleHighlightsTocUpdate();
+            });
+            const sizeObserver = new ResizeObserver(scheduleHighlightsTocUpdate);
+            sizeObserver.observe(sidebar);
+            sizeObserver.observe(document.getElementById('content-area'));
+            sizeObserver.observe(toc);
+            scheduleHighlightsTocUpdate();
         }
 
         function populateProjectListTags() {
