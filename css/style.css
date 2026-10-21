@@ -1436,7 +1436,7 @@
     white-space: nowrap;
     cursor: pointer;
 }
-.floating-highlights-toc li button { box-shadow: 2px 2px 0 var(--color-border); overflow: hidden; text-overflow: ellipsis; }
+.floating-highlights-toc li button { flex-shrink: 0; box-shadow: 2px 2px 0 var(--color-border); }
 .floating-highlights-toc button:hover,
 .floating-highlights-toc button[aria-current="location"] { color: var(--color-accent); border-color: var(--color-accent); }
 .floating-highlights-toc button[aria-current="location"] { box-shadow: 2px 2px 0 var(--color-accent); }

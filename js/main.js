@@ -662,7 +662,7 @@
             toc.append(previous, list, next);
             document.body.appendChild(toc);
 
-            const state = { headings: [], buttons: [], activeIndex: -1, updateFrame: null, scrollFrame: null };
+            const state = { headings: [], buttons: [], activeIndex: -1, updateFrame: null, scrollFrame: null, contentAnimation: null };
             const floatingHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-header-height'));
             const updateScrollButtons = () => {
                 previous.disabled = list.scrollLeft <= 1;
@@ -678,12 +678,15 @@
 
             const scrollToHeading = heading => {
                 window.cancelAnimationFrame(state.scrollFrame);
+                state.contentAnimation?.cancel();
                 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const content = heading.closest('.project-detail-body, .tab-content');
                 const getTargetTop = () => {
                     const viewportTop = window.visualViewport?.offsetTop || 0;
                     return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - getHeaderTop() - floatingHeight - 32);
                 };
                 const targetTop = getTargetTop();
+                const enterOffset = targetTop > window.scrollY ? -10 : 10;
                 const maxScrollTop = Math.max(0, (document.scrollingElement?.scrollHeight || document.documentElement.scrollHeight) - window.innerHeight);
                 const headingIndex = state.headings.indexOf(heading);
                 const selectHeading = () => {
@@ -708,6 +711,16 @@
                     window.scrollTo({ top: targetTop, behavior: 'instant' });
                     heading.setAttribute('tabindex', '-1');
                     heading.focus({ preventScroll: true });
+                    if (!reducedMotion && content) {
+                        state.contentAnimation?.cancel();
+                        state.contentAnimation = content.animate(
+                            [
+                                { opacity: 0, transform: `translateY(${enterOffset}px)` },
+                                { opacity: 1, transform: 'none' }
+                            ],
+                            { duration: 220, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+                        );
+                    }
                     state.scrollFrame = null;
                 };
                 if (reducedMotion) {
@@ -716,26 +729,26 @@
                     return;
                 }
 
-                const startTop = window.scrollY;
-                const distance = getTargetTop() - startTop;
-                const previewDistance = Math.sign(distance) * Math.min(120, Math.abs(distance) * 0.15);
+                if (content) {
+                    state.contentAnimation = content.animate(
+                        [{ opacity: 1 }, { opacity: 0 }],
+                        { duration: 80, easing: 'ease-out', fill: 'forwards' }
+                    );
+                }
                 let startTime = null;
                 const animate = timestamp => {
                     if (!isEnabled() || !state.headings.includes(heading)) {
+                        state.contentAnimation?.cancel();
                         state.scrollFrame = null;
                         return;
                     }
                     if (startTime === null) startTime = timestamp;
-                    const progress = Math.min(1, (timestamp - startTime) / 140);
+                    const progress = Math.min(1, (timestamp - startTime) / 80);
                     if (progress === 1) {
                         arrive();
                         scheduleUpdate();
                         return;
                     }
-                    window.scrollTo({
-                        top: startTop + previewDistance * (1 - (1 - progress) ** 2),
-                        behavior: 'instant'
-                    });
                     state.scrollFrame = window.requestAnimationFrame(animate);
                 };
                 state.scrollFrame = window.requestAnimationFrame(animate);
@@ -761,24 +774,17 @@
                     else button.removeAttribute('aria-current');
                 });
                 if (state.activeIndex !== current) {
-                    state.buttons.forEach(button => button.style.removeProperty('max-width'));
                     const button = state.buttons[current];
                     const nextButton = state.buttons[current + 1];
-                    const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
-                    const available = list.clientWidth - 6;
-                    // 좁은 화면에서도 현재 항목과 다음 항목을 함께 보여줍니다.
-                    if (nextButton && button.offsetWidth + nextButton.offsetWidth + gap > available) {
-                        const nextWidth = Math.min(nextButton.offsetWidth, available * 0.45);
-                        nextButton.style.maxWidth = `${nextWidth}px`;
-                        button.style.maxWidth = `${available - nextWidth - gap}px`;
-                    } else if (!nextButton) {
-                        button.style.maxWidth = `${available}px`;
-                    }
                     const listRect = list.getBoundingClientRect();
                     const firstRect = button.getBoundingClientRect();
-                    const lastRect = (nextButton || button).getBoundingClientRect();
+                    const nextRect = nextButton?.getBoundingClientRect();
+                    // 두 항목이 온전히 들어갈 때만 다음 항목까지 함께 보여줍니다.
+                    const lastRect = nextRect && nextRect.right - firstRect.left <= listRect.width - 6
+                        ? nextRect : firstRect;
                     let shift = 0;
-                    if (lastRect.right > listRect.right - 3) shift = lastRect.right - listRect.right + 3;
+                    if (firstRect.width > listRect.width - 6) shift = firstRect.left - listRect.left - 3;
+                    else if (lastRect.right > listRect.right - 3) shift = lastRect.right - listRect.right + 3;
                     else if (firstRect.left < listRect.left + 3) shift = firstRect.left - listRect.left - 3;
                     if (Math.abs(shift) > 1) {
                         list.scrollTo({
