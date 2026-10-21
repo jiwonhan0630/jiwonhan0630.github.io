@@ -932,6 +932,7 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                         <dl id="project-detail-metadata" class="project-detail-metadata">
                             <div><dt>분류</dt><dd id="project-detail-category"></dd></div>
                             <div><dt>플랫폼</dt><dd id="project-detail-platform"></dd></div>
+                            <div hidden><dt>개발 인원</dt><dd id="project-detail-team-size"></dd></div>
                             <div><dt>기술 태그</dt><dd id="project-detail-tags" class="project-detail-tags"></dd></div>
                         </dl>
                     </div>
@@ -1173,7 +1174,7 @@ flowchart TB
         <p>WPF의 논리 좌표를 화면 캡처에 사용하는 실제 픽셀 좌표로 변환하기 위해 창의 DPI 배율을 반영했습니다. 오버레이가 활성화되면 Win32 API로 확장 창 스타일에 WS_EX_TRANSPARENT와 WS_EX_LAYERED를 적용해 마우스 입력이 아래 창으로 전달되도록 구현했습니다.</p>
     </template>
 
-    <template id="temp-projectpz" data-category="3D 실시간 턴제 전략 게임" data-platform="PC/Mobile(Android·iOS)" data-title="Project PZ" data-period="2024 - 2025" data-tags="UnityEngine,에디터 확장,UniTask,Addressables">
+    <template id="temp-projectpz" data-team-size="약 10명" data-category="3D 실시간 턴제 전략 게임" data-platform="PC/Mobile(Android·iOS)" data-title="Project PZ" data-period="2024 - 2025" data-tags="UnityEngine,에디터 확장,UniTask,Addressables">
         <h2>담당 업무</h2>
         <ul>
             <li>레벨 디자인 에디터 및 파츠 프리뷰 기능 구현</li>
@@ -1217,7 +1218,7 @@ flowchart TB
         <div id="project-troubleshoot-target"></div>
     </template>
 
-    <template id="temp-projectc" data-category="3D 실시간 산업 데이터 기반 게이미피케이션 게임" data-platform="PC / Mobile(Android·iOS)" data-title="Project C" data-period="2022 - 2024" data-tags="UnityEngine,에디터 확장,UniTask,MariaDB">
+    <template id="temp-projectc" data-team-size="약 10명" data-category="3D 실시간 산업 데이터 기반 게이미피케이션 게임" data-platform="PC / Mobile(Android·iOS)" data-title="Project C" data-period="2022 - 2024" data-tags="UnityEngine,에디터 확장,UniTask,MariaDB">
         <h2>담당 업무</h2>
         <ul>
             <li>모빌리티·ICT 기업과 협업</li>
@@ -1258,7 +1259,7 @@ flowchart TB
         <div id="project-troubleshoot-target-c"></div>
     </template>
 
-    <template id="temp-projecti" data-category="3D 횡스크롤 슈팅 플랫포머 게임" data-platform="PC" data-title="Project I" data-period="2022" data-tags="UnityEngine,에디터 확장,Cinemachine,Timeline,StateMachineBehaviour,Animator">
+    <template id="temp-projecti" data-team-size="12명" data-category="3D 횡스크롤 슈팅 플랫포머 게임" data-platform="PC" data-title="Project I" data-period="2022" data-tags="UnityEngine,에디터 확장,Cinemachine,Timeline,StateMachineBehaviour,Animator">
         <h2>담당 업무</h2>
         <ul>
             <li>StateMachineBehaviour를 활용한 보스 몬스터 FSM 설계 및 행동 패턴 연동</li>
@@ -1306,7 +1307,7 @@ flowchart TB
         </div>
     </template>
 
-    <template id="temp-projectwd" data-category="2D 캐주얼 워드 퍼즐 게임" data-platform="Mobile(Android)" data-title="Project WD" data-period="2024" data-tags="UnityEngine,DOTween">
+    <template id="temp-projectwd" data-team-size="약 10명" data-category="2D 캐주얼 워드 퍼즐 게임" data-platform="Mobile(Android)" data-title="Project WD" data-period="2024" data-tags="UnityEngine,DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>한글 조합 라이브러리를 활용한 단어 조합 기반의 인게임 플레이 구현</li>
@@ -1315,7 +1316,7 @@ flowchart TB
         </ul>
     </template>
 
-    <template id="temp-suwon_museum" data-category="박물관 도슨트 애플리케이션" data-platform="Mobile(Android·iOS)" data-title="수원시 박물관 도슨트 시스템" data-period="2022" data-tags="UnityEngine,DOTween">
+    <template id="temp-suwon_museum" data-team-size="약 10명" data-category="박물관 도슨트 애플리케이션" data-platform="Mobile(Android·iOS)" data-title="수원시 박물관 도슨트 시스템" data-period="2022" data-tags="UnityEngine,DOTween">
         <h2>담당 업무</h2>
         <ul>
             <li>박물관 유물 정보를 활용한 짝맞추기, 유령 길찾기 등의 게임 콘텐츠 제작</li>
@@ -1325,7 +1326,7 @@ flowchart TB
         </ul>
     </template>
 
-    <template id="temp-projectt" data-category="2D 퍼즐 플랫포머 게임" data-platform="PC" data-title="Project T" data-period="2021" data-tags="UnityEngine,Cinemachine,StateMachineBehaviour,Animator">
+    <template id="temp-projectt" data-team-size="약 10명" data-category="2D 퍼즐 플랫포머 게임" data-platform="PC" data-title="Project T" data-period="2021" data-tags="UnityEngine,Cinemachine,StateMachineBehaviour,Animator">
         <h2>담당 업무</h2>
         <ul>
             <li>기상 변화에 따른 인게임 물리 상호작용 구현</li>
@@ -1381,7 +1382,7 @@ flowchart TB
         </div>
     </template>
 
-    <template id="temp-projectmg" data-category="2D 핸드 트래킹 탄막 게임" data-platform="PC" data-title="Project MG" data-period="2026" data-tags="UnityEngine,MediaPipe,LowLevelPhysics2D,SteamWorks">
+    <template id="temp-projectmg" data-team-size="4명" data-category="2D 핸드 트래킹 탄막 게임" data-platform="PC" data-title="Project MG" data-period="2026" data-tags="UnityEngine,MediaPipe,LowLevelPhysics2D,SteamWorks">
         <h2>담당 업무</h2>
         <ul>
             <li>MediaPipe 기반 실시간 손 트래킹 연동</li>

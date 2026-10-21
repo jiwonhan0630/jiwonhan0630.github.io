@@ -264,6 +264,7 @@
         const projectDetailMetadata = document.getElementById('project-detail-metadata');
         const projectDetailCategory = document.getElementById('project-detail-category');
         const projectDetailPlatform = document.getElementById('project-detail-platform');
+        const projectDetailTeamSize = document.getElementById('project-detail-team-size');
         const projectDetailTags = document.getElementById('project-detail-tags');
         const projectDetailContent = document.getElementById('project-detail-content');
         const projectBackButtons = document.querySelectorAll('[data-project-back]');
@@ -423,6 +424,8 @@
             projectDetailBodyTitle.textContent = template.dataset.title;
             projectDetailCategory.textContent = template.dataset.category;
             projectDetailPlatform.textContent = template.dataset.platform;
+            projectDetailTeamSize.textContent = template.dataset.teamSize || '';
+            projectDetailTeamSize.parentElement.hidden = !template.dataset.teamSize;
             projectDetailMetadata.hidden = false;
             projectDetailPeriod.textContent = template.dataset.period || '';
             projectDetailPeriod.hidden = !template.dataset.period;

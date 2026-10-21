@@ -843,6 +843,14 @@
             font-family: inherit;
             transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
         }
+        .next-tab-nav > .next-tab-btn {
+            width: 50%;
+            min-height: 60px;
+            justify-content: space-between;
+        }
+        @media screen and (max-width: 640px) {
+            .next-tab-nav > .next-tab-btn { width: 100%; }
+        }
         .next-tab-btn:hover {
             box-shadow: 5px 5px 0 var(--color-accent);
             transform: translate(-2px, -2px);
@@ -901,7 +909,7 @@
 .about-statement > span { display: block; }
 .about-audience { font-size: 0.48em; font-weight: 600; letter-spacing: -0.045em; margin-bottom: 0.25em; }
 .about-statement-accent { color: var(--color-accent); }
-.about-hero-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding-bottom: 2.5rem; }
+.about-hero-footer { display: flex; flex-direction: column; align-items: flex-start; gap: 1.75rem; padding-bottom: 2.5rem; }
 .about-hero-footer p { margin: 0; font-size: 1rem; line-height: 1.85; letter-spacing: -0.03em; }
 .about-hero-footer strong { font-weight: 500; }
 .about-cta {
@@ -1112,6 +1120,7 @@
 }
 
 /* 보유 기술은 숙련도 수치 대신 실제 활용 경험을 보여줍니다. */
+.about-skills { border-top: 0; }
 .about-skills > .sectionbox-header { margin-bottom: 2.5rem; }
 .about-skills > .sectionbox-header h2 { margin-bottom: 0.5rem; letter-spacing: -0.05em; }
 .about-skills > section + section { margin-top: 3rem; }
@@ -1131,7 +1140,6 @@
     padding: 1.5rem;
     border: 1px solid var(--color-border-button-inactive);
     background: var(--color-bg-deep);
-    box-shadow: 3px 3px 0 var(--color-border);
 }
 .about-skills .skill-list h4 {
     margin: 0 0 0.65rem;
@@ -1176,6 +1184,7 @@
 }
 .project-detail-metadata { margin-top: 2rem; }
 .project-detail-metadata > div { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: 1rem; margin-top: 1rem; align-items: baseline; }
+.project-detail-metadata > [hidden] { display: none; }
 .project-detail-metadata dt { color: var(--color-text-secondary); font-size: 0.9rem; }
 .project-detail-metadata dd { margin: 0; font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; }
 .project-detail-overview .project-detail-tags { margin: 0; }
