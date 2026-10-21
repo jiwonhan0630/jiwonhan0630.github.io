@@ -79,7 +79,7 @@
 
             const viewport = document.createElement('div');
             viewport.className = 'mermaid-viewport';
-            diagram.insertBefore(viewport, svg);
+            svg.before(viewport);
             viewport.appendChild(svg);
 
             const panSurface = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
