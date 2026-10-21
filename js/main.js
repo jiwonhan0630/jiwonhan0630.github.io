@@ -371,8 +371,9 @@
         }
 
         function getProjectTechTags(tagsCsv) {
-            return tagsCsv.split(',').map(tag => tag.trim())
-                .filter(tag => tag && !/^(?:PC|Mobile|Windows)(?:$|[(/])/.test(tag));
+            return tagsCsv.split(',')
+                .map(tag => tag.trim())
+                .filter(Boolean);
         }
 
         function renderProjectTags(tagsCsv) {
