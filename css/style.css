@@ -1228,6 +1228,8 @@
 .project-detail-content > :last-child { margin-bottom: 0; }
 
 /* 경험 본문은 제목과 여백으로 정보의 위계를 구분합니다. */
+#highlights > hr { display: none; }
+#highlights > .sectionbox { border-top: 0; padding-top: 3.5rem; }
 #highlights > .sectionbox > .sectionbox-header h2 {
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: 800;
@@ -1578,8 +1580,8 @@
     background: var(--color-border-button-inactive);
     transform: translateX(-50%);
 }
-#about .about-achievements, #about .about-featured-projects, #about .about-principles { position: relative; }
-#about .about-achievements::before, #about .about-featured-projects::before, #about .about-principles::before {
+#about .about-achievements, #about .about-featured-projects, #about .about-principles, #highlights > .sectionbox { position: relative; }
+#about .about-achievements::before, #about .about-featured-projects::before, #about .about-principles::before, #highlights > .sectionbox::before {
     content: "";
     position: absolute;
     top: 0;
