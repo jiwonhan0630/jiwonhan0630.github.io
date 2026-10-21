@@ -94,6 +94,11 @@
         }
         
         .profile-info .logo {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
             font-size: 1.8rem;
             font-weight: bold;
             letter-spacing: -0.03em;
@@ -101,7 +106,11 @@
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
+            text-align: left;
+            cursor: pointer;
         }
+        .profile-info .logo:hover { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.2em; }
+        .profile-info .logo:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
         .profile-info .intro {
             color: var(--color-text-secondary);
             margin-bottom: 1.5rem;
@@ -915,13 +924,14 @@
 .about-hero-footer strong { font-weight: 500; }
 .about-cta {
     display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem;
-    padding: 1.1rem 1.4rem; border: 1px solid var(--color-accent); background: var(--color-accent);
-    color: var(--color-bg-deep); font: inherit; font-size: 0.9rem; font-weight: 750; cursor: pointer;
+    padding: 1.1rem 1.4rem; border: 1px solid var(--color-border-button-inactive); background: var(--color-bg-deep);
+    color: var(--color-text-primary); font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
     border-radius: 0;
     box-shadow: 4px 4px 0 var(--color-border-button-inactive);
-    transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .about-cta:hover {
+    border-color: var(--color-accent);
     background: var(--color-bg-deep);
     color: var(--color-accent);
     box-shadow: 6px 6px 0 var(--color-accent);
@@ -937,9 +947,9 @@
 }
 .about-cta:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
 .about-hero-index { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--color-border-button-inactive); padding: 1rem 0; }
-.about-principles { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; padding: 7rem 0; border-bottom: 1px solid var(--color-border-button-inactive); margin-bottom: 4rem; }
+.about-principles { padding: 7rem 0; border-bottom: 1px solid var(--color-border-button-inactive); margin-bottom: 4rem; }
 .about-kicker { color: var(--color-accent); }
-.about-section-heading h2 { margin-top: 1.25rem; font-size: clamp(2rem, 3vw, 3.25rem); line-height: 1.3; letter-spacing: -0.055em; }
+.about-section-heading h2 { margin: 0 0 2rem; font-size: clamp(2rem, 3vw, 3.25rem); line-height: 1.3; letter-spacing: -0.055em; }
 .about-principle { display: flex; gap: 1.2rem; padding: 1.75rem 0; border-top: 1px solid var(--color-border-button-inactive); }
 .about-principle:first-child { border-top: 0; }
 .about-principle-number { color: var(--color-accent); font-size: 0.75rem; padding-top: 0.4rem; }
@@ -960,7 +970,7 @@
     .about-hero-footer p { font-size: 1rem; }
     .about-cta { width: 100%; }
     .about-hero-index { font-size: 0.6rem; letter-spacing: 0.04em; }
-    .about-principles { grid-template-columns: 1fr; gap: 1.5rem; padding: 4rem 0; margin-bottom: 3rem; }
+    .about-principles { padding: 4rem 0; margin-bottom: 3rem; }
 }
 
 /* 소개의 이력은 박스 대신 구분선과 여백으로 정리합니다. */
@@ -1383,6 +1393,36 @@
 }
 .floating-highlights-toc ul::-webkit-scrollbar { display: none; }
 .floating-highlights-toc li { flex-shrink: 0; margin: 0; }
+.floating-highlights-toc li.project-detail-toc-group { display: flex; align-items: center; }
+.floating-highlights-toc ul.project-detail-toc-children {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0.6rem;
+    min-width: auto;
+    margin: 0;
+    padding: 0 0 0 0.8rem;
+    overflow: visible;
+}
+.floating-highlights-toc ul.project-detail-toc-children::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.8rem;
+    height: 1px;
+    background: var(--color-border-button-inactive);
+    content: "";
+}
+.floating-highlights-toc ul.project-detail-toc-children > li { position: relative; }
+.floating-highlights-toc ul.project-detail-toc-children > li + li::before {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 0.6rem;
+    height: 1px;
+    background: var(--color-border-button-inactive);
+    content: "";
+}
 .floating-highlights-toc button {
     min-height: 32px;
     padding: 0.25rem 0.8rem;
@@ -1400,6 +1440,7 @@
 .floating-highlights-toc button:hover,
 .floating-highlights-toc button[aria-current="location"] { color: var(--color-accent); border-color: var(--color-accent); }
 .floating-highlights-toc button[aria-current="location"] { box-shadow: 2px 2px 0 var(--color-accent); }
+
 .floating-highlights-toc button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -4px; }
 .floating-highlights-toc .floating-toc-scroll {
     position: absolute;
@@ -1504,26 +1545,11 @@
 .achievement-cases > li:last-child { padding-bottom: 0; }
 .achievement-cases h4 { margin: 0 0 0.5rem; color: var(--color-text-primary); font-size: 1.15rem; font-weight: 700; line-height: 1.55; letter-spacing: -0.035em; overflow-wrap: anywhere; }
 .achievement-cases p { margin: 0; font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; }
-.achievement-case-source { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; margin-top: 0.6rem; color: var(--color-accent); font-size: 0.85rem; font-weight: 600; line-height: 1.6; text-decoration: none; }
+.achievement-case-source { display: flex; justify-content: flex-start; align-items: center; gap: 0.5rem; margin-top: 0.6rem; color: var(--color-accent); font-size: 1rem; font-weight: 600; line-height: 1.6; text-decoration: none; }
 .achievement-case-source:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .achievement-case-source:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.about-projects-heading { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.25rem; }
-.about-projects-all {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid var(--color-border-button-inactive);
-    border-radius: 0;
-    background: var(--color-bg-deep);
-    color: var(--color-text-primary);
-    box-shadow: 2px 2px 0 var(--color-border);
-    font: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-.about-projects-all:hover { color: var(--color-accent); border-color: var(--color-accent); box-shadow: 2px 2px 0 var(--color-accent); }
-.about-projects-all:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+.about-achievements-cta { margin-top: 2rem; }
+.about-projects-footer { margin-top: 2rem; }
 #about .featured-project { padding: 1.75rem; }
 .featured-project-latest .project-card-content { grid-template-columns: minmax(0, 1fr) auto; }
 .featured-project-latest .featured-project-badge { grid-column: 1; grid-row: 1; justify-self: start; }

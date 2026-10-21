@@ -26,7 +26,7 @@
         <aside id="sidebar">
             <div class="profile-info">
 
-                <div class="logo">한지원</div>
+                <button type="button" class="logo" data-tab="about" aria-label="소개 페이지 처음으로">한지원</button>
                 <button type="button" class="mobile-menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar-menu">
                     <span class="material-symbols-outlined menu-open-icon" aria-hidden="true">menu</span>
                     <span class="material-symbols-outlined menu-close-icon" aria-hidden="true">close</span>
@@ -58,14 +58,13 @@
                         <span class="about-statement about-statement-accent"><span class="about-audience">동료에겐</span><span>즐거운 작업환경을.</span></span>
                     </h1>
                     <div class="about-hero-footer">
-                        <p>쓰는 사람도, 만드는 사람도 즐거울 수 있도록!<br>로딩 시간을 96% 단축하고, 작업 프로세스를 개선해 온<br><strong>클라이언트 프로그래머 한지원입니다.</strong></p>
-                        <button type="button" class="about-cta" data-tab="highlights">핵심 경험 살펴보기 <span aria-hidden="true">↗</span></button>
+                        <p>쓰는 사람도, 만드는 사람도 즐거울 수 있도록!<br>에디터 확장부터 외부 기업 협업까지 경험한<br><strong>클라이언트 프로그래머 한지원입니다.</strong></p>
                     </div>
                 </header>
 
                 <section class="about-achievements" aria-labelledby="about-achievements-title">
                     <div class="about-showcase-heading">
-                        <h2 id="about-achievements-title">대표 성과</h2>
+                        <h2 id="about-achievements-title">주요 성과</h2>
                         <p>성능부터 작업 흐름까지, 더 나은 경험을 만든 과정입니다.</p>
                     </div>
                     <div class="achievement-list">
@@ -95,9 +94,9 @@
                                 <p class="achievement-intro">UI 이벤트 연결, 이름 붙이기, 데이터 변환까지. 손으로 반복하던 작업을 자동화하고, 팀원이 익숙한 Unity 작업 환경 안에서 바로 쓰는 도구로 만들었습니다.</p>
                                 <ul class="achievement-cases">
                                     <li><h4>UI를 바꾸면, 이벤트도 함께 연결됩니다.</h4><p>UI Builder의 element class와 코드의 Attribute를 연결해 UIToolkit 이벤트 바인딩을 자동화했습니다.</p></li>
-                                    <li><h4>네이밍 규칙을 외우고, 다시 입력하는 대신.</h4><p>컴포넌트와 참조 리소스, 에셋 타입을 분석해 이름을 생성하고 일괄 적용하는 Naming Tool을 만들었습니다.</p></li>
-                                    <li><h4>CSV를 읽는 코드도 매번 만들 필요 없이.</h4><p>컬렉션과 오브젝트로 자동 변환하는 유틸리티를 구현했습니다. 복잡한 자료형도 컨버터를 확장해 처리합니다.</p></li>
-                                    <li><h4>에셋 관리도 팀이 같은 방식으로.</h4><p>Addressables 래퍼와 인스펙터로 참조·로드·해제 흐름을 정리하고, 예제와 가이드라인을 공유했습니다.</p></li>
+                                    <li><h4>네이밍 규칙을 외우고, 다시 입력하는 대신</h4><p>컴포넌트와 참조 리소스, 에셋 타입을 분석해 이름을 생성하고 일괄 적용하는 Naming Tool을 만들었습니다.</p></li>
+                                    <li><h4>CSV를 읽는 코드도 매번 만들 필요 없이</h4><p>컬렉션과 오브젝트로 자동 변환하는 유틸리티를 구현했습니다. 복잡한 자료형도 컨버터를 확장해 처리합니다.</p></li>
+                                    <li><h4>에셋 관리도 팀이 같은 방식으로</h4><p>Addressables 래퍼와 인스펙터로 참조·로드·해제 흐름을 정리하고, 예제와 가이드라인을 공유했습니다.</p></li>
                                 </ul>
                             </div>
                         </details>
@@ -107,8 +106,8 @@
                                 <span class="achievement-summary"><strong>외부 라이브러리·데이터 활용</strong></span>
                             </summary>
                             <div class="achievement-content">
-                                <h3 class="achievement-pitch">손짓, 소리, 산업 데이터까지.<br><span>콘텐츠를 움직이는 힘으로.</span></h3>
-                                <p class="achievement-intro">외부 기술을 실제 사용자 경험으로 연결합니다. 입력 수집과 데이터 전달부터 콘텐츠의 반응까지, 기능이 동작하는 흐름을 구현했습니다.</p>
+                                <h3 class="achievement-pitch">손짓, 소리, 산업 데이터까지,<br><span>콘텐츠를 움직이는 힘으로</span></h3>
+                                <p class="achievement-intro">외부 라이브러리 및 데이터를 활용한 다양한 경험</p>
                                 <ul class="achievement-cases">
                                     <li><h4>손짓으로 잡고, 던지고, 피하는 게임 조작</h4><p>MediaPipe의 손 좌표를 Named Pipe로 받아 물리 조작과 제스처 판정에 연결했습니다.</p><a class="achievement-case-source" href="#/projects/projectmg" data-project-id="projectmg">Project MG <span aria-hidden="true">→</span></a></li>
                                     <li><h4>비염 증상으로 화면을 격렬하게 흔들기</h4><p>NAudio로 소리를 수집하고 ONNX Runtime으로 분석해, 재채기 감지와 방향에 따른 화면 효과를 구현했습니다.</p><a class="achievement-case-source" href="#/projects/achueoheu" data-project-id="achueoheu">에취어흐 <span aria-hidden="true">→</span></a></li>
@@ -117,12 +116,14 @@
                             </div>
                         </details>
                     </div>
+                    <div class="about-achievements-cta">
+                        <button type="button" class="about-cta" data-tab="highlights">더 많은 내용은 핵심 경험 페이지로 <span aria-hidden="true">→</span></button>
+                    </div>
                 </section>
 
                 <section class="about-featured-projects" aria-labelledby="about-projects-title">
-                    <div class="about-showcase-heading about-projects-heading">
-                        <div><h2 id="about-projects-title">대표 프로젝트</h2><p>사용자 경험과 작업 환경을 함께 고민한 프로젝트입니다.</p></div>
-                        <button type="button" class="about-projects-all" data-tab="projects">전체 프로젝트 <span aria-hidden="true">→</span></button>
+                    <div class="about-showcase-heading">
+                        <div><h2 id="about-projects-title">주요 프로젝트</h2></div>
                     </div>
                     <div class="project-list featured-project-list">
                         <button type="button" class="project-card featured-project featured-project-latest" data-project-id="achueoheu">
@@ -160,10 +161,13 @@
                             <span class="icon-container"><span class="project-list-arrow" aria-hidden="true">↗</span></span>
                         </button>
                     </div>
+                    <div class="about-projects-footer">
+                        <button type="button" class="about-cta" data-tab="projects">더 많은 내용은 프로젝트 목록으로 <span aria-hidden="true">→</span></button>
+                    </div>
                 </section>
 
                 <section class="about-principles" aria-labelledby="about-principles-title">
-                    <div class="about-section-heading"><h2 id="about-principles-title">저는 이렇게<br>일합니다.</h2></div>
+                    <div class="about-section-heading"><h2 id="about-principles-title">저는 이렇게 일합니다.</h2></div>
                     <div class="about-principle-list">
                         <article class="about-principle"><span class="about-principle-number">01</span><div><h3>불편을 줄여나갑니다</h3><p>반복되는 불편과 병목을 줄여 팀의 작업 과정을 원활하게 만드는 데서 보람을 느낍니다. 팀이 창작 활동에 집중하고 콘텐츠의 완성도를 높일 수 있도록 프로젝트에 필요한 도구와 유틸리티, Unity 에디터 확장 기능을 구현합니다.</p></div></article>
                         <article class="about-principle"><span class="about-principle-number">02</span><div><h3>더 나은 방식을 함께 찾습니다</h3><p>서로의 관점과 경험을 존중하며 협력할 때 더 좋은 결과가 만들어진다고 생각합니다. 작업 과정에서 동료와 개선점을 주고받으며 함께 고민하고, 서로가 더 나은 방법을 찾아갈 수 있도록 노력합니다.</p></div></article>

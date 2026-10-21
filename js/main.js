@@ -271,6 +271,8 @@
         let lastRenderedRoute = null;
         let restoreScrollFrame = null;
         let scheduleHighlightsTocUpdate = () => {};
+        let scheduleProjectDetailTocUpdate = () => {};
+        let projectDetailTocController = null;
 
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
@@ -495,6 +497,7 @@
 
             if (!renderProject(route.projectId)) return;
             if (route.elementId) renderHighlightDetail(route.elementId, route.projectId);
+            buildProjectDetailToc(!route.elementId);
             renderMermaidDiagrams(projectDetailContent);
 
             document.title = `${projectDetailTitle.textContent} | Jiwon Han Portfolio`;
@@ -508,6 +511,7 @@
             else renderTabRoute(route, event, scrollIntent);
             lastRenderedRoute = route;
             scheduleHighlightsTocUpdate();
+            scheduleProjectDetailTocUpdate();
         }
 
         function navigateTo(hash, { replace = false, state = null, scrollIntent = 'top' } = {}) {
@@ -640,16 +644,13 @@
 
         window.addEventListener('hashchange', event => renderRoute(event));
         window.addEventListener('popstate', event => renderRoute(event));
-        function buildHighlightsToc() {
-            const highlights = document.getElementById('highlights');
-            const toc = highlights.querySelector('.highlights-toc');
-            const list = toc.querySelector('ul');
-            const headings = Array.from(highlights.querySelectorAll('h2'));
-            const floatingToc = document.createElement('nav');
-            floatingToc.className = 'floating-highlights-toc content-sticky-header';
-            floatingToc.setAttribute('aria-label', '핵심 경험 빠른 목차');
-            floatingToc.hidden = true;
-            const floatingList = document.createElement('ul');
+        function createStickyToc({ className, ariaLabel, getHeadings, getHeaderTop, isEnabled, shouldShow, observeElements = [] }) {
+            const toc = document.createElement('nav');
+            toc.className = `${className} content-sticky-header`;
+            toc.setAttribute('aria-label', ariaLabel);
+            toc.hidden = true;
+
+            const list = document.createElement('ul');
             const previous = document.createElement('button');
             const next = document.createElement('button');
             previous.type = next.type = 'button';
@@ -658,120 +659,113 @@
             next.textContent = '›';
             previous.setAttribute('aria-label', '목차 왼쪽으로 이동');
             next.setAttribute('aria-label', '목차 오른쪽으로 이동');
-            floatingToc.append(previous, floatingList, next);
-            document.body.appendChild(floatingToc);
-            const compactButtons = [];
-            let updateFrame = null;
-            let activeIndex = -1;
+            toc.append(previous, list, next);
+            document.body.appendChild(toc);
+
+            const state = { headings: [], buttons: [], activeIndex: -1, updateFrame: null, scrollFrame: null };
             const floatingHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-header-height'));
-            let scrollFrame = null;
-            list.replaceChildren();
-
-            headings.forEach(heading => {
-                const item = document.createElement('li');
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.textContent = heading.textContent.trim();
-                button.addEventListener('click', () => {
-                    window.cancelAnimationFrame(scrollFrame);
-                    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                    // 제목의 실제 위치에서 보이는 화면 상단과 이동 여유를 뺀다.
-                    const getTargetTop = () => {
-                        const viewportTop = window.visualViewport?.offsetTop || 0;
-                        const headerHeight = mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0;
-                        return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - headerHeight - floatingHeight - 32);
-                    };
-                    const arrive = () => {
-                        window.scrollTo({ top: getTargetTop(), behavior: 'instant' });
-                        heading.setAttribute('tabindex', '-1');
-                        heading.focus({ preventScroll: true });
-                        scrollFrame = null;
-                    };
-                    if (reducedMotion) {
-                        arrive();
-                        return;
-                    }
-
-                    const startTop = window.scrollY;
-                    const distance = getTargetTop() - startTop;
-                    const previewDistance = Math.sign(distance) * Math.min(120, Math.abs(distance) * 0.15);
-                    let startTime = null;
-                    // 자동 스크롤 대신 짧은 이동을 직접 그린 뒤 목적지로 이동한다.
-                    const animate = timestamp => {
-                        if (!highlights.classList.contains('active')) {
-                            scrollFrame = null;
-                            return;
-                        }
-                        if (startTime === null) startTime = timestamp;
-                        const progress = Math.min(1, (timestamp - startTime) / 140);
-                        if (progress === 1) {
-                            arrive();
-                            return;
-                        }
-                        window.scrollTo({
-                            top: startTop + previewDistance * (1 - (1 - progress) ** 2),
-                            behavior: 'instant'
-                        });
-                        scrollFrame = window.requestAnimationFrame(animate);
-                    };
-                    scrollFrame = window.requestAnimationFrame(animate);
-                });
-                item.appendChild(button);
-                list.appendChild(item);
-                const compactItem = document.createElement('li');
-                const compactButton = document.createElement('button');
-                compactButton.type = 'button';
-                compactButton.textContent = heading.textContent.trim();
-                compactButton.addEventListener('click', () => {
-                    activeIndex = -1;
-                    button.click();
-                    scheduleHighlightsTocUpdate();
-                });
-                compactItem.appendChild(compactButton);
-                floatingList.appendChild(compactItem);
-                compactButtons.push(compactButton);
-            });
-            toc.hidden = list.children.length === 0;
-
             const updateScrollButtons = () => {
-                previous.disabled = floatingList.scrollLeft <= 1;
-                next.disabled = floatingList.scrollLeft + floatingList.clientWidth >= floatingList.scrollWidth - 1;
+                previous.disabled = list.scrollLeft <= 1;
+                next.disabled = list.scrollLeft + list.clientWidth >= list.scrollWidth - 1;
             };
-            const scrollList = direction => {
-                floatingList.scrollBy({
-                    left: direction * floatingList.clientWidth * 0.7,
-                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
-                });
-            };
+            const scrollList = direction => list.scrollBy({
+                left: direction * list.clientWidth * 0.7,
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+            });
             previous.addEventListener('click', () => scrollList(-1));
             next.addEventListener('click', () => scrollList(1));
-            floatingList.addEventListener('scroll', updateScrollButtons, { passive: true });
-            const update = () => {
-                updateFrame = null;
-                const headerHeight = mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0;
-                const visible = highlights.classList.contains('active') && !toc.hidden
-                    && toc.getBoundingClientRect().bottom <= headerHeight
-                    && !(mobileMenuMedia.matches && sidebar.classList.contains('mobile-menu-open'));
-                floatingToc.hidden = !visible;
-                if (!visible) {
-                    activeIndex = -1;
+            list.addEventListener('scroll', updateScrollButtons, { passive: true });
+
+            const scrollToHeading = heading => {
+                window.cancelAnimationFrame(state.scrollFrame);
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const getTargetTop = () => {
+                    const viewportTop = window.visualViewport?.offsetTop || 0;
+                    return Math.max(0, heading.getBoundingClientRect().top + window.scrollY - viewportTop - getHeaderTop() - floatingHeight - 32);
+                };
+                const targetTop = getTargetTop();
+                const maxScrollTop = Math.max(0, (document.scrollingElement?.scrollHeight || document.documentElement.scrollHeight) - window.innerHeight);
+                const headingIndex = state.headings.indexOf(heading);
+                const selectHeading = () => {
+                    state.activeIndex = headingIndex;
+                    state.buttons.forEach((button, index) => {
+                        if (index === headingIndex) button.setAttribute('aria-current', 'location');
+                        else button.removeAttribute('aria-current');
+                    });
+                };
+                if (targetTop > maxScrollTop + 1 || Math.abs(targetTop - window.scrollY) <= 1) {
+                    if (state.updateFrame !== null) {
+                        window.cancelAnimationFrame(state.updateFrame);
+                        state.updateFrame = null;
+                    }
+                    selectHeading();
+                    state.scrollFrame = null;
                     return;
                 }
-                floatingToc.style.setProperty('--sticky-header-top', `${headerHeight}px`);
+                selectHeading();
+                state.activeIndex = -1;
+                const arrive = () => {
+                    window.scrollTo({ top: targetTop, behavior: 'instant' });
+                    heading.setAttribute('tabindex', '-1');
+                    heading.focus({ preventScroll: true });
+                    state.scrollFrame = null;
+                };
+                if (reducedMotion) {
+                    arrive();
+                    scheduleUpdate();
+                    return;
+                }
+
+                const startTop = window.scrollY;
+                const distance = getTargetTop() - startTop;
+                const previewDistance = Math.sign(distance) * Math.min(120, Math.abs(distance) * 0.15);
+                let startTime = null;
+                const animate = timestamp => {
+                    if (!isEnabled() || !state.headings.includes(heading)) {
+                        state.scrollFrame = null;
+                        return;
+                    }
+                    if (startTime === null) startTime = timestamp;
+                    const progress = Math.min(1, (timestamp - startTime) / 140);
+                    if (progress === 1) {
+                        arrive();
+                        scheduleUpdate();
+                        return;
+                    }
+                    window.scrollTo({
+                        top: startTop + previewDistance * (1 - (1 - progress) ** 2),
+                        behavior: 'instant'
+                    });
+                    state.scrollFrame = window.requestAnimationFrame(animate);
+                };
+                state.scrollFrame = window.requestAnimationFrame(animate);
+            };
+
+            const update = () => {
+                state.updateFrame = null;
+                const headings = getHeadings();
+                const headerTop = getHeaderTop();
+                const visible = isEnabled() && headings.length > 0 && shouldShow(headings, headerTop);
+                toc.hidden = !visible;
+                if (!visible) {
+                    state.activeIndex = -1;
+                    return;
+                }
+                toc.style.setProperty('--sticky-header-top', `${headerTop}px`);
                 let current = 0;
                 headings.forEach((heading, index) => {
-                    if (heading.getBoundingClientRect().top <= headerHeight + floatingHeight + 48) current = index;
+                    if (heading.getBoundingClientRect().top <= headerTop + floatingHeight + 48) current = index;
                 });
-                compactButtons.forEach((button, index) => {
+                state.buttons.forEach((button, index) => {
                     if (index === current) button.setAttribute('aria-current', 'location');
                     else button.removeAttribute('aria-current');
                 });
-                if (activeIndex !== current) {
-                    compactButtons.forEach(button => button.style.removeProperty('max-width'));
-                    const button = compactButtons[current];
-                    const nextButton = compactButtons[current + 1];
-                    const gap = parseFloat(getComputedStyle(floatingList).columnGap) || 0;
-                    const available = floatingList.clientWidth - 6;
+                if (state.activeIndex !== current) {
+                    state.buttons.forEach(button => button.style.removeProperty('max-width'));
+                    const button = state.buttons[current];
+                    const nextButton = state.buttons[current + 1];
+                    const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+                    const available = list.clientWidth - 6;
                     // 좁은 화면에서도 현재 항목과 다음 항목을 함께 보여줍니다.
                     if (nextButton && button.offsetWidth + nextButton.offsetWidth + gap > available) {
                         const nextWidth = Math.min(nextButton.offsetWidth, available * 0.45);
@@ -780,35 +774,119 @@
                     } else if (!nextButton) {
                         button.style.maxWidth = `${available}px`;
                     }
-                    const listRect = floatingList.getBoundingClientRect();
+                    const listRect = list.getBoundingClientRect();
                     const firstRect = button.getBoundingClientRect();
                     const lastRect = (nextButton || button).getBoundingClientRect();
                     let shift = 0;
                     if (lastRect.right > listRect.right - 3) shift = lastRect.right - listRect.right + 3;
                     else if (firstRect.left < listRect.left + 3) shift = firstRect.left - listRect.left - 3;
                     if (Math.abs(shift) > 1) {
-                        floatingList.scrollTo({
-                            left: floatingList.scrollLeft + shift,
+                        list.scrollTo({
+                            left: list.scrollLeft + shift,
                             behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
                         });
                     }
-                    activeIndex = current;
+                    state.activeIndex = current;
                 }
                 updateScrollButtons();
             };
-            scheduleHighlightsTocUpdate = () => {
-                if (updateFrame === null) updateFrame = requestAnimationFrame(update);
+            const scheduleUpdate = () => {
+                if (state.updateFrame === null) state.updateFrame = requestAnimationFrame(update);
             };
-            window.addEventListener('scroll', scheduleHighlightsTocUpdate, { passive: true });
+            window.addEventListener('scroll', scheduleUpdate, { passive: true });
             window.addEventListener('resize', () => {
-                activeIndex = -1;
-                scheduleHighlightsTocUpdate();
+                state.activeIndex = -1;
+                scheduleUpdate();
             });
-            const sizeObserver = new ResizeObserver(scheduleHighlightsTocUpdate);
-            sizeObserver.observe(sidebar);
-            sizeObserver.observe(document.getElementById('content-area'));
-            sizeObserver.observe(toc);
-            scheduleHighlightsTocUpdate();
+            const sizeObserver = new ResizeObserver(scheduleUpdate);
+            observeElements.forEach(element => sizeObserver.observe(element));
+
+            const setHeadings = headings => {
+                state.headings = headings;
+                state.activeIndex = -1;
+                list.replaceChildren();
+                state.buttons = [];
+                let subheadingList = null;
+                headings.forEach((heading, index) => {
+                    const item = document.createElement('li');
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.textContent = heading.textContent.trim();
+                    button.addEventListener('click', () => scrollToHeading(heading));
+
+                    if (heading.tagName === 'H3' && subheadingList) {
+                        item.appendChild(button);
+                        subheadingList.appendChild(item);
+                    } else {
+                        item.appendChild(button);
+                        list.appendChild(item);
+                        subheadingList = null;
+                        if (heading.tagName === 'H2' && headings[index + 1]?.tagName === 'H3') {
+                            item.classList.add('project-detail-toc-group');
+                            subheadingList = document.createElement('ul');
+                            subheadingList.className = 'project-detail-toc-children';
+                            item.appendChild(subheadingList);
+                        }
+                    }
+                    state.buttons.push(button);
+                });
+                toc.hidden = headings.length === 0;
+                updateScrollButtons();
+                scheduleUpdate();
+            };
+
+            return { setHeadings, scrollToHeading, scheduleUpdate };
+        }
+
+        function buildHighlightsToc() {
+            const highlights = document.getElementById('highlights');
+            const toc = highlights.querySelector('.highlights-toc');
+            const list = toc.querySelector('ul');
+            const headings = Array.from(highlights.querySelectorAll('h2'));
+            const sidebar = document.getElementById('sidebar');
+            const contentArea = document.getElementById('content-area');
+            const controller = createStickyToc({
+                className: 'floating-highlights-toc',
+                ariaLabel: '핵심 경험 빠른 목차',
+                getHeadings: () => headings,
+                getHeaderTop: () => mobileMenuMedia.matches ? sidebar.getBoundingClientRect().height : 0,
+                isEnabled: () => highlights.classList.contains('active') && !toc.hidden
+                    && !(mobileMenuMedia.matches && sidebar.classList.contains('mobile-menu-open')),
+                shouldShow: (_headings, headerTop) => toc.getBoundingClientRect().bottom <= headerTop,
+                observeElements: [sidebar, contentArea, toc]
+            });
+            list.replaceChildren();
+            headings.forEach(heading => {
+                const item = document.createElement('li');
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = heading.textContent.trim();
+                button.addEventListener('click', () => controller.scrollToHeading(heading));
+                item.appendChild(button);
+                list.appendChild(item);
+            });
+            toc.hidden = headings.length === 0;
+            controller.setHeadings(headings);
+            scheduleHighlightsTocUpdate = controller.scheduleUpdate;
+        }
+
+        function buildProjectDetailToc(enabled) {
+            if (!projectDetailTocController) {
+                projectDetailTocController = createStickyToc({
+                    className: 'floating-highlights-toc project-detail-floating-toc',
+                    ariaLabel: '프로젝트 상세 목차',
+                    getHeadings: () => projectDetail.classList.contains('active')
+                        ? Array.from(projectDetailContent.querySelectorAll(':scope > h2, :scope > h3'))
+                        : [],
+                    getHeaderTop: () => projectDetail.querySelector('.project-detail-header')?.getBoundingClientRect().bottom || 0,
+                    isEnabled: () => projectDetail.classList.contains('active'),
+                    shouldShow: (headings, headerTop) => headings[0].getBoundingClientRect().top <= headerTop,
+                    observeElements: [projectDetailContent]
+                });
+                scheduleProjectDetailTocUpdate = projectDetailTocController.scheduleUpdate;
+            }
+            const headings = enabled ? Array.from(projectDetailContent.querySelectorAll(':scope > h2, :scope > h3')) : [];
+            projectDetailTocController.setHeadings(headings);
         }
 
         function populateProjectListTags() {
