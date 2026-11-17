@@ -42,6 +42,7 @@
                     <li><button type="button" class="active" data-tab="about"><span class="material-symbols-outlined">person</span>소개</button></li>
                     <li><button type="button" data-tab="highlights"><span class="material-symbols-outlined">bolt</span>핵심 경험</button></li>
                     <li><button type="button" data-tab="projects"><span class="material-symbols-outlined">folder_open</span>프로젝트 목록</button></li>
+                    <li><button type="button" data-tab="history"><span class="material-symbols-outlined">badge</span>개인 이력</button></li>
                 </ul>
                 </div>
             </div>
@@ -290,7 +291,20 @@
                     </section>
                 </div>
 
-                <div class="sectionbox about-history">
+                <div class="next-tab-nav">
+                    <button type="button" class="next-tab-btn" data-tab="highlights">
+                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+
+
+            <!-- 탭: 개인 이력 -->
+            <section id="history" class="tab-content">
+                <h1>개인 이력</h1>
+                <hr>
+
+                <div class="sectionbox history-list">
                     <section>
                         <div class="sectionbox-header">
                             <h2>학력</h2>
@@ -304,6 +318,7 @@
                                     </div>
                                     <span class="timeline-period">2022.03 - 2023.02</span>
                                 </div>
+                                <p class="inline-no-margin">프로그래밍 전공</p>
                             </article>
 
                             <hr>
@@ -316,6 +331,7 @@
                                     </div>
                                     <span class="timeline-period">2019.03 - 2022.02</span>
                                 </div>
+                                <p class="inline-no-margin">프로그래밍 전공</p>
                             </article>
                         </div>
                     </section>
@@ -383,8 +399,8 @@
                 </div>
 
                 <div class="next-tab-nav">
-                    <button type="button" class="next-tab-btn" data-tab="highlights">
-                        핵심 경험 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="about">
+                        소개 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>
@@ -988,8 +1004,8 @@ private static void SelectBrushTool(VisualElement target) => History.Log("브러
                 
                 <div class="next-tab-nav project-notice-nav">
                     <span>※ 보안을 준수하기 위해 프로젝트의 실제 명칭 및 이미지가 기재되지 않을 수 있습니다.</span>
-                    <button type="button" class="next-tab-btn" data-tab="about">
-                        소개 보기 <span class="material-symbols-outlined">arrow_forward</span>
+                    <button type="button" class="next-tab-btn" data-tab="history">
+                        개인 이력 보기 <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </section>

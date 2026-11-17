@@ -974,31 +974,31 @@
     .about-principles { padding: 4rem 0; margin-bottom: 3rem; }
 }
 
-/* 소개의 이력은 박스 대신 구분선과 여백으로 정리합니다. */
-#about .about-history { padding-top: 0; border-top: 0; }
-.about-history > section {
+/* 이력 목록은 박스 대신 구분선과 여백으로 정리합니다. */
+.history-list { padding-top: 0; border-top: 0; }
+.history-list > section {
     display: grid;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
     gap: 3rem;
     padding: 3rem 0;
     border-bottom: 1px solid var(--color-border-button-inactive);
 }
-.about-history > section:first-child { padding-top: 0; }
-.about-history > section:last-child { border-bottom: 0; }
-.about-history > hr { display: none; }
-.about-history .sectionbox-header { margin-bottom: 0; }
-.about-history h2 { margin: 0; font-size: 2rem; letter-spacing: -0.055em; line-height: 1.3; }
-.about-history .panelbox { margin: 0; padding: 0; background: transparent; border: 0; }
-.about-history .timeline-entry-header { flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 1rem; }
-.about-history .timeline-entry-title { font-size: 1.35rem; letter-spacing: -0.035em; }
-.about-history .timeline-entry-role { color: var(--color-accent); font-size: 1rem; font-weight: 600; }
-.about-history .timeline-period { color: var(--color-text-secondary); padding-top: 0.2rem; font-weight: 400; font-variant-numeric: tabular-nums; }
-.about-history article > p:last-child { margin-bottom: 0; font-size: 1rem; }
-.about-history hr { margin: 2rem 0; }
+.history-list > section:first-child { padding-top: 0; }
+.history-list > section:last-child { border-bottom: 0; }
+.history-list > hr { display: none; }
+.history-list .sectionbox-header { margin-bottom: 0; }
+.history-list h2 { margin: 0; font-size: 2rem; letter-spacing: -0.055em; line-height: 1.3; }
+.history-list .panelbox { margin: 0; padding: 0; background: transparent; border: 0; }
+.history-list .timeline-entry-header { flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 1rem; }
+.history-list .timeline-entry-title { font-size: 1.35rem; letter-spacing: -0.035em; }
+.history-list .timeline-entry-role { color: var(--color-accent); font-size: 1rem; font-weight: 600; }
+.history-list .timeline-period { color: var(--color-text-secondary); padding-top: 0.2rem; font-weight: 400; font-variant-numeric: tabular-nums; }
+.history-list article > p:last-child { margin-bottom: 0; font-size: 1rem; }
+.history-list hr { margin: 2rem 0; }
 @media screen and (max-width: 640px) {
-    .about-history > section { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
-    .about-history .timeline-entry-header { gap: 0.5rem; }
-    .about-history .timeline-entry-title { font-size: 1.2rem; }
+    .history-list > section { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+    .history-list .timeline-entry-header { gap: 0.5rem; }
+    .history-list .timeline-entry-title { font-size: 1.2rem; }
 }
 
 /* 모바일 메뉴는 상단 버튼으로 펼치고 데스크톱에서는 항상 표시합니다. */

@@ -254,7 +254,7 @@
         }
 
         // 탭 및 프로젝트 상세 라우팅 (예: #/projects, #/projects/projectpz)
-        const TAB_IDS = ['about', 'highlights', 'projects'];
+        const TAB_IDS = ['about', 'highlights', 'projects', 'history'];
         const PROJECT_ROUTE_NAME = 'projects';
         const HIGHLIGHT_ROUTE_NAME = 'highlight';
         const projectDetail = document.getElementById('project-detail');
